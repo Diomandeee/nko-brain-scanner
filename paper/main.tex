@@ -25,8 +25,8 @@
 
 \begin{abstract}
 We present a systematic study of how large language models process N'Ko (\texttt{U+07C0--U+07FF}), an alphabetic script used by over 40 million Manding-language speakers in West Africa.
-Through activation profiling (``brain scanning'') of Qwen2-72B and targeted fine-tuning of Qwen3-8B, we demonstrate that:
-(1) N'Ko produces systematically different activation patterns than English, with higher sparsity in early processing layers;
+Through activation profiling (``brain scanning'') of Qwen3-8B before and after fine-tuning, we demonstrate that:
+(1) fine-tuning concentrates N'Ko adaptation in the top 8 transformer layers, reducing activation magnitudes in reasoning layers while amplifying output confidence;
 (2) a three-stage training pipeline---continued pre-training on 3.7M characters of N'Ko Wikipedia, supervised fine-tuning on 4,312 instruction examples, and BPE-aware subword training on 25,100 examples---reduces the N'Ko-to-English perplexity gap (``translation tax'') from 2.90$\times$ to 0.70$\times$, a 76\% reduction;
 (3) N'Ko-specific token prediction accuracy improves from 23.0\% to 32.8\%, a 43\% relative gain, with only 1.2 percentage points of English accuracy loss;
 (4) a custom 512-merge BPE tokenizer trained on N'Ko Wikipedia achieves 2.75$\times$ compression, discovering linguistically valid subword units that align with Manding grammatical particles.
@@ -254,17 +254,17 @@ Manding is an isolating language with fixed auxiliary verbs, and these particles
 \small
 \begin{tabular}{clll}
 \toprule
-\textbf{Rank} & \textbf{Token} & \textbf{Gloss} & \textbf{Freq} \\
+\textbf{Rank} & \textbf{Romanization} & \textbf{Gloss} & \textbf{Freq} \\
 \midrule
-0 & \textnko{la} & locative & 3,046 \\
-1 & \textnko{ka} & completive & 2,326 \\
-8 & \textnko{ye} & copula ``is'' & 1,380 \\
-19 & \textnko{kan} & language & 870 \\
-200 & \textnko{N'Ko} & script name & 143 \\
-350 & \textnko{faransi} & France & 74 \\
+0 & \textit{la} & locative & 3,046 \\
+1 & \textit{ka} & completive & 2,326 \\
+8 & \textit{ye} & copula ``is'' & 1,380 \\
+19 & \textit{kan} & language & 870 \\
+200 & \textit{N'Ko} & script name & 143 \\
+350 & \textit{faransi} & France & 74 \\
 \bottomrule
 \end{tabular}
-\caption{Selected BPE merges showing linguistic validity. N'Ko characters cannot be rendered in standard LaTeX; actual Unicode characters are used in the digital version.}
+\caption{Selected BPE merges showing linguistic validity. Romanized forms shown; N'Ko Unicode characters (U+07C0--U+07FF) are used in the digital version and code repository.}
 \label{tab:bpe-merges}
 \end{table}
 
