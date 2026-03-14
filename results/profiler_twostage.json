@@ -1,0 +1,65 @@
+{
+  "base": {
+    "nko": {
+      "avg_loss": 2.3495,
+      "perplexity": 10.48,
+      "top1_accuracy": 0.4819,
+      "nko_token_accuracy": 0.2757,
+      "nko_tokens_evaluated": 1302,
+      "total_tokens": 3700,
+      "num_examples": 30
+    },
+    "english": {
+      "avg_loss": 4.8582,
+      "perplexity": 128.79,
+      "top1_accuracy": 0.2482,
+      "nko_token_accuracy": 0.0,
+      "nko_tokens_evaluated": 0,
+      "total_tokens": 141,
+      "num_examples": 4
+    }
+  },
+  "finetuned": {
+    "nko": {
+      "avg_loss": 1.6108,
+      "perplexity": 5.01,
+      "top1_accuracy": 0.6165,
+      "nko_token_accuracy": 0.3587,
+      "nko_tokens_evaluated": 1302,
+      "total_tokens": 3700,
+      "num_examples": 30
+    },
+    "english": {
+      "avg_loss": 5.4468,
+      "perplexity": 232.02,
+      "top1_accuracy": 0.2624,
+      "nko_token_accuracy": 0.0,
+      "nko_tokens_evaluated": 0,
+      "total_tokens": 141,
+      "num_examples": 4
+    }
+  },
+  "deltas": {
+    "nko": {
+      "avg_loss_delta": -0.7387,
+      "perplexity_delta": -5.47,
+      "top1_accuracy_delta": 0.1346,
+      "nko_token_accuracy_delta": 0.083
+    },
+    "english": {
+      "avg_loss_delta": 0.5886,
+      "perplexity_delta": 103.23,
+      "top1_accuracy_delta": 0.0142,
+      "nko_token_accuracy_delta": 0.0
+    }
+  },
+  "metadata": {
+    "model": "mlx-community/Qwen3-8B-8bit",
+    "adapter_path": "/Users/mohameddiomande/nko-brain-scanner/adapters-combined",
+    "training": "two-stage: CPT (2000 iters on Wikipedia) + SFT (1000 iters on combined)",
+    "max_seq_len": 256,
+    "nko_examples": 30,
+    "english_examples": 4,
+    "timestamp": "2026-03-14T14:40:32.815574"
+  }
+}

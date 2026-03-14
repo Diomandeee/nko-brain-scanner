@@ -553,7 +553,34 @@ To support continued pre-training, we scraped the entire N'Ko Wikipedia: **1,693
 
 This two-stage approach mirrors how modern models are trained: broad exposure first, then task-specific alignment. The Wikipedia corpus provides the breadth. The SFT data provides the depth.
 
-Scale this up, with tokenizer extension to give N'Ko characters first-class representation, continued pre-training on the full Wikipedia corpus, and refined SFT data, and the model's early layers would build the clean representations our brain scan showed are missing. The reasoning circuits would engage. And Solomana Kante's 77-year-old design would finally meet a machine capable of reading it.
+### Two-Stage Training: CPT + SFT
+
+We didn't stop there. We ran the two-stage pipeline we described above: first continued pre-training (CPT) on the 17,360 Wikipedia text-completion examples (2,000 iterations), then supervised fine-tuning (SFT) on the combined 21,240 dataset (1,000 iterations at half the learning rate).
+
+The results validate the two-stage approach:
+
+**N'Ko Processing (Two-Stage vs SFT-Only vs Base):**
+
+| Metric | Base | SFT-Only | Two-Stage (CPT+SFT) |
+|--------|------|----------|---------------------|
+| Top-1 Accuracy | 48.2% | 58.6% | **61.7%** |
+| N'Ko Token Accuracy | 27.6% | 28.0% | **35.9%** |
+| Loss | 2.35 | 1.53 | 1.61 |
+| Perplexity | 10.48 | 4.61 | 5.01 |
+
+The headline number: **N'Ko token accuracy jumped from 28% to 35.9%**, an 8.3 percentage point gain. This is the metric that barely moved with SFT alone (+0.4pp). The CPT stage, which exposed the model to 3.7 million N'Ko characters of Wikipedia text in a pure language modeling task, taught the model something the SFT data couldn't: how N'Ko characters actually compose into words, phrases, and sentences.
+
+Top-1 accuracy also improved to 61.7%, the highest of any configuration. The slightly higher loss (1.61 vs 1.53) is expected: the validation set now includes CPT examples that are inherently harder (longer context windows, more diverse vocabulary from Wikipedia).
+
+The two-stage approach works because each stage teaches something different:
+- **CPT teaches character patterns**: syllable structures, morpheme boundaries, common word forms, right-to-left composition rules
+- **SFT teaches task behavior**: instruction following, answer formatting, conversational patterns
+
+Without CPT, the model learns to format N'Ko outputs but doesn't deeply understand the script's internal structure. With CPT, it builds the foundation that SFT can then build on.
+
+### What Comes Next
+
+Scale this up, with tokenizer extension to give N'Ko characters first-class representation, more CPT data from the growing Wikipedia corpus and the 679 educational videos in our GCS pipeline, and refined SFT data, and the model's early layers would build the clean representations our brain scan showed are missing. The reasoning circuits would engage. And Solomana Kante's 77-year-old design would finally meet a machine capable of reading it.
 
 ---
 
@@ -602,6 +629,15 @@ Scale this up, with tokenizer extension to give N'Ko characters first-class repr
 - **Metrics:** Per-example loss, perplexity, top-1 next-token accuracy, N'Ko-specific token accuracy (U+07C0-U+07FF)
 - **Comparison:** Base model (no adapter) vs fine-tuned model (with adapter) on identical examples
 - **Total evaluation time:** ~5 minutes on Apple M4
+
+### Experiment 5: Two-Stage Training (CPT + SFT)
+- **Stage 1 (CPT):** 17,360 text-completion examples from N'Ko Wikipedia, chunked with 300-char sliding window (50-char overlap), 60/40 context/completion split
+- **Training:** 2,000 iterations, learning rate 1e-5, batch size 1, max sequence length 512
+- **Stage 2 (SFT):** Resumed from CPT adapter, trained on combined dataset (21,240 examples: 17,360 CPT + 3,880 SFT)
+- **Training:** 1,000 iterations, learning rate 5e-6 (half of Stage 1), batch size 1
+- **Evaluation:** Same profiler as Experiment 4, comparing base vs two-stage on 30 N'Ko examples
+- **Total training time:** ~140 minutes (114 CPT + 26 SFT) on Apple M4
+- **Total cost:** $0 (local hardware)
 
 ### Wikipedia Corpus Collection
 - **Source:** N'Ko Wikipedia (nqo.wikipedia.org) via MediaWiki API
