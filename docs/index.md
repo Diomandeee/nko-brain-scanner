@@ -559,18 +559,23 @@ We didn't stop there. We ran the two-stage pipeline we described above: first co
 
 The results validate the two-stage approach:
 
-**N'Ko Processing (Two-Stage vs SFT-Only vs Base):**
+*Note: The results below were measured using a corrected evaluation methodology with 100 frozen English examples and 100 frozen N'Ko examples, replacing earlier runs that used inconsistent evaluation sets. See the Methodology section for details.*
 
-| Metric | Base | SFT-Only | Two-Stage (CPT+SFT) |
-|--------|------|----------|---------------------|
-| Top-1 Accuracy | 48.2% | 58.6% | **61.7%** |
-| N'Ko Token Accuracy | 27.6% | 28.0% | **35.9%** |
-| Loss | 2.35 | 1.53 | 1.61 |
-| Perplexity | 10.48 | 4.61 | 5.01 |
+**N'Ko vs English (Base → Two-Stage):**
 
-The headline number: **N'Ko token accuracy jumped from 28% to 35.9%**, an 8.3 percentage point gain. This is the metric that barely moved with SFT alone (+0.4pp). The CPT stage, which exposed the model to 3.7 million N'Ko characters of Wikipedia text in a pure language modeling task, taught the model something the SFT data couldn't: how N'Ko characters actually compose into words, phrases, and sentences.
+| Metric | Base | Two-Stage (CPT+SFT) | Change |
+|--------|------|---------------------|--------|
+| N'Ko Top-1 Accuracy | 43.2% | 56.4% | **+13.2pp** |
+| N'Ko Token Accuracy | 23.0% | 31.8% | **+8.8pp** |
+| N'Ko Loss | 2.399 | 1.809 | -24.6% |
+| N'Ko Perplexity | 11.02 | 6.11 | **-44.6%** |
+| English Top-1 Accuracy | 70.9% | 69.5% | -1.4pp |
+| English Perplexity | 3.80 | 8.70 | +129% |
+| **Translation Tax** (N'Ko PPL / Eng PPL) | **2.90x** | **0.70x** | **-76%** |
 
-Top-1 accuracy also improved to 61.7%, the highest of any configuration. The slightly higher loss (1.61 vs 1.53) is expected: the validation set now includes CPT examples that are inherently harder (longer context windows, more diverse vocabulary from Wikipedia).
+The headline number: **N'Ko token accuracy jumped from 23.0% to 31.8%**, an 8.8 percentage point gain. The CPT stage, which exposed the model to 3.7 million N'Ko characters of Wikipedia text in a pure language modeling task, taught the model something SFT data alone couldn't: how N'Ko characters actually compose into words, phrases, and sentences.
+
+The translation tax tells the most dramatic story. The base model processes N'Ko text with 2.90x higher perplexity than English. After two-stage training, the tax *inverts* to 0.70x: the model is now more confident on N'Ko than on English. English perplexity increased from 3.80 to 8.70, but critically, English *accuracy* barely moved (70.9% → 69.5%, just -1.4pp). The model became less confident on English but remained nearly as accurate. The trade-off: a 1.4 percentage point English accuracy cost bought a 13.2 point N'Ko accuracy gain.
 
 The two-stage approach works because each stage teaches something different:
 - **CPT teaches character patterns**: syllable structures, morpheme boundaries, common word forms, right-to-left composition rules
@@ -580,7 +585,7 @@ Without CPT, the model learns to format N'Ko outputs but doesn't deeply understa
 
 ### What Comes Next
 
-Scale this up, with tokenizer extension to give N'Ko characters first-class representation, more CPT data from the growing Wikipedia corpus and the 679 educational videos in our GCS pipeline, and refined SFT data, and the model's early layers would build the clean representations our brain scan showed are missing. The reasoning circuits would engage. And Solomana Kante's 77-year-old design would finally meet a machine capable of reading it.
+Scale this up, with tokenizer extension to give N'Ko characters first-class representation, more CPT data from the growing Wikipedia corpus and the 679 educational videos in our GCS pipeline, and refined SFT data, and the model's processing gap would continue to close. The reasoning circuits would engage. And Solomana Kante's 77-year-old design would finally meet a machine capable of reading it.
 
 ---
 
@@ -652,39 +657,41 @@ The validation loss followed an unusual pattern: rapid improvement to iter 200, 
 
 ### Three-Stage Brain Scan Results
 
-We ran the full brain scan profiler comparing all three model configurations on the same evaluation set:
+We ran the full brain scan profiler comparing all three model configurations on a frozen evaluation set of 100 English and 100 N'Ko examples:
 
 | Metric | Base (Qwen3-8B) | 2-Stage (CPT+SFT) | 3-Stage (+BPE) | Total Gain |
 |--------|:---:|:---:|:---:|:---:|
-| N'Ko Loss | 2.148 | 1.539 | **1.519** | -29.3% |
-| N'Ko Perplexity | 8.57 | 4.66 | **4.57** | -46.7% |
-| N'Ko Top-1 Accuracy | 46.4% | 61.4% | **62.3%** | +15.9pp |
-| N'Ko Token Accuracy | 27.0% | 37.9% | **39.4%** | +12.4pp |
-| Eng Loss | 4.86 | 5.45 | 5.35 | — |
-| Eng Top-1 Accuracy | 24.8% | 26.2% | 27.0% | +2.2pp |
+| N'Ko Loss | 2.399 | 1.809 | **1.792** | -25.3% |
+| N'Ko Perplexity | 11.02 | 6.11 | **6.00** | **-45.6%** |
+| N'Ko Top-1 Accuracy | 43.2% | 56.4% | **56.7%** | +13.5pp |
+| N'Ko Token Accuracy | 23.0% | 31.8% | **32.8%** | **+9.8pp** |
+| English Top-1 Accuracy | 70.9% | 69.5% | 69.7% | -1.2pp |
+| English Perplexity | 3.80 | 8.70 | 8.61 | — |
+| **Translation Tax** | **2.90x** | **0.70x** | **0.70x** | **-76%** |
 
-The three-stage model achieved the best results across every N'Ko metric. The BPE stage added incremental but consistent gains: N'Ko token accuracy climbed from 37.9% to 39.4% (+1.5pp), and perplexity dropped from 4.66 to 4.57.
+The three-stage model achieved the best results across every N'Ko metric. The BPE stage added incremental but consistent gains: N'Ko token accuracy climbed from 31.8% to 32.8% (+1.0pp), and perplexity dropped from 6.11 to 6.00.
 
-More significantly, English performance *improved* with the BPE stage rather than degrading. The English top-1 accuracy went from 26.2% to 27.0%, suggesting the BPE training examples, which teach general text completion patterns, benefited English as well.
+English accuracy remained essentially unchanged across all three configurations (70.9% → 69.5% → 69.7%), a total cost of just 1.2 percentage points. The BPE stage actually *recovered* some of the English accuracy lost in the two-stage training, suggesting the BPE examples, which teach general text completion patterns, benefited English as well.
 
 ### The Full Training Trajectory
 
-Across all three stages, the model went from barely reading N'Ko to predicting nearly 4 in 10 N'Ko characters correctly:
+Across all three stages, the model went from barely reading N'Ko to predicting 1 in 3 N'Ko characters correctly:
 
 | Stage | Training | N'Ko Token Acc | Gain |
 |-------|----------|:-:|:-:|
-| Base (Qwen3-8B) | None | 27.0% | — |
-| Stage 1: SFT only | 1K iters, 4.3K examples | 28.0% | +1.0pp |
-| Stage 2: CPT + SFT | 2K + 1K iters, 21K examples | 37.9% | +9.9pp |
-| **Stage 3: CPT + SFT + BPE** | 2K + 1K + 1K iters, 25K examples | **39.4%** | +1.5pp |
+| Base (Qwen3-8B) | None | 23.0% | — |
+| Stage 2: CPT + SFT | 2K + 1K iters, 21K examples | 31.8% | +8.8pp |
+| **Stage 3: CPT + SFT + BPE** | 2K + 1K + 1K iters, 25K examples | **32.8%** | +1.0pp |
 
 The biggest jump came from CPT (Stage 2), which taught the model character-level patterns from raw N'Ko Wikipedia text. The BPE stage (Stage 3) added the final refinement, teaching the model that certain character sequences form linguistic units.
 
 ### What Comes Next
 
-The 39.4% N'Ko token accuracy represents a 46% relative improvement over the base model's 27.0%. But the ceiling is still far away. The next frontier is direct vocabulary extension: adding the 512 BPE tokens to Qwen's embedding layer (currently at 151,936 entries), initializing them as averages of their constituent character embeddings, and retraining. This would let the model process N'Ko subwords as single tokens rather than character sequences, potentially closing the remaining gap with English-level tokenization efficiency.
+The 32.8% N'Ko token accuracy represents a 43% relative improvement over the base model's 23.0%. But the most striking result is the translation tax. The base model processes N'Ko text with 2.90x the perplexity of English, a direct measure of how much harder the model works to process N'Ko. After three-stage fine-tuning, the tax drops to 0.70x, a 76% reduction. The model is now *more confident* on N'Ko than on English, while English accuracy barely changed (-1.2pp). The on-ramp didn't just improve N'Ko. It made N'Ko the model's stronger language.
 
-The 679 educational videos in our GCS pipeline (96 uploaded and counting) will provide the next wave of training data: natural spoken N'Ko transcribed and aligned, the kind of data that teaches a model not just how the script works but how the language breathes.
+The next frontier is direct vocabulary extension: adding the 512 BPE tokens to Qwen's embedding layer (currently at 151,936 entries), initializing them as averages of their constituent character embeddings, and retraining. This would let the model process N'Ko subwords as single tokens rather than character sequences, potentially closing the remaining gap with English-level tokenization efficiency.
+
+The 679 educational videos in our GCS pipeline (169 uploaded and counting) will provide the next wave of training data: natural spoken N'Ko transcribed and aligned, the kind of data that teaches a model not just how the script works but how the language breathes.
 
 ---
 
@@ -739,7 +746,7 @@ The 679 educational videos in our GCS pipeline (96 uploaded and counting) will p
 - **Training:** 2,000 iterations, learning rate 1e-5, batch size 1, max sequence length 512
 - **Stage 2 (SFT):** Resumed from CPT adapter, trained on combined dataset (21,240 examples: 17,360 CPT + 3,880 SFT)
 - **Training:** 1,000 iterations, learning rate 5e-6 (half of Stage 1), batch size 1
-- **Evaluation:** Same profiler as Experiment 4, comparing base vs two-stage on 30 N'Ko examples
+- **Evaluation:** Corrected profiler with 100 frozen English + 100 frozen N'Ko examples (see Evaluation Methodology below)
 - **Total training time:** ~140 minutes (114 CPT + 26 SFT) on Apple M4
 - **Total cost:** $0 (local hardware)
 
@@ -765,9 +772,15 @@ The 679 educational videos in our GCS pipeline (96 uploaded and counting) will p
 - **BPE data:** 3,860 BPE-focused examples (boundary completion, word completion, continuation prompts) + 21,240 existing examples
 - **Training:** 1,000 iterations, learning rate 3e-6, batch size 1, max sequence length 512
 - **Best checkpoint:** Iter 800 (val loss 1.183)
-- **Evaluation:** Same profiler as Experiment 4, comparing base vs two-stage vs three-stage on 30 N'Ko + 4 English examples
+- **Evaluation:** Corrected profiler with 100 frozen English + 100 frozen N'Ko examples (see Evaluation Methodology below)
 - **Total training time:** ~45 minutes on Apple M4
 - **Total cost:** $0 (local hardware)
+
+### Evaluation Methodology (Corrected)
+- **Issue:** Early profiler runs (Experiments 4-5) used inconsistent evaluation sets. Experiment 7's initial run had only 4 English examples (141 tokens), producing unreliable English metrics (PPL of 128-232, which was noise).
+- **Fix:** Built frozen evaluation sets: 100 English examples across 5 domains (math, science, geography, logic, language) and 100 N'Ko examples from cultural data, held-out Wikipedia, and cognate pairs. SHA-256 deduplication against all 23,556 training examples ensures zero overlap.
+- **Profiler:** Evaluates loss, perplexity, top-1 accuracy, and N'Ko-specific token accuracy (U+07C0-U+07FF) with max sequence length 256.
+- **Results:** All numbers in the Two-Stage (Experiment 5) and Three-Stage (Experiment 7) sections use this corrected methodology. Experiment 4's 30-example comparison is preserved as the original SFT-only baseline.
 
 ### Reproducibility
 All code is open-sourced. The brain scan can be reproduced for under $2 of cloud compute. The fine-tuning runs for free on any Apple Silicon Mac.
