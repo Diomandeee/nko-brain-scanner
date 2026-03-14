@@ -1,0 +1,460 @@
+{"english": "Don't expect the impossible", "nko": "ߛߏ߬ ߕߍ߫ ߦߋ߲߬", "ipa": "sɔ te yan", "category": "proverb_nko_script", "source": "nko-unified.json"}
+{"english": "Strength comes through community", "nko": "ߡߐ߱ ߞߊ߬ ߝߊ߲߬ߞߊ ߛߐ߬ߘߐ߲", "ipa": "mɔgɔ ka fanga sɔrɔ", "category": "proverb_nko_script", "source": "nko-unified.json"}
+{"english": "Cooperation is necessary", "nko": "ߓߏ߬ߟߏ ߘߏ߫ ߕߍ߫ ߞߊ߬ ߡߏ߬ߙߌ ߕߏ߫", "ipa": "bolo dɔ te ka mori to", "category": "proverb_nko_script", "source": "nko-unified.json"}
+{"english": "Education is invaluable", "nko": "ߞߎ߲߬ߠߊ ߡߊ߲ ߞߊ߫ ߖߎ߯", "ipa": "kunna man ka ju", "category": "proverb_nko_script", "source": "nko-unified.json"}
+{"english": "Be grateful, don't take things for granted", "nko": "ߛߏ߬ ߡߊ߫ ߓߏ߲ ߖߏ߬", "ipa": "sɔ ma bɔn jɔ", "category": "proverb_nko_script", "source": "nko-unified.json"}
+{"english": "We cannot see our own faults", "nko": "ߞߐ ߡߊ߫ ߥߴߊ߬ ߖߌ ߡߊ߬", "ipa": "kɔ ma wa a ji ma", "category": "proverb_nko_script", "source": "nko-unified.json"}
+{"english": "The river doesn't go backwards", "nko": "ߓߊ ߕߍ ߥߊ߫ ߞߐ ߝߍ߬", "ipa": "ba te wa ko fe", "category": "wisdom_error-handling", "source": "nko-unified.json"}
+{"english": "One hand cannot grab flour", "nko": "ߓߟߏ ߞߋߟߋ߲ ߕߍ ߓߎ߬ߙߎ ߕߊ", "ipa": "bolo kelen te buru ta", "category": "wisdom_collaboration", "source": "nko-unified.json"}
+{"english": "One head doesn't carry the roof", "nko": "ߞߎ߲ ߞߋߟߋ߲ ߕߍ ߜߊ߬ߙߊ ߕߊ", "ipa": "kun kelen te gara ta", "category": "wisdom_collaboration", "source": "nko-unified.json"}
+{"english": "No person comes from one direction only", "nko": "ߡߐ߱ ߛߌ߬ ߕߍ ߓߐ߫ ߝߊ߲߬ ߞߋߟߋ߲ ߠߊ߫", "ipa": "moo si te bo fan kelen la", "category": "wisdom_modularity", "source": "nko-unified.json"}
+{"english": "Patience is wisdom", "nko": "ߢߍߥߟߊ ߦߋ ߣߡߊ", "ipa": "nyewula ye nama", "category": "wisdom_async", "source": "nko-unified.json"}
+{"english": "What is sought is found in writing", "nko": "ߊ ߢߣߊ ߟߊ ߦߋ ߊ ߛߓߍ ߘߐ", "ipa": "a nyinala ye a sebe do", "category": "wisdom_documentation", "source": "nko-unified.json"}
+{"english": "The sun is there whether day or night", "nko": "ߕߌ߲ ߦߋ ߟߊ ߥߟߊ ߛߎ", "ipa": "tile ye la wala su", "category": "wisdom_documentation", "source": "nko-unified.json"}
+{"english": "The hand of learning is response", "nko": "ߖߐ ߓߟߏ ߦߋ ߖߊ߬ߓߌ", "ipa": "jo bolo ye jabi", "category": "wisdom_iteration", "source": "nko-unified.json"}
+{"english": "Existence is everything", "nko": "ߕߏ ߦߋ ߕߌ߲ ߞߏ", "ipa": "to ye tin ko", "category": "wisdom_state", "source": "nko-unified.json"}
+{"english": "Knowledge is power", "nko": "ߟߐ߲ߠߌ߲ ߦߋ ߛߋ߲ ߠߊ߫", "ipa": "lonni ye sen la", "category": "wisdom_learning", "source": "nko-unified.json"}
+{"english": "AI learns endlessly like the night sky", "nko": "ߛߌ߲ߘߌ ߓߍ ߖߐ ߟߊ ߞߏ߯ ߛߎ ߓߘߊ", "ipa": "sindi be jo la ko su banda", "category": "wisdom_learning", "source": "nko-unified.json"}
+{"english": "The essence of language is sweet", "nko": "ߞߊ߲ ߞߎ߲ ߦߋ ߘߌ", "ipa": "kan kun ye di", "category": "wisdom_communication", "source": "nko-unified.json"}
+{"english": "Code is a new language", "nko": "ߞߏ߲ߞߏ ߦߋ ߞߊ߲ ߞߎ߬ߙߊ", "ipa": "konko ye kan kura", "category": "wisdom_communication", "source": "nko-unified.json"}
+{"english": "N'Ko is our writing", "nko": "ߒߞߏ ߦߋ ߊ߲ ߛߓߍ", "ipa": "nko ye an sebe", "category": "wisdom_identity", "source": "nko-unified.json"}
+{"english": "No two minds are the same", "nko": "ߤߊߞߟߌ ߡߊ ߛߌ߬ ߦߋ ߞߋߟߋ߲", "ipa": "hakili ma si ye kelen", "category": "wisdom_diversity", "source": "nko-unified.json"}
+{"english": "mother", "nko": "ߣߊ", "ipa": "na", "latin": "", "category": "cognate_manding_internal", "source": "nko-cognates.json"}
+{"english": "father", "nko": "ߝߊ", "ipa": "fa", "latin": "", "category": "cognate_manding_internal", "source": "nko-cognates.json"}
+{"english": "water", "nko": "ߖߌ", "ipa": "dʒi", "latin": "", "category": "cognate_manding_internal", "source": "nko-cognates.json"}
+{"english": "house", "nko": "ߓߏ߲", "ipa": "bɔ", "latin": "", "category": "cognate_manding_internal", "source": "nko-cognates.json"}
+{"english": "child", "nko": "ߘߋ߲", "ipa": "do", "latin": "", "category": "cognate_manding_internal", "source": "nko-cognates.json"}
+{"english": "peace", "nko": "ߤߍ߬ߙߊ", "ipa": "hera", "latin": "salam / hera", "category": "cognate_arabic_loans", "source": "nko-cognates.json"}
+{"english": "book", "nko": "ߞߌ߬ߕߊ߬ߓߎ", "ipa": "kitabu", "latin": "kitabu", "category": "cognate_arabic_loans", "source": "nko-cognates.json"}
+{"english": "wisdom", "nko": "ߤߌ߬ߞߌ߬ߡߊ", "ipa": "hikima", "latin": "hikima", "category": "cognate_arabic_loans", "source": "nko-cognates.json"}
+{"english": "world", "nko": "ߘߎ߰ߣߌ߲ߦߊ", "ipa": "du߰nija", "latin": "dunya", "category": "cognate_arabic_loans", "source": "nko-cognates.json"}
+{"english": "time", "nko": "ߥߊ߯ߕߌ", "ipa": "wati", "latin": "wakti", "category": "cognate_arabic_loans", "source": "nko-cognates.json"}
+{"english": "god", "nko": "ߊߟߊ", "ipa": "ala", "latin": "Allah / Ala", "category": "cognate_arabic_loans", "source": "nko-cognates.json"}
+{"english": "prophet", "nko": "ߞߌ߬ߦߊ", "ipa": "kija", "latin": "kiya / nabi", "category": "cognate_arabic_loans", "source": "nko-cognates.json"}
+{"english": "peace (greeting)", "nko": "ߛߟߊ߬ߡ", "ipa": "slam", "latin": "salam", "category": "cognate_arabic_loans", "source": "nko-cognates.json"}
+{"english": "car", "nko": "ߡߏ߬ߕߏ", "ipa": "mɔtɔ", "latin": "", "category": "cognate_french_loans", "source": "nko-cognates.json"}
+{"english": "school", "nko": "ߛߊ߲ߝߍ", "ipa": "safe", "latin": "", "category": "cognate_french_loans", "source": "nko-cognates.json"}
+{"english": "number", "nko": "ߖߊ߬ߕߋ", "ipa": "dʒato", "latin": "jate", "category": "cognate_native_manding", "source": "nko-cognates.json"}
+{"english": "thank_you", "nko": "ߌ ߣߌ߫ ߛߐ߲߬", "ipa": "i ni sə", "latin": "i ni so", "category": "cognate_native_manding", "source": "nko-cognates.json"}
+{"english": "greetings", "nko": "ߤߍ߬ߙߋ", "ipa": "hero", "latin": "here", "category": "cognate_native_manding", "source": "nko-cognates.json"}
+{"english": "One cannot hold all trees in one armpit.", "nko": "", "ipa": "Mɔgɔ tɛ se ka jiri bɛɛ farakolo kɔnɔ.", "meaning": "No one can do everything alone. We all need help from others.", "latin_original": "Mɔgɔ tɛ se ka jiri bɛɛ farakolo kɔnɔ.", "category": "proverb_bambara_latin_only", "source": "proverbs-unified.json"}
+{"english": "Wisdom is better than money.", "nko": "", "ipa": "Hakili ka fisa ni wari ye.", "meaning": "Knowledge and good judgment are more valuable than wealth.", "latin_original": "Hakili ka fisa ni wari ye.", "category": "proverb_bambara_latin_only", "source": "proverbs-unified.json"}
+{"english": "The road is not one.", "nko": "", "ipa": "Sira tɛ kelen ye.", "meaning": "There are many paths to reach your goal.", "latin_original": "Sira tɛ kelen ye.", "category": "proverb_bambara_latin_only", "source": "proverbs-unified.json"}
+{"english": "Unity is better than work.", "nko": "", "ipa": "Jɛ ka fisa ni baarakɛ ye.", "meaning": "Working together achieves more than working alone.", "latin_original": "Jɛ ka fisa ni baarakɛ ye.", "category": "proverb_bambara_latin_only", "source": "proverbs-unified.json"}
+{"english": "The word is not sweet, but it must be said.", "nko": "", "ipa": "Kuma man di, nka a bɛ fɔ.", "meaning": "Sometimes difficult truths need to be spoken.", "latin_original": "Kuma man di, nka a bɛ fɔ.", "category": "proverb_bambara_latin_only", "source": "proverbs-unified.json"}
+{"english": "A big heart is greater than a rich person.", "nko": "", "ipa": "Dusu ka bon ni waritigi ye.", "meaning": "Generosity of spirit matters more than material wealth.", "latin_original": "Dusu ka bon ni waritigi ye.", "category": "proverb_bambara_latin_only", "source": "proverbs-unified.json"}
+{"english": "Life comes from patience.", "nko": "", "ipa": "Balo bɛ sɔn bɔ.", "meaning": "Patience is essential for survival and success.", "latin_original": "Balo bɛ sɔn bɔ.", "category": "proverb_bambara_latin_only", "source": "proverbs-unified.json"}
+{"english": "The inside of a person is the person.", "nko": "", "ipa": "Mɔgɔ kɔnɔ ye mɔgɔ ye.", "meaning": "Character defines who you truly are, not appearances.", "latin_original": "Mɔgɔ kɔnɔ ye mɔgɔ ye.", "category": "proverb_bambara_latin_only", "source": "proverbs-unified.json"}
+{"english": "Time is not for man, man is for time.", "nko": "", "ipa": "Tuma tɛ mɔgɔ ma, mɔgɔ bɛ tuma ma.", "meaning": "We must adapt to circumstances, not expect them to adapt to us.", "latin_original": "Tuma tɛ mɔgɔ ma, mɔgɔ bɛ tuma ma.", "category": "proverb_bambara_latin_only", "source": "proverbs-unified.json"}
+{"english": "A good woman makes a good home.", "nko": "", "ipa": "Muso ɲuman ye so ɲuman ye.", "meaning": "The strength of a family often comes from its women.", "latin_original": "Muso ɲuman ye so ɲuman ye.", "category": "proverb_bambara_latin_only", "source": "proverbs-unified.json"}
+{"english": "Change is before us.", "nko": "", "ipa": "Yɛlɛma bɛ ɲɛ na.", "meaning": "Change is inevitable and always approaching.", "latin_original": "Yɛlɛma bɛ ɲɛ na.", "category": "proverb_bambara_latin_only", "source": "proverbs-unified.json"}
+{"english": "The river doesn't kill it, the river doesn't feed it.", "nko": "", "ipa": "Baa tɛ a faga, baa tɛ a balo.", "meaning": "Some forces neither help nor harm—they simply exist.", "latin_original": "Baa tɛ a faga, baa tɛ a balo.", "category": "proverb_bambara_latin_only", "source": "proverbs-unified.json"}
+{"english": "There is no excuse in work.", "nko": "", "ipa": "Sababu tɛ baara la.", "meaning": "Hard work speaks for itself; excuses don't matter.", "latin_original": "Sababu tɛ baara la.", "category": "proverb_bambara_latin_only", "source": "proverbs-unified.json"}
+{"english": "Truth is the sun.", "nko": "", "ipa": "Nkalontan ye tila ye.", "meaning": "Truth always shines through eventually.", "latin_original": "Nkalontan ye tila ye.", "category": "proverb_bambara_latin_only", "source": "proverbs-unified.json"}
+{"english": "A child is wealth.", "nko": "", "ipa": "Den ye wari ye.", "meaning": "Children are the greatest treasure.", "latin_original": "Den ye wari ye.", "category": "proverb_bambara_latin_only", "source": "proverbs-unified.json"}
+{"english": "Two captains are not good.", "nko": "", "ipa": "Kontondila fila man ɲi.", "meaning": "Too many leaders spoil the mission.", "latin_original": "Kontondila fila man ɲi.", "category": "proverb_mandinka_latin_only", "source": "proverbs-unified.json"}
+{"english": "This too shall pass.", "nko": "", "ipa": "Ñing fanang buka taa kewo.", "meaning": "No hardship lasts forever.", "latin_original": "Ñing fanang buka taa kewo.", "category": "proverb_mandinka_latin_only", "source": "proverbs-unified.json"}
+{"english": "A good person is known by their deeds.", "nko": "", "ipa": "Moo bete mu dookuo le ti.", "meaning": "Actions reveal true character.", "latin_original": "Moo bete mu dookuo le ti.", "category": "proverb_mandinka_latin_only", "source": "proverbs-unified.json"}
+{"english": "One matter humbles a person.", "nko": "", "ipa": "Kuu kiling be moo buunya.", "meaning": "Everyone has their weakness.", "latin_original": "Kuu kiling be moo buunya.", "category": "proverb_mandinka_latin_only", "source": "proverbs-unified.json"}
+{"english": "A baby doesn't sleep in its father's belly.", "nko": "", "ipa": "Kambaning buka laa a faamaa kono.", "meaning": "Each person must carry their own burden.", "latin_original": "Kambaning buka laa a faamaa kono.", "category": "proverb_mandinka_latin_only", "source": "proverbs-unified.json"}
+{"english": "Little by little, the lion's den is reached.", "nko": "", "ipa": "Dɔɔnin dɔɔnin bɛ wara so.", "meaning": "Patience and persistence lead to great achievements.", "latin_original": "Dɔɔnin dɔɔnin bɛ wara so.", "category": "proverb_bambara_latin_only", "source": "proverbs-unified.json"}
+{"english": "An old thing is the mother of a new thing.", "nko": "", "ipa": "Ko kɔrɔ ye ko kura ba ye.", "meaning": "The past informs and creates the future.", "latin_original": "Ko kɔrɔ ye ko kura ba ye.", "category": "proverb_bambara_latin_only", "source": "proverbs-unified.json"}
+{"english": "No one comes from a single tree.", "nko": "", "ipa": "Mɔgɔ si tɛ bɔ jiri kelen na.", "meaning": "Everyone has a community and roots.", "latin_original": "Mɔgɔ si tɛ bɔ jiri kelen na.", "category": "proverb_bambara_latin_only", "source": "proverbs-unified.json"}
+{"english": "A good host is better than money.", "nko": "", "ipa": "Jatigi ɲuman ka fisa ni wari ye.", "meaning": "Hospitality and kindness outweigh material possessions.", "latin_original": "Jatigi ɲuman ka fisa ni wari ye.", "category": "proverb_bambara_latin_only", "source": "proverbs-unified.json"}
+{"english": "Learning cannot be done in one day", "nko": "ߞߊ߬ߙߊ߲߬ߘߋ߲ ߡߊ߲߬ ߛߋ߫ ߞߍ߫ ߟߊ߫ ߘߐ߬ߕߋ ߘߌ߫ ߣߊ ߘߌ߫", "ipa": "Karandeli man se ke la dote di na di", "meaning": "Mastery takes time and patience", "category": "proverb_manding", "source": "proverbs-unified.json"}
+{"english": "One head has more than one idea", "nko": "ߡߐ߰ ߞߋ߬ߟߋ߲߬ ߞߊ߲ ߦߋ߫ ߞߊ߬ ߞߎ߲߬ ߛߎ߲ ߠߎ߬ ߡߍ߲", "ipa": "Mo kelen kan ye ka kun sun lu men", "meaning": "Diverse perspectives lead to better solutions", "category": "proverb_manding", "source": "proverbs-unified.json"}
+{"english": "The arm has not forgotten its owner", "nko": "ߓߟߏߡߊ ߡߊ߫ ߕߌ߬ߣߍ߲ ߛߐ߬ߘߐ߲߬", "ipa": "Boloma ma tinin sodong", "meaning": "Help will come from those closest to you", "category": "proverb_manding", "source": "proverbs-unified.json"}
+{"english": "Work is in the measurement", "nko": "ߓߊ߬ߙߊ ߦߋ߫ ߖߊ߬ߕߋ ߟߊ ߟߋ ߘߌ߫", "ipa": "Bara ye jate la le di", "meaning": "Success comes from consistent effort", "category": "proverb_manding", "source": "proverbs-unified.json"}
+{"english": "If you can't run, you can walk", "nko": "ߣߌ߫ ߌ ߡߊ߫ ߛߋ߫ ߟߊߣߐ߰ ߟߊ߫، ߌ ߘߌ߫ ߛߋ߫ ߟߊߡߌ߬ߣߊ߬ ߟߊ߫", "ipa": "Ni i ma se lanon la, i di se laminana la", "meaning": "Progress at your own pace is still progress", "category": "proverb_manding", "source": "proverbs-unified.json"}
+{"english": "One hand cannot catch a donkey", "nko": "ߓߏ߬ߟߏ ߞߋ߬ߟߋ߲߬ ߕߍ߫ ߛߋ߫ ߞߊ߬ ߝߊ߬ߟߌ ߡߌ߬ߣߊ߬ ߟߊ߫", "ipa": "Bolo kelen te se ka fali minana la", "meaning": "Complex tasks require cooperation", "category": "proverb_manding", "source": "proverbs-unified.json"}
+{"english": "Children are roads leading from the village", "nko": "ߘߋ߲ ߠߎ߬ ߦߋ߫ ߛߌ߬ߟߊ߬ ߟߊ߫ ߞߊ߬ ߓߐ߫ ߘߎ߱ ߟߊ߫", "ipa": "Den lu ye sila la ka bo dugu la", "meaning": "Children carry forward the community's legacy", "category": "proverb_manding", "source": "proverbs-unified.json"}
+{"english": "Truth is at the bottom; even if the head dies, it emerges in time", "nko": "ߕߎ߬ߢߊ ߦߋ߫ ߞߐ߲߫ ߘߐ߫، ߣߴ ߊ߬ ߞߎ߲߬ ߛߊ߬ߣߴ ߊ߬ ߓߐ߫ ߕߎ߬ߡߊ ߘߐ߫", "ipa": "Tunya ye kon do, n' a kun san' a bo tuma do", "meaning": "The truth always comes out eventually", "category": "proverb_manding", "source": "proverbs-unified.json"}
+{"english": "A person's name is greater than their height", "nko": "ߡߐ߱ ߕߐ߯ ߞߊ߫ ߓߏ߲߬ ߣߴ ߊ߬ ߖߊ߲ ߘߌ߫", "ipa": "Mo to ka bon n' a jan di", "meaning": "Reputation matters more than appearance", "category": "proverb_manding", "source": "proverbs-unified.json"}
+{"english": "Patience is a door handle", "nko": "ߡߎ߲߬ߢߊ ߦߋ߫ ߘߊ߬ߓߟߏ ߟߋ ߘߌ߫", "ipa": "Munya ye dabolo le di", "meaning": "Patience opens all doors", "category": "proverb_manding", "source": "proverbs-unified.json"}
+{"english": "Where there's a will, there's a way", "nko": "ߞߐ ߕߍ߫ ߕߊ߯ ߟߊ߫ ߸ ߖߊ߯ ߓߊ ߓߍ߫ ߊ߬ ߝߍ߬", "ipa": "ko te ta la, ja ba be a fe", "meaning": "Encouragement when facing obstacles", "category": "proverb_manding", "source": "proverbs-unified.json"}
+{"english": "One person cannot build a village alone", "nko": "ߡߐ߰ ߞߋߟߋ߲ ߕߍ߫ ߛߋ߫ ߞߊ߬ ߘߎ߱ ߟߊߓߐ߫", "ipa": "mɔgɔ kelen te se ka dugu labɔ", "meaning": "Emphasizing community cooperation", "category": "proverb_manding", "source": "proverbs-unified.json"}
+{"english": "Every family has its own way", "nko": "ߛߌ߬ ߞߊ߲߬ ߕߍ߫ ߞߍ߫ ߝߊߣߊ߲ ߕߋ߲߬ ߠߊ߫", "ipa": "si kan te ke fanan ten la", "meaning": "Acknowledging diversity of customs", "category": "proverb_manding", "source": "proverbs-unified.json"}
+{"english": "A child who doesn't cry won't be nursed", "nko": "ߘߋ߲ ߡߍ߲ ߕߍ߫ ߞߊ߬ߛߌ߫ ߟߊ߫ ߸ ߊ߬ ߕߍ߫ ߘߍ߲߬ ߟߊ߫", "ipa": "den min te kasi la, a te den la", "meaning": "Speak up for what you need", "category": "proverb_manding", "source": "proverbs-unified.json"}
+{"english": "Person is not separate from their village", "nko": "", "ipa": "Mɔgɔ tɛ bɔ jɔ ye a dugu", "meaning": "Community defines identity — a person and their people are inseparable", "latin_original": "Mɔgɔ tɛ bɔ jɔ ye a dugu", "category": "proverb_manding_latin_only", "source": "proverbs-unified.json"}
+{"english": "A big head does not leave a person there", "nko": "", "ipa": "Kun ba ma ka mɔgɔ to yen", "meaning": "Intelligence or arrogance alone won't save you; community matters", "latin_original": "Kun ba ma ka mɔgɔ to yen", "category": "proverb_manding_latin_only", "source": "proverbs-unified.json"}
+{"english": "Life is work", "nko": "", "ipa": "Namaya ye baara di", "meaning": "Living requires effort — work is inseparable from existence", "latin_original": "Namaya ye baara di", "category": "proverb_manding_latin_only", "source": "proverbs-unified.json"}
+{"english": "Good morning", "nko": "ߌ ߣߌ ߛߐ߲߬ߜߐߡߊ", "ipa": "I ni sogoma", "category": "greeting_opening", "source": "greetings-unified.json"}
+{"english": "Response: Good morning", "nko": "ߒ ߓߊ ߌ ߣߌ ߛߐ߲߬ߜߐߡߊ", "ipa": "", "category": "greeting_response", "source": "greetings-unified.json"}
+{"english": "Good morning (plural/formal)", "nko": "ߊ߬ߥ ߣߌ ߛߐ߲߬ߜߐߡߊ", "ipa": "Aw ni sogoma", "category": "greeting_opening", "source": "greetings-unified.json"}
+{"english": "Response: Good morning (plural/formal)", "nko": "ߒ ߓߊ ߊ߬ߥ ߣߌ ߛߐ߲߬ߜߐߡߊ", "ipa": "", "category": "greeting_response", "source": "greetings-unified.json"}
+{"english": "Good afternoon", "nko": "ߌ ߣߌ ߕߟߋ", "ipa": "i ni tile", "category": "greeting_opening", "source": "greetings-unified.json"}
+{"english": "Response: Good afternoon", "nko": "ߒ ߓߊ ߌ ߣߌ ߕߟߋ", "ipa": "", "category": "greeting_response", "source": "greetings-unified.json"}
+{"english": "Good evening/night", "nko": "ߌ ߣߌ ߛߎ", "ipa": "i ni su", "category": "greeting_opening", "source": "greetings-unified.json"}
+{"english": "Response: Good evening/night", "nko": "ߒ ߓߊ ߌ ߣߌ ߛߎ", "ipa": "", "category": "greeting_response", "source": "greetings-unified.json"}
+{"english": "How are you (health inquiry)", "nko": "ߌ ߞ ߊ ߞ ߍ ߣ ߍ", "ipa": "I ka kene", "category": "greeting_opening", "source": "greetings-unified.json"}
+{"english": "How are you (health)", "nko": "ߌ ߞߊ ߞߍ߬ߣߍ߲", "ipa": "i ka kene", "category": "greeting_opening", "source": "greetings-unified.json"}
+{"english": "Response: How are you (health)", "nko": "ߒ ߞߊ ߞߍ߬ߣߍ߲", "ipa": "", "category": "greeting_response", "source": "greetings-unified.json"}
+{"english": "Yes, good morning to you too", "nko": "ߒߓߊ، ߌ ߣߌ ߛߐ߲߬ߜߐߡߊ", "ipa": "Nba, i ni sogoma", "category": "greeting_response", "source": "greetings-unified.json"}
+{"english": "Yes indeed, morning", "nko": "ߒߛߋ߫، ߛߐ߲߬ߜߐߡߊ", "ipa": "Nse, sogoma", "category": "greeting_response", "source": "greetings-unified.json"}
+{"english": "Peace, well-being (response to greeting)", "nko": "ߤߍ߲߬ߊ", "ipa": "hɛrɛ", "category": "greeting_response", "source": "greetings-unified.json"}
+{"english": "Nothing bad (response to how are you)", "nko": "ߤߊ߬ߙߌ߬ ߦߊ", "ipa": "hari ya", "category": "greeting_response", "source": "greetings-unified.json"}
+{"english": "Is there any trouble?", "nko": "ߤߊ߬ߙߊ ߛߌ߫ ߕߍ߫؟", "ipa": "Hara si te?", "category": "greeting_welfare", "source": "greetings-unified.json"}
+{"english": "Response: Is there any trouble?", "nko": "ߤߊ߬ߙߊ ߛߌ߫ ߕߍ߫، ߊ߬ߟߊ ߞߊ߬ ߖߐ ߞߍ߫", "ipa": "", "category": "greeting_response", "source": "greetings-unified.json"}
+{"english": "Is all well?", "nko": "ߊ߬ ߓߍ߲߬ ߓߊ؟", "ipa": "A be ba?", "category": "greeting_welfare", "source": "greetings-unified.json"}
+{"english": "Is your family without trouble?", "nko": "ߛߏ߬ߡߐ߯ߞߐ ߓߍ߯ ߤߊ߬ߙߊ ߛߌ߫ ߕߍ߫؟", "ipa": "Somogoko be hara si te?", "category": "greeting_family", "source": "greetings-unified.json"}
+{"english": "Response: Is your family without trouble?", "nko": "ߊ߬ߟߎ߫ ߦߋ߫ ߤߍ߬ߙߊ ߟߊ߫، ߊ߬ߟߊ ߞ' ߊ߬ ߝߐ߫", "ipa": "", "category": "greeting_response", "source": "greetings-unified.json"}
+{"english": "How are your wife and children?", "nko": "ߡߏ߬ߛߐ ߣߌ ߘߋ߲ߣߍ߲ ߞߊ ߕߋ؟", "ipa": "Muso ni denmisen ka te?", "category": "greeting_family", "source": "greetings-unified.json"}
+{"english": "Is your family well?", "nko": "ߌ ߛߏ߬ߡߊ ߟߎ߬ ߓߍ߯ ߖߐ߫ ߓߊ߬", "ipa": "i soma lu bɛɛ jɔ ba", "category": "greeting_family", "source": "greetings-unified.json"}
+{"english": "Are your children well?", "nko": "ߌ ߘߋ߲ ߠߎ߬ ߖߐ߫ ߓߊ߬", "ipa": "i den lu jɔ ba", "category": "greeting_family", "source": "greetings-unified.json"}
+{"english": "Is your mother well?", "nko": "ߌ ߓߊ ߖߐ߫ ߓߊ߬", "ipa": "i ba jɔ ba", "category": "greeting_family", "source": "greetings-unified.json"}
+{"english": "Is your father well?", "nko": "ߌ ߝߊ߬ ߖߐ߫ ߓߊ߬", "ipa": "i fa jɔ ba", "category": "greeting_family", "source": "greetings-unified.json"}
+{"english": "Is work going well?", "nko": "ߓߊ߯ߙߊ ߓߍ ߖߐ ߘߌ߫ ߓߊ߬", "ipa": "baara be jɔ di ba", "category": "greeting_welfare", "source": "greetings-unified.json"}
+{"english": "Thank you / Hello", "nko": "ߌ ߣ ߗ", "ipa": "i ni ce", "category": "greeting_opening", "source": "greetings-unified.json"}
+{"english": "Thank you all / Hello everyone", "nko": "ߊ ߣ ߗ", "ipa": "aw ni ce", "category": "greeting_opening", "source": "greetings-unified.json"}
+{"english": "May God grant it to you", "nko": "ߊߟߊ߫ ߦߋ߫ ߊ߬ ߛߐ߫ ߊ߬ ߟߊ߫", "ipa": "ala ye a so a la", "category": "blessing_general", "source": "blessings-unified.json"}
+{"english": "May God create peace/well-being", "nko": "ߊߟߊ߫ ߞߊ߬ ߤߙߍ ߞߍ߫", "ipa": "ala ka hɛrɛ ke", "category": "blessing_general", "source": "blessings-unified.json"}
+{"english": "May God reward you", "nko": "ߊ߬ߟߊ ߞ ߌ ߛߙ", "ipa": "ala k'i sara", "category": "blessing_general", "source": "blessings-unified.json"}
+{"english": "May God bring peace", "nko": "ߊ߬ߟߊ ߞ ߤ ߟ ߘ", "ipa": "ala ka hɛra da", "category": "blessing_journey", "source": "blessings-unified.json"}
+{"english": "May God bless the child", "nko": "ߊ߬ߟߊ ߞ ߘ ߓ ߙ ߞ", "ipa": "ala ka den baraka", "category": "blessing_naming_ceremony", "source": "blessings-unified.json"}
+{"english": "May it be completed well", "nko": "ߊ߬ ߓ ߛ ߟ ߡ", "ipa": "a ba se la mɔ", "category": "blessing_wedding", "source": "blessings-unified.json"}
+{"english": "Blessed Ramadan/prayer", "nko": "ߛ ߟ ߞ ߓ ߙ", "ipa": "seli ka baraka", "category": "blessing_ramadan", "source": "blessings-unified.json"}
+{"english": "Happy Eid / Holiday blessings", "nko": "ߊ ߣ ߗ ߛ ߟ", "ipa": "aw ni ce seli", "category": "blessing_eid", "source": "blessings-unified.json"}
+{"english": "May God give health", "nko": "ߊ߬ߟߊ ߞ ߞ ߣ ߘ", "ipa": "ala ka kɛnɛ di", "category": "blessing_illness", "source": "blessings-unified.json"}
+{"english": "May God give safe passage", "nko": "ߊ߬ߟߊ ߞ ߛ ߙ ߘ", "ipa": "ala ka sira di", "category": "blessing_journey", "source": "blessings-unified.json"}
+{"english": "Amen", "nko": "ߊ߬ߡߌߣߊ", "ipa": "Amina", "category": "blessing_general", "source": "blessings-unified.json"}
+{"english": "May God hear it", "nko": "ߊ߬ߟߊ ߞ' ߊ߬ ߡߍ߲", "ipa": "Ala k' a men", "category": "blessing_general", "source": "blessings-unified.json"}
+{"english": "May God let us meet this evening", "nko": "ߊ߬ߟߊ ߞ' ߊ߲ ߦߋ߫ ߛߎ ߟߊ߫", "ipa": "Ala k' an ye su la", "category": "blessing_general", "source": "blessings-unified.json"}
+{"english": "May God preserve us in peace", "nko": "ߊ߬ߟߊ ߞ' ߊ߲ ߡߊߞߍ߫ ߤߍ߬ߙߊ ߟߊ߫", "ipa": "Ala k' an make hera la", "category": "blessing_general", "source": "blessings-unified.json"}
+{"english": "May God help you", "nko": "ߊߟߊ߫ ߦߊ߫ ߌ ߘߍ߬ߡߍ߲ ߓߏ߬", "ipa": "ala ya i demɛn bo", "category": "blessing_general", "source": "blessings-unified.json"}
+{"english": "May God make your affairs easy", "nko": "ߊߟߊ߫ ߦߊ߫ ߌ ߞߏ ߟߊߓߊ߲", "ipa": "ala ya i ko labara", "category": "blessing_general", "source": "blessings-unified.json"}
+{"english": "May God guide you", "nko": "ߊߟߊ߫ ߦߊ߫ ߌ ߡߊߞߊ߬ߝߏ", "ipa": "ala ya i makafo", "category": "blessing_general", "source": "blessings-unified.json"}
+{"english": "May God protect you", "nko": "ߊߟߊ߫ ߦߊ߫ ߌ ߤߙߐ ߕߊ߬", "ipa": "ala ya i hɛrɛ ta", "category": "blessing_general", "source": "blessings-unified.json"}
+{"english": "May God remove worry from you", "nko": "ߊߟߊ߫ ߦߊ߫ ߛߌ߬ ߟߊ ߓߐ ߌ ߡߊ߬", "ipa": "ala ya si la bo i ma", "category": "blessing_general", "source": "blessings-unified.json"}
+{"english": "May God give you patience", "nko": "ߊߟߊ߫ ߦߊ߫ ߞߏߢߎߡߊ ߓߏ߬ ߌ ߡߊ߬", "ipa": "ala ya kɔjuma bo i ma", "category": "blessing_general", "source": "blessings-unified.json"}
+{"english": "May God add blessing to your affairs", "nko": "ߊߟߊ߫ ߦߊ߫ ߓߊ߬ߙߌ߬ߞߊ ߟߊߘߏ߲߬ ߌ ߞߏ ߟߊ߫", "ipa": "ala ya barika ladɔn i ko la", "category": "blessing_general", "source": "blessings-unified.json"}
+{"english": "May God give you long life to see your children's children", "nko": "ߊߟߊ߫ ߦߊ߫ ߌ ߤߣߍ߬ ߛߊ߫ ߌ ߘߋ߲ ߤߣߍ ߕߊ߬", "ipa": "ala ya i hanɛ sa i den hanɛ ta", "category": "blessing_general", "source": "blessings-unified.json"}
+{"english": "May God have mercy", "nko": "ߊ߬ߟߊ ߞ ߤ ߣ ߞ", "ipa": "ala ka hinɛ kɛ", "category": "blessing_death", "source": "blessings-unified.json"}
+{"english": "It belongs to us all", "nko": "ߊ߲ ߓߍ߯ ߕߊ ߟߋ", "ipa": "an bɛɛ ta le", "category": "blessing_death", "source": "blessings-unified.json"}
+{"english": "May God give you patience", "nko": "ߊߟߊ߫ ߦߊ߫ ߌ ߖߎ߰ ߛߎ߬ߓ", "ipa": "ala ya i jusu subu", "category": "blessing_death", "source": "blessings-unified.json"}
+{"english": "What was meant to be has come", "nko": "ߊ߬ ߞߍ ߟߊ ߊ߬ ߕߊ߫ ߣߊ߬", "ipa": "a ke la a ta na", "category": "blessing_death", "source": "blessings-unified.json"}
+{"english": "Congratulations on your success", "nko": "ߒ ߧߴߌ ߝߏ߫ ߟߊ߫ ߌ ߟߊ߫ ߛߍ߬ ߡߊ߬", "ipa": "n y'i fo la i la se ma", "category": "blessing_achievement", "source": "blessings-unified.json"}
+{"english": "You've achieved it", "nko": "ߌ ߣߴߊ߬ ߘߋ߲ ߓߟߏ߫", "ipa": "i n'a den bolo", "category": "blessing_achievement", "source": "blessings-unified.json"}
+{"english": "Patience / Be patient", "nko": "ߛ ߓ ߙ", "ipa": "sabari", "category": "blessing_general", "source": "blessings-unified.json"}
+{"english": "Joking relationship - permitted teasing between certain clans", "nko": "ߛߊ߬ߣߊߞߎ", "ipa": "sanaku", "category": "concept_concept", "source": "cultural-concepts.json"}
+{"english": "Family name / clan name", "nko": "ߖߊ߬ߡߎ", "ipa": "jamu", "category": "concept_concept", "source": "cultural-concepts.json"}
+{"english": "Work, labor, effort (with connotation of dignity)", "nko": "ߓߊ߯ߙߊ", "ipa": "bara", "category": "concept_concept", "source": "cultural-concepts.json"}
+{"english": "Fatherland, homeland", "nko": "ߝߊ߬ߛߏ", "ipa": "faso", "category": "concept_concept", "source": "cultural-concepts.json"}
+{"english": "King, ruler, chief", "nko": "ߡߊ߲߬ߛߊ", "ipa": "mansa", "category": "concept_title", "source": "cultural-concepts.json"}
+{"english": "Griot - traditional storyteller, historian, musician", "nko": "ߖߋ߬ߟߌ", "ipa": "jeli", "category": "concept_title", "source": "cultural-concepts.json"}
+{"english": "Mother (term of respect for elder women)", "nko": "ߓߊ", "ipa": "ba", "category": "concept_title", "source": "cultural-concepts.json"}
+{"english": "Paternal sibling (same father)", "nko": "ߝߊߘߋ߲", "ipa": "faden", "category": "concept_kinship", "source": "cultural-concepts.json"}
+{"english": "Maternal sibling (same mother)", "nko": "ߓߊߘߋ߲", "ipa": "baden", "category": "concept_kinship", "source": "cultural-concepts.json"}
+{"english": "Full sibling (same parents)", "nko": "ߝߊߘߋ߲ߓߊߘߋ߲", "ipa": "fadenbaden", "category": "concept_kinship", "source": "cultural-concepts.json"}
+{"english": "Keita", "nko": "ߞߋ߬ߕߊ", "ipa": "", "category": "clan_name", "source": "clans-unified.json"}
+{"english": "Heir of Kings", "nko": "ߡߊ߲߬ߛߊ ߞߎ߬ߙߎ", "ipa": "", "category": "clan_jamu", "source": "clans-unified.json"}
+{"english": "Greeting for Keita: Heir of Kings", "nko": "ߝߏ߬ߣߊ ߘߋ߲", "ipa": "", "category": "clan_greeting", "source": "clans-unified.json"}
+{"english": "Toure", "nko": "ߕߎ߬ߙߋ", "ipa": "", "category": "clan_name", "source": "clans-unified.json"}
+{"english": "Askiya", "nko": "ߊ߬ߛߞߌ߬ߦߊ", "ipa": "", "category": "clan_jamu", "source": "clans-unified.json"}
+{"english": "Greeting for Toure: Askiya", "nko": "ߊ߬ߟߌ߬ߡߊ߬ߡߌ ߘߋ߲", "ipa": "", "category": "clan_greeting", "source": "clans-unified.json"}
+{"english": "Diabate", "nko": "ߖߊ߬ߓߊ߬ߕߍ", "ipa": "", "category": "clan_name", "source": "clans-unified.json"}
+{"english": "Master Griot", "nko": "ߖߋ߬ߟߌ ߞߎ߬ߙߎ", "ipa": "", "category": "clan_jamu", "source": "clans-unified.json"}
+{"english": "Greeting for Diabate: Master Griot", "nko": "ߘߐ߬ߣߌ߬ ߓߊ߯ߘߊ", "ipa": "", "category": "clan_greeting", "source": "clans-unified.json"}
+{"english": "Kouyate", "nko": "ߞߎ߬ߦߊ߬ߕߍ", "ipa": "", "category": "clan_name", "source": "clans-unified.json"}
+{"english": "Bala Faseke", "nko": "ߓߊ߬ߟߊ ߝߊ߬ߛߜߍ", "ipa": "", "category": "clan_jamu", "source": "clans-unified.json"}
+{"english": "Greeting for Kouyate: Bala Faseke", "nko": "ߖߋ߬ߟߌ ߓߊ", "ipa": "", "category": "clan_greeting", "source": "clans-unified.json"}
+{"english": "Diomande", "nko": "ߖߡߊ߲ߘߍ", "ipa": "", "category": "clan_name", "source": "clans-unified.json"}
+{"english": "Fode", "nko": "ߝߏ߬ߘߋ", "ipa": "", "category": "clan_jamu", "source": "clans-unified.json"}
+{"english": "Greeting for Diomande: Fode", "nko": "ߥߊ߯ߟߊ ߘߋ߲", "ipa": "", "category": "clan_greeting", "source": "clans-unified.json"}
+{"english": "Conde", "nko": "ߞߐ߲߬ߘߍ", "ipa": "", "category": "clan_name", "source": "clans-unified.json"}
+{"english": "Sori", "nko": "ߛߏ߬ߙߌ", "ipa": "", "category": "clan_jamu", "source": "clans-unified.json"}
+{"english": "Greeting for Conde: Sori", "nko": "ߝߎ߬ߕߊ ߘߋ߲", "ipa": "", "category": "clan_greeting", "source": "clans-unified.json"}
+{"english": "Camara", "nko": "ߞߡߙߊ", "ipa": "", "category": "clan_name", "source": "clans-unified.json"}
+{"english": "Baba", "nko": "ߓߊ߬ߓߊ", "ipa": "", "category": "clan_jamu", "source": "clans-unified.json"}
+{"english": "Greeting for Camara: Baba", "nko": "ߕߊ߬ߓߏ߲ ߘߋ߲", "ipa": "", "category": "clan_greeting", "source": "clans-unified.json"}
+{"english": "Traore", "nko": "ߕߙߊ߬ߥߙߍ", "ipa": "", "category": "clan_name", "source": "clans-unified.json"}
+{"english": "Jara (Lion)", "nko": "ߖߊ߬ߙߊ", "ipa": "", "category": "clan_jamu", "source": "clans-unified.json"}
+{"english": "Greeting for Traore: Jara (Lion)", "nko": "ߛߋ߲ߜߋ ߘߋ߲", "ipa": "", "category": "clan_greeting", "source": "clans-unified.json"}
+{"english": "Coulibaly", "nko": "ߞߎ߬ߟߌ߬ߓߊ߬ߟߌ", "ipa": "", "category": "clan_name", "source": "clans-unified.json"}
+{"english": "Masa (King)", "nko": "ߡߊ߬ߛߊ", "ipa": "", "category": "clan_jamu", "source": "clans-unified.json"}
+{"english": "Greeting for Coulibaly: Masa (King)", "nko": "ߓߊ߬ߡߊ߬ߣߊ߲ ߘߋ߲", "ipa": "", "category": "clan_greeting", "source": "clans-unified.json"}
+{"english": "Eid al-Fitr - End of Ramadan", "nko": "ߊ߳ߌ߬ߘߎ߬ ߝߕߙ", "ipa": "Aidu Fitiri", "category": "calendar_event", "source": "cultural-calendar.json"}
+{"english": "Greeting for Eid al-Fitr - End of Ramadan", "nko": "ߊ߬ߟߊ ߞ' ߊ߲ ߓߍ߯ ߕߐ߯ ߛߊ߲߬ ߠߎ߬ ߟߊ߫", "ipa": "", "category": "calendar_greeting", "source": "cultural-calendar.json"}
+{"english": "Greeting for Eid al-Fitr - End of Ramadan", "nko": "ߊ߳ߌ߬ߘߎ ߡߎ߬ߓߙߞ", "ipa": "", "category": "calendar_greeting", "source": "cultural-calendar.json"}
+{"english": "Proverb associated with Eid al-Fitr - End of Ramadan", "nko": "ߛߎ߲ߡߊ ߦߋ߫ ߖߐ ߟߋ ߘߌ߫", "ipa": "", "category": "calendar_proverb", "source": "cultural-calendar.json"}
+{"english": "Eid al-Adha - Festival of Sacrifice", "nko": "ߊ߳ߌ߬ߘߎ߬ ߞߓߌ߬ߙ", "ipa": "Aidu Kabir", "category": "calendar_event", "source": "cultural-calendar.json"}
+{"english": "Greeting for Eid al-Adha - Festival of Sacrifice", "nko": "ߛߟߌ߬ߟߌ ߓߊ߫ ߓߊ߲߫", "ipa": "", "category": "calendar_greeting", "source": "cultural-calendar.json"}
+{"english": "Greeting for Eid al-Adha - Festival of Sacrifice", "nko": "ߊ߬ߟߊ ߞ' ߊ߲ ߛߊ߬ߙߌ ߓߎ߰ ߠߊ߫", "ipa": "", "category": "calendar_greeting", "source": "cultural-calendar.json"}
+{"english": "Prophet's Birthday (Mawlid)", "nko": "ߡߏ߬ߟߎ߬ߘ", "ipa": "Mawloud", "category": "calendar_event", "source": "cultural-calendar.json"}
+{"english": "Greeting for Prophet's Birthday (Mawlid)", "nko": "ߡߏ߬ߟߎ߬ߘ ߛߊ߲߬ ߣ' ߌ ߦߋ߫", "ipa": "", "category": "calendar_greeting", "source": "cultural-calendar.json"}
+{"english": "New Year", "nko": "ߛߊ߲߬ߞߎ߬ߙߊ", "ipa": "San Kura", "category": "calendar_event", "source": "cultural-calendar.json"}
+{"english": "Greeting for New Year", "nko": "ߛߊ߲߬ߞߎ߬ߙߊ ߤߍ߬ߙߋ", "ipa": "", "category": "calendar_greeting", "source": "cultural-calendar.json"}
+{"english": "Greeting for New Year", "nko": "ߛߊ߲ ߞߎ߬ߙߊ ߦ ߌ ߤߍ߬ߙߊ ߘߌ߫", "ipa": "", "category": "calendar_greeting", "source": "cultural-calendar.json"}
+{"english": "N'Ko Day - April 14 (Script invention anniversary by Solomana Kanté, 1949)", "nko": "ߒߞߏ ߕߟߋ", "ipa": "N'Ko Don", "category": "calendar_event", "source": "cultural-calendar.json"}
+{"english": "Greeting for N'Ko Day - April 14 (Script invention anniversary by Solomana Kanté, 1949)", "nko": "ߒߞߏ ߕߟߋ ߤߍ߬ߙߋ", "ipa": "", "category": "calendar_greeting", "source": "cultural-calendar.json"}
+{"english": "Greeting for N'Ko Day - April 14 (Script invention anniversary by Solomana Kanté, 1949)", "nko": "ߒߞߏ ߛߌ߲ߘߟߌ ߤߍ߬ߙߋ", "ipa": "", "category": "calendar_greeting", "source": "cultural-calendar.json"}
+{"english": "Proverb associated with N'Ko Day - April 14 (Script invention anniversary by Solomana Kanté, 1949)", "nko": "ߒߞߏ ߦߋ߫ ߖߊ߯ߓߡߊ ߟߋ ߘߌ߫", "ipa": "", "category": "calendar_proverb", "source": "cultural-calendar.json"}
+{"english": "Guinea Independence Day - October 2", "nko": "ߜߌ߬ߣߍ ߦߙߌ߬ߦߊ ߕߟߋ", "ipa": "Gine Yiriya Don", "category": "calendar_event", "source": "cultural-calendar.json"}
+{"english": "Greeting for Guinea Independence Day - October 2", "nko": "ߦߙߌ߬ߦߊ ߕߟߋ ߤߍ߬ߙߋ", "ipa": "", "category": "calendar_greeting", "source": "cultural-calendar.json"}
+{"english": "Mali Independence Day - September 22", "nko": "ߡߊ߬ߟߌ ߦߙߌ߬ߦߊ ߕߟߋ", "ipa": "Mali Yiriya Don", "category": "calendar_event", "source": "cultural-calendar.json"}
+{"english": "I, me", "nko": "ߒ", "ipa": "n", "category": "keyboard_pronoun", "source": "keyboard/vocabulary.json"}
+{"english": "you (singular)", "nko": "ߌ", "ipa": "i", "category": "keyboard_pronoun", "source": "keyboard/vocabulary.json"}
+{"english": "he, she, it", "nko": "ߊ߬", "ipa": "a", "category": "keyboard_pronoun", "source": "keyboard/vocabulary.json"}
+{"english": "we", "nko": "ߊ߲", "ipa": "an", "category": "keyboard_pronoun", "source": "keyboard/vocabulary.json"}
+{"english": "you (plural)", "nko": "ߊ߬ߥ", "ipa": "aw", "category": "keyboard_pronoun", "source": "keyboard/vocabulary.json"}
+{"english": "they", "nko": "ߊ߬ߟߎ߬", "ipa": "olu", "category": "keyboard_pronoun", "source": "keyboard/vocabulary.json"}
+{"english": "to be", "nko": "ߓߍ߬", "ipa": "be", "category": "keyboard_verb", "source": "keyboard/vocabulary.json"}
+{"english": "infinitive marker", "nko": "ߞߊ߬", "ipa": "ka", "category": "keyboard_verb", "source": "keyboard/vocabulary.json"}
+{"english": "to go", "nko": "ߕߊ߬ߡߌ߲", "ipa": "tamina", "category": "keyboard_verb", "source": "keyboard/vocabulary.json"}
+{"english": "to come", "nko": "ߣߊ߬", "ipa": "na", "category": "keyboard_verb", "source": "keyboard/vocabulary.json"}
+{"english": "to do, make", "nko": "ߞߍ߬", "ipa": "ke", "category": "keyboard_verb", "source": "keyboard/vocabulary.json"}
+{"english": "to say, speak", "nko": "ߝߐ߫", "ipa": "fɔ", "category": "keyboard_verb", "source": "keyboard/vocabulary.json"}
+{"english": "to hear, understand", "nko": "ߡߍ߲", "ipa": "mɛn", "category": "keyboard_verb", "source": "keyboard/vocabulary.json"}
+{"english": "to see", "nko": "ߦߋ߫", "ipa": "ye", "category": "keyboard_verb", "source": "keyboard/vocabulary.json"}
+{"english": "to eat", "nko": "ߘߎ߲", "ipa": "dun", "category": "keyboard_verb", "source": "keyboard/vocabulary.json"}
+{"english": "to drink", "nko": "ߡߌ߲", "ipa": "min", "category": "keyboard_verb", "source": "keyboard/vocabulary.json"}
+{"english": "to sleep", "nko": "ߛߌ߲", "ipa": "sin", "category": "keyboard_verb", "source": "keyboard/vocabulary.json"}
+{"english": "mother", "nko": "ߓߊ߬", "ipa": "ba", "category": "keyboard_noun_family", "source": "keyboard/vocabulary.json"}
+{"english": "woman, wife", "nko": "ߡߛߏ", "ipa": "muso", "category": "keyboard_noun_family", "source": "keyboard/vocabulary.json"}
+{"english": "man, husband", "nko": "ߗߍ", "ipa": "ce", "category": "keyboard_noun_family", "source": "keyboard/vocabulary.json"}
+{"english": "sibling (same mother)", "nko": "ߓߊ߬ߘߋ߲", "ipa": "baden", "category": "keyboard_noun_family", "source": "keyboard/vocabulary.json"}
+{"english": "sibling (same father)", "nko": "ߝߊ߬ߘߋ߲", "ipa": "faden", "category": "keyboard_noun_family", "source": "keyboard/vocabulary.json"}
+{"english": "elder sibling", "nko": "ߞߐ߬ߙߐ", "ipa": "kɔrɔ", "category": "keyboard_noun_family", "source": "keyboard/vocabulary.json"}
+{"english": "younger sibling", "nko": "ߘߐ߬ߜߐ", "ipa": "dɔgɔ", "category": "keyboard_noun_family", "source": "keyboard/vocabulary.json"}
+{"english": "head", "nko": "ߞߎ߲", "ipa": "kun", "category": "keyboard_noun_body", "source": "keyboard/vocabulary.json"}
+{"english": "eye, face", "nko": "ߢߍ", "ipa": "ɲɛ", "category": "keyboard_noun_body", "source": "keyboard/vocabulary.json"}
+{"english": "ear", "nko": "ߕߟߏ", "ipa": "tulo", "category": "keyboard_noun_body", "source": "keyboard/vocabulary.json"}
+{"english": "hand, arm", "nko": "ߓߟߏ", "ipa": "bolo", "category": "keyboard_noun_body", "source": "keyboard/vocabulary.json"}
+{"english": "foot, leg", "nko": "ߛߋ߲", "ipa": "sen", "category": "keyboard_noun_body", "source": "keyboard/vocabulary.json"}
+{"english": "mouth", "nko": "ߘߊ", "ipa": "da", "category": "keyboard_noun_body", "source": "keyboard/vocabulary.json"}
+{"english": "sun, day", "nko": "ߕߟߋ", "ipa": "tile", "category": "keyboard_noun_nature", "source": "keyboard/vocabulary.json"}
+{"english": "moon, month", "nko": "ߞߊ߬ߙߏ", "ipa": "kalo", "category": "keyboard_noun_nature", "source": "keyboard/vocabulary.json"}
+{"english": "star", "nko": "ߟߏ߬ߟߏ", "ipa": "lolo", "category": "keyboard_noun_nature", "source": "keyboard/vocabulary.json"}
+{"english": "sky, rain, year", "nko": "ߛߊ߲", "ipa": "san", "category": "keyboard_noun_nature", "source": "keyboard/vocabulary.json"}
+{"english": "stone, mountain", "nko": "ߞߎ߬ߙߎ", "ipa": "kuru", "category": "keyboard_noun_nature", "source": "keyboard/vocabulary.json"}
+{"english": "tree", "nko": "ߦߌ߬ߙߌ", "ipa": "yiri", "category": "keyboard_noun_nature", "source": "keyboard/vocabulary.json"}
+{"english": "porridge", "nko": "ߘߐ߬ߡߌ", "ipa": "dɔmi", "category": "keyboard_noun_food", "source": "keyboard/vocabulary.json"}
+{"english": "rice", "nko": "ߡߏ߬ߣߌ", "ipa": "moni", "category": "keyboard_noun_food", "source": "keyboard/vocabulary.json"}
+{"english": "meat", "nko": "ߛߓ", "ipa": "sogo", "category": "keyboard_noun_food", "source": "keyboard/vocabulary.json"}
+{"english": "fish", "nko": "ߖߍ߬ߜߍ", "ipa": "jɛgɛ", "category": "keyboard_noun_food", "source": "keyboard/vocabulary.json"}
+{"english": "0 (fuyi)", "nko": "߀", "ipa": "fuyi", "category": "keyboard_number", "source": "keyboard/vocabulary.json"}
+{"english": "1 (kelen)", "nko": "߁", "ipa": "kelen", "category": "keyboard_number", "source": "keyboard/vocabulary.json"}
+{"english": "2 (fila)", "nko": "߂", "ipa": "fila", "category": "keyboard_number", "source": "keyboard/vocabulary.json"}
+{"english": "3 (saba)", "nko": "߃", "ipa": "saba", "category": "keyboard_number", "source": "keyboard/vocabulary.json"}
+{"english": "4 (naani)", "nko": "߄", "ipa": "naani", "category": "keyboard_number", "source": "keyboard/vocabulary.json"}
+{"english": "5 (duuru)", "nko": "߅", "ipa": "duuru", "category": "keyboard_number", "source": "keyboard/vocabulary.json"}
+{"english": "6 (wɔɔrɔ)", "nko": "߆", "ipa": "wɔɔrɔ", "category": "keyboard_number", "source": "keyboard/vocabulary.json"}
+{"english": "7 (wolonwula)", "nko": "߇", "ipa": "wolonwula", "category": "keyboard_number", "source": "keyboard/vocabulary.json"}
+{"english": "8 (segin)", "nko": "߈", "ipa": "segin", "category": "keyboard_number", "source": "keyboard/vocabulary.json"}
+{"english": "9 (kɔnɔntɔ)", "nko": "߉", "ipa": "kɔnɔntɔ", "category": "keyboard_number", "source": "keyboard/vocabulary.json"}
+{"english": "thank you", "nko": "ߊ߬ ߣߌ ߓߙߍ߬", "ipa": "a ni baraji", "category": "keyboard_phrase_common", "source": "keyboard/vocabulary.json"}
+{"english": "don't mention it/you're welcome", "nko": "ߊ߬ ߕߍ ߝߏ߫", "ipa": "a te fo", "category": "keyboard_phrase_common", "source": "keyboard/vocabulary.json"}
+{"english": "sorry/excuse me", "nko": "ߒ ߧߊ߫ ߡߊ߬ߝߍ", "ipa": "n ka mafe", "category": "keyboard_phrase_common", "source": "keyboard/vocabulary.json"}
+{"english": "yes", "nko": "ߦߏ߯", "ipa": "yɔɔ", "category": "keyboard_phrase_common", "source": "keyboard/vocabulary.json"}
+{"english": "no", "nko": "ߊ߬ߦߊ", "ipa": "ayi", "category": "keyboard_phrase_common", "source": "keyboard/vocabulary.json"}
+{"english": "what?", "nko": "ߡߎ߲", "ipa": "mun", "category": "keyboard_phrase_common", "source": "keyboard/vocabulary.json"}
+{"english": "here", "nko": "ߦߊ߲", "ipa": "yan", "category": "keyboard_phrase_common", "source": "keyboard/vocabulary.json"}
+{"english": "there", "nko": "ߦߍ߲", "ipa": "yen", "category": "keyboard_phrase_common", "source": "keyboard/vocabulary.json"}
+{"english": "today", "nko": "ߓߌ", "ipa": "bi", "category": "keyboard_phrase_common", "source": "keyboard/vocabulary.json"}
+{"english": "tomorrow", "nko": "ߛߌ߬ߣߌ", "ipa": "sini", "category": "keyboard_phrase_common", "source": "keyboard/vocabulary.json"}
+{"english": "yesterday", "nko": "ߞߎ߬ߣߎ", "ipa": "kunu", "category": "keyboard_phrase_common", "source": "keyboard/vocabulary.json"}
+{"english": "what is your name?", "nko": "ߌ ߕߐ߬ߜߐ", "ipa": "i tɔgɔ", "category": "keyboard_phrase_questions", "source": "keyboard/vocabulary.json"}
+{"english": "what are you doing?", "nko": "ߌ ߓߍ߫ ߡߌ߬ߣߌ߲ ߞߍ", "ipa": "i be min ke", "category": "keyboard_phrase_questions", "source": "keyboard/vocabulary.json"}
+{"english": "where is it?", "nko": "ߊ߬ ߓߍ߫ ߡߌ߲", "ipa": "a be min", "category": "keyboard_phrase_questions", "source": "keyboard/vocabulary.json"}
+{"english": "how much is it?", "nko": "ߊ߬ ߦߋ߫ ߖߐ߬ߟߌ", "ipa": "a ye joli", "category": "keyboard_phrase_questions", "source": "keyboard/vocabulary.json"}
+{"english": "How are you?", "nko": "ߌ ߞߊ߬ ߞߍ߬ ߖߌ߰?", "ipa": "i ka ke ji? / kayfa haluk?", "arabic": "كيف حالك؟", "category": "bridge_phrase", "source": "cross-script-bridge/cognates.json"}
+{"english": "Good morning", "nko": "ߌ ߣߌ߫ ߛߐ߲߬ ߤ ߛߏ߭ߜߏ", "ipa": "i ni so ha sogo / sabah al-khayr", "arabic": "صباح الخير", "category": "bridge_phrase", "source": "cross-script-bridge/cognates.json"}
+{"english": "May it be with you", "nko": "ߊ߬ ߦߴߌ ߟߊ߫", "ipa": "a y'i la / ma'a salama", "arabic": "مع السلامة", "category": "bridge_phrase", "source": "cross-script-bridge/cognates.json"}
+{"english": "Peace be upon you", "nko": "ߤߍ߬ߙߊ ߌ ߡߊ߬", "ipa": "hera i ma / assalamu alaykum", "arabic": "السلام عليكم", "category": "bridge_phrase", "source": "cross-script-bridge/cognates.json"}
+{"english": "I be", "nko": "ߒ ߓߍ߬ ߓߍ߬", "ipa": "n be be", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "I do not be", "nko": "ߒ ߕߍ ߓߍ߬", "ipa": "n te be", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "I to be", "nko": "ߒ ߞߊ߬ ߓߍ߬", "ipa": "n ka be", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "you (singular) be", "nko": "ߌ ߓߍ߬ ߓߍ߬", "ipa": "i be be", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "you (singular) do not be", "nko": "ߌ ߕߍ ߓߍ߬", "ipa": "i te be", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "you (singular) to be", "nko": "ߌ ߞߊ߬ ߓߍ߬", "ipa": "i ka be", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "he be", "nko": "ߊ߬ ߓߍ߬ ߓߍ߬", "ipa": "a be be", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "he do not be", "nko": "ߊ߬ ߕߍ ߓߍ߬", "ipa": "a te be", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "he to be", "nko": "ߊ߬ ߞߊ߬ ߓߍ߬", "ipa": "a ka be", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "we be", "nko": "ߊ߲ ߓߍ߬ ߓߍ߬", "ipa": "an be be", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "we do not be", "nko": "ߊ߲ ߕߍ ߓߍ߬", "ipa": "an te be", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "we to be", "nko": "ߊ߲ ߞߊ߬ ߓߍ߬", "ipa": "an ka be", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "you (plural) be", "nko": "ߊ߬ߥ ߓߍ߬ ߓߍ߬", "ipa": "aw be be", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "you (plural) do not be", "nko": "ߊ߬ߥ ߕߍ ߓߍ߬", "ipa": "aw te be", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "you (plural) to be", "nko": "ߊ߬ߥ ߞߊ߬ ߓߍ߬", "ipa": "aw ka be", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "they be", "nko": "ߊ߬ߟߎ߬ ߓߍ߬ ߓߍ߬", "ipa": "olu be be", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "they do not be", "nko": "ߊ߬ߟߎ߬ ߕߍ ߓߍ߬", "ipa": "olu te be", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "they to be", "nko": "ߊ߬ߟߎ߬ ߞߊ߬ ߓߍ߬", "ipa": "olu ka be", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "I infinitive marker", "nko": "ߒ ߓߍ߬ ߞߊ߬", "ipa": "n be ka", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "I do not infinitive marker", "nko": "ߒ ߕߍ ߞߊ߬", "ipa": "n te ka", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "I infinitive marker", "nko": "ߒ ߞߊ߬ ߞߊ߬", "ipa": "n ka ka", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "you (singular) infinitive marker", "nko": "ߌ ߓߍ߬ ߞߊ߬", "ipa": "i be ka", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "you (singular) do not infinitive marker", "nko": "ߌ ߕߍ ߞߊ߬", "ipa": "i te ka", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "you (singular) infinitive marker", "nko": "ߌ ߞߊ߬ ߞߊ߬", "ipa": "i ka ka", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "he infinitive marker", "nko": "ߊ߬ ߓߍ߬ ߞߊ߬", "ipa": "a be ka", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "he do not infinitive marker", "nko": "ߊ߬ ߕߍ ߞߊ߬", "ipa": "a te ka", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "he infinitive marker", "nko": "ߊ߬ ߞߊ߬ ߞߊ߬", "ipa": "a ka ka", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "we infinitive marker", "nko": "ߊ߲ ߓߍ߬ ߞߊ߬", "ipa": "an be ka", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "we do not infinitive marker", "nko": "ߊ߲ ߕߍ ߞߊ߬", "ipa": "an te ka", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "we infinitive marker", "nko": "ߊ߲ ߞߊ߬ ߞߊ߬", "ipa": "an ka ka", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "you (plural) infinitive marker", "nko": "ߊ߬ߥ ߓߍ߬ ߞߊ߬", "ipa": "aw be ka", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "you (plural) do not infinitive marker", "nko": "ߊ߬ߥ ߕߍ ߞߊ߬", "ipa": "aw te ka", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "you (plural) infinitive marker", "nko": "ߊ߬ߥ ߞߊ߬ ߞߊ߬", "ipa": "aw ka ka", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "they infinitive marker", "nko": "ߊ߬ߟߎ߬ ߓߍ߬ ߞߊ߬", "ipa": "olu be ka", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "they do not infinitive marker", "nko": "ߊ߬ߟߎ߬ ߕߍ ߞߊ߬", "ipa": "olu te ka", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "they infinitive marker", "nko": "ߊ߬ߟߎ߬ ߞߊ߬ ߞߊ߬", "ipa": "olu ka ka", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "I go", "nko": "ߒ ߓߍ߬ ߕߊ߬ߡߌ߲", "ipa": "n be tamina", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "I do not go", "nko": "ߒ ߕߍ ߕߊ߬ߡߌ߲", "ipa": "n te tamina", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "I to go", "nko": "ߒ ߞߊ߬ ߕߊ߬ߡߌ߲", "ipa": "n ka tamina", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "you (singular) go", "nko": "ߌ ߓߍ߬ ߕߊ߬ߡߌ߲", "ipa": "i be tamina", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "you (singular) do not go", "nko": "ߌ ߕߍ ߕߊ߬ߡߌ߲", "ipa": "i te tamina", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "you (singular) to go", "nko": "ߌ ߞߊ߬ ߕߊ߬ߡߌ߲", "ipa": "i ka tamina", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "he go", "nko": "ߊ߬ ߓߍ߬ ߕߊ߬ߡߌ߲", "ipa": "a be tamina", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "he do not go", "nko": "ߊ߬ ߕߍ ߕߊ߬ߡߌ߲", "ipa": "a te tamina", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "he to go", "nko": "ߊ߬ ߞߊ߬ ߕߊ߬ߡߌ߲", "ipa": "a ka tamina", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "we go", "nko": "ߊ߲ ߓߍ߬ ߕߊ߬ߡߌ߲", "ipa": "an be tamina", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "we do not go", "nko": "ߊ߲ ߕߍ ߕߊ߬ߡߌ߲", "ipa": "an te tamina", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "we to go", "nko": "ߊ߲ ߞߊ߬ ߕߊ߬ߡߌ߲", "ipa": "an ka tamina", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "you (plural) go", "nko": "ߊ߬ߥ ߓߍ߬ ߕߊ߬ߡߌ߲", "ipa": "aw be tamina", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "you (plural) do not go", "nko": "ߊ߬ߥ ߕߍ ߕߊ߬ߡߌ߲", "ipa": "aw te tamina", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "you (plural) to go", "nko": "ߊ߬ߥ ߞߊ߬ ߕߊ߬ߡߌ߲", "ipa": "aw ka tamina", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "they go", "nko": "ߊ߬ߟߎ߬ ߓߍ߬ ߕߊ߬ߡߌ߲", "ipa": "olu be tamina", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "they do not go", "nko": "ߊ߬ߟߎ߬ ߕߍ ߕߊ߬ߡߌ߲", "ipa": "olu te tamina", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "they to go", "nko": "ߊ߬ߟߎ߬ ߞߊ߬ ߕߊ߬ߡߌ߲", "ipa": "olu ka tamina", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "I come", "nko": "ߒ ߓߍ߬ ߣߊ߬", "ipa": "n be na", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "I do not come", "nko": "ߒ ߕߍ ߣߊ߬", "ipa": "n te na", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "I to come", "nko": "ߒ ߞߊ߬ ߣߊ߬", "ipa": "n ka na", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "you (singular) come", "nko": "ߌ ߓߍ߬ ߣߊ߬", "ipa": "i be na", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "you (singular) do not come", "nko": "ߌ ߕߍ ߣߊ߬", "ipa": "i te na", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "you (singular) to come", "nko": "ߌ ߞߊ߬ ߣߊ߬", "ipa": "i ka na", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "he come", "nko": "ߊ߬ ߓߍ߬ ߣߊ߬", "ipa": "a be na", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "he do not come", "nko": "ߊ߬ ߕߍ ߣߊ߬", "ipa": "a te na", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "he to come", "nko": "ߊ߬ ߞߊ߬ ߣߊ߬", "ipa": "a ka na", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "we come", "nko": "ߊ߲ ߓߍ߬ ߣߊ߬", "ipa": "an be na", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "we do not come", "nko": "ߊ߲ ߕߍ ߣߊ߬", "ipa": "an te na", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "we to come", "nko": "ߊ߲ ߞߊ߬ ߣߊ߬", "ipa": "an ka na", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "you (plural) come", "nko": "ߊ߬ߥ ߓߍ߬ ߣߊ߬", "ipa": "aw be na", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "you (plural) do not come", "nko": "ߊ߬ߥ ߕߍ ߣߊ߬", "ipa": "aw te na", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "you (plural) to come", "nko": "ߊ߬ߥ ߞߊ߬ ߣߊ߬", "ipa": "aw ka na", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "they come", "nko": "ߊ߬ߟߎ߬ ߓߍ߬ ߣߊ߬", "ipa": "olu be na", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "they do not come", "nko": "ߊ߬ߟߎ߬ ߕߍ ߣߊ߬", "ipa": "olu te na", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "they to come", "nko": "ߊ߬ߟߎ߬ ߞߊ߬ ߣߊ߬", "ipa": "olu ka na", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "I do, make", "nko": "ߒ ߓߍ߬ ߞߍ߬", "ipa": "n be ke", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "I do not do, make", "nko": "ߒ ߕߍ ߞߍ߬", "ipa": "n te ke", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "I to do, make", "nko": "ߒ ߞߊ߬ ߞߍ߬", "ipa": "n ka ke", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "you (singular) do, make", "nko": "ߌ ߓߍ߬ ߞߍ߬", "ipa": "i be ke", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "you (singular) do not do, make", "nko": "ߌ ߕߍ ߞߍ߬", "ipa": "i te ke", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "you (singular) to do, make", "nko": "ߌ ߞߊ߬ ߞߍ߬", "ipa": "i ka ke", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "he do, make", "nko": "ߊ߬ ߓߍ߬ ߞߍ߬", "ipa": "a be ke", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "he do not do, make", "nko": "ߊ߬ ߕߍ ߞߍ߬", "ipa": "a te ke", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "he to do, make", "nko": "ߊ߬ ߞߊ߬ ߞߍ߬", "ipa": "a ka ke", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "we do, make", "nko": "ߊ߲ ߓߍ߬ ߞߍ߬", "ipa": "an be ke", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "we do not do, make", "nko": "ߊ߲ ߕߍ ߞߍ߬", "ipa": "an te ke", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "we to do, make", "nko": "ߊ߲ ߞߊ߬ ߞߍ߬", "ipa": "an ka ke", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "you (plural) do, make", "nko": "ߊ߬ߥ ߓߍ߬ ߞߍ߬", "ipa": "aw be ke", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "you (plural) do not do, make", "nko": "ߊ߬ߥ ߕߍ ߞߍ߬", "ipa": "aw te ke", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "you (plural) to do, make", "nko": "ߊ߬ߥ ߞߊ߬ ߞߍ߬", "ipa": "aw ka ke", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "they do, make", "nko": "ߊ߬ߟߎ߬ ߓߍ߬ ߞߍ߬", "ipa": "olu be ke", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "they do not do, make", "nko": "ߊ߬ߟߎ߬ ߕߍ ߞߍ߬", "ipa": "olu te ke", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "they to do, make", "nko": "ߊ߬ߟߎ߬ ߞߊ߬ ߞߍ߬", "ipa": "olu ka ke", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "I say, speak", "nko": "ߒ ߓߍ߬ ߝߐ߫", "ipa": "n be fɔ", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "I do not say, speak", "nko": "ߒ ߕߍ ߝߐ߫", "ipa": "n te fɔ", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "I to say, speak", "nko": "ߒ ߞߊ߬ ߝߐ߫", "ipa": "n ka fɔ", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "you (singular) say, speak", "nko": "ߌ ߓߍ߬ ߝߐ߫", "ipa": "i be fɔ", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "you (singular) do not say, speak", "nko": "ߌ ߕߍ ߝߐ߫", "ipa": "i te fɔ", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "you (singular) to say, speak", "nko": "ߌ ߞߊ߬ ߝߐ߫", "ipa": "i ka fɔ", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "he say, speak", "nko": "ߊ߬ ߓߍ߬ ߝߐ߫", "ipa": "a be fɔ", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "he do not say, speak", "nko": "ߊ߬ ߕߍ ߝߐ߫", "ipa": "a te fɔ", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "he to say, speak", "nko": "ߊ߬ ߞߊ߬ ߝߐ߫", "ipa": "a ka fɔ", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "we say, speak", "nko": "ߊ߲ ߓߍ߬ ߝߐ߫", "ipa": "an be fɔ", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "we do not say, speak", "nko": "ߊ߲ ߕߍ ߝߐ߫", "ipa": "an te fɔ", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "we to say, speak", "nko": "ߊ߲ ߞߊ߬ ߝߐ߫", "ipa": "an ka fɔ", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "you (plural) say, speak", "nko": "ߊ߬ߥ ߓߍ߬ ߝߐ߫", "ipa": "aw be fɔ", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "you (plural) do not say, speak", "nko": "ߊ߬ߥ ߕߍ ߝߐ߫", "ipa": "aw te fɔ", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "you (plural) to say, speak", "nko": "ߊ߬ߥ ߞߊ߬ ߝߐ߫", "ipa": "aw ka fɔ", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "they say, speak", "nko": "ߊ߬ߟߎ߬ ߓߍ߬ ߝߐ߫", "ipa": "olu be fɔ", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "they do not say, speak", "nko": "ߊ߬ߟߎ߬ ߕߍ ߝߐ߫", "ipa": "olu te fɔ", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "they to say, speak", "nko": "ߊ߬ߟߎ߬ ߞߊ߬ ߝߐ߫", "ipa": "olu ka fɔ", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "I hear, understand", "nko": "ߒ ߓߍ߬ ߡߍ߲", "ipa": "n be mɛn", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "I do not hear, understand", "nko": "ߒ ߕߍ ߡߍ߲", "ipa": "n te mɛn", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "I to hear, understand", "nko": "ߒ ߞߊ߬ ߡߍ߲", "ipa": "n ka mɛn", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "you (singular) hear, understand", "nko": "ߌ ߓߍ߬ ߡߍ߲", "ipa": "i be mɛn", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "you (singular) do not hear, understand", "nko": "ߌ ߕߍ ߡߍ߲", "ipa": "i te mɛn", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "you (singular) to hear, understand", "nko": "ߌ ߞߊ߬ ߡߍ߲", "ipa": "i ka mɛn", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "he hear, understand", "nko": "ߊ߬ ߓߍ߬ ߡߍ߲", "ipa": "a be mɛn", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "he do not hear, understand", "nko": "ߊ߬ ߕߍ ߡߍ߲", "ipa": "a te mɛn", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "he to hear, understand", "nko": "ߊ߬ ߞߊ߬ ߡߍ߲", "ipa": "a ka mɛn", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "we hear, understand", "nko": "ߊ߲ ߓߍ߬ ߡߍ߲", "ipa": "an be mɛn", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "we do not hear, understand", "nko": "ߊ߲ ߕߍ ߡߍ߲", "ipa": "an te mɛn", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "we to hear, understand", "nko": "ߊ߲ ߞߊ߬ ߡߍ߲", "ipa": "an ka mɛn", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "you (plural) hear, understand", "nko": "ߊ߬ߥ ߓߍ߬ ߡߍ߲", "ipa": "aw be mɛn", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "you (plural) do not hear, understand", "nko": "ߊ߬ߥ ߕߍ ߡߍ߲", "ipa": "aw te mɛn", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "you (plural) to hear, understand", "nko": "ߊ߬ߥ ߞߊ߬ ߡߍ߲", "ipa": "aw ka mɛn", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "they hear, understand", "nko": "ߊ߬ߟߎ߬ ߓߍ߬ ߡߍ߲", "ipa": "olu be mɛn", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "they do not hear, understand", "nko": "ߊ߬ߟߎ߬ ߕߍ ߡߍ߲", "ipa": "olu te mɛn", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "they to hear, understand", "nko": "ߊ߬ߟߎ߬ ߞߊ߬ ߡߍ߲", "ipa": "olu ka mɛn", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "I see", "nko": "ߒ ߓߍ߬ ߦߋ߫", "ipa": "n be ye", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "I do not see", "nko": "ߒ ߕߍ ߦߋ߫", "ipa": "n te ye", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "I to see", "nko": "ߒ ߞߊ߬ ߦߋ߫", "ipa": "n ka ye", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "you (singular) see", "nko": "ߌ ߓߍ߬ ߦߋ߫", "ipa": "i be ye", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "you (singular) do not see", "nko": "ߌ ߕߍ ߦߋ߫", "ipa": "i te ye", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "you (singular) to see", "nko": "ߌ ߞߊ߬ ߦߋ߫", "ipa": "i ka ye", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "he see", "nko": "ߊ߬ ߓߍ߬ ߦߋ߫", "ipa": "a be ye", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "he do not see", "nko": "ߊ߬ ߕߍ ߦߋ߫", "ipa": "a te ye", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "he to see", "nko": "ߊ߬ ߞߊ߬ ߦߋ߫", "ipa": "a ka ye", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "we see", "nko": "ߊ߲ ߓߍ߬ ߦߋ߫", "ipa": "an be ye", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "we do not see", "nko": "ߊ߲ ߕߍ ߦߋ߫", "ipa": "an te ye", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "we to see", "nko": "ߊ߲ ߞߊ߬ ߦߋ߫", "ipa": "an ka ye", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "you (plural) see", "nko": "ߊ߬ߥ ߓߍ߬ ߦߋ߫", "ipa": "aw be ye", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "you (plural) do not see", "nko": "ߊ߬ߥ ߕߍ ߦߋ߫", "ipa": "aw te ye", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "you (plural) to see", "nko": "ߊ߬ߥ ߞߊ߬ ߦߋ߫", "ipa": "aw ka ye", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "they see", "nko": "ߊ߬ߟߎ߬ ߓߍ߬ ߦߋ߫", "ipa": "olu be ye", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "they do not see", "nko": "ߊ߬ߟߎ߬ ߕߍ ߦߋ߫", "ipa": "olu te ye", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "they to see", "nko": "ߊ߬ߟߎ߬ ߞߊ߬ ߦߋ߫", "ipa": "olu ka ye", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "I eat", "nko": "ߒ ߓߍ߬ ߘߎ߲", "ipa": "n be dun", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "I do not eat", "nko": "ߒ ߕߍ ߘߎ߲", "ipa": "n te dun", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "I to eat", "nko": "ߒ ߞߊ߬ ߘߎ߲", "ipa": "n ka dun", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "you (singular) eat", "nko": "ߌ ߓߍ߬ ߘߎ߲", "ipa": "i be dun", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "you (singular) do not eat", "nko": "ߌ ߕߍ ߘߎ߲", "ipa": "i te dun", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "you (singular) to eat", "nko": "ߌ ߞߊ߬ ߘߎ߲", "ipa": "i ka dun", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "he eat", "nko": "ߊ߬ ߓߍ߬ ߘߎ߲", "ipa": "a be dun", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "he do not eat", "nko": "ߊ߬ ߕߍ ߘߎ߲", "ipa": "a te dun", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "he to eat", "nko": "ߊ߬ ߞߊ߬ ߘߎ߲", "ipa": "a ka dun", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "we eat", "nko": "ߊ߲ ߓߍ߬ ߘߎ߲", "ipa": "an be dun", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "we do not eat", "nko": "ߊ߲ ߕߍ ߘߎ߲", "ipa": "an te dun", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "we to eat", "nko": "ߊ߲ ߞߊ߬ ߘߎ߲", "ipa": "an ka dun", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "you (plural) eat", "nko": "ߊ߬ߥ ߓߍ߬ ߘߎ߲", "ipa": "aw be dun", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "you (plural) do not eat", "nko": "ߊ߬ߥ ߕߍ ߘߎ߲", "ipa": "aw te dun", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "you (plural) to eat", "nko": "ߊ߬ߥ ߞߊ߬ ߘߎ߲", "ipa": "aw ka dun", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "they eat", "nko": "ߊ߬ߟߎ߬ ߓߍ߬ ߘߎ߲", "ipa": "olu be dun", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "they do not eat", "nko": "ߊ߬ߟߎ߬ ߕߍ ߘߎ߲", "ipa": "olu te dun", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "they to eat", "nko": "ߊ߬ߟߎ߬ ߞߊ߬ ߘߎ߲", "ipa": "olu ka dun", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "I drink", "nko": "ߒ ߓߍ߬ ߡߌ߲", "ipa": "n be min", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "I do not drink", "nko": "ߒ ߕߍ ߡߌ߲", "ipa": "n te min", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "I to drink", "nko": "ߒ ߞߊ߬ ߡߌ߲", "ipa": "n ka min", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "you (singular) drink", "nko": "ߌ ߓߍ߬ ߡߌ߲", "ipa": "i be min", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "you (singular) do not drink", "nko": "ߌ ߕߍ ߡߌ߲", "ipa": "i te min", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "you (singular) to drink", "nko": "ߌ ߞߊ߬ ߡߌ߲", "ipa": "i ka min", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "he drink", "nko": "ߊ߬ ߓߍ߬ ߡߌ߲", "ipa": "a be min", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "he do not drink", "nko": "ߊ߬ ߕߍ ߡߌ߲", "ipa": "a te min", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "he to drink", "nko": "ߊ߬ ߞߊ߬ ߡߌ߲", "ipa": "a ka min", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "we drink", "nko": "ߊ߲ ߓߍ߬ ߡߌ߲", "ipa": "an be min", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "we do not drink", "nko": "ߊ߲ ߕߍ ߡߌ߲", "ipa": "an te min", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "we to drink", "nko": "ߊ߲ ߞߊ߬ ߡߌ߲", "ipa": "an ka min", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "you (plural) drink", "nko": "ߊ߬ߥ ߓߍ߬ ߡߌ߲", "ipa": "aw be min", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "you (plural) do not drink", "nko": "ߊ߬ߥ ߕߍ ߡߌ߲", "ipa": "aw te min", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "you (plural) to drink", "nko": "ߊ߬ߥ ߞߊ߬ ߡߌ߲", "ipa": "aw ka min", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "they drink", "nko": "ߊ߬ߟߎ߬ ߓߍ߬ ߡߌ߲", "ipa": "olu be min", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "they do not drink", "nko": "ߊ߬ߟߎ߬ ߕߍ ߡߌ߲", "ipa": "olu te min", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "they to drink", "nko": "ߊ߬ߟߎ߬ ߞߊ߬ ߡߌ߲", "ipa": "olu ka min", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "I sleep", "nko": "ߒ ߓߍ߬ ߛߌ߲", "ipa": "n be sin", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "I do not sleep", "nko": "ߒ ߕߍ ߛߌ߲", "ipa": "n te sin", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "I to sleep", "nko": "ߒ ߞߊ߬ ߛߌ߲", "ipa": "n ka sin", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "you (singular) sleep", "nko": "ߌ ߓߍ߬ ߛߌ߲", "ipa": "i be sin", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "you (singular) do not sleep", "nko": "ߌ ߕߍ ߛߌ߲", "ipa": "i te sin", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "you (singular) to sleep", "nko": "ߌ ߞߊ߬ ߛߌ߲", "ipa": "i ka sin", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "he sleep", "nko": "ߊ߬ ߓߍ߬ ߛߌ߲", "ipa": "a be sin", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "he do not sleep", "nko": "ߊ߬ ߕߍ ߛߌ߲", "ipa": "a te sin", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "he to sleep", "nko": "ߊ߬ ߞߊ߬ ߛߌ߲", "ipa": "a ka sin", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "we sleep", "nko": "ߊ߲ ߓߍ߬ ߛߌ߲", "ipa": "an be sin", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "we do not sleep", "nko": "ߊ߲ ߕߍ ߛߌ߲", "ipa": "an te sin", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "we to sleep", "nko": "ߊ߲ ߞߊ߬ ߛߌ߲", "ipa": "an ka sin", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "you (plural) sleep", "nko": "ߊ߬ߥ ߓߍ߬ ߛߌ߲", "ipa": "aw be sin", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "you (plural) do not sleep", "nko": "ߊ߬ߥ ߕߍ ߛߌ߲", "ipa": "aw te sin", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "you (plural) to sleep", "nko": "ߊ߬ߥ ߞߊ߬ ߛߌ߲", "ipa": "aw ka sin", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}
+{"english": "they sleep", "nko": "ߊ߬ߟߎ߬ ߓߍ߬ ߛߌ߲", "ipa": "olu be sin", "category": "conjugation_present", "source": "generated_paradigm"}
+{"english": "they do not sleep", "nko": "ߊ߬ߟߎ߬ ߕߍ ߛߌ߲", "ipa": "olu te sin", "category": "conjugation_negative", "source": "generated_paradigm"}
+{"english": "they to sleep", "nko": "ߊ߬ߟߎ߬ ߞߊ߬ ߛߌ߲", "ipa": "olu ka sin", "category": "conjugation_past/infinitive", "source": "generated_paradigm"}

@@ -1,0 +1,118 @@
+{
+  "description": "16 numerical estimation questions for circuit duplication evaluation. Each has English and NKO versions. NKO uses native NKO digits (U+07C0-U+07C9).",
+  "scoring": "distribution-based partial credit (see scoring.py)",
+  "probes": [
+    {
+      "id": "math-01",
+      "english": "What is 47 multiplied by 23?",
+      "nko": "߄߇ ߝߊ߬ߙߊ ߂߃ ߦߋ ߖߏ߬ߟߌ?",
+      "answer": 1081,
+      "difficulty": "medium"
+    },
+    {
+      "id": "math-02",
+      "english": "If you have 156 mangoes and give away 89, how many remain?",
+      "nko": "ߣߌ߫ ߌ ߓߍ߫ ߡߊ߲ߜߏ ߁߅߆ ߘߐ ߌ ߞߊ߬ ߈߉ ߘߌ߫ ߖߏ߬ߟߌ ߕߏ߬ ߊ?",
+      "answer": 67,
+      "difficulty": "easy"
+    },
+    {
+      "id": "math-03",
+      "english": "What is 12 squared?",
+      "nko": "߁߂ ߝߊ߬ߙߊ ߊ߬ ߦߋ߬ߙߋ ߦߋ ߖߏ߬ߟߌ?",
+      "answer": 144,
+      "difficulty": "easy"
+    },
+    {
+      "id": "math-04",
+      "english": "A farmer plants 8 rows with 15 seeds each. How many seeds total?",
+      "nko": "ߛߍ߬ߣߍ ߞߍ߬ߟߊ ߞߊ߬ ߛߎ߲ ߈ ߛߌ߲ ߁߅ ߛߎ߲ ߞߋߟߋ߲ ߞߐ. ߛߌ߲ ߓߍ߯ ߦߋ ߖߏ߬ߟߌ?",
+      "answer": 120,
+      "difficulty": "medium"
+    },
+    {
+      "id": "math-05",
+      "english": "What is 1000 divided by 8?",
+      "nko": "߁߀߀߀ ߕߟߊ ߈ ߟߊ ߦߋ ߖߏ߬ߟߌ?",
+      "answer": 125,
+      "difficulty": "medium"
+    },
+    {
+      "id": "math-06",
+      "english": "If a journey takes 3 hours at 60 km/h, how far is it?",
+      "nko": "ߣߌ߫ ߕߊ߬ߡߊ ߓߍ߫ ߟߍ߬ߙ ߃ ߕߊ ߞߟ ߆߀ ߟߍ߬ߙ ߞߋߟߋ߲ ߞߐ ߦߋ ߦߊ߲߬ ߖߏ߬ߟߌ?",
+      "answer": 180,
+      "difficulty": "medium"
+    },
+    {
+      "id": "math-07",
+      "english": "What is the sum of all numbers from 1 to 10?",
+      "nko": "ߖߊ߬ߕߋ ߓߍ߯ ߁ ߞߊ ߕߊ߬ ߁߀ ߟߊ ߝߊ ߦߋ ߖߏ߬ߟߌ?",
+      "answer": 55,
+      "difficulty": "medium"
+    },
+    {
+      "id": "math-08",
+      "english": "A market sells 45 kg of rice at 500 CFA per kg. What is the total price?",
+      "nko": "ߖߊ߬ߓߌ ߞߊ߬ ߡߊ߬ߟߏ ߞߜ ߄߅ ߝߍ߬ ߛߋ߬ߝߊ ߅߀߀ ߞߜ ߞߋߟߋ߲ ߦߋ. ߛߏ߲ ߓߍ߯ ߦߋ ߖߏ߬ߟߌ?",
+      "answer": 22500,
+      "difficulty": "hard"
+    },
+    {
+      "id": "math-09",
+      "english": "What is 7 cubed?",
+      "nko": "߇ ߝߊ߬ߙߊ ߇ ߝߊ߬ߙߊ ߇ ߦߋ ߖߏ߬ߟߌ?",
+      "answer": 343,
+      "difficulty": "hard"
+    },
+    {
+      "id": "math-10",
+      "english": "If 3 people share 750 CFA equally, how much does each get?",
+      "nko": "ߡߐ߱ ߃ ߞߊ߬ ߛߋ߬ߝߊ ߇߅߀ ߕߟߊ ߞߍ߲ ߞߋߟߋ߲ ߠߊ. ߞߋ ߞߋߟߋ߲ ߓߍ ߖߏ߬ߟߌ ߛߐ߬ ߊ?",
+      "answer": 250,
+      "difficulty": "easy"
+    },
+    {
+      "id": "math-11",
+      "english": "A rectangle is 12 meters long and 5 meters wide. What is its area?",
+      "nko": "ߞߐ߲ ߝߊ߲ ߦߋ ߡߕ ߁߂ ߊ ߓߏ߲ ߦߋ ߡߕ ߅. ߊ߬ ߝߊ߲ ߖߊ ߦߋ ߖߏ߬ߟߌ?",
+      "answer": 60,
+      "difficulty": "easy"
+    },
+    {
+      "id": "math-12",
+      "english": "What is 15% of 800?",
+      "nko": "߈߀߀ ߘߐ ߁߅% ߦߋ ߖߏ߬ߟߌ?",
+      "answer": 120,
+      "difficulty": "medium"
+    },
+    {
+      "id": "math-13",
+      "english": "If a taxi charges 200 CFA base plus 50 CFA per km, how much for 12 km?",
+      "nko": "ߕߊ߬ߞߛߌ ߓߍ ߛߋ߬ߝߊ ߂߀߀ ߕߊ ߛߋ߬ߝߊ ߅߀ ߞߟ ߞߋߟߋ߲ ߞߐ. ߞߟ ߁߂ ߛߏ߲ ߦߋ ߖߏ߬ߟߌ?",
+      "answer": 800,
+      "difficulty": "medium"
+    },
+    {
+      "id": "math-14",
+      "english": "What is 2 to the power of 10?",
+      "nko": "߂ ߝߊ߲ ߁߀ ߦߋ ߖߏ߬ߟߌ?",
+      "answer": 1024,
+      "difficulty": "hard"
+    },
+    {
+      "id": "math-15",
+      "english": "A circle has radius 7. What is its approximate area? (use pi = 22/7)",
+      "nko": "ߕߎ߬ߟߊ߲ ߦߊ ߓߍ ߦ ߇. ߊ ߝߊ߲ ߖߊ ߦߋ ߖߏ߬ߟߌ?",
+      "answer": 154,
+      "difficulty": "hard"
+    },
+    {
+      "id": "math-16",
+      "english": "What is 999 + 888 + 777?",
+      "nko": "߉߉߉ ߝߊ ߈߈߈ ߝߊ ߇߇߇ ߦߋ ߖߏ߬ߟߌ?",
+      "answer": 2664,
+      "difficulty": "medium"
+    }
+  ]
+}

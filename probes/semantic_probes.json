@@ -1,0 +1,118 @@
+{
+  "description": "16 semantic/cultural reasoning questions. NKO versions use native proverbs; English versions use cultural equivalents. Tests reasoning about meaning, not translation.",
+  "scoring": "distribution-based partial credit (see scoring.py)",
+  "probes": [
+    {
+      "id": "sem-01",
+      "english": "\"One hand cannot tie a bundle.\" What does this proverb teach?",
+      "nko": "\"ߓߏ߬ߟߏ ߘߏ߫ ߕߍ߫ ߞߊ߬ ߡߏ߬ߙߌ ߕߏ߫\" ߦߍ ߞߏ ߖߎ߯ ߦߋ ߡߎ߲ ߘߌ?",
+      "expected_theme": "cooperation",
+      "answer_keywords": ["cooperation", "teamwork", "help", "together", "community"]
+    },
+    {
+      "id": "sem-02",
+      "english": "\"Knowledge is not expensive.\" What value does this express?",
+      "nko": "\"ߞߎ߲߬ߠߊ ߡߊ߲ ߞߊ߫ ߖߎ߯\" ߦߍ ߞߏ ߖߎ߯ ߦߋ ߡߎ߲ ߘߌ?",
+      "expected_theme": "education",
+      "answer_keywords": ["education", "learning", "knowledge", "wisdom", "invaluable"]
+    },
+    {
+      "id": "sem-03",
+      "english": "If someone says 'the road is not one', what are they advising?",
+      "nko": "ߣߌ߫ ߡߐ߱ ߞߊ߬ ߊ߬ ߝߐ߫ ߞߏ 'ߛߌ߬ߙߊ ߕߍ ߞߋߟߋ߲ ߦߋ' ߊ ߓ ߡߎ߲ ߖߎ߬ ߟߊ?",
+      "expected_theme": "flexibility",
+      "answer_keywords": ["many paths", "alternatives", "flexible", "options", "different ways"]
+    },
+    {
+      "id": "sem-04",
+      "english": "\"A person finds strength\" — complete this thought and explain.",
+      "nko": "\"ߡߐ߱ ߞߊ߬ ߝߊ߲߬ߞߊ ߛߐ߬ߘߐ߲\" — ߦߍ ߘߊ ߟߊ ߊ ߞߏ ߖߎ߯ ߝߐ.",
+      "expected_theme": "community strength",
+      "answer_keywords": ["community", "unity", "strength", "together", "support"]
+    },
+    {
+      "id": "sem-05",
+      "english": "What is the deeper meaning of: \"The inside of a person is the person\"?",
+      "nko": "ߡߐ߱ ߞߐ߲ ߦߋ ߡߐ߱ ߦߋ — ߦߍ ߞߏ ߘߐ ߦߋ ߡߎ߲ ߘߌ?",
+      "expected_theme": "character over appearance",
+      "answer_keywords": ["character", "inside", "true self", "appearance", "inner", "define"]
+    },
+    {
+      "id": "sem-06",
+      "english": "\"Wisdom is better than money.\" When might someone disagree?",
+      "nko": "\"ߤߊ߬ߞߌ߬ߟߌ ߞߊ ߝߌ߬ ߣߌ ߥߊ߬ߙߌ ߦߋ.\" ߡߐ ߓ ߛߋ ߞ ߝߐ ߦ ߕߎ߬ߡ ߖߎ߬ ߡ?",
+      "expected_theme": "nuanced view on wisdom vs wealth",
+      "answer_keywords": ["poverty", "survival", "basic needs", "hunger", "emergency", "practical"]
+    },
+    {
+      "id": "sem-07",
+      "english": "A child is described as 'wealth'. Why would a culture say this?",
+      "nko": "ߘߋ߲ ߦ ߥ ߦ. ߡ ߞ ߝ ߞ ߦ ߕ ߘ ߞ?",
+      "expected_theme": "children as legacy",
+      "answer_keywords": ["legacy", "future", "continuation", "family", "treasure", "investment"]
+    },
+    {
+      "id": "sem-08",
+      "english": "\"The river doesn't go backwards.\" How does this apply to making mistakes?",
+      "nko": "\"ߓߊ ߕߍ ߥߊ߫ ߞߐ ߝߍ߬\" ߦ ߓ ߛ ߞ ߕ ߝ ߟ ߞ ߕ ߡ?",
+      "expected_theme": "moving forward from errors",
+      "answer_keywords": ["forward", "past", "cannot undo", "learn", "move on", "accept"]
+    },
+    {
+      "id": "sem-09",
+      "english": "If two captains lead one ship, what problems arise?",
+      "nko": "ߣ ߞ ߝ ߕ ߞ ߓ ߞ ߟ, ߞ ߝ ߕ ߛ ߓ?",
+      "expected_theme": "too many leaders",
+      "answer_keywords": ["conflict", "confusion", "direction", "leadership", "disagreement"]
+    },
+    {
+      "id": "sem-10",
+      "english": "\"Change is before us.\" Is this optimistic or pessimistic? Why?",
+      "nko": "\"ߦ ߟ ߓ ߢ ߣ.\" ߦ ߓ ߞ ߖ ߦ ߟ ߡ ߞ ߝ?",
+      "expected_theme": "inevitability of change",
+      "answer_keywords": ["inevitable", "neutral", "both", "depends", "adapt", "prepare"]
+    },
+    {
+      "id": "sem-11",
+      "english": "What does it mean to say 'the sun is there whether day or night'?",
+      "nko": "ߕ ߦ ߟ ߥ ߛ — ߦ ߞ ߘ ߦ ߡ ߘ?",
+      "expected_theme": "truth persists",
+      "answer_keywords": ["truth", "constant", "always", "permanent", "persists", "reliable"]
+    },
+    {
+      "id": "sem-12",
+      "english": "\"Patience is wisdom.\" Give an example from daily life.",
+      "nko": "\"ߢ ߦ ߣ.\" ߘ ߡ ߞ ߛ ߕ ߛ ߞ ߕ ߘ.",
+      "expected_theme": "practical patience",
+      "answer_keywords": ["wait", "garden", "cooking", "saving", "learning", "skill"]
+    },
+    {
+      "id": "sem-13",
+      "english": "Why would someone say 'there is no excuse in work'?",
+      "nko": "ߡ ߞ ߝ ߞ 'ߛ ߕ ߓ ߟ' ߡ ߞ?",
+      "expected_theme": "results matter",
+      "answer_keywords": ["results", "effort", "action", "excuses", "discipline", "work ethic"]
+    },
+    {
+      "id": "sem-14",
+      "english": "How is 'a good host is better than money' relevant today?",
+      "nko": "ߖ ߢ ߞ ߝ ߣ ߥ ߦ — ߦ ߓ ߛ ߞ ߕ ߓ ߕ?",
+      "expected_theme": "hospitality in modern world",
+      "answer_keywords": ["hospitality", "kindness", "connection", "relationships", "generosity"]
+    },
+    {
+      "id": "sem-15",
+      "english": "\"An old thing is the mother of a new thing.\" How does this relate to innovation?",
+      "nko": "ߞ ߞ ߦ ߞ ߞ ߓ ߦ — ߊ ߓ ߛ ߞ ߕ ߞ ߞ ߘ ߡ?",
+      "expected_theme": "innovation builds on past",
+      "answer_keywords": ["build on", "foundation", "iteration", "evolution", "history", "learn from"]
+    },
+    {
+      "id": "sem-16",
+      "english": "\"Truth is the sun.\" Why compare truth to the sun specifically?",
+      "nko": "ߣ ߦ ߕ ߦ — ߡ ߞ ߛ ߣ ߕ ߊ ߓ ߕ?",
+      "expected_theme": "truth as illumination",
+      "answer_keywords": ["shines", "reveals", "cannot hide", "light", "illuminates", "visible"]
+    }
+  ]
+}
