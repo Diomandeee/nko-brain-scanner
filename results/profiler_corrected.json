@@ -1,0 +1,83 @@
+{
+  "base": {
+    "english": {
+      "avg_loss": 1.3358,
+      "perplexity": 3.8,
+      "top1_accuracy": 0.7086,
+      "nko_token_accuracy": 0.0,
+      "nko_tokens_evaluated": 0,
+      "total_tokens": 3291,
+      "valid_examples": 100
+    },
+    "nko": {
+      "avg_loss": 2.3993,
+      "perplexity": 11.02,
+      "top1_accuracy": 0.4315,
+      "nko_token_accuracy": 0.2298,
+      "nko_tokens_evaluated": 5584,
+      "total_tokens": 13670,
+      "valid_examples": 100
+    }
+  },
+  "two_stage": {
+    "english": {
+      "avg_loss": 2.1632,
+      "perplexity": 8.7,
+      "top1_accuracy": 0.6946,
+      "nko_token_accuracy": 0.0,
+      "nko_tokens_evaluated": 0,
+      "total_tokens": 3291,
+      "valid_examples": 100
+    },
+    "nko": {
+      "avg_loss": 1.8094,
+      "perplexity": 6.11,
+      "top1_accuracy": 0.5639,
+      "nko_token_accuracy": 0.3182,
+      "nko_tokens_evaluated": 5584,
+      "total_tokens": 13670,
+      "valid_examples": 100
+    }
+  },
+  "three_stage_bpe": {
+    "english": {
+      "avg_loss": 2.1525,
+      "perplexity": 8.61,
+      "top1_accuracy": 0.6967,
+      "nko_token_accuracy": 0.0,
+      "nko_tokens_evaluated": 0,
+      "total_tokens": 3291,
+      "valid_examples": 100
+    },
+    "nko": {
+      "avg_loss": 1.7921,
+      "perplexity": 6.0,
+      "top1_accuracy": 0.5666,
+      "nko_token_accuracy": 0.3283,
+      "nko_tokens_evaluated": 5584,
+      "total_tokens": 13670,
+      "valid_examples": 100
+    }
+  },
+  "translation_tax": {
+    "base": 2.9,
+    "three_stage": 0.6969,
+    "reduction": 76.0
+  },
+  "metadata": {
+    "model": "mlx-community/Qwen3-8B-8bit",
+    "english_examples": 100,
+    "nko_examples": 100,
+    "max_seq_len": 256,
+    "eval_files": {
+      "english": "/Users/mohameddiomande/nko-brain-scanner/eval/english_eval.jsonl",
+      "nko": "/Users/mohameddiomande/nko-brain-scanner/eval/nko_eval.jsonl"
+    },
+    "adapters": {
+      "two_stage": "/Users/mohameddiomande/nko-brain-scanner/adapters-combined",
+      "three_stage": "/Users/mohameddiomande/nko-brain-scanner/adapters-bpe"
+    },
+    "timestamp": "2026-03-14T17:29:56.853674",
+    "note": "Corrected eval with 100 examples per language (previous runs had 4 English examples)"
+  }
+}
