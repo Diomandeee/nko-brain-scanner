@@ -1,0 +1,22 @@
+{
+  "base": {
+    "label": "Base Model",
+    "nko_perplexity": 11.164710701197036,
+    "nko_loss": 2.4127579737335836,
+    "nko_examples": 100,
+    "english_perplexity": 128.7865043602568,
+    "english_loss": 4.858156028368795,
+    "english_examples": 4,
+    "translation_tax": 0.08669162003159733
+  },
+  "finetuned": {
+    "label": "Fine-Tuned Model",
+    "nko_perplexity": 5.5657624074291885,
+    "nko_loss": 1.7166339757803173,
+    "nko_examples": 100,
+    "english_perplexity": 73.0234149051649,
+    "english_loss": 4.290780141843972,
+    "english_examples": 4,
+    "translation_tax": 0.07621887328410228
+  }
+}

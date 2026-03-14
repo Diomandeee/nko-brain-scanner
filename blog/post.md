@@ -461,6 +461,57 @@ Until then, the most precisely designed writing system in the world remains invi
 
 ---
 
+## Update: The First Fine-Tuning Results
+
+After completing the brain scan experiments, we decided to test our own prescription. If the problem is data, can we fix it with data?
+
+### The Experiment
+
+We compiled 4,312 supervised fine-tuning examples from all available N'Ko digital resources: parallel translations, Wikipedia text completions, proverb interpretations, cultural greetings, vocabulary definitions, and more. 98% of these examples contain N'Ko script characters.
+
+We then ran **LoRA fine-tuning** (Low-Rank Adaptation) on **Qwen3-8B**, a smaller model in the same Qwen family as our 72B test subject. The training ran entirely on a local Apple M4 machine (16GB unified memory) using MLX, Apple's machine learning framework. Zero cloud compute. Zero cost.
+
+The configuration:
+- **Base model:** Qwen3-8B (8-bit quantization via MLX)
+- **LoRA rank:** 8, applied to top 8 layers
+- **Training:** 1,000 iterations, learning rate 1e-5, batch size 1
+- **Data:** 3,880 train / 432 validation examples
+- **Hardware:** Apple M4 16GB, ~25 minutes total
+- **Trainable parameters:** 4.85M out of 8.19B (0.059%)
+
+### The Results
+
+| Metric | Before (Base) | After (Fine-Tuned) | Change |
+|--------|--------------|-------------------|--------|
+| N'Ko Perplexity | 11.16 | 5.57 | **-50.1%** |
+| N'Ko Loss | 2.41 | 1.72 | -28.8% |
+| Validation Loss | 3.46 | 1.25 | -63.8% |
+
+The headline number: **N'Ko perplexity dropped by 50%** after fine-tuning on just 4,312 examples. The model's ability to predict N'Ko text improved by half, using 0.059% of its parameters, on consumer hardware, in 25 minutes.
+
+The validation loss curve tells the story of learning:
+
+| Iteration | Val Loss | Train Loss |
+|-----------|----------|------------|
+| 1 | 3.460 | - |
+| 100 | 1.533 | 1.458 |
+| 200 | 1.409 | 1.203 |
+| 400 | 1.198 | 1.212 |
+| 800 | 1.231 | 1.065 |
+| 1000 | 1.253 | 1.070 |
+
+The model learned rapidly in the first 400 iterations, then plateaued. The slight uptick in validation loss after iter 400 suggests the model is beginning to memorize the training set rather than generalize, which is expected with only 4,312 examples. More data would push the generalization frontier further.
+
+### What This Means
+
+This is a proof of concept, not a production model. The fine-tuned Qwen3-8B still can't hold a coherent conversation in N'Ko. It still loops on repetitive patterns when generating. The 50% perplexity drop means the model is *better at predicting* N'Ko text, but it hasn't learned to *understand* it.
+
+But the signal is clear: **the on-ramp works.** A tiny amount of data (4,312 examples), applied with targeted fine-tuning (LoRA on 8 layers), on consumer hardware (M4 MacBook), in minutes (not hours), produced a measurable 50% improvement in the model's N'Ko processing ability.
+
+Scale this up, with 50,000 examples instead of 4,000, with continued pre-training in addition to SFT, with tokenizer extension to give N'Ko characters first-class representation in the vocabulary, and the model's early layers would build the clean representations our brain scan showed are missing. The reasoning circuits would engage. And Solomana Kante's 77-year-old design would finally meet a machine capable of reading it.
+
+---
+
 ## Methodology
 
 ### Model Configuration
@@ -488,8 +539,19 @@ Until then, the most precisely designed writing system in the world remains invi
 - **Total wall time:** ~2 hours
 - **Total cost:** $1.72 on Vast.ai (A100 80GB at $0.86/hour)
 
+### Experiment 3: LoRA Fine-Tuning
+- **Base model:** Qwen3-8B (mlx-community/Qwen3-8B-8bit)
+- **Framework:** MLX v0.29.1 with mlx_lm LoRA
+- **Hardware:** Apple M4 16GB unified memory
+- **LoRA config:** Rank 8, dropout 0.0, scale 20.0, applied to top 8 layers
+- **Training:** 1,000 iterations, learning rate 1e-5, Adam optimizer, batch size 1
+- **Data:** 4,312 examples (3,880 train / 432 valid), 98% containing N'Ko script
+- **Evaluation:** Per-language perplexity on held-out validation set
+- **Total training time:** ~25 minutes
+- **Total cost:** $0 (local hardware)
+
 ### Reproducibility
-All code is open-sourced. The pipeline can be reproduced for under $2 of cloud compute.
+All code is open-sourced. The brain scan can be reproduced for under $2 of cloud compute. The fine-tuning runs for free on any Apple Silicon Mac.
 
 **Code:** [github.com/Diomandeee/nko-brain-scanner](https://github.com/Diomandeee/nko-brain-scanner)
 
