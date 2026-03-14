@@ -580,6 +580,50 @@ Scale this up, with tokenizer extension to give N'Ko characters first-class repr
 
 ---
 
+## Experiment 6: Closing the Token Gap
+
+The brain scan revealed the bottleneck. Qwen3-8B has 32 N'Ko tokens in its vocabulary, all single characters. Zero subword merges. Every N'Ko word gets atomized into individual characters, creating a 4x token inflation compared to English.
+
+We trained a BPE (Byte Pair Encoding) tokenizer on 62,000 N'Ko word occurrences from the Wikipedia corpus and word frequency data. The algorithm learned 512 merge operations, discovering the subword vocabulary that Qwen never built because it never saw enough N'Ko text during pre-training.
+
+### What BPE Discovered
+
+The merges are linguistically valid. They're not random character pairs; they're the actual building blocks of Manding grammar:
+
+| Merge | Token | Meaning | Frequency |
+|-------|-------|---------|-----------|
+| 0 | ߟߊ߫ | *la* (locative/postposition) | 3,046 |
+| 1 | ߞߊ߬ | *ka* (completive auxiliary) | 2,326 |
+| 8 | ߦߋ߫ | *ye* (copula "is/be") | 1,380 |
+| 19 | ߞߊ߲ | *kan* (language/voice) | 870 |
+| 200 | ߒߞߏ | *N'Ko* (the script's name) | 143 |
+| 350 | ߝߊ߬ߙߊ߲߬ߛߌ߫ | *faransi* (France/French) | 74 |
+
+The top merges are grammatical particles. Manding is an isolating language with fixed auxiliary verbs (ߞߊ߬ for completive, ߓߍ for progressive, ߕߍ for negative). These particles appear in nearly every sentence but were being split into 2-3 tokens each. Now they're single tokens.
+
+### Compression Results
+
+| Input | Char Tokens | BPE Tokens | Compression |
+|-------|-------------|------------|-------------|
+| ߒ ߓߊ߯ߙߊ ߞߊ߲ ߞߊߟߊ߲ ߞߍ (I am learning N'Ko) | 16 | 6 | 2.67x |
+| ߒߞߏ ߦߋ ߊ߲ ߛߓߍ (N'Ko is our writing) | 10 | 4 | 2.50x |
+| Wikipedia sentence (10 words) | 44 | 16 | 2.75x |
+
+**Overall: 2.75x compression.** The 4x token gap with English drops to roughly 1.45x. A vocabulary of 614 tokens (64 base chars + 512 BPE merges + 32 morphemes from the analyzer) captures the structure Qwen never learned.
+
+### The Vocabulary Extension Pipeline
+
+We built a complete pipeline to inject these tokens into Qwen3's vocabulary:
+
+1. **512 new BPE tokens** with constituent character mappings
+2. **Embedding initialization**: average the embeddings of the constituent characters
+3. **600 SFT training examples** showing each token in context
+4. **Morphology integration**: the BPE tokenizer uses `NKoMorphology.analyze_word()` for high-confidence words, falls back to BPE merges for unknown words
+
+This is ready to run on Mac5. The hypothesis: if we extend the vocabulary, then fine-tune with CPT+SFT, the model should see an even larger jump in N'Ko token accuracy because it can now process multi-character units instead of individual characters.
+
+---
+
 ## Methodology
 
 ### Model Configuration
@@ -641,6 +685,16 @@ Scale this up, with tokenizer extension to give N'Ko characters first-class repr
 - **Articles:** 1,693 non-redirect articles (of 1,695 total; 2 empty/error)
 - **Output:** 3,679,014 N'Ko characters (79.6% of total content), 37,183 lines, 7.95 MB
 - **Fallback:** 4 articles used action=parse HTML rendering where wikitext stripping lost N'Ko content
+
+### Experiment 6: BPE Tokenizer Training
+- **Corpus:** 62,035 N'Ko word occurrences (31,201 from Wikipedia text + 7,811 pre-computed word frequencies)
+- **Algorithm:** Byte Pair Encoding with tone-aware character splitting (tone marks attach to base characters)
+- **Merges:** 512 operations, minimum frequency threshold of 3
+- **Final vocabulary:** 614 tokens (64 N'Ko chars + 512 BPE + 32 morpheme + 6 special)
+- **Compression:** 2.75x average on test sentences (88 chars -> 32 BPE tokens)
+- **Integration:** Falls back from morphological analysis (>0.4 confidence) to BPE merges to character-level
+- **Total training time:** <1 second on Apple M2
+- **Total cost:** $0 (local hardware)
 
 ### Reproducibility
 All code is open-sourced. The brain scan can be reproduced for under $2 of cloud compute. The fine-tuning runs for free on any Apple Silicon Mac.

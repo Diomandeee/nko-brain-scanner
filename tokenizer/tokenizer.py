@@ -60,25 +60,33 @@ class NkoTokenizer:
     """
     NKO-aware tokenizer that segments at morpheme boundaries.
 
-    Strategy:
+    Strategy (v2 with BPE):
     1. Split text on whitespace into words
     2. Run MorphologicalAnalyzer.analyze_word() on each word
     3. For high-confidence results (>0.4), use morpheme boundaries
-    4. For unknown words, fall back to character-level tokenization
-    5. Tone marks become attributes on the preceding token, not separate tokens
+    4. For unknown words, apply BPE merges then fall back to char-level
+    5. Tone marks attach to preceding base character (not separate tokens)
 
     The vocabulary is built from:
     - 5 special tokens: [PAD], [UNK], [BOS], [EOS], [SEP]
-    - 232 canonical NKO characters (from nko-unified.json)
-    - Common morphemes discovered during corpus analysis
+    - 64 NKO characters (U+07C0-U+07FF)
+    - 512 BPE subword merges learned from N'Ko corpus
+    - Common morphemes from morphological analyzer
     """
 
-    def __init__(self, vocab_path: Optional[str] = None):
+    def __init__(self, vocab_path: Optional[str] = None, use_bpe: bool = True):
         self._analyzer = MorphologicalAnalyzer()
         self._phonetics = NKoPhonetics()
+        self._bpe_merges: List[Tuple[str, str]] = []
 
-        # Load vocabulary
-        if vocab_path is None:
+        # Try BPE vocab first, then fall back to original
+        if vocab_path is None and use_bpe:
+            bpe_path = Path(__file__).parent / "bpe_vocab.json"
+            if bpe_path.exists():
+                vocab_path = str(bpe_path)
+            else:
+                vocab_path = str(Path(__file__).parent / "vocab.json")
+        elif vocab_path is None:
             vocab_path = str(Path(__file__).parent / "vocab.json")
 
         vp = Path(vocab_path)
@@ -89,6 +97,9 @@ class NkoTokenizer:
             self._id_to_token: Dict[int, str] = {
                 int(v): k for k, v in self._token_to_id.items()
             }
+            # Load BPE merges if present
+            if "merges" in data:
+                self._bpe_merges = [tuple(m) for m in data["merges"]]
         else:
             # Build minimal vocab from phonetics tables
             self._token_to_id, self._id_to_token = self._build_default_vocab()
@@ -182,25 +193,58 @@ class NkoTokenizer:
             return self._token_to_id[token_text]
         return UNK_ID
 
-    def _char_tokenize(self, text: str) -> List[Token]:
-        """Character-level fallback tokenization for unknown morphemes."""
-        tokens = []
-        pending_tone = None
+    def _split_to_units(self, text: str) -> List[str]:
+        """Split text into base+tone units (tone marks attach to preceding base)."""
+        units = []
+        current = ""
         for ch in text:
-            # Treat all NKO combining marks (U+07EB-U+07F5) as tone/combining
             cp = ord(ch)
             if ch in TONE_MARK_CHARS or ch in COMBINING_CHARS or (0x07EB <= cp <= 0x07F5):
-                # Attach tone to previous token
-                if tokens:
-                    tone_info = NKoPhonetics.extract_tones(ch)
-                    if tone_info:
-                        tokens[-1].tone = tone_info[0][1]
-                continue
-            tid = self._lookup_id(ch)
+                current += ch
+            else:
+                if current:
+                    units.append(current)
+                current = ch
+        if current:
+            units.append(current)
+        return units
+
+    def _apply_bpe(self, units: List[str]) -> List[str]:
+        """Apply BPE merges to a sequence of character units."""
+        if not self._bpe_merges:
+            return units
+        for left, right in self._bpe_merges:
+            new_units = []
+            i = 0
+            while i < len(units):
+                if i < len(units) - 1 and units[i] == left and units[i + 1] == right:
+                    new_units.append(left + right)
+                    i += 2
+                else:
+                    new_units.append(units[i])
+                    i += 1
+            units = new_units
+            if len(units) <= 1:
+                break
+        return units
+
+    def _char_tokenize(self, text: str) -> List[Token]:
+        """BPE-enhanced character tokenization for unknown morphemes."""
+        # Split into base+tone units, then apply BPE merges
+        units = self._split_to_units(text)
+        units = self._apply_bpe(units)
+
+        tokens = []
+        for unit in units:
+            tid = self._lookup_id(unit)
+            # Extract tone from the unit
+            tone_info = NKoPhonetics.extract_tones(unit)
+            tone = tone_info[0][1] if tone_info else None
             tokens.append(Token(
-                text=ch,
+                text=unit,
                 token_id=tid,
-                morpheme_type="char",
+                tone=tone,
+                morpheme_type="bpe" if len(unit) > 1 else "char",
             ))
         return tokens
 
