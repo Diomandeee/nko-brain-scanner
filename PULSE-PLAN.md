@@ -44,11 +44,11 @@ Evo3 master plan at `~/Desktop/evo-cube-output/nko-brain-scanner-frontier/stage3
 - [ ] Retrain with extended tokenizer (500 iters, 3e-6 lr)
 - [ ] Run profiler on extended model
 
-### Track B: Fuse + Deploy
-- [ ] Fuse 3-stage adapter into base weights: `python3 -m mlx_lm.fuse`
-- [ ] Start MLX server: `python3 -m mlx_lm.serve --port 8150`
-- [ ] Test inference: send N'Ko and English prompts
-- [ ] Document API endpoint and example usage
+### Track B: Fuse + Deploy ✅ COMPLETE
+- [x] Fused 3-stage adapter: `~/nko-brain-scanner/fused-nko-qwen3/` (8.1GB)
+- [x] MLX server deployed at :8150 (module name: `mlx_lm.server`, not `mlx_lm.serve`)
+- [x] Tested inference: coherent text generation confirmed
+- [x] API endpoint documented in model_card.md
 
 ### Track C: Bayelemabaga Pilot
 - [ ] Download Bayelemabaga dataset (47K Bambara-French pairs)
@@ -63,29 +63,32 @@ Evo3 master plan at `~/Desktop/evo-cube-output/nko-brain-scanner-frontier/stage3
 
 ## Wave 3: Integration (Iterations 7-8)
 
-### Track A: 8B Brain Scan
-- [ ] Create `scanner/mlx_brain_scan_comparison.py`: before/after activation profiling on 8B
-- [ ] Run on Mac5: extract per-layer metrics for base vs fine-tuned
-- [ ] Generate publication-quality comparison figures (the hero figure)
-- [ ] Compare activation patterns: which layers learned N'Ko?
+### Track A: 8B Brain Scan ✅ COMPLETE
+- [x] Created `scanner/mlx_brain_scan_8b.py` with LayerCapture wrapper pattern
+- [x] Ran on Mac5: 36 layers profiled (30 eng + 30 nko examples)
+- [x] Generated 3 publication figures: L2 comparison, delta, sparsity
+- [x] Key finding: Layers 0-27 frozen, 28-34 reduced (-103 ΔL2), Layer 35 spiked (+573)
+- [x] `scanner/plot_brain_scan.py` generates figures from results JSON
 
 ### Track B: Demo
 - [ ] Build Gradio demo app with 4 tabs: generate, translate, analyze, compare
 - [ ] Deploy to HuggingFace Spaces (upload fused model)
 - [ ] Add Supabase feedback logging
 
-### Track C: HuggingFace Publication
-- [ ] Create model card for `Diomandeee/nko-qwen3-8b`
-- [ ] Upload fused model + tokenizer to HF Hub
-- [ ] Upload parallel corpus as `Diomandeee/nko-parallel-corpus` dataset
-- [ ] Upload BPE vocabulary as artifact
+### Track C: HuggingFace Publication ✅ PARTIAL
+- [x] Created model card (`model_card.md`) with full results, brain scan, citation
+- [x] Created upload script (`scripts/upload_to_hf.py`)
+- [ ] Run `huggingface-cli login` on Mac5 (requires user auth)
+- [ ] Execute `python3 scripts/upload_to_hf.py --all` on Mac5
 
-## Wave 4: Paper + arXiv (Iterations 9-10)
-- [ ] Create `paper/` directory with ACL template
-- [ ] Write paper sections: Introduction, Background, Methodology, Results, Discussion, Conclusion
-- [ ] Include figures: activation comparison, heatmap, training curves, tokenizer compression
-- [ ] Include tables: 3-stage comparison, translation tax, BPE merges
-- [ ] Final revision pass
+## Wave 4: Paper + arXiv (Iterations 9-10) ✅ PARTIAL
+- [x] Created `paper/main.tex` with ACL template (8 sections)
+- [x] Created `paper/references.bib` (11 references)
+- [x] Brain scan section filled with actual results
+- [x] Tables: 3-stage comparison, training config, NKo vs English
+- [x] Figures referenced: brain_scan_l2_comparison.png, brain_scan_delta.png
+- [ ] Final revision pass (polish prose, check numbers consistency)
+- [ ] Compile LaTeX and verify PDF
 - [ ] Submit to arXiv (cs.CL)
 - [ ] Update blog post with arXiv link
 
