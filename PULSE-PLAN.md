@@ -14,23 +14,25 @@ Evo3 master plan at `~/Desktop/evo-cube-output/nko-brain-scanner-frontier/stage3
 5. **No production serving**: Adapters exist but no inference API deployed.
 6. **No HuggingFace artifacts**: Model, tokenizer, dataset not published.
 
-## Wave 0: Pre-Flight (Iteration 1)
-- [ ] Check Mac5 disk space (need 20GB free)
-- [ ] Verify adapter files exist: `~/nko-brain-scanner/adapters-bpe/adapters.safetensors`
-- [ ] Check embedding dtype on Mac5: `embed_tokens.weight.dtype` for Qwen3-8B-8bit
-- [ ] Smoke-test cross-script bridge: convert 5 Bambara sentences to N'Ko
-- [ ] Verify GCS download status (should be 96+ videos)
+## Wave 0: Pre-Flight (Iteration 1) ✅ COMPLETE
+- [x] Check Mac5 disk space (27GB free)
+- [x] Verify adapter files exist (19.4MB each)
+- [x] Check embedding dtype on Mac5: uint32 (quantized, shape 151936x1024)
+- [x] Smoke-test cross-script bridge: Bridge class works
+- [x] Verify GCS download status (169 uploaded)
 
-## Wave 1: Fix English Eval + True Baselines (Iterations 2-3)
-- [ ] Create `eval/` directory in nko-brain-scanner
-- [ ] Build `eval/build_eval_set.py`: generate 100 English eval examples from diverse sources (Dolly-15k, general knowledge, math)
-- [ ] Build 100 N'Ko eval examples from held-out data (zero overlap with any training set)
-- [ ] Format all examples identically: `{"messages": [{"role": "user", ...}, {"role": "assistant", ...}]}`
-- [ ] Create `eval/run_corrected_profiler.py`: runs base, 2-stage, 3-stage on new eval sets
-- [ ] Upload eval scripts + data to Mac5
-- [ ] Run corrected profiler on Mac5
-- [ ] Collect and analyze corrected results
-- [ ] Update blog post with corrected English numbers
+## Wave 1: Fix English Eval + True Baselines (Iterations 2-3) ✅ COMPLETE
+- [x] Created `eval/build_eval_set.py`: 100 English + 100 N'Ko examples, SHA-256 dedup
+- [x] Created `eval/run_corrected_profiler.py`: all 3 stages on frozen eval
+- [x] Uploaded to Mac5 and ran profiler
+- [x] Corrected results: NKo acc 32.8%, Eng PPL 3.80, translation tax 0.70x (-76%)
+- [x] Updated blog + docs, committed (793f540)
+
+## Wave 2 Track B: Fuse + Deploy (Iteration 3) ✅ PARTIAL
+- [x] Fused 3-stage adapter: `~/nko-brain-scanner/fused-nko-qwen3/` (8.1GB on Mac5)
+- [x] Tested inference: coherent text generation confirmed
+- [ ] Start MLX server: `python3 -m mlx_lm.serve --port 8150`
+- [ ] Document API endpoint and example usage
 
 ## Wave 2: Core Technical (Iterations 4-6)
 

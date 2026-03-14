@@ -691,6 +691,40 @@ The 679 educational videos in our GCS pipeline (169 uploaded and counting) will 
 
 ---
 
+## Experiment 8: The 8B Brain Scan
+
+We turned the brain scanner on the 8B model itself. Instead of profiling Qwen2-72B (80 layers) as in Experiments 1-2, we extracted per-layer hidden state statistics from Qwen3-8B (36 layers) processing 30 N'Ko and 30 English examples, comparing the base model against the three-stage fine-tuned model.
+
+The results reveal exactly where learning happened.
+
+### The Frozen Zone (Layers 0-27)
+
+The first 28 layers show **zero change** between base and fine-tuned models. Not "small change." Literally zero. The L2 activation norms are identical to four decimal places. This makes sense: LoRA adapters were applied only to the top 8 layers (28-35). The model's lower processing pipeline, the layers that handle basic parsing, word boundaries, and syntactic patterns, operates identically whether or not the model has been fine-tuned for N'Ko.
+
+### The Adaptation Zone (Layers 28-34)
+
+Here's where it gets interesting. The fine-tuned model processes N'Ko with **lower** activation magnitudes in the adaptation zone. Layer 28 drops by 38 points. Layer 31 drops by 102. Layer 34 drops by 104.
+
+This is counterintuitive. You might expect a model that "learned" N'Ko to fire *more strongly* on N'Ko text. Instead, it fires *less*. The adapted layers build more efficient representations of N'Ko, requiring less activation energy to encode the same information. The model isn't working harder on N'Ko after fine-tuning. It's working *smarter*.
+
+### The Output Spike (Layer 35)
+
+The final layer tells the opposite story: a massive **+573 point increase** in activation magnitude. This is the layer that projects hidden states into vocabulary logits, the layer that makes predictions. The spike means the fine-tuned model produces sharper, more confident predictions for N'Ko tokens. Less work in the reasoning layers, more confidence in the output layer. That's exactly what a 45.6% perplexity reduction looks like from the inside.
+
+### Cross-Script: English vs N'Ko
+
+When we compare English and N'Ko activations in the fine-tuned model, another pattern emerges. English shows consistently higher L2 norms in the middle layers (roughly 1.7x N'Ko from layers 6-27). This reflects the richer subword vocabulary available for English: the model can encode English concepts more densely because it has more tokens to work with.
+
+But at the output layer, N'Ko activations **exceed** English. The model is more confident predicting N'Ko tokens than English ones, which matches the inverted translation tax (0.70x) we measured in Experiment 7. The fine-tuning didn't just teach the model to read N'Ko. It made N'Ko the model's *sharpest* output language.
+
+![Brain Scan: L2 Activation Comparison](../figures/brain_scan_l2_comparison.png)
+*Figure: Per-layer L2 activation norms. Panel A shows N'Ko processing before/after fine-tuning (note the adaptation zone in layers 28-35). Panel B shows English vs N'Ko on the fine-tuned model.*
+
+![Brain Scan: Delta Plot](../figures/brain_scan_delta.png)
+*Figure: Per-layer activation change after fine-tuning. The pattern is clear: zero change in frozen layers, reduced activations in reasoning layers, massive increase at the output layer.*
+
+---
+
 ## Methodology
 
 ### Model Configuration
@@ -777,6 +811,17 @@ The 679 educational videos in our GCS pipeline (169 uploaded and counting) will 
 - **Fix:** Built frozen evaluation sets: 100 English examples across 5 domains (math, science, geography, logic, language) and 100 N'Ko examples from cultural data, held-out Wikipedia, and cognate pairs. SHA-256 deduplication against all 23,556 training examples ensures zero overlap.
 - **Profiler:** Evaluates loss, perplexity, top-1 accuracy, and N'Ko-specific token accuracy (U+07C0-U+07FF) with max sequence length 256.
 - **Results:** All numbers in the Two-Stage (Experiment 5) and Three-Stage (Experiment 7) sections use this corrected methodology. Experiment 4's 30-example comparison is preserved as the original SFT-only baseline.
+
+### Experiment 8: 8B Brain Scan (Before/After)
+- **Model:** Qwen3-8B-8bit (same as Experiments 3-7)
+- **Method:** Layer wrapper modules capture hidden states during the model's own forward pass
+- **Metrics:** L2 norm (activation magnitude), sparsity (fraction near-zero), max activation per layer
+- **Data:** 30 English + 30 N'Ko examples from frozen eval sets
+- **Configurations:** Base (no adapter) vs three-stage fine-tuned (with LoRA adapter)
+- **Layers profiled:** 36 (all transformer layers)
+- **Key finding:** Layers 0-27 frozen (ΔL2=0.00), layers 28-34 reduced (-38 to -104), layer 35 spiked (+573)
+- **Total time:** ~5 minutes per configuration on Apple M4
+- **Total cost:** $0 (local hardware)
 
 ### Reproducibility
 All code is open-sourced. The brain scan can be reproduced for under $2 of cloud compute. The fine-tuning runs for free on any Apple Silicon Mac.

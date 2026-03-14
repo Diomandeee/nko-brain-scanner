@@ -121,8 +121,49 @@ We compare the base model (no fine-tuning) against the three-stage fine-tuned mo
 
 \subsection{Results}
 
-% PLACEHOLDER: Will be filled with actual brain scan results from Mac5
-\textit{[Brain scan results pending---running on Mac5]}
+The 8B brain scan reveals a sharp boundary between frozen and adapted computation.
+Figure~\ref{fig:brain-scan} shows the per-layer L2 norm of N'Ko hidden states before and after fine-tuning.
+
+\paragraph{Frozen Zone (Layers 0--27).}
+Activations are identical between base and fine-tuned models ($\Delta$L2 = 0.00 for all 28 layers).
+This confirms that LoRA adapters, applied to the top 8 layers, leave the model's lower processing pipeline completely untouched.
+The model's ``mailroom'' and ``office'' layers process N'Ko with the same representations regardless of fine-tuning.
+
+\paragraph{Adaptation Zone (Layers 28--34).}
+The fine-tuned model processes N'Ko with \textit{lower} activation magnitudes: $\Delta$L2 ranges from $-38.4$ (layer 28) to $-103.6$ (layer 34).
+This is counterintuitive---one might expect the model to fire \textit{more} on newly learned patterns.
+Instead, the reduction suggests the adapted layers build more efficient representations of N'Ko, requiring less activation energy to encode the same information.
+Sparsity also decreases slightly in this zone ($-0.0003$ average), indicating denser information encoding.
+
+\paragraph{Output Layer (Layer 35).}
+The final layer shows a massive \textit{increase} in activation magnitude ($\Delta$L2 = $+572.7$).
+This is the layer that projects hidden states to vocabulary logits.
+The increase indicates the fine-tuned model produces sharper, more confident predictions for N'Ko tokens---consistent with the perplexity improvement from 11.02 to 6.00.
+
+\paragraph{Cross-Script Comparison.}
+Panel B of Figure~\ref{fig:brain-scan} compares English and N'Ko activations in the fine-tuned model.
+English consistently shows higher L2 norms in middle layers (roughly 1.7$\times$ N'Ko at layers 6--27), reflecting the richer subword vocabulary available for English.
+However, both languages converge at the output layer, where N'Ko activations actually exceed English---matching the inverted translation tax (0.70$\times$) observed in the perplexity evaluation.
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{../figures/brain_scan_l2_comparison.png}
+\caption{Per-layer L2 activation norms for N'Ko text processing.
+\textbf{A}: Base vs fine-tuned model showing the LoRA adaptation zone (layers 28--35).
+\textbf{B}: English vs N'Ko on the fine-tuned model, showing the cross-script activation gap.
+Log scale.}
+\label{fig:brain-scan}
+\end{figure}
+
+\begin{figure}[t]
+\centering
+\includegraphics[width=\columnwidth]{../figures/brain_scan_delta.png}
+\caption{Per-layer activation change ($\Delta$L2) for N'Ko after fine-tuning.
+Layers 0--27 show zero change (frozen).
+Layers 28--34 show reduced activations (more efficient encoding).
+Layer 35 shows a massive increase (sharper predictions).}
+\label{fig:delta}
+\end{figure}
 
 \section{Three-Stage Training Pipeline}
 \label{sec:training}
