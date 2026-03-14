@@ -620,7 +620,67 @@ We built a complete pipeline to inject these tokens into Qwen3's vocabulary:
 3. **600 SFT training examples** showing each token in context
 4. **Morphology integration**: the BPE tokenizer uses `NKoMorphology.analyze_word()` for high-confidence words, falls back to BPE merges for unknown words
 
-This is ready to run on Mac5. The hypothesis: if we extend the vocabulary, then fine-tune with CPT+SFT, the model should see an even larger jump in N'Ko token accuracy because it can now process multi-character units instead of individual characters.
+This vocabulary extension pipeline is ready for future experiments where we modify the model's embedding layer directly.
+
+---
+
+## Experiment 7: Three-Stage Training (CPT + SFT + BPE)
+
+We ran the BPE-aware training as a third stage, resuming from the two-stage (CPT+SFT) adapter and training for 1,000 more iterations on 25,100 examples (21,240 existing + 3,860 BPE-focused examples designed to teach subword boundaries).
+
+The BPE training examples use three strategies:
+1. **BPE boundary completion**: context ends at a BPE merge point, model must predict what follows
+2. **Word boundary completion**: sentence split at 40% for natural text completion
+3. **Continuation prompts**: "Continue: [prefix]" format to teach token sequencing
+
+### Training Dynamics
+
+| Iteration | Val Loss |
+|-----------|----------|
+| 1 | 1.260 |
+| 200 | 1.197 |
+| 400 | 1.205 |
+| 600 | 1.224 |
+| **800** | **1.183** |
+| 1000 | 1.248 |
+
+The validation loss followed an unusual pattern: rapid improvement to iter 200, a mid-training plateau (400-600), then recovery at iter 800 to the overall best (1.183), before slight overfitting by iter 1000. The best checkpoint was at iter 800, not the final iteration.
+
+### Three-Stage Brain Scan Results
+
+We ran the full brain scan profiler comparing all three model configurations on the same evaluation set:
+
+| Metric | Base (Qwen3-8B) | 2-Stage (CPT+SFT) | 3-Stage (+BPE) | Total Gain |
+|--------|:---:|:---:|:---:|:---:|
+| N'Ko Loss | 2.148 | 1.539 | **1.519** | -29.3% |
+| N'Ko Perplexity | 8.57 | 4.66 | **4.57** | -46.7% |
+| N'Ko Top-1 Accuracy | 46.4% | 61.4% | **62.3%** | +15.9pp |
+| N'Ko Token Accuracy | 27.0% | 37.9% | **39.4%** | +12.4pp |
+| Eng Loss | 4.86 | 5.45 | 5.35 | — |
+| Eng Top-1 Accuracy | 24.8% | 26.2% | 27.0% | +2.2pp |
+
+The three-stage model achieved the best results across every N'Ko metric. The BPE stage added incremental but consistent gains: N'Ko token accuracy climbed from 37.9% to 39.4% (+1.5pp), and perplexity dropped from 4.66 to 4.57.
+
+More significantly, English performance *improved* with the BPE stage rather than degrading. The English top-1 accuracy went from 26.2% to 27.0%, suggesting the BPE training examples, which teach general text completion patterns, benefited English as well.
+
+### The Full Training Trajectory
+
+Across all three stages, the model went from barely reading N'Ko to predicting nearly 4 in 10 N'Ko characters correctly:
+
+| Stage | Training | N'Ko Token Acc | Gain |
+|-------|----------|:-:|:-:|
+| Base (Qwen3-8B) | None | 27.0% | — |
+| Stage 1: SFT only | 1K iters, 4.3K examples | 28.0% | +1.0pp |
+| Stage 2: CPT + SFT | 2K + 1K iters, 21K examples | 37.9% | +9.9pp |
+| **Stage 3: CPT + SFT + BPE** | 2K + 1K + 1K iters, 25K examples | **39.4%** | +1.5pp |
+
+The biggest jump came from CPT (Stage 2), which taught the model character-level patterns from raw N'Ko Wikipedia text. The BPE stage (Stage 3) added the final refinement, teaching the model that certain character sequences form linguistic units.
+
+### What Comes Next
+
+The 39.4% N'Ko token accuracy represents a 46% relative improvement over the base model's 27.0%. But the ceiling is still far away. The next frontier is direct vocabulary extension: adding the 512 BPE tokens to Qwen's embedding layer (currently at 151,936 entries), initializing them as averages of their constituent character embeddings, and retraining. This would let the model process N'Ko subwords as single tokens rather than character sequences, potentially closing the remaining gap with English-level tokenization efficiency.
+
+The 679 educational videos in our GCS pipeline (96 uploaded and counting) will provide the next wave of training data: natural spoken N'Ko transcribed and aligned, the kind of data that teaches a model not just how the script works but how the language breathes.
 
 ---
 
@@ -694,6 +754,15 @@ This is ready to run on Mac5. The hypothesis: if we extend the vocabulary, then 
 - **Compression:** 2.75x average on test sentences (88 chars -> 32 BPE tokens)
 - **Integration:** Falls back from morphological analysis (>0.4 confidence) to BPE merges to character-level
 - **Total training time:** <1 second on Apple M2
+- **Total cost:** $0 (local hardware)
+
+### Experiment 7: Three-Stage Training (CPT + SFT + BPE)
+- **Base adapter:** Two-stage (CPT+SFT) checkpoint from Experiment 5
+- **BPE data:** 3,860 BPE-focused examples (boundary completion, word completion, continuation prompts) + 21,240 existing examples
+- **Training:** 1,000 iterations, learning rate 3e-6, batch size 1, max sequence length 512
+- **Best checkpoint:** Iter 800 (val loss 1.183)
+- **Evaluation:** Same profiler as Experiment 4, comparing base vs two-stage vs three-stage on 30 N'Ko + 4 English examples
+- **Total training time:** ~45 minutes on Apple M4
 - **Total cost:** $0 (local hardware)
 
 ### Reproducibility

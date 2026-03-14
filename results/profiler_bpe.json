@@ -1,0 +1,94 @@
+{
+  "base": {
+    "nko": {
+      "avg_loss": 2.1484,
+      "perplexity": 8.57,
+      "top1_accuracy": 0.4644,
+      "nko_token_accuracy": 0.2703,
+      "nko_tokens_evaluated": 2275,
+      "total_tokens": 5446,
+      "num_examples": 30
+    },
+    "english": {
+      "avg_loss": 4.8582,
+      "perplexity": 128.79,
+      "top1_accuracy": 0.2482,
+      "nko_token_accuracy": 0.0,
+      "nko_tokens_evaluated": 0,
+      "total_tokens": 141,
+      "num_examples": 4
+    }
+  },
+  "two_stage": {
+    "nko": {
+      "avg_loss": 1.5387,
+      "perplexity": 4.66,
+      "top1_accuracy": 0.6144,
+      "nko_token_accuracy": 0.3789,
+      "nko_tokens_evaluated": 2275,
+      "total_tokens": 5446,
+      "num_examples": 30
+    },
+    "english": {
+      "avg_loss": 5.4468,
+      "perplexity": 232.02,
+      "top1_accuracy": 0.2624,
+      "nko_token_accuracy": 0.0,
+      "nko_tokens_evaluated": 0,
+      "total_tokens": 141,
+      "num_examples": 4
+    }
+  },
+  "three_stage_bpe": {
+    "nko": {
+      "avg_loss": 1.5192,
+      "perplexity": 4.57,
+      "top1_accuracy": 0.6227,
+      "nko_token_accuracy": 0.3938,
+      "nko_tokens_evaluated": 2275,
+      "total_tokens": 5446,
+      "num_examples": 30
+    },
+    "english": {
+      "avg_loss": 5.3546,
+      "perplexity": 211.58,
+      "top1_accuracy": 0.2695,
+      "nko_token_accuracy": 0.0,
+      "nko_tokens_evaluated": 0,
+      "total_tokens": 141,
+      "num_examples": 4
+    }
+  },
+  "deltas_vs_base": {
+    "two_stage_nko": {
+      "loss_delta": -0.6097,
+      "ppl_delta": -3.91,
+      "acc_delta": 0.15,
+      "nko_acc_delta": 0.1086
+    },
+    "three_stage_nko": {
+      "loss_delta": -0.6292,
+      "ppl_delta": -4.0,
+      "acc_delta": 0.1583,
+      "nko_acc_delta": 0.1235
+    }
+  },
+  "metadata": {
+    "model": "mlx-community/Qwen3-8B-8bit",
+    "adapter_twostage": "/Users/mohameddiomande/nko-brain-scanner/adapters-combined",
+    "adapter_bpe": "/Users/mohameddiomande/nko-brain-scanner/adapters-bpe",
+    "training_stages": "Stage 1: CPT (2000 iters, Wikipedia) -> Stage 2: SFT (1000 iters, combined) -> Stage 3: BPE-aware SFT (1000 iters, 25K examples)",
+    "bpe_val_loss_curve": {
+      "1": 1.26,
+      "200": 1.197,
+      "400": 1.205,
+      "600": 1.224,
+      "800": 1.183,
+      "1000": 1.248
+    },
+    "max_seq_len": 256,
+    "nko_examples": 30,
+    "english_examples": 4,
+    "timestamp": "2026-03-14T16:14:43.848761"
+  }
+}
