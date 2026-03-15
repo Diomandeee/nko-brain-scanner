@@ -1,0 +1,57 @@
+# Docker Compose for N'Ko Continuous Learning Pipeline
+# Run with: docker-compose up -d
+
+version: '3.8'
+
+services:
+  # Continuous vocabulary enrichment
+  enrichment:
+    build: .
+    container_name: nko-enrichment
+    restart: unless-stopped
+    environment:
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_SERVICE_KEY=${SUPABASE_SERVICE_KEY}
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+      - ENRICHMENT_INTERVAL=300
+      - BATCH_SIZE=10
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+    command: ["python", "scripts/scheduled_exploration.py", "--interval", "300"]
+    healthcheck:
+      test: ["CMD", "python", "-c", "print('ok')"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+
+  # Video processing (run on-demand or scheduled)
+  extraction:
+    build: .
+    container_name: nko-extraction
+    profiles: ["extraction"]  # Only runs when explicitly requested
+    environment:
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_SERVICE_KEY=${SUPABASE_SERVICE_KEY}
+      - GEMINI_API_KEY=${GEMINI_API_KEY}
+    volumes:
+      - ./data:/app/data
+      - ./logs:/app/logs
+    command: ["python", "scripts/run_extraction.py", "--all-channels", "--resume"]
+
+  # Forum scraper (run periodically)
+  forum-scraper:
+    build: .
+    container_name: nko-forum
+    profiles: ["forum"]  # Only runs when explicitly requested
+    environment:
+      - SUPABASE_URL=${SUPABASE_URL}
+      - SUPABASE_SERVICE_KEY=${SUPABASE_SERVICE_KEY}
+    volumes:
+      - ./data:/app/data
+    command: ["python", "scripts/forum_scraper.py", "--save-supabase"]
+
+volumes:
+  data:
+  logs:
+

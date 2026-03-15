@@ -1,0 +1,97 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://learnnko.app/schemas/conversation.schema.json",
+  "title": "N'Ko Conversational Training Data",
+  "description": "Conversation format for LLM fine-tuning (Gemini/OpenAI compatible)",
+  "type": "object",
+  "required": ["messages"],
+  "properties": {
+    "messages": {
+      "type": "array",
+      "minItems": 2,
+      "items": {
+        "type": "object",
+        "required": ["role", "content"],
+        "properties": {
+          "role": {
+            "type": "string",
+            "enum": ["system", "user", "assistant"]
+          },
+          "content": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "metadata": {
+      "type": "object",
+      "properties": {
+        "topic": {
+          "type": "string",
+          "enum": [
+            "translation",
+            "vocabulary",
+            "grammar",
+            "pronunciation",
+            "culture",
+            "alphabet",
+            "numbers",
+            "greetings",
+            "common_phrases"
+          ]
+        },
+        "difficulty": {
+          "type": "string",
+          "enum": ["beginner", "intermediate", "advanced"]
+        },
+        "source_videos": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    }
+  },
+  "examples": [
+    {
+      "messages": [
+        {
+          "role": "system",
+          "content": "You are a helpful N'Ko language tutor. You teach the N'Ko script (ߒߞߏ), which is used to write Manding languages. Always provide N'Ko text with its Latin transliteration and English translation."
+        },
+        {
+          "role": "user",
+          "content": "How do I say 'hello' in N'Ko?"
+        },
+        {
+          "role": "assistant",
+          "content": "In N'Ko, hello is written as **ߌ ߛߋ߲߬ߓߊ** (I sɛnba), which literally means 'I greet you'. This is the most common greeting used in daily conversations.\n\nThe phrase breaks down as:\n- ߌ (I) = 'I'\n- ߛߋ߲߬ߓߊ (sɛnba) = 'greet'\n\nN'Ko is written from right to left, so you would write it starting from ߊ and ending with ߌ."
+        }
+      ],
+      "metadata": {
+        "topic": "greetings",
+        "difficulty": "beginner",
+        "source_videos": ["toUJQVnRSbU"]
+      }
+    },
+    {
+      "messages": [
+        {
+          "role": "user",
+          "content": "What is the N'Ko alphabet?"
+        },
+        {
+          "role": "assistant",
+          "content": "The N'Ko alphabet (ߒߞߏ ߛߓߍ ߞߎ߬ߙߎ߲߬ߘߎ) consists of 27 letters and 7 tone marks. It was invented in 1949 by Solomana Kante in Guinea to write the Manding languages.\n\nThe vowels are:\nߊ (a), ߋ (e), ߌ (i), ߍ (ɛ), ߎ (u), ߏ (o), ߐ (ɔ)\n\nThe consonants include:\nߓ (b), ߛ (s), ߜ (gb), ߝ (f), ߞ (k), ߟ (l), ߡ (m), ߢ (ny), ߣ (n), ߤ (h), ߥ (w), ߦ (y), ߧ (nw)\n\nN'Ko is unique because it uses tone marks to indicate the pitch of syllables, which is essential for Manding languages."
+        }
+      ],
+      "metadata": {
+        "topic": "alphabet",
+        "difficulty": "beginner",
+        "source_videos": ["xsUrdpKD5wM", "ylJcGYu9FYM"]
+      }
+    }
+  ]
+}
+

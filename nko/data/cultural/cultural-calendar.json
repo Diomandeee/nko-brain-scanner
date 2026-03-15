@@ -1,0 +1,106 @@
+{
+  "meta": {
+    "name": "N'Ko Cultural Calendar",
+    "version": "1.0.0",
+    "created": "2026-02-19",
+    "task": "NKO-1.4",
+    "description": "Cultural and religious calendar events with associated greetings, proverbs, and themes.",
+    "total_entries": 7,
+    "sources": [
+      "core/prediction/cultural_engine.py"
+    ]
+  },
+  "events": [
+    {
+      "id": "cal-01",
+      "name_nko": "ߊ߳ߌ߬ߘߎ߬ ߝߕߙ",
+      "name_latin": "Aidu Fitiri",
+      "description": "Eid al-Fitr - End of Ramadan",
+      "date_fixed": null,
+      "date_note": "Lunar calendar — varies each year",
+      "is_islamic": true,
+      "is_regional": false,
+      "greetings": ["ߊ߬ߟߊ ߞ' ߊ߲ ߓߍ߯ ߕߐ߯ ߛߊ߲߬ ߠߎ߬ ߟߊ߫", "ߊ߳ߌ߬ߘߎ ߡߎ߬ߓߙߞ"],
+      "associated_proverbs": ["ߛߎ߲ߡߊ ߦߋ߫ ߖߐ ߟߋ ߘߌ߫"],
+      "themes": ["celebration", "family", "forgiveness"]
+    },
+    {
+      "id": "cal-02",
+      "name_nko": "ߊ߳ߌ߬ߘߎ߬ ߞߓߌ߬ߙ",
+      "name_latin": "Aidu Kabir",
+      "description": "Eid al-Adha - Festival of Sacrifice",
+      "date_fixed": null,
+      "date_note": "Lunar calendar — varies each year",
+      "is_islamic": true,
+      "is_regional": false,
+      "greetings": ["ߛߟߌ߬ߟߌ ߓߊ߫ ߓߊ߲߫", "ߊ߬ߟߊ ߞ' ߊ߲ ߛߊ߬ߙߌ ߓߎ߰ ߠߊ߫"],
+      "associated_proverbs": [],
+      "themes": ["sacrifice", "family", "community"]
+    },
+    {
+      "id": "cal-03",
+      "name_nko": "ߡߏ߬ߟߎ߬ߘ",
+      "name_latin": "Mawloud",
+      "description": "Prophet's Birthday (Mawlid)",
+      "date_fixed": null,
+      "date_note": "Lunar calendar — varies each year",
+      "is_islamic": true,
+      "is_regional": false,
+      "greetings": ["ߡߏ߬ߟߎ߬ߘ ߛߊ߲߬ ߣ' ߌ ߦߋ߫"],
+      "associated_proverbs": [],
+      "themes": ["religion", "celebration"]
+    },
+    {
+      "id": "cal-04",
+      "name_nko": "ߛߊ߲߬ߞߎ߬ߙߊ",
+      "name_latin": "San Kura",
+      "description": "New Year",
+      "date_fixed": "January 1",
+      "date_note": null,
+      "is_islamic": false,
+      "is_regional": false,
+      "greetings": ["ߛߊ߲߬ߞߎ߬ߙߊ ߤߍ߬ߙߋ", "ߛߊ߲ ߞߎ߬ߙߊ ߦ ߌ ߤߍ߬ߙߊ ߘߌ߫"],
+      "associated_proverbs": [],
+      "themes": ["new_beginnings", "hope", "celebration"]
+    },
+    {
+      "id": "cal-05",
+      "name_nko": "ߒߞߏ ߕߟߋ",
+      "name_latin": "N'Ko Don",
+      "description": "N'Ko Day - April 14 (Script invention anniversary by Solomana Kanté, 1949)",
+      "date_fixed": "April 14",
+      "date_note": null,
+      "is_islamic": false,
+      "is_regional": true,
+      "greetings": ["ߒߞߏ ߕߟߋ ߤߍ߬ߙߋ", "ߒߞߏ ߛߌ߲ߘߟߌ ߤߍ߬ߙߋ"],
+      "associated_proverbs": ["ߒߞߏ ߦߋ߫ ߖߊ߯ߓߡߊ ߟߋ ߘߌ߫"],
+      "themes": ["literacy", "culture", "heritage"]
+    },
+    {
+      "id": "cal-06",
+      "name_nko": "ߜߌ߬ߣߍ ߦߙߌ߬ߦߊ ߕߟߋ",
+      "name_latin": "Gine Yiriya Don",
+      "description": "Guinea Independence Day - October 2",
+      "date_fixed": "October 2",
+      "date_note": null,
+      "is_islamic": false,
+      "is_regional": true,
+      "greetings": ["ߦߙߌ߬ߦߊ ߕߟߋ ߤߍ߬ߙߋ"],
+      "associated_proverbs": [],
+      "themes": ["independence", "nation", "celebration"]
+    },
+    {
+      "id": "cal-07",
+      "name_nko": "ߡߊ߬ߟߌ ߦߙߌ߬ߦߊ ߕߟߋ",
+      "name_latin": "Mali Yiriya Don",
+      "description": "Mali Independence Day - September 22",
+      "date_fixed": "September 22",
+      "date_note": null,
+      "is_islamic": false,
+      "is_regional": true,
+      "greetings": ["ߦߙߌ߬ߦߊ ߕߟߋ ߤߍ߬ߙߋ"],
+      "associated_proverbs": [],
+      "themes": ["independence", "nation", "celebration"]
+    }
+  ]
+}

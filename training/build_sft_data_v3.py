@@ -41,12 +41,10 @@ random.seed(42)
 # Try to import cross-script bridge for Latin -> N'Ko conversion
 BRIDGE_AVAILABLE = False
 try:
-    sys.path.insert(0, str(Path.home() / "Desktop" / "NKo"))
     from nko.transliterate import transliterate
     BRIDGE_AVAILABLE = True
 except ImportError:
     try:
-        sys.path.insert(0, str(Path.home() / "Desktop" / "cross-script-bridge"))
         from core.bridge import Bridge
         _bridge = Bridge()
         def transliterate(text, source="latin", target="nko"):

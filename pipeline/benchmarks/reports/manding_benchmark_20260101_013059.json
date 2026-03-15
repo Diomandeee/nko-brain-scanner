@@ -1,0 +1,85 @@
+{
+  "timestamp": "20260101_013059",
+  "total_models": 4,
+  "rankings": [
+    {
+      "rank": 1,
+      "model_name": "GPT-4o",
+      "model_id": "gpt-4o",
+      "provider": "openai",
+      "overall_score": 2.43,
+      "translation_score": 6.94,
+      "cross_language_score": 0.0,
+      "curriculum_score": 0.0
+    },
+    {
+      "rank": 2,
+      "model_name": "GPT-5.2",
+      "model_id": "gpt-5.2",
+      "provider": "openai",
+      "overall_score": 0.0,
+      "translation_score": 0.0,
+      "cross_language_score": 0.0,
+      "curriculum_score": 0.0
+    },
+    {
+      "rank": 3,
+      "model_name": "Gemini 3 Pro",
+      "model_id": "gemini-3-pro",
+      "provider": "google",
+      "overall_score": 0.0,
+      "translation_score": 0.0,
+      "cross_language_score": 0.0,
+      "curriculum_score": 0.0
+    },
+    {
+      "rank": 4,
+      "model_name": "Gemini 3 Flash",
+      "model_id": "gemini-3-flash",
+      "provider": "google",
+      "overall_score": 0.0,
+      "translation_score": 0.0,
+      "cross_language_score": 0.0,
+      "curriculum_score": 0.0
+    }
+  ],
+  "by_language_pair": {
+    "nko_english": {
+      "best_model": "GPT-5.2",
+      "chrf_score": 0.0
+    },
+    "english_nko": {
+      "best_model": "GPT-5.2",
+      "chrf_score": 0.0
+    },
+    "nko_french": {
+      "best_model": "GPT-4o",
+      "chrf_score": 0.4
+    },
+    "french_nko": {
+      "best_model": "GPT-4o",
+      "chrf_score": 2.0
+    },
+    "bambara_french": {
+      "best_model": "GPT-4o",
+      "chrf_score": 12.3
+    },
+    "french_bambara": {
+      "best_model": "GPT-4o",
+      "chrf_score": 2.7
+    },
+    "bambara_english": {
+      "best_model": "GPT-4o",
+      "chrf_score": 31.2
+    }
+  },
+  "by_curriculum_level": {},
+  "by_task": {},
+  "recommendations": {
+    "overall_best": "GPT-4o",
+    "best_for_nko": "GPT-4o",
+    "best_for_bambara": "GPT-4o",
+    "best_for_translation": "GPT-4o",
+    "best_value": "GPT-5.2"
+  }
+}

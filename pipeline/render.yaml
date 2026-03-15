@@ -1,0 +1,22 @@
+# Render.com Blueprint
+# Deploy by connecting this repo to Render
+
+services:
+  - type: worker
+    name: nko-enrichment
+    env: docker
+    dockerfilePath: ./training/Dockerfile
+    dockerContext: ./training
+    envVars:
+      - key: SUPABASE_URL
+        sync: false
+      - key: SUPABASE_SERVICE_KEY
+        sync: false
+      - key: GEMINI_API_KEY
+        sync: false
+      - key: ENRICHMENT_INTERVAL
+        value: "300"
+      - key: BATCH_SIZE
+        value: "10"
+    autoDeploy: true
+

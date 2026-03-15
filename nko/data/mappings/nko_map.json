@@ -1,0 +1,69 @@
+{
+  "meta": {
+    "script": "N'Ko",
+    "name": "ߒߞߏ",
+    "unicode_range": "U+07C0–U+07FF",
+    "direction": "rtl",
+    "creator": "Solomana Kante",
+    "year": 1949,
+    "speakers": "~10 million (Manding languages)"
+  },
+  "letters": {
+    "vowels": [
+      {"char": "ߊ", "code": "U+07CA", "ipa": "a", "name": "A"},
+      {"char": "ߋ", "code": "U+07CB", "ipa": "o", "name": "O"},
+      {"char": "ߌ", "code": "U+07CC", "ipa": "i", "name": "I"},
+      {"char": "ߍ", "code": "U+07CD", "ipa": "e", "name": "E"},
+      {"char": "ߎ", "code": "U+07CE", "ipa": "u", "name": "U"},
+      {"char": "ߏ", "code": "U+07CF", "ipa": "ɔ", "name": "Open O"},
+      {"char": "ߐ", "code": "U+07D0", "ipa": "ə", "name": "Schwa"}
+    ],
+    "consonants": [
+      {"char": "ߒ", "code": "U+07D2", "ipa": "n", "name": "N (Long Leg)"},
+      {"char": "ߓ", "code": "U+07D3", "ipa": "b", "name": "Ba"},
+      {"char": "ߔ", "code": "U+07D4", "ipa": "p", "name": "Pa"},
+      {"char": "ߕ", "code": "U+07D5", "ipa": "t", "name": "Ta"},
+      {"char": "ߖ", "code": "U+07D6", "ipa": "dʒ", "name": "Ja"},
+      {"char": "ߗ", "code": "U+07D7", "ipa": "tʃ", "name": "Cha"},
+      {"char": "ߘ", "code": "U+07D8", "ipa": "d", "name": "Da"},
+      {"char": "ߙ", "code": "U+07D9", "ipa": "r", "name": "Ra"},
+      {"char": "ߚ", "code": "U+07DA", "ipa": "rr", "name": "Rra"},
+      {"char": "ߛ", "code": "U+07DB", "ipa": "s", "name": "Sa"},
+      {"char": "ߜ", "code": "U+07DC", "ipa": "gb", "name": "Gba"},
+      {"char": "ߝ", "code": "U+07DD", "ipa": "f", "name": "Fa"},
+      {"char": "ߞ", "code": "U+07DE", "ipa": "k", "name": "Ka"},
+      {"char": "ߟ", "code": "U+07DF", "ipa": "l", "name": "La"},
+      {"char": "ߠ", "code": "U+07E0", "ipa": "n̥", "name": "Na Woloso"},
+      {"char": "ߡ", "code": "U+07E1", "ipa": "m", "name": "Ma"},
+      {"char": "ߢ", "code": "U+07E2", "ipa": "ɲ", "name": "Nya"},
+      {"char": "ߣ", "code": "U+07E3", "ipa": "n", "name": "Na"},
+      {"char": "ߤ", "code": "U+07E4", "ipa": "h", "name": "Ha"},
+      {"char": "ߥ", "code": "U+07E5", "ipa": "w", "name": "Wa"},
+      {"char": "ߦ", "code": "U+07E6", "ipa": "j", "name": "Ya"},
+      {"char": "ߧ", "code": "U+07E7", "ipa": "ŋ", "name": "Nya Woloso"},
+      {"char": "ߨ", "code": "U+07E8", "ipa": "p", "name": "Pa"},
+      {"char": "ߩ", "code": "U+07E9", "ipa": "r", "name": "Ra"},
+      {"char": "ߪ", "code": "U+07EA", "ipa": "s", "name": "Sa"}
+    ]
+  },
+  "digits": [
+    {"char": "߀", "code": "U+07C0", "value": 0},
+    {"char": "߁", "code": "U+07C1", "value": 1},
+    {"char": "߂", "code": "U+07C2", "value": 2},
+    {"char": "߃", "code": "U+07C3", "value": 3},
+    {"char": "߄", "code": "U+07C4", "value": 4},
+    {"char": "߅", "code": "U+07C5", "value": 5},
+    {"char": "߆", "code": "U+07C6", "value": 6},
+    {"char": "߇", "code": "U+07C7", "value": 7},
+    {"char": "߈", "code": "U+07C8", "value": 8},
+    {"char": "߉", "code": "U+07C9", "value": 9}
+  ],
+  "tone_marks": [
+    {"char": "߫", "code": "U+07EB", "meaning": "High tone", "ipa": "́"},
+    {"char": "߬", "code": "U+07EC", "meaning": "Falling tone", "ipa": "̀"},
+    {"char": "߭", "code": "U+07ED", "meaning": "Rising tone", "ipa": "̂"},
+    {"char": "߮", "code": "U+07EE", "meaning": "Long", "ipa": "ː"},
+    {"char": "߯", "code": "U+07EF", "meaning": "Very long", "ipa": "ːː"},
+    {"char": "߲", "code": "U+07F2", "meaning": "Nasalization", "ipa": "̃"}
+  ]
+}

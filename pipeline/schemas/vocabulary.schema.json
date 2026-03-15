@@ -1,0 +1,162 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://learnnko.app/schemas/vocabulary.schema.json",
+  "title": "N'Ko Vocabulary Item",
+  "description": "A vocabulary entry for the N'Ko language dictionary",
+  "type": "object",
+  "required": ["word", "latin", "meaning", "pos"],
+  "properties": {
+    "word": {
+      "type": "string",
+      "description": "N'Ko word in Unicode",
+      "pattern": "^[\\u07C0-\\u07FF]+$"
+    },
+    "latin": {
+      "type": "string",
+      "description": "Latin/Romanized transliteration"
+    },
+    "meaning": {
+      "type": "string",
+      "description": "English meaning/definition"
+    },
+    "pos": {
+      "type": "string",
+      "enum": [
+        "noun",
+        "verb",
+        "adjective",
+        "adverb",
+        "pronoun",
+        "conjunction",
+        "preposition",
+        "interjection",
+        "particle",
+        "number",
+        "letter"
+      ],
+      "description": "Part of speech"
+    },
+    "plural": {
+      "type": "string",
+      "description": "Plural form in N'Ko (if applicable)"
+    },
+    "root": {
+      "type": "string",
+      "description": "Root word in N'Ko (for derived words)"
+    },
+    "variants": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      },
+      "description": "Alternative spellings or dialectal variants"
+    },
+    "examples": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["nko", "english"],
+        "properties": {
+          "nko": {
+            "type": "string",
+            "description": "Example sentence in N'Ko"
+          },
+          "latin": {
+            "type": "string",
+            "description": "Romanized example"
+          },
+          "english": {
+            "type": "string",
+            "description": "English translation of example"
+          }
+        }
+      },
+      "description": "Example sentences using this word"
+    },
+    "frequency": {
+      "type": "integer",
+      "minimum": 1,
+      "description": "Occurrence count in training corpus"
+    },
+    "category": {
+      "type": "string",
+      "enum": [
+        "basic",
+        "common",
+        "academic",
+        "technical",
+        "literary",
+        "colloquial"
+      ],
+      "description": "Usage frequency category"
+    },
+    "sources": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "properties": {
+          "video_id": {
+            "type": "string"
+          },
+          "frame_index": {
+            "type": "integer"
+          }
+        }
+      },
+      "description": "Videos where this word was extracted from"
+    }
+  },
+  "examples": [
+    {
+      "word": "ߛߓߍ",
+      "latin": "sɛbɛ",
+      "meaning": "to write; writing; book",
+      "pos": "verb",
+      "examples": [
+        {
+          "nko": "ߒ ߓߊ߯ ߛߓߍ߬ ߟߊ߫",
+          "latin": "N bɛ sɛbɛ la",
+          "english": "I am writing"
+        },
+        {
+          "nko": "ߛߓߍ ߡߌ߲߫",
+          "latin": "Sɛbɛ min",
+          "english": "Which book?"
+        }
+      ],
+      "frequency": 156,
+      "category": "basic",
+      "sources": [
+        {"video_id": "xsUrdpKD5wM", "frame_index": 45},
+        {"video_id": "toUJQVnRSbU", "frame_index": 12}
+      ]
+    },
+    {
+      "word": "ߒߞߏ",
+      "latin": "N'Ko",
+      "meaning": "N'Ko (writing system); 'I say' in Manding",
+      "pos": "noun",
+      "examples": [
+        {
+          "nko": "ߒ ߓߊ߯ ߒߞߏ ߞߊ߬ߙߊ߲߬ ߠߊ߫",
+          "latin": "N bɛ N'ko karan na",
+          "english": "I am learning N'Ko"
+        }
+      ],
+      "frequency": 532,
+      "category": "basic",
+      "sources": [
+        {"video_id": "xsUrdpKD5wM", "frame_index": 1}
+      ]
+    },
+    {
+      "word": "ߊ",
+      "latin": "a",
+      "meaning": "letter A (first vowel in N'Ko alphabet)",
+      "pos": "letter",
+      "frequency": 1000,
+      "category": "basic"
+    }
+  ]
+}
+

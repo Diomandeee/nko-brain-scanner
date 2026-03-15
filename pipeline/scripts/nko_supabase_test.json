@@ -1,0 +1,159 @@
+{
+  "run_time": "2025-12-31T01:35:43.478620",
+  "config": {
+    "frame_rate": 0.2,
+    "max_frames": 5,
+    "worlds": [
+      "world_everyday",
+      "world_formal",
+      "world_storytelling",
+      "world_proverbs",
+      "world_educational"
+    ],
+    "store_supabase": true
+  },
+  "summary": {
+    "videos_processed": 1,
+    "total_frames": 5,
+    "frames_with_nko": 3,
+    "total_world_variants": 36
+  },
+  "results": [
+    {
+      "video_id": "xsUrdpKD5wM",
+      "title": "ߒߞߏ ߦߌ߬ߘߊ߬ߞߏ߬ ߞߍ߲ߘߍ ߥߟߊ߬ߘߊ ߁߀߲  ߄ ߂߄ ߂߀߂߅",
+      "youtube_url": "https://www.youtube.com/watch?v=xsUrdpKD5wM",
+      "status": "completed",
+      "frames_analyzed": 5,
+      "frames_with_nko": 3,
+      "total_world_variants": 36,
+      "source_id": "1a704be0-ba22-4cb6-bf7a-1ce9ac76cb96",
+      "error": null,
+      "detections": [
+        {
+          "frame_index": 2,
+          "timestamp": 10.0,
+          "nko_text": "ߒߞߏ ߘߐ߫ ߞߊ߬ߙߊ߲ ߞߊ߲ߘߟߊ ߟߎ߬ ߦߋ߫ ߞߊ߲ ߡߍ߲ ߘߐ߫؟",
+          "latin_transliteration": "N'Ko doŋ kaaraŋ kaŋdala lu ye kaŋ mɛŋ doŋ?",
+          "english_translation": "In N'Ko, in which language are the reading teachers?",
+          "confidence": 0.95,
+          "detection_id": "fa67c569-7315-4af6-849b-ac7b48284694",
+          "worlds": [
+            {
+              "world_name": "everyday",
+              "variant_count": 3,
+              "cultural_notes": "The language used for instruction in N'Ko schools can vary. While the goal is often to teach in N'Ko itself, sometimes French (due to its colonial history and continued presence) or other languages might be used, especially in certain subjects or regions. Asking about the language of instruction is a common and practical question.",
+              "error": null
+            },
+            {
+              "world_name": "formal",
+              "variant_count": 3,
+              "cultural_notes": null,
+              "error": null
+            },
+            {
+              "world_name": "storytelling",
+              "variant_count": 3,
+              "cultural_notes": "The N'Ko script and language are a symbol of Mande cultural identity and resistance against cultural assimilation. Using it in storytelling reinforces its importance and promotes its use in education and everyday life.",
+              "error": null
+            },
+            {
+              "world_name": "proverbs",
+              "variant_count": 3,
+              "cultural_notes": "Mande culture (primarily associated with the Mandinka, Bambara, Dyula, and other related groups)",
+              "error": null
+            },
+            {
+              "world_name": "educational",
+              "variant_count": 0,
+              "cultural_notes": null,
+              "error": null
+            }
+          ]
+        },
+        {
+          "frame_index": 3,
+          "timestamp": 15.0,
+          "nko_text": "ߞߊ߲ ߞߏ ߟߊ߫ ߞߊ߲ ߘߐ߫ ߓߊ؟",
+          "latin_transliteration": "kan ko la ka kan do ba?",
+          "english_translation": "Speaking in the language of N'Ko, is it good?",
+          "confidence": 0.9,
+          "detection_id": "2783a59b-439c-4d03-93bf-601f28ea1721",
+          "worlds": [
+            {
+              "world_name": "everyday",
+              "variant_count": 3,
+              "cultural_notes": "The question often reflects a concern about the preservation of the N'Ko language and culture in the face of globalization and the dominance of other languages like French and English. The answer can be a reflection of one's optimism or pessimism regarding the future of N'Ko.",
+              "error": null
+            },
+            {
+              "world_name": "formal",
+              "variant_count": 3,
+              "cultural_notes": null,
+              "error": null
+            },
+            {
+              "world_name": "storytelling",
+              "variant_count": 3,
+              "cultural_notes": "The N'Ko script and language are symbols of Mande cultural identity and resistance to colonial linguistic dominance. Using it in storytelling reinforces its value and promotes its preservation.",
+              "error": null
+            },
+            {
+              "world_name": "proverbs",
+              "variant_count": 3,
+              "cultural_notes": "Mande Culture, specifically associated with the N'Ko script and its speakers.",
+              "error": null
+            },
+            {
+              "world_name": "educational",
+              "variant_count": 0,
+              "cultural_notes": null,
+              "error": null
+            }
+          ]
+        },
+        {
+          "frame_index": 4,
+          "timestamp": 20.0,
+          "nko_text": "ߒߞߏ ߛߓߍߘߋ߲ ߛߋߞߏߦߊ",
+          "latin_transliteration": "N'Ko sédén sékoya",
+          "english_translation": "N'Ko script education",
+          "confidence": 0.95,
+          "detection_id": "3cb1111d-ef14-43ef-bf99-708e05ba20ad",
+          "worlds": [
+            {
+              "world_name": "everyday",
+              "variant_count": 3,
+              "cultural_notes": "N'Ko script is a point of cultural pride and identity for many Manding speakers. Discussions about N'Ko education often reflect a desire to preserve and promote their heritage. Using phrases like 'Allah y'i démé' shows support and encouragement in their efforts.",
+              "error": null
+            },
+            {
+              "world_name": "formal",
+              "variant_count": 3,
+              "cultural_notes": null,
+              "error": null
+            },
+            {
+              "world_name": "storytelling",
+              "variant_count": 3,
+              "cultural_notes": "The N'Ko script is a vital part of Mande cultural identity. Teaching and preserving it through oral tradition reinforces its importance and ensures its survival. The griot's role is crucial in transmitting this knowledge and fostering a sense of pride in Mande heritage.",
+              "error": null
+            },
+            {
+              "world_name": "proverbs",
+              "variant_count": 3,
+              "cultural_notes": "Mande culture, West Africa",
+              "error": null
+            },
+            {
+              "world_name": "educational",
+              "variant_count": 0,
+              "cultural_notes": null,
+              "error": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

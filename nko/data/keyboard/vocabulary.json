@@ -1,0 +1,171 @@
+{
+  "meta": {
+    "name": "Manding Core Vocabulary",
+    "version": "1.0.0",
+    "dialects": ["bambara", "maninka", "jula", "soninke"],
+    "script": "nko"
+  },
+  "greetings": {
+    "ߌ ߣߌ ߛߐ߲߬ߜߐߡߊ": {
+      "transliteration": "i ni sogoma",
+      "meaning": "good morning",
+      "response": "ߒ ߓߊ ߌ ߣߌ ߛߐ߲߬ߜߐߡߊ",
+      "context": "morning",
+      "formality": "standard"
+    },
+    "ߌ ߣߌ ߕߟߋ": {
+      "transliteration": "i ni tile", 
+      "meaning": "good afternoon",
+      "response": "ߒ ߓߊ ߌ ߣߌ ߕߟߋ",
+      "context": "afternoon",
+      "formality": "standard"
+    },
+    "ߌ ߣߌ ߛߎ": {
+      "transliteration": "i ni su",
+      "meaning": "good evening",
+      "response": "ߒ ߓߊ ߌ ߣߌ ߛߎ",
+      "context": "evening",
+      "formality": "standard"
+    },
+    "ߌ ߞߊ ߞߍ߬ߣߍ߲": {
+      "transliteration": "i ka kene",
+      "meaning": "how are you (health)",
+      "response": "ߒ ߞߊ ߞߍ߬ߣߍ߲",
+      "formality": "caring"
+    },
+    "ߤߊ߬ߙߌ߬ ߦߊ": {
+      "transliteration": "hari ya",
+      "meaning": "nothing bad (response to how are you)",
+      "formality": "casual"
+    }
+  },
+  "pronouns": {
+    "ߒ": {"trans": "n", "meaning": "I, me", "person": "1sg"},
+    "ߌ": {"trans": "i", "meaning": "you (singular)", "person": "2sg"},
+    "ߊ߬": {"trans": "a", "meaning": "he, she, it", "person": "3sg"},
+    "ߊ߲": {"trans": "an", "meaning": "we", "person": "1pl"},
+    "ߊ߬ߥ": {"trans": "aw", "meaning": "you (plural)", "person": "2pl"},
+    "ߊ߬ߟߎ߬": {"trans": "olu", "meaning": "they", "person": "3pl"}
+  },
+  "verbs": {
+    "ߓߍ߬": {"trans": "be", "meaning": "to be", "type": "auxiliary"},
+    "ߞߊ߬": {"trans": "ka", "meaning": "infinitive marker", "type": "particle"},
+    "ߕߊ߬ߡߌ߲": {"trans": "tamina", "meaning": "to go", "type": "motion"},
+    "ߣߊ߬": {"trans": "na", "meaning": "to come", "type": "motion"},
+    "ߞߍ߬": {"trans": "ke", "meaning": "to do, make", "type": "action"},
+    "ߝߐ߫": {"trans": "fɔ", "meaning": "to say, speak", "type": "speech"},
+    "ߡߍ߲": {"trans": "mɛn", "meaning": "to hear, understand", "type": "perception"},
+    "ߦߋ߫": {"trans": "ye", "meaning": "to see", "type": "perception"},
+    "ߘߎ߲": {"trans": "dun", "meaning": "to eat", "type": "consumption"},
+    "ߡߌ߲": {"trans": "min", "meaning": "to drink", "type": "consumption"},
+    "ߛߌ߲": {"trans": "sin", "meaning": "to sleep", "type": "rest"}
+  },
+  "nouns": {
+    "family": {
+      "ߓߊ߬": {"trans": "ba", "meaning": "mother"},
+      "ߝߊ": {"trans": "fa", "meaning": "father"},
+      "ߘߋ߲": {"trans": "den", "meaning": "child"},
+      "ߡߛߏ": {"trans": "muso", "meaning": "woman, wife"},
+      "ߗߍ": {"trans": "ce", "meaning": "man, husband"},
+      "ߓߊ߬ߘߋ߲": {"trans": "baden", "meaning": "sibling (same mother)"},
+      "ߝߊ߬ߘߋ߲": {"trans": "faden", "meaning": "sibling (same father)"},
+      "ߞߐ߬ߙߐ": {"trans": "kɔrɔ", "meaning": "elder sibling"},
+      "ߘߐ߬ߜߐ": {"trans": "dɔgɔ", "meaning": "younger sibling"}
+    },
+    "body": {
+      "ߞߎ߲": {"trans": "kun", "meaning": "head"},
+      "ߢߍ": {"trans": "ɲɛ", "meaning": "eye, face"},
+      "ߕߟߏ": {"trans": "tulo", "meaning": "ear"},
+      "ߓߟߏ": {"trans": "bolo", "meaning": "hand, arm"},
+      "ߛߋ߲": {"trans": "sen", "meaning": "foot, leg"},
+      "ߘߊ": {"trans": "da", "meaning": "mouth"}
+    },
+    "nature": {
+      "ߕߟߋ": {"trans": "tile", "meaning": "sun, day"},
+      "ߞߊ߬ߙߏ": {"trans": "kalo", "meaning": "moon, month"},
+      "ߟߏ߬ߟߏ": {"trans": "lolo", "meaning": "star"},
+      "ߛߊ߲": {"trans": "san", "meaning": "sky, rain, year"},
+      "ߓߊ": {"trans": "ba", "meaning": "river"},
+      "ߞߎ߬ߙߎ": {"trans": "kuru", "meaning": "stone, mountain"},
+      "ߦߌ߬ߙߌ": {"trans": "yiri", "meaning": "tree"}
+    },
+    "food": {
+      "ߘߐ߬ߡߌ": {"trans": "dɔmi", "meaning": "porridge"},
+      "ߡߏ߬ߣߌ": {"trans": "moni", "meaning": "rice"},
+      "ߖߌ": {"trans": "ji", "meaning": "water"},
+      "ߛߓ": {"trans": "sogo", "meaning": "meat"},
+      "ߖߍ߬ߜߍ": {"trans": "jɛgɛ", "meaning": "fish"}
+    }
+  },
+  "numbers": {
+    "߀": {"value": 0, "trans": "fuyi"},
+    "߁": {"value": 1, "trans": "kelen"},
+    "߂": {"value": 2, "trans": "fila"},
+    "߃": {"value": 3, "trans": "saba"},
+    "߄": {"value": 4, "trans": "naani"},
+    "߅": {"value": 5, "trans": "duuru"},
+    "߆": {"value": 6, "trans": "wɔɔrɔ"},
+    "߇": {"value": 7, "trans": "wolonwula"},
+    "߈": {"value": 8, "trans": "segin"},
+    "߉": {"value": 9, "trans": "kɔnɔntɔ"}
+  },
+  "proverbs": [
+    {
+      "nko": "ߛߏ߬ ߕߍ߫ ߦߋ߲߬",
+      "trans": "sɔ te yan",
+      "literal": "there is no horse here",
+      "meaning": "Don't expect the impossible"
+    },
+    {
+      "nko": "ߡߐ߱ ߞߊ߬ ߝߊ߲߬ߞߊ ߛߐ߬ߘߐ߲",
+      "trans": "mɔgɔ ka fanga sɔrɔ",
+      "literal": "a person finds strength",
+      "meaning": "Strength comes through community"
+    },
+    {
+      "nko": "ߓߏ߬ߟߏ ߘߏ߫ ߕߍ߫ ߞߊ߬ ߡߏ߬ߙߌ ߕߏ߫",
+      "trans": "bolo dɔ te ka mori to",
+      "literal": "one hand cannot tie a bundle",
+      "meaning": "Cooperation is necessary"
+    },
+    {
+      "nko": "ߞߎ߲߬ߠߊ ߡߊ߲ ߞߊ߫ ߖߎ߯",
+      "trans": "kunna man ka ju",
+      "literal": "knowledge is not expensive",
+      "meaning": "Education is invaluable"
+    },
+    {
+      "nko": "ߛߏ߬ ߡߊ߫ ߓߏ߲ ߖߏ߬",
+      "trans": "sɔ ma bɔn jɔ",
+      "literal": "the horse did not build the stable",
+      "meaning": "Be grateful, don't take things for granted"
+    },
+    {
+      "nko": "ߞߐ ߡߊ߫ ߥߴߊ߬ ߖߌ ߡߊ߬",
+      "trans": "kɔ ma wa a ji ma",
+      "literal": "the back did not see its own water",
+      "meaning": "We cannot see our own faults"
+    }
+  ],
+  "phrases": {
+    "common": [
+      {"nko": "ߊ߬ ߣߌ ߓߙߍ߬", "trans": "a ni baraji", "meaning": "thank you"},
+      {"nko": "ߊ߬ ߕߍ ߝߏ߫", "trans": "a te fo", "meaning": "don't mention it/you're welcome"},
+      {"nko": "ߒ ߧߊ߫ ߡߊ߬ߝߍ", "trans": "n ka mafe", "meaning": "sorry/excuse me"},
+      {"nko": "ߦߏ߯", "trans": "yɔɔ", "meaning": "yes"},
+      {"nko": "ߊ߬ߦߊ", "trans": "ayi", "meaning": "no"},
+      {"nko": "ߡߎ߲", "trans": "mun", "meaning": "what?"},
+      {"nko": "ߦߊ߲", "trans": "yan", "meaning": "here"},
+      {"nko": "ߦߍ߲", "trans": "yen", "meaning": "there"},
+      {"nko": "ߓߌ", "trans": "bi", "meaning": "today"},
+      {"nko": "ߛߌ߬ߣߌ", "trans": "sini", "meaning": "tomorrow"},
+      {"nko": "ߞߎ߬ߣߎ", "trans": "kunu", "meaning": "yesterday"}
+    ],
+    "questions": [
+      {"nko": "ߌ ߕߐ߬ߜߐ", "trans": "i tɔgɔ", "meaning": "what is your name?"},
+      {"nko": "ߌ ߓߍ߫ ߡߌ߬ߣߌ߲ ߞߍ", "trans": "i be min ke", "meaning": "what are you doing?"},
+      {"nko": "ߊ߬ ߓߍ߫ ߡߌ߲", "trans": "a be min", "meaning": "where is it?"},
+      {"nko": "ߊ߬ ߦߋ߫ ߖߐ߬ߟߌ", "trans": "a ye joli", "meaning": "how much is it?"}
+    ]
+  }
+}

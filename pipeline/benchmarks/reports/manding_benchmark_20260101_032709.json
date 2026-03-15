@@ -1,0 +1,95 @@
+{
+  "timestamp": "20260101_032709",
+  "total_models": 5,
+  "rankings": [
+    {
+      "rank": 1,
+      "model_name": "Gemini 3 Flash",
+      "model_id": "models/gemini-3-flash-preview",
+      "provider": "google",
+      "overall_score": 5.52,
+      "translation_score": 15.78,
+      "cross_language_score": 0.0,
+      "curriculum_score": 0.0
+    },
+    {
+      "rank": 2,
+      "model_name": "Gemini 3 Pro",
+      "model_id": "models/gemini-3-pro-preview",
+      "provider": "google",
+      "overall_score": 2.93,
+      "translation_score": 8.37,
+      "cross_language_score": 0.0,
+      "curriculum_score": 0.0
+    },
+    {
+      "rank": 3,
+      "model_name": "GPT-4o",
+      "model_id": "gpt-4o",
+      "provider": "openai",
+      "overall_score": 2.93,
+      "translation_score": 8.36,
+      "cross_language_score": 0.0,
+      "curriculum_score": 0.0
+    },
+    {
+      "rank": 4,
+      "model_name": "GPT-5.2",
+      "model_id": "gpt-5.2",
+      "provider": "openai",
+      "overall_score": 2.58,
+      "translation_score": 7.38,
+      "cross_language_score": 0.0,
+      "curriculum_score": 0.0
+    },
+    {
+      "rank": 5,
+      "model_name": "GPT-5-mini",
+      "model_id": "gpt-5-mini",
+      "provider": "openai",
+      "overall_score": 0.0,
+      "translation_score": 0.0,
+      "cross_language_score": 0.0,
+      "curriculum_score": 0.0
+    }
+  ],
+  "by_language_pair": {
+    "nko_english": {
+      "best_model": "GPT-5.2",
+      "chrf_score": 0.0
+    },
+    "english_nko": {
+      "best_model": "GPT-5.2",
+      "chrf_score": 0.0
+    },
+    "nko_french": {
+      "best_model": "Gemini 3 Flash",
+      "chrf_score": 8.1
+    },
+    "french_nko": {
+      "best_model": "Gemini 3 Flash",
+      "chrf_score": 6.67
+    },
+    "bambara_french": {
+      "best_model": "Gemini 3 Flash",
+      "chrf_score": 36.06
+    },
+    "french_bambara": {
+      "best_model": "GPT-5.2",
+      "chrf_score": 9.22
+    },
+    "bambara_english": {
+      "best_model": "Gemini 3 Flash",
+      "chrf_score": 58.49
+    }
+  },
+  "by_curriculum_level": {},
+  "by_task": {},
+  "recommendations": {
+    "overall_best": "Gemini 3 Flash",
+    "best_for_nko": "Gemini 3 Flash",
+    "best_for_bambara": "Gemini 3 Flash",
+    "best_for_translation": "Gemini 3 Flash",
+    "best_value": "GPT-5.2"
+  }
+}

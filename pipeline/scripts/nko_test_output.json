@@ -1,0 +1,159 @@
+{
+  "run_time": "2025-12-31T01:03:16.911007",
+  "config": {
+    "frame_rate": 0.2,
+    "max_frames": 5,
+    "worlds": [
+      "world_everyday",
+      "world_formal",
+      "world_storytelling",
+      "world_proverbs",
+      "world_educational"
+    ],
+    "store_supabase": false
+  },
+  "summary": {
+    "videos_processed": 1,
+    "total_frames": 5,
+    "frames_with_nko": 3,
+    "total_world_variants": 36
+  },
+  "results": [
+    {
+      "video_id": "xsUrdpKD5wM",
+      "title": "ߒߞߏ ߦߌ߬ߘߊ߬ߞߏ߬ ߞߍ߲ߘߍ ߥߟߊ߬ߘߊ ߁߀߲  ߄ ߂߄ ߂߀߂߅",
+      "youtube_url": "https://www.youtube.com/watch?v=xsUrdpKD5wM",
+      "status": "completed",
+      "frames_analyzed": 5,
+      "frames_with_nko": 3,
+      "total_world_variants": 36,
+      "source_id": null,
+      "error": null,
+      "detections": [
+        {
+          "frame_index": 2,
+          "timestamp": 10.0,
+          "nko_text": "ߒߞߏ ߘߐ߫ ߞߊ߬ߙߊ߲ ߞߊ߲ߘߟߊ ߟߎ߬ ߦߋ߫ ߞߊ߲ ߡߍ߲ ߘߐ߫؟",
+          "latin_transliteration": "N'Ko doŋ kaaraŋ kaŋdala lu ye kaŋ mɛŋ doŋ?",
+          "english_translation": "In N'Ko, in which language are the reading teachers?",
+          "confidence": 0.95,
+          "detection_id": null,
+          "worlds": [
+            {
+              "world_name": "everyday",
+              "variant_count": 3,
+              "cultural_notes": "The use of N'Ko as a language of instruction is a point of pride and cultural significance for many Manding speakers. Asking about the language of instruction is a natural question when discussing education in N'Ko-speaking communities. Using the phrase 'ߓߊߘߋ߲ߞߍ' (Baadɛnkɛ) - Brother - indicates a close, familiar relationship.",
+              "error": null
+            },
+            {
+              "world_name": "formal",
+              "variant_count": 3,
+              "cultural_notes": null,
+              "error": null
+            },
+            {
+              "world_name": "storytelling",
+              "variant_count": 3,
+              "cultural_notes": "The story emphasizes the importance of preserving and promoting the N'Ko language and script, connecting it to a rich cultural heritage and the legacy of great leaders like Sunjata Keita. This is vital to oral tradition as it reinforces identity and shared history.",
+              "error": null
+            },
+            {
+              "world_name": "proverbs",
+              "variant_count": 3,
+              "cultural_notes": "Mande Culture (West Africa)",
+              "error": null
+            },
+            {
+              "world_name": "educational",
+              "variant_count": 0,
+              "cultural_notes": null,
+              "error": null
+            }
+          ]
+        },
+        {
+          "frame_index": 3,
+          "timestamp": 15.0,
+          "nko_text": "ߞߐ ߟߊ ߞߊ߲ߠߊ߫ ߞߊ߲ߠߊ߫ ߟߋ߬ ߓߊ؟",
+          "latin_transliteration": "Ko la kanla kanla le a ba?",
+          "english_translation": "Is it about the language, the language?",
+          "confidence": 0.9,
+          "detection_id": null,
+          "worlds": [
+            {
+              "world_name": "everyday",
+              "variant_count": 3,
+              "cultural_notes": "Repeating a word or phrase (like 'kanla kanla') is a common way to emphasize the topic or show strong interest in Manding languages.",
+              "error": null
+            },
+            {
+              "world_name": "formal",
+              "variant_count": 3,
+              "cultural_notes": null,
+              "error": null
+            },
+            {
+              "world_name": "storytelling",
+              "variant_count": 3,
+              "cultural_notes": "The importance of language in preserving history and cultural identity is central to Mande oral tradition. The griot's role is to ensure the language and stories are passed down accurately, connecting the present generation to their ancestors and heritage. The phrase 'ߞߐ ߟߊ ߞߊ߲ߠߊ߫ ߞߊ߲ߠߊ߫ ߟߋ߬ ߓߊ؟' serves as a rhetorical device to draw attention to the significance of the Mande language itself.",
+              "error": null
+            },
+            {
+              "world_name": "proverbs",
+              "variant_count": 3,
+              "cultural_notes": "Mande peoples of West Africa",
+              "error": null
+            },
+            {
+              "world_name": "educational",
+              "variant_count": 0,
+              "cultural_notes": null,
+              "error": null
+            }
+          ]
+        },
+        {
+          "frame_index": 4,
+          "timestamp": 20.0,
+          "nko_text": "ߒߞߏ ߛߓߍߘߋ߲ ߛߋߞߏߦߊ",
+          "latin_transliteration": "N'Ko sédén sékoya",
+          "english_translation": "N'Ko script education",
+          "confidence": 0.95,
+          "detection_id": null,
+          "worlds": [
+            {
+              "world_name": "everyday",
+              "variant_count": 3,
+              "cultural_notes": "N'Ko script is a relatively modern script created in the 20th century, so conversations about its education are common, especially in areas where Manding languages are spoken. Learning N'Ko is often seen as a way to connect with cultural heritage and preserve the language.",
+              "error": null
+            },
+            {
+              "world_name": "formal",
+              "variant_count": 3,
+              "cultural_notes": null,
+              "error": null
+            },
+            {
+              "world_name": "storytelling",
+              "variant_count": 3,
+              "cultural_notes": "The N'Ko script represents a revitalization of Mande identity and culture. Learning it is seen as a way to connect with ancestors, preserve traditions, and promote literacy in Mande languages. The oral tradition relies heavily on memory and recitation, so emphasizing the importance of written language adds another layer of preservation and dissemination of knowledge.",
+              "error": null
+            },
+            {
+              "world_name": "proverbs",
+              "variant_count": 3,
+              "cultural_notes": "Mande culture, widely practiced across West Africa",
+              "error": null
+            },
+            {
+              "world_name": "educational",
+              "variant_count": 0,
+              "cultural_notes": null,
+              "error": null
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

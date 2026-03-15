@@ -15,7 +15,7 @@ import json
 import argparse
 import mlx.core as mx
 from asr.syllable_retriever import SyllableRetriever
-from nko_core import transliterate
+from nko import transliterate
 
 PROJECT_ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 

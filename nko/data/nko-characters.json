@@ -1,0 +1,90 @@
+{
+  "$schema": "nko-characters-v1",
+  "meta": {
+    "description": "Canonical N'Ko character reference — complete Unicode block U+07C0–U+07FF with IPA, Latin equivalents, and usage notes. Extracted from nko-unified.json for lightweight tooling.",
+    "version": "1.0.0",
+    "parent": "nko-unified.json"
+  },
+  "vowels": {
+    "ߊ": {"code": "U+07CA", "ipa": "a", "name": "A", "latin": "a"},
+    "ߋ": {"code": "U+07CB", "ipa": "o", "name": "O", "latin": "o"},
+    "ߌ": {"code": "U+07CC", "ipa": "i", "name": "I", "latin": "i"},
+    "ߍ": {"code": "U+07CD", "ipa": "e", "name": "E", "latin": "e"},
+    "ߎ": {"code": "U+07CE", "ipa": "u", "name": "U", "latin": "u"},
+    "ߏ": {"code": "U+07CF", "ipa": "ɔ", "name": "Open O", "latin": "ɔ"},
+    "ߐ": {"code": "U+07D0", "ipa": "ə", "name": "Schwa", "latin": "ə"}
+  },
+  "consonants": {
+    "ߑ": {"code": "U+07D1", "ipa": "a", "name": "Dagbamma", "latin": "a", "note": "Rare variant"},
+    "ߒ": {"code": "U+07D2", "ipa": "n", "name": "N (Long Leg)", "latin": "n", "note": "The N in N'Ko"},
+    "ߓ": {"code": "U+07D3", "ipa": "b", "name": "Ba", "latin": "b"},
+    "ߔ": {"code": "U+07D4", "ipa": "p", "name": "Pa", "latin": "p", "note": "Primarily loan words"},
+    "ߕ": {"code": "U+07D5", "ipa": "t", "name": "Ta", "latin": "t"},
+    "ߖ": {"code": "U+07D6", "ipa": "dʒ", "name": "Ja", "latin": "j/dj"},
+    "ߗ": {"code": "U+07D7", "ipa": "tʃ", "name": "Cha", "latin": "ch"},
+    "ߘ": {"code": "U+07D8", "ipa": "d", "name": "Da", "latin": "d"},
+    "ߙ": {"code": "U+07D9", "ipa": "r", "name": "Ra", "latin": "r"},
+    "ߚ": {"code": "U+07DA", "ipa": "rr", "name": "Rra", "latin": "rr", "note": "Trilled"},
+    "ߛ": {"code": "U+07DB", "ipa": "s", "name": "Sa", "latin": "s"},
+    "ߜ": {"code": "U+07DC", "ipa": "gb", "name": "Gba", "latin": "gb"},
+    "ߝ": {"code": "U+07DD", "ipa": "f", "name": "Fa", "latin": "f"},
+    "ߞ": {"code": "U+07DE", "ipa": "k", "name": "Ka", "latin": "k"},
+    "ߟ": {"code": "U+07DF", "ipa": "l", "name": "La", "latin": "l"},
+    "ߠ": {"code": "U+07E0", "ipa": "n̥", "name": "Na Woloso", "latin": "n"},
+    "ߡ": {"code": "U+07E1", "ipa": "m", "name": "Ma", "latin": "m"},
+    "ߢ": {"code": "U+07E2", "ipa": "ɲ", "name": "Nya", "latin": "ny"},
+    "ߣ": {"code": "U+07E3", "ipa": "n", "name": "Na", "latin": "n"},
+    "ߤ": {"code": "U+07E4", "ipa": "h", "name": "Ha", "latin": "h"},
+    "ߥ": {"code": "U+07E5", "ipa": "w", "name": "Wa", "latin": "w"},
+    "ߦ": {"code": "U+07E6", "ipa": "j", "name": "Ya", "latin": "y"},
+    "ߧ": {"code": "U+07E7", "ipa": "ŋ", "name": "Nya Woloso", "latin": "ng"},
+    "ߨ": {"code": "U+07E8", "ipa": "p", "name": "Pa (variant)", "latin": "p"},
+    "ߩ": {"code": "U+07E9", "ipa": "r", "name": "Ra (variant)", "latin": "r"},
+    "ߪ": {"code": "U+07EA", "ipa": "s", "name": "Sa (variant)", "latin": "s"}
+  },
+  "digits": {
+    "߀": {"code": "U+07C0", "value": 0, "name": "fuyi"},
+    "߁": {"code": "U+07C1", "value": 1, "name": "kelen"},
+    "߂": {"code": "U+07C2", "value": 2, "name": "fila"},
+    "߃": {"code": "U+07C3", "value": 3, "name": "saba"},
+    "߄": {"code": "U+07C4", "value": 4, "name": "naani"},
+    "߅": {"code": "U+07C5", "value": 5, "name": "duuru"},
+    "߆": {"code": "U+07C6", "value": 6, "name": "wɔɔrɔ"},
+    "߇": {"code": "U+07C7", "value": 7, "name": "wolonwula"},
+    "߈": {"code": "U+07C8", "value": 8, "name": "segin"},
+    "߉": {"code": "U+07C9", "value": 9, "name": "kɔnɔntɔ"}
+  },
+  "tone_marks": {
+    "߫": {"code": "U+07EB", "meaning": "High tone", "ipa": "́"},
+    "߬": {"code": "U+07EC", "meaning": "Falling tone", "ipa": "̀"},
+    "߭": {"code": "U+07ED", "meaning": "Rising tone", "ipa": "̂"},
+    "߮": {"code": "U+07EE", "meaning": "Long", "ipa": "ː"},
+    "߯": {"code": "U+07EF", "meaning": "Very long", "ipa": "ːː"},
+    "߲": {"code": "U+07F2", "meaning": "Nasalization", "ipa": "̃"},
+    "߳": {"code": "U+07F3", "meaning": "Nasalization (alt)", "ipa": "̃"}
+  },
+  "punctuation": {
+    "߸": {"code": "U+07F8", "meaning": "Exclamation", "equivalent": "!"},
+    "߹": {"code": "U+07F9", "meaning": "Full stop", "equivalent": "."},
+    "߷": {"code": "U+07F7", "meaning": "Ellipsis", "equivalent": "..."},
+    "ߺ": {"code": "U+07FA", "meaning": "Lajanyalan (word joiner)", "equivalent": "-"},
+    "ߴ": {"code": "U+07F4", "meaning": "High tone apostrophe", "equivalent": "'"}
+  },
+  "transliteration": {
+    "description": "Latin-to-N'Ko input mapping for keyboard/transliteration engines",
+    "single": {
+      "a": "ߊ", "o": "ߋ", "i": "ߌ", "e": "ߍ", "u": "ߎ",
+      "b": "ߓ", "t": "ߕ", "j": "ߖ", "d": "ߘ", "r": "ߙ",
+      "s": "ߛ", "f": "ߝ", "k": "ߞ", "l": "ߟ", "m": "ߡ",
+      "n": "ߣ", "h": "ߤ", "w": "ߥ", "y": "ߦ", "p": "ߨ",
+      "g": "ߜ"
+    },
+    "digraphs": {
+      "gb": "ߜ", "ng": "ߧ", "ny": "ߢ", "ch": "ߗ", "dj": "ߖ", "sh": "ߛ"
+    },
+    "special": {
+      "'": "ߴ",
+      "n'": "ߒ"
+    }
+  }
+}

@@ -1,0 +1,23 @@
+# Fly.io Configuration for N'Ko Learning Pipeline
+# Deploy with: fly deploy
+
+app = "nko-learning"
+primary_region = "iad"
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  ENRICHMENT_INTERVAL = "300"
+  BATCH_SIZE = "10"
+  PYTHONUNBUFFERED = "1"
+
+# No HTTP service - this is a background worker
+[processes]
+  enrichment = "python scripts/scheduled_exploration.py --interval 300"
+
+[[vm]]
+  cpu_kind = "shared"
+  cpus = 1
+  memory_mb = 512
+

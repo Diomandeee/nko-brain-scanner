@@ -15,7 +15,6 @@ import sys
 import random
 
 # Add cross-script bridge to path
-sys.path.insert(0, os.path.expanduser("~/Desktop/cross-script-bridge"))
 from core.bridge import Bridge
 
 OUTPUT_DIR = os.path.expanduser("~/Desktop/nko-brain-scanner/data/bayelemabaga")

@@ -1,0 +1,79 @@
+{
+  "models": [
+    "Claude 4.5 Sonnet",
+    "GPT-5.2",
+    "Gemini 3 Flash"
+  ],
+  "language_pairs": [
+    "bambara_english",
+    "bambara_french",
+    "english_nko",
+    "french_bambara",
+    "french_nko",
+    "nko_english",
+    "nko_french"
+  ],
+  "curriculum_levels": [
+    "A1",
+    "A2",
+    "B1",
+    "B2",
+    "C1",
+    "C2"
+  ],
+  "translation_matrix": [
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  ],
+  "curriculum_matrix": [
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ],
+    [
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0,
+      0.0
+    ]
+  ]
+}

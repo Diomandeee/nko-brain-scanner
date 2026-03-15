@@ -1,0 +1,53 @@
+{
+  "$schema": "nko-cognates-v1",
+  "meta": {
+    "description": "Cross-language cognates, loanwords, and evolution patterns for Manding languages. Merged from cognates.json and nko_vocab.json cognate sections.",
+    "version": "1.0.0",
+    "parent": "nko-unified.json",
+    "languages": ["nko", "bambara", "mandinka", "soninke", "arabic", "french"]
+  },
+  "manding_internal": [
+    {"concept": "mother", "nko": "ߣߊ", "bambara": "na", "mandinka": "na", "soninke": "ya"},
+    {"concept": "father", "nko": "ߝߊ", "bambara": "fa", "mandinka": "fa", "soninke": "ba"},
+    {"concept": "water", "nko": "ߖߌ", "bambara": "ji", "mandinka": "jiyo", "soninke": "xa"},
+    {"concept": "house", "nko": "ߓߏ߲", "bambara": "bon", "mandinka": "bundo", "soninke": "ya"},
+    {"concept": "child", "nko": "ߘߋ߲", "bambara": "den", "mandinka": "dingo", "soninke": "yinmaxe"}
+  ],
+  "arabic_loans": [
+    {"concept": "peace", "nko": "ߤߍ߬ߙߊ", "arabic": "سلام", "latin": "salam / hera", "note": "Arabic 'salam' borrowed into many Manding languages"},
+    {"concept": "book", "nko": "ߞߌ߬ߕߊ߬ߓߎ", "arabic": "كتاب", "latin": "kitabu", "source_form": "كِتَاب (kitāb)", "nko_adapted": "ߞߌ߬ߕߊ߯ߓߎ"},
+    {"concept": "wisdom", "nko": "ߤߌ߬ߞߌ߬ߡߊ", "arabic": "حكمة", "latin": "hikima", "note": "From Arabic 'hikma'"},
+    {"concept": "world", "nko": "ߘߎ߰ߣߌ߲ߦߊ", "arabic": "دنيا", "latin": "dunya", "note": "From Arabic 'dunya'"},
+    {"concept": "time", "nko": "ߥߊ߯ߕߌ", "arabic": "وقت", "latin": "wakti", "note": "From Arabic 'waqt'"},
+    {"concept": "god", "nko": "ߊߟߊ", "arabic": "الله", "latin": "Allah / Ala", "note": "From Arabic"},
+    {"concept": "prophet", "nko": "ߞߌ߬ߦߊ", "arabic": "نبي", "latin": "kiya / nabi", "note": "Arabic influence"},
+    {"concept": "peace (greeting)", "nko": "ߛߟߊ߬ߡ", "arabic": "سَلَام (salām)", "latin": "salam", "note": "Direct Arabic loan"}
+  ],
+  "french_loans": [
+    {"concept": "car", "source": "voiture", "nko": "ߡߏ߬ߕߏ", "note": "Via 'moto'"},
+    {"concept": "school", "source": "école", "nko": "ߛߊ߲ߝߍ", "note": "Via 'sanfɛ'"}
+  ],
+  "native_manding": [
+    {"concept": "number", "nko": "ߖߊ߬ߕߋ", "latin": "jate", "note": "Native Manding word"},
+    {"concept": "thank_you", "nko": "ߌ ߣߌ߫ ߛߐ߲߬", "latin": "i ni so", "note": "Native Manding greeting"},
+    {"concept": "greetings", "nko": "ߤߍ߬ߙߋ", "latin": "here", "note": "Traditional greeting form"}
+  ],
+  "adaptation_rules": {
+    "arabic_to_nko": {
+      "description": "How Arabic words adapt to N'Ko phonology",
+      "rules": [
+        "Arabic emphatics → plain consonants",
+        "Arabic ع (ʿayn) → ع or dropped",
+        "Final vowels often added for syllable structure"
+      ]
+    },
+    "french_to_nko": {
+      "description": "How French words adapt (colonial contact)",
+      "rules": [
+        "French r → N'Ko ߙ",
+        "Nasal vowels → oral + nasal consonant",
+        "Final silent consonants preserved or dropped"
+      ]
+    }
+  }
+}

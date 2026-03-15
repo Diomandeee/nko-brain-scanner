@@ -1,0 +1,58 @@
+# Docker ignore for N'Ko Training Pipeline
+# Excludes large data files from Docker build context
+
+# Data directories (large files, not needed in image)
+data/
+logs/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+*.egg-info/
+.eggs/
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Git
+.git/
+.gitignore
+
+# Environment files (secrets should be passed at runtime)
+.env
+.env.*
+
+# Temp files
+*.tmp
+*.temp
+*.log
+
+# macOS
+.DS_Store
+
+# Documentation (not needed in container)
+*.md
+!README.md
+
+# Test files
+test_*.py
+*_test.py
+tests/
+
+# Deployment configs (not needed inside container)
+fly.toml
+render.yaml
+docker-compose.yml
+DEPLOY.md
+

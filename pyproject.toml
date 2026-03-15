@@ -1,0 +1,86 @@
+[project]
+name = "nko"
+version = "0.1.0"
+description = "N'Ko Brain Scanner — unified NLP toolkit, ASR pipeline, and research for Manding languages"
+readme = "README.md"
+license = "MIT"
+authors = [{ name = "Mohamed Diomande", email = "mohamed@koatji.com" }]
+requires-python = ">=3.9"
+keywords = [
+    "nko",
+    "manding",
+    "bambara",
+    "dioula",
+    "malinke",
+    "transliteration",
+    "phonetics",
+    "morphology",
+    "african-languages",
+    "nlp",
+    "west-africa",
+    "linguistic",
+    "ipa",
+]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
+    "Intended Audience :: Education",
+    "Topic :: Text Processing :: Linguistic",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+    "Topic :: Education",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Natural Language :: Bambara",
+    "Operating System :: OS Independent",
+    "Typing :: Typed",
+]
+
+dependencies = []
+
+[project.optional-dependencies]
+audio = ["soundfile", "scipy"]
+voice = ["speechrecognition", "pyttsx3"]
+api = ["flask", "flask-cors"]
+dev = ["pytest", "pytest-cov", "ruff", "build", "twine"]
+all = ["nko[audio,voice,api,dev]"]
+
+[project.scripts]
+nko = "nko.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/mohameddiomande/nko"
+Repository = "https://github.com/mohameddiomande/nko"
+Documentation = "https://github.com/mohameddiomande/nko#readme"
+"Bug Tracker" = "https://github.com/mohameddiomande/nko/issues"
+Changelog = "https://github.com/mohameddiomande/nko/blob/main/CHANGELOG.md"
+
+[build-system]
+requires = ["setuptools>=68", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["nko*"]
+
+[tool.setuptools.package-data]
+nko = [
+    "data/*.json",
+    "data/cultural/*.json",
+    "data/corpus/*.json",
+    "data/corpus/*.txt",
+    "data/mappings/*.json",
+    "data/keyboard/*.json",
+]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+pythonpath = ["."]
+
+[tool.ruff]
+target-version = "py39"
+line-length = 100

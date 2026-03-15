@@ -1,0 +1,96 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "$id": "https://learnnko.app/schemas/translation.schema.json",
+  "title": "N'Ko-English Translation Pair",
+  "description": "A single N'Ko text with its English translation and metadata",
+  "type": "object",
+  "required": ["nko", "english", "source"],
+  "properties": {
+    "nko": {
+      "type": "string",
+      "description": "N'Ko text in Unicode (U+07C0-U+07FF)",
+      "pattern": "^[\\u07C0-\\u07FF\\s\\u0020-\\u007E]+$"
+    },
+    "latin": {
+      "type": "string",
+      "description": "Romanized/Latin transliteration of the N'Ko text"
+    },
+    "english": {
+      "type": "string",
+      "description": "English translation of the N'Ko text"
+    },
+    "context": {
+      "type": "string",
+      "enum": [
+        "greeting",
+        "vocabulary",
+        "phrase",
+        "sentence",
+        "lesson_title",
+        "instruction",
+        "number",
+        "alphabet",
+        "other"
+      ],
+      "description": "Semantic category of the text"
+    },
+    "source": {
+      "type": "object",
+      "required": ["video_id"],
+      "properties": {
+        "video_id": {
+          "type": "string",
+          "description": "YouTube video ID"
+        },
+        "frame_index": {
+          "type": "integer",
+          "description": "Frame number in the video"
+        },
+        "timestamp_ms": {
+          "type": "integer",
+          "description": "Timestamp in milliseconds"
+        }
+      }
+    },
+    "confidence": {
+      "type": "number",
+      "minimum": 0,
+      "maximum": 1,
+      "description": "OCR confidence score from Gemini"
+    },
+    "validated": {
+      "type": "boolean",
+      "default": false,
+      "description": "Whether this translation has been human-validated"
+    }
+  },
+  "examples": [
+    {
+      "nko": "ߒߞߏ",
+      "latin": "N'Ko",
+      "english": "N'Ko (writing system name)",
+      "context": "vocabulary",
+      "source": {
+        "video_id": "xsUrdpKD5wM",
+        "frame_index": 12,
+        "timestamp_ms": 60000
+      },
+      "confidence": 0.95,
+      "validated": false
+    },
+    {
+      "nko": "ߌ ߛߋ߲߬ߓߊ",
+      "latin": "I sɛnba",
+      "english": "Hello / I greet you",
+      "context": "greeting",
+      "source": {
+        "video_id": "toUJQVnRSbU",
+        "frame_index": 5,
+        "timestamp_ms": 25000
+      },
+      "confidence": 0.92,
+      "validated": true
+    }
+  ]
+}
+

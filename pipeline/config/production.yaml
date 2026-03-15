@@ -1,0 +1,99 @@
+# N'Ko Video Analyzer - Production Configuration
+# 
+# This configuration is optimized for processing YouTube channels
+# with intelligent frame extraction and robust error handling.
+
+# Multiple channel support
+channels:
+  - name: "babamamadidiane"
+    url: "https://www.youtube.com/@babamamadidiane"
+    language: "nko"
+    priority: 1
+    description: "Primary N'Ko lessons channel"
+    
+  - name: "ankataa"
+    url: "https://www.youtube.com/@Ankataa"
+    language: "bambara"
+    priority: 2
+    description: "Bambara/Dioula lessons"
+
+# Legacy single channel config (backwards compatible)
+channel:
+  url: "https://www.youtube.com/@babamamadidiane"
+  name: "babamamadidiane"
+
+extraction:
+  # Frame extraction settings
+  target_frames: 100           # Frames per video (evenly distributed)
+  use_scene_detection: true    # Best for slides/presentations
+  use_deduplication: true      # Perceptual hash filtering
+  
+  # Content filtering
+  skip_intro_seconds: 10       # Skip first N seconds (titles/logos)
+  skip_credits_seconds: 30     # Skip last N seconds (end credits)
+  
+  # Scene detection tuning
+  scene_threshold: 0.3         # Scene change sensitivity (0.2-0.5)
+  min_scene_duration: 2.0      # Minimum seconds between scenes
+  
+  # Deduplication tuning  
+  hash_similarity_threshold: 8 # Hamming distance (0-64, lower = stricter)
+  hash_history_size: 20        # Number of recent hashes to compare
+
+api:
+  gemini:
+    model: "gemini-2.0-flash"
+    timeout_seconds: 90        # API call timeout
+    max_retries: 3             # Retry attempts on failure
+    retry_base_delay: 2.0      # Exponential backoff base (seconds)
+    retry_max_delay: 60.0      # Maximum retry delay
+    rate_limit_delay: 0.5      # Delay between requests (seconds)
+    
+storage:
+  supabase:
+    enabled: true
+    batch_size: 10             # Commit every N frames
+    
+  local:
+    base_dir: "./data/videos"  # Base directory for all video data
+    temp_dir: "./data/temp"    # Temporary processing directory
+    output_dir: "./data/output"
+    keep_frames: true          # Save frames for curriculum building
+    keep_audio: true           # Extract and save audio segments per scene
+    keep_videos: false         # Delete videos after processing (save space)
+    
+audio:
+  extract_full: true           # Extract full audio track from video
+  segment_by_scene: true       # Slice audio into segments matching scenes
+  format: "m4a"                # Audio format (m4a, mp3, wav)
+  bitrate: "128k"              # Audio quality
+
+worlds:
+  enabled: true
+  selected:
+    - "world_everyday"
+    - "world_formal"
+    - "world_storytelling"
+    - "world_proverbs"
+    - "world_educational"
+  timeout_seconds: 30          # Per-world generation timeout
+
+processing:
+  max_concurrent_videos: 1     # Sequential for rate limiting
+  max_videos_per_run: 50       # Limit per batch run
+  stop_on_error: false         # Continue on individual failures
+  save_progress: true          # Save checkpoint after each video
+  progress_file: "./data/progress.json"
+
+logging:
+  level: "INFO"                # DEBUG, INFO, WARNING, ERROR
+  file: "./data/logs/analyzer.log"
+  console: true
+  
+# Cost estimation (approximate)
+# With 522 videos at ~100 frames each:
+# - Frames after dedup: ~50-60 per video (40-50% reduction)
+# - Gemini multimodal: 522 × 60 × $0.002 = ~$63
+# - World generation: 522 × 20 detections × 5 worlds × $0.0001 = ~$5
+# - Total: ~$70 for full channel
+

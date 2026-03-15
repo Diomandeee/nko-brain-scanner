@@ -1,0 +1,80 @@
+{
+  "timestamp": "20260101_012246",
+  "total_models": 3,
+  "rankings": [
+    {
+      "rank": 1,
+      "model_name": "Claude 4.5 Sonnet",
+      "model_id": "claude-sonnet-4-5-20250514",
+      "provider": "anthropic",
+      "overall_score": 0.0,
+      "translation_score": 0.0,
+      "cross_language_score": 0.0,
+      "curriculum_score": 0.0
+    },
+    {
+      "rank": 2,
+      "model_name": "GPT-5.2",
+      "model_id": "gpt-5.2",
+      "provider": "openai",
+      "overall_score": 0.0,
+      "translation_score": 0.0,
+      "cross_language_score": 0.0,
+      "curriculum_score": 0.0
+    },
+    {
+      "rank": 3,
+      "model_name": "Gemini 3 Flash",
+      "model_id": "gemini-3-flash",
+      "provider": "google",
+      "overall_score": 0.0,
+      "translation_score": 0.0,
+      "cross_language_score": 0.0,
+      "curriculum_score": 0.0
+    }
+  ],
+  "by_language_pair": {
+    "nko_english": {
+      "best_model": "Claude 4.5 Sonnet",
+      "chrf_score": 0.0
+    },
+    "english_nko": {
+      "best_model": "Claude 4.5 Sonnet",
+      "chrf_score": 0.0
+    },
+    "nko_french": {
+      "best_model": "Claude 4.5 Sonnet",
+      "chrf_score": 0.0
+    },
+    "french_nko": {
+      "best_model": "Claude 4.5 Sonnet",
+      "chrf_score": 0.0
+    },
+    "bambara_french": {
+      "best_model": "Claude 4.5 Sonnet",
+      "chrf_score": 0.0
+    },
+    "french_bambara": {
+      "best_model": "Claude 4.5 Sonnet",
+      "chrf_score": 0.0
+    },
+    "bambara_english": {
+      "best_model": "Claude 4.5 Sonnet",
+      "chrf_score": 0.0
+    }
+  },
+  "by_curriculum_level": {},
+  "by_task": {
+    "cross_language": {
+      "best_model": "Claude 4.5 Sonnet",
+      "score": 0.0
+    }
+  },
+  "recommendations": {
+    "overall_best": "Claude 4.5 Sonnet",
+    "best_for_nko": "Claude 4.5 Sonnet",
+    "best_for_bambara": "Claude 4.5 Sonnet",
+    "best_for_translation": "Claude 4.5 Sonnet",
+    "best_value": "Claude 4.5 Sonnet"
+  }
+}

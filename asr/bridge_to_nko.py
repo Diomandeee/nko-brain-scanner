@@ -17,8 +17,6 @@ import sys
 from pathlib import Path
 
 # Add NKo project to path for transliterate
-NKO_PROJECT = Path.home() / "Desktop" / "NKo"
-sys.path.insert(0, str(NKO_PROJECT))
 
 try:
     from nko.transliterate import transliterate

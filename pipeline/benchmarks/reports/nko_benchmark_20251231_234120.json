@@ -1,0 +1,254 @@
+{
+  "timestamp": "2025-12-31T23:30:52.056267",
+  "config": {
+    "translation_samples": 50,
+    "vocabulary_samples": 30,
+    "script_samples": 20,
+    "cultural_samples": 10,
+    "compositional_samples": 20
+  },
+  "models": {
+    "claude-sonnet-4": {
+      "model_id": "claude-sonnet-4",
+      "provider": "anthropic",
+      "overall_score": 15.591666666666667,
+      "avg_latency_ms": 0,
+      "total_cost_estimate": 0.0,
+      "task_scores": {
+        "translation": {
+          "weight": 0.4,
+          "raw_score": 0.0,
+          "weighted_score": 0.0,
+          "metrics": {
+            "bleu": 0.0,
+            "chrf": 0.0,
+            "bleu_1": 0.0,
+            "bleu_4": 0.0,
+            "brevity_penalty": 1.0
+          }
+        },
+        "script_knowledge": {
+          "weight": 0.15,
+          "raw_score": 80.0,
+          "weighted_score": 12.0,
+          "metrics": {
+            "exact_match": 1.0,
+            "partial_match": 1.0,
+            "response_rate": 0.0
+          }
+        },
+        "vocabulary": {
+          "weight": 0.2,
+          "raw_score": 1.3333333333333333,
+          "weighted_score": 0.26666666666666666,
+          "metrics": {
+            "partial_match": 0.03333333333333333,
+            "content_overlap": 0.0,
+            "response_rate": 0.0
+          }
+        },
+        "cultural": {
+          "weight": 0.1,
+          "raw_score": 7.0,
+          "weighted_score": 0.7000000000000001,
+          "metrics": {
+            "partial_match": 0.2,
+            "content_overlap": 0.0,
+            "response_rate": 0.0
+          }
+        },
+        "compositional": {
+          "weight": 0.15,
+          "raw_score": 17.5,
+          "weighted_score": 2.625,
+          "metrics": {
+            "exact_match": 0.25,
+            "partial_match": 0.25,
+            "content_overlap": 0.0,
+            "response_rate": 0.0
+          }
+        }
+      }
+    },
+    "gpt-4o": {
+      "model_id": "gpt-4o",
+      "provider": "openai",
+      "overall_score": 24.13150735303798,
+      "avg_latency_ms": 3304.908235232035,
+      "total_cost_estimate": 476.90999999999997,
+      "task_scores": {
+        "translation": {
+          "weight": 0.4,
+          "raw_score": 6.925395804934231,
+          "weighted_score": 2.7701583219736925,
+          "metrics": {
+            "bleu": 0.18504531334225793,
+            "chrf": 11.418962799328881,
+            "bleu_1": 8.521739130434783,
+            "bleu_4": 0.028026905829596414,
+            "brevity_penalty": 1.0
+          }
+        },
+        "script_knowledge": {
+          "weight": 0.15,
+          "raw_score": 50.0,
+          "weighted_score": 7.5,
+          "metrics": {
+            "exact_match": 0.0,
+            "partial_match": 1.0,
+            "response_rate": 1.0
+          }
+        },
+        "vocabulary": {
+          "weight": 0.2,
+          "raw_score": 25.587098454366707,
+          "weighted_score": 5.117419690873342,
+          "metrics": {
+            "partial_match": 0.13333333333333333,
+            "content_overlap": 0.006344128025834342,
+            "response_rate": 1.0
+          }
+        },
+        "cultural": {
+          "weight": 0.1,
+          "raw_score": 37.98503388604923,
+          "weighted_score": 3.798503388604923,
+          "metrics": {
+            "partial_match": 0.5,
+            "content_overlap": 0.010778530801093995,
+            "response_rate": 1.0
+          }
+        },
+        "compositional": {
+          "weight": 0.15,
+          "raw_score": 32.9695063439068,
+          "weighted_score": 4.94542595158602,
+          "metrics": {
+            "exact_match": 0.0,
+            "partial_match": 0.55,
+            "content_overlap": 0.048475317195340185,
+            "response_rate": 1.0
+          }
+        }
+      }
+    },
+    "gemini-2.0-flash": {
+      "model_id": "gemini-2.0-flash",
+      "provider": "google",
+      "overall_score": 32.45298752021435,
+      "avg_latency_ms": 2603.2358652750654,
+      "total_cost_estimate": 10.941749999999999,
+      "task_scores": {
+        "translation": {
+          "weight": 0.4,
+          "raw_score": 23.626520624165046,
+          "weighted_score": 9.450608249666018,
+          "metrics": {
+            "bleu": 10.819704083881637,
+            "chrf": 32.164398317687315,
+            "bleu_1": 29.13907284768212,
+            "bleu_4": 4.968944099378882,
+            "brevity_penalty": 1.0
+          }
+        },
+        "script_knowledge": {
+          "weight": 0.15,
+          "raw_score": 50.0,
+          "weighted_score": 7.5,
+          "metrics": {
+            "exact_match": 0.0,
+            "partial_match": 1.0,
+            "response_rate": 1.0
+          }
+        },
+        "vocabulary": {
+          "weight": 0.2,
+          "raw_score": 31.600589156365047,
+          "weighted_score": 6.320117831273009,
+          "metrics": {
+            "partial_match": 0.2833333333333333,
+            "content_overlap": 0.006681395575792845,
+            "response_rate": 1.0
+          }
+        },
+        "cultural": {
+          "weight": 0.1,
+          "raw_score": 38.06536660480468,
+          "weighted_score": 3.806536660480468,
+          "metrics": {
+            "partial_match": 0.5,
+            "content_overlap": 0.012563702328992968,
+            "response_rate": 1.0
+          }
+        },
+        "compositional": {
+          "weight": 0.15,
+          "raw_score": 35.838165191965686,
+          "weighted_score": 5.3757247787948526,
+          "metrics": {
+            "exact_match": 0.0,
+            "partial_match": 0.625,
+            "content_overlap": 0.04190825959828438,
+            "response_rate": 1.0
+          }
+        }
+      }
+    }
+  },
+  "rankings": [
+    {
+      "rank": 1,
+      "model_id": "gemini-2.0-flash",
+      "provider": "google",
+      "overall_score": 32.45298752021435
+    },
+    {
+      "rank": 2,
+      "model_id": "gpt-4o",
+      "provider": "openai",
+      "overall_score": 24.13150735303798
+    },
+    {
+      "rank": 3,
+      "model_id": "claude-sonnet-4",
+      "provider": "anthropic",
+      "overall_score": 15.591666666666667
+    }
+  ],
+  "recommendation": {
+    "best_overall": {
+      "model_id": "gemini-2.0-flash",
+      "provider": "google",
+      "overall_score": 32.45298752021435,
+      "reason": "Highest overall score (32.5)"
+    },
+    "best_value": {
+      "model_id": "claude-sonnet-4",
+      "provider": "anthropic",
+      "overall_score": 15.591666666666667,
+      "cost": 0.0,
+      "reason": "Best score-to-cost ratio"
+    },
+    "recommendation": "gemini-2.0-flash",
+    "all_rankings": [
+      {
+        "rank": 1,
+        "model_id": "gemini-2.0-flash",
+        "provider": "google",
+        "overall_score": 32.45298752021435
+      },
+      {
+        "rank": 2,
+        "model_id": "gpt-4o",
+        "provider": "openai",
+        "overall_score": 24.13150735303798
+      },
+      {
+        "rank": 3,
+        "model_id": "claude-sonnet-4",
+        "provider": "anthropic",
+        "overall_score": 15.591666666666667
+      }
+    ]
+  }
+}

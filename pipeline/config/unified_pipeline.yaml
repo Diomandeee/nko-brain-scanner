@@ -1,0 +1,213 @@
+# Unified N'Ko Learning Pipeline Configuration
+# Combines video processing, dictionary integration, and continuous learning
+
+version: "1.0"
+
+# =============================================================================
+# SOURCE CHANNELS
+# =============================================================================
+sources:
+  channels:
+    - name: "babamamadidiane"
+      url: "https://www.youtube.com/@babamamadidiane"
+      language: "nko"
+      priority: 1
+      description: "Primary N'Ko educational content"
+      estimated_videos: 522
+      
+    - name: "ankataa"
+      url: "https://www.youtube.com/@Ankataa"
+      language: "bambara"
+      priority: 2
+      description: "Bambara/Dioula language learning resources"
+      estimated_videos: 157
+      
+  dictionary:
+    url: "https://dictionary.ankataa.com"
+    cache_enabled: true
+    fuzzy_matching: true
+    rate_limit_delay: 1.0
+    
+  forum:
+    url: "https://ankataa.discourse.group"
+    enabled: true
+    categories:
+      - "word-questions"
+      - "word-not-in-dictionary"
+      - "media-and-references"
+      - "user-guide"
+
+# =============================================================================
+# VIDEO PROCESSING
+# =============================================================================
+extraction:
+  # Frame extraction settings
+  target_frames: 100
+  use_scene_detection: true
+  use_deduplication: true
+  skip_intro_seconds: 10
+  skip_credits_seconds: 30
+  
+  # Quality settings
+  max_resolution: 720
+  frame_format: "jpeg"
+  jpeg_quality: 85
+
+# =============================================================================
+# GEMINI API CONFIGURATION
+# =============================================================================
+api:
+  gemini:
+    model: "gemini-2.0-flash"
+    timeout_seconds: 90
+    max_retries: 3
+    retry_base_delay: 2.0
+    retry_max_delay: 60.0
+    rate_limit_delay: 0.5
+    
+    # Cost tracking
+    cost_per_multimodal_call: 0.002
+    cost_per_text_call: 0.0001
+
+# =============================================================================
+# WORLD GENERATION
+# =============================================================================
+worlds:
+  enabled: true
+  selected:
+    - "world_everyday"
+    - "world_formal"
+    - "world_storytelling"
+    - "world_proverbs"
+    - "world_educational"
+  
+  # Customize per world
+  settings:
+    world_everyday:
+      variants_per_detection: 3
+      temperature: 0.7
+      
+    world_formal:
+      variants_per_detection: 2
+      temperature: 0.3
+      
+    world_storytelling:
+      variants_per_detection: 3
+      temperature: 0.9
+      
+    world_proverbs:
+      variants_per_detection: 5
+      temperature: 0.8
+      
+    world_educational:
+      variants_per_detection: 3
+      temperature: 0.5
+
+# =============================================================================
+# DICTIONARY ENRICHMENT
+# =============================================================================
+enrichment:
+  dictionary_lookup: true
+  ai_enrichment: true
+  queue_variants: true
+  queue_synonyms: true
+  max_variants_to_queue: 5
+  max_synonyms_to_queue: 3
+
+# =============================================================================
+# CONTINUOUS LEARNING QUEUE
+# =============================================================================
+queue:
+  enabled: true
+  batch_size: 10
+  interval_seconds: 300
+  delay_between_words: 2.0
+  max_retries: 3
+  
+  # Priority levels (1=highest, 10=lowest)
+  priorities:
+    video_detection: 2
+    user_query: 2
+    forum_mention: 3
+    dictionary_variant: 4
+    ai_suggestion: 5
+    scheduled_exploration: 6
+
+# =============================================================================
+# STORAGE CONFIGURATION
+# =============================================================================
+storage:
+  supabase:
+    enabled: true
+    
+  local:
+    temp_dir: "./data/temp"
+    frames_dir: "./data/frames"
+    audio_dir: "./data/audio"
+    checkpoints_dir: "./data/checkpoints"
+    keep_frames: true
+    keep_audio: true
+    
+  # Cleanup policy
+  cleanup:
+    enabled: false
+    keep_completed_days: 30
+
+# =============================================================================
+# AUDIO PROCESSING (Optional)
+# =============================================================================
+audio:
+  enabled: true
+  format: "m4a"
+  bitrate: "128k"
+  segment_by_scene: true
+
+# =============================================================================
+# PROCESSING LIMITS & BUDGET
+# =============================================================================
+limits:
+  # Per-run limits
+  max_videos_per_run: 50
+  max_frames_per_video: 100
+  max_api_cost_per_run: 10.00  # USD
+  
+  # Daily limits
+  max_videos_per_day: 100
+  max_api_cost_per_day: 50.00  # USD
+  
+  # Stop conditions
+  stop_on_error: false
+  max_consecutive_failures: 10
+
+# =============================================================================
+# MULTI-CHANNEL PROCESSING
+# =============================================================================
+multichannel:
+  enabled: true
+  parallel_channels: false  # Set to true for parallel processing
+  channel_priority_order: true  # Process by priority order
+  
+  # Per-channel limits
+  per_channel:
+    babamamadidiane:
+      max_videos: 522
+      skip_existing: true
+      
+    ankataa:
+      max_videos: 157
+      skip_existing: true
+
+# =============================================================================
+# LOGGING & MONITORING
+# =============================================================================
+logging:
+  level: "INFO"
+  file: "./logs/pipeline.log"
+  rotate_daily: true
+  max_log_files: 7
+
+monitoring:
+  enabled: true
+  stats_interval_seconds: 60
+  webhook_url: null  # Optional webhook for notifications
+

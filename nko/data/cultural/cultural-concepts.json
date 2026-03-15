@@ -1,0 +1,135 @@
+{
+  "meta": {
+    "name": "N'Ko Cultural Concepts Database",
+    "version": "1.0.0",
+    "created": "2026-02-19",
+    "task": "NKO-1.4",
+    "description": "Culturally-specific concepts, kinship terms, titles/honorifics, and social mechanisms from the Manding world.",
+    "total_entries": 12,
+    "sources": [
+      "core/linguistic/cultural_db.py"
+    ]
+  },
+  "concepts": [
+    {
+      "id": "concept-01",
+      "text_nko": "ߛߊ߬ߣߊߞߎ",
+      "text_latin": "sanaku",
+      "text_arabic": null,
+      "type": "concept",
+      "english_translation": "Joking relationship - permitted teasing between certain clans",
+      "usage": "Social mechanism for tension release between clans",
+      "tags": ["social", "tradition"]
+    },
+    {
+      "id": "concept-02",
+      "text_nko": "ߖߊ߬ߡߎ",
+      "text_latin": "jamu",
+      "text_arabic": "جامو",
+      "type": "concept",
+      "english_translation": "Family name / clan name",
+      "usage": "Hereditary surname indicating clan lineage",
+      "tags": ["identity", "family"]
+    },
+    {
+      "id": "concept-03",
+      "text_nko": "ߓߊ߯ߙߊ",
+      "text_latin": "bara",
+      "text_arabic": null,
+      "type": "concept",
+      "english_translation": "Work, labor, effort (with connotation of dignity)",
+      "usage": "Work as honorable endeavor",
+      "tags": ["work", "dignity"]
+    },
+    {
+      "id": "concept-04",
+      "text_nko": "ߝߊ߬ߛߏ",
+      "text_latin": "faso",
+      "text_arabic": null,
+      "type": "concept",
+      "english_translation": "Fatherland, homeland",
+      "usage": "Patriotic reference to homeland (lit: father's house)",
+      "tags": ["patriotism", "identity"]
+    },
+    {
+      "id": "title-01",
+      "text_nko": "ߡߊ߲߬ߛߊ",
+      "text_latin": "mansa",
+      "text_arabic": null,
+      "type": "title",
+      "english_translation": "King, ruler, chief",
+      "usage": "Traditional title for rulers",
+      "tags": ["royalty", "authority"]
+    },
+    {
+      "id": "title-02",
+      "text_nko": "ߖߋ߬ߟߌ",
+      "text_latin": "jeli",
+      "text_arabic": null,
+      "type": "title",
+      "english_translation": "Griot - traditional storyteller, historian, musician",
+      "usage": "Hereditary caste of oral historians",
+      "tags": ["culture", "music", "history"]
+    },
+    {
+      "id": "title-03",
+      "text_nko": "ߝߊ",
+      "text_latin": "fa",
+      "text_arabic": null,
+      "type": "title",
+      "english_translation": "Father (term of respect for elders)",
+      "usage": "Respectful address for older men",
+      "tags": ["respect", "elders"]
+    },
+    {
+      "id": "title-04",
+      "text_nko": "ߓߊ",
+      "text_latin": "ba",
+      "text_arabic": null,
+      "type": "title",
+      "english_translation": "Mother (term of respect for elder women)",
+      "usage": "Respectful address for older women",
+      "tags": ["respect", "elders"]
+    },
+    {
+      "id": "kinship-01",
+      "text_nko": "ߝߊߘߋ߲",
+      "text_latin": "faden",
+      "text_arabic": null,
+      "type": "kinship",
+      "english_translation": "Paternal sibling (same father)",
+      "usage": "Half-sibling through father (lit: father's child)",
+      "tags": ["family", "kinship"]
+    },
+    {
+      "id": "kinship-02",
+      "text_nko": "ߓߊߘߋ߲",
+      "text_latin": "baden",
+      "text_arabic": null,
+      "type": "kinship",
+      "english_translation": "Maternal sibling (same mother)",
+      "usage": "Half-sibling through mother (lit: mother's child)",
+      "tags": ["family", "kinship"]
+    },
+    {
+      "id": "kinship-03",
+      "text_nko": "ߝߊߘߋ߲ߓߊߘߋ߲",
+      "text_latin": "fadenbaden",
+      "text_arabic": null,
+      "type": "kinship",
+      "english_translation": "Full sibling (same parents)",
+      "usage": "Sibling from same mother and father",
+      "tags": ["family", "kinship"]
+    },
+    {
+      "id": "life-event-01",
+      "text_nko": null,
+      "text_latin": null,
+      "text_arabic": null,
+      "type": "life_events_reference",
+      "english_translation": "Manding Life Events requiring specific cultural responses",
+      "usage": "Reference list of life events tracked by the sentiment/compose engines",
+      "tags": ["birth", "naming_ceremony", "wedding", "death", "achievement", "illness", "journey", "reunion", "ramadan", "eid"]
+    }
+  ]
+}

@@ -1,0 +1,90 @@
+{
+  "morphemes": {
+    "prefixes": {
+      "ߡߊ߬": {"romanization": "ma-", "meaning": "nominalizer", "examples": ["ߡߊ߬ߞߊ߬ߙߊ߲ (reading)"]},
+      "ߓߊ߬": {"romanization": "ba-", "meaning": "place of", "examples": ["ߓߊ߬ߟߏ߲ (workplace)"]},
+      "ߞߊ߬": {"romanization": "ka-", "meaning": "instrumental/manner", "examples": []}
+    },
+    "suffixes": {
+      "ߟߊ": {"romanization": "-la", "meaning": "agent/doer", "examples": ["ߞߊ߬ߙߊ߲ߘߌߟߊ (reader/student)"]},
+      "ߟߌ": {"romanization": "-li", "meaning": "action/process", "examples": ["ߘߏ߲ߘߌߟߌ (learning)"]},
+      "ߦߊ": {"romanization": "-ya", "meaning": "abstract noun", "examples": ["ߤߙߊ (goodness/health)"]},
+      "ߓߊ": {"romanization": "-ba", "meaning": "place/collective", "examples": ["ߘߎ߰ߓߊ (world)"]},
+      "ߘߌ": {"romanization": "-di", "meaning": "verbal action marker", "examples": ["ߞߍߘߌ (doing)"]}
+    },
+    "roots": {
+      "ߞߊ߬ߙߊ߲": {"romanization": "karan", "meaning": "read/study", "class": "verbal"},
+      "ߘߐ߲": {"romanization": "don", "meaning": "know", "class": "verbal"},
+      "ߞߍ": {"romanization": "ke", "meaning": "do/make", "class": "verbal"},
+      "ߛߐ߬ߘߐ߲": {"romanization": "sodon", "meaning": "understand", "class": "verbal"},
+      "ߝߐ": {"romanization": "fo", "meaning": "say/speak", "class": "verbal"},
+      "ߕߊ߯": {"romanization": "taa", "meaning": "go", "class": "motion"},
+      "ߣߊ": {"romanization": "na", "meaning": "come", "class": "motion"},
+      "ߖߊ": {"romanization": "ja", "meaning": "buy", "class": "transactional"},
+      "ߝߍ": {"romanization": "fe", "meaning": "want/love", "class": "emotional"}
+    }
+  },
+  "word_formation_patterns": {
+    "verb_to_noun": {
+      "pattern": "root + ߟߊ (-la)",
+      "description": "Agent noun formation",
+      "examples": [
+        {"input": "ߞߊ߬ߙߊ߲", "output": "ߞߊ߬ߙߊ߲ߘߌߟߊ", "gloss": "karan + di + la = student"}
+      ]
+    },
+    "verb_to_action": {
+      "pattern": "root + ߟߌ (-li)",
+      "description": "Action nominalization",
+      "examples": [
+        {"input": "ߘߏ߲ߘߌ", "output": "ߘߏ߲ߘߌߟߌ", "gloss": "dondi + li = the learning"}
+      ]
+    },
+    "nominalization": {
+      "pattern": "ߡߊ߬ (ma-) + root",
+      "description": "General nominalization",
+      "examples": [
+        {"input": "ߞߊ߬ߙߊ߲", "output": "ߡߊ߬ߞߊ߬ߙߊ߲", "gloss": "ma + karan = reading/literature"}
+      ]
+    }
+  },
+  "cognates_manding": {
+    "mother": {"nko": "ߣߊ", "bambara": "na", "mandinka": "na", "soninke": "ya"},
+    "father": {"nko": "ߝߊ", "bambara": "fa", "mandinka": "fa", "soninke": "ba"},
+    "water": {"nko": "ߖߌ", "bambara": "ji", "mandinka": "jiyo", "soninke": "xa"},
+    "house": {"nko": "ߓߏ߲", "bambara": "bon", "mandinka": "bundo", "soninke": "ya"},
+    "child": {"nko": "ߘߋ߲", "bambara": "den", "mandinka": "dingo", "soninke": "yinmaxe"}
+  },
+  "evolution_patterns": {
+    "arabic_loans": {
+      "description": "How Arabic words adapt to N'Ko phonology",
+      "rules": [
+        "Arabic emphatics → plain consonants",
+        "Arabic ع (ʿayn) → ع or dropped",
+        "Final vowels often added for syllable structure"
+      ],
+      "examples": [
+        {"source": "كِتَاب (kitāb)", "nko": "ߞߌ߬ߕߊ߯ߓߎ", "meaning": "book"},
+        {"source": "سَلَام (salām)", "nko": "ߛߟߊ߬ߡ", "meaning": "peace"}
+      ]
+    },
+    "french_loans": {
+      "description": "How French words adapt (colonial contact)",
+      "rules": [
+        "French r → N'Ko ߙ",
+        "Nasal vowels → oral + nasal consonant",
+        "Final silent consonants preserved or dropped"
+      ],
+      "examples": [
+        {"source": "voiture", "nko": "ߡߏ߬ߕߏ", "meaning": "car (via moto)"},
+        {"source": "école", "nko": "ߛߊ߲ߝߍ", "meaning": "school (via sanfɛ)"}
+      ]
+    }
+  },
+  "productivity_scores": {
+    "ߟߊ": 0.92,
+    "ߟߌ": 0.85,
+    "ߡߊ߬": 0.88,
+    "ߦߊ": 0.78,
+    "ߓߊ": 0.65
+  }
+}

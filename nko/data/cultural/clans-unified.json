@@ -1,0 +1,132 @@
+{
+  "meta": {
+    "name": "N'Ko Clan/Family Name Database",
+    "version": "1.0.0",
+    "created": "2026-02-19",
+    "task": "NKO-1.4",
+    "description": "Manding clan/family (jamu) database with praise names, totems, lineage types, and appropriate greetings.",
+    "total_entries": 9,
+    "sources": [
+      "core/prediction/cultural_engine.py"
+    ]
+  },
+  "clans": [
+    {
+      "id": "clan-keita",
+      "name_nko": "ߞߋ߬ߕߊ",
+      "name_latin": "Keita",
+      "jamu": "ߡߊ߲߬ߛߊ ߞߎ߬ߙߎ",
+      "jamu_meaning": "Heir of Kings",
+      "totem": "Lion",
+      "region": "Mali",
+      "griot_line": false,
+      "noble_line": true,
+      "appropriate_greetings": ["ߡߊ߲߬ߛߊ ߞߎ߬ߙߎ", "ߝߏ߬ߣߊ ߘߋ߲"],
+      "notes": "Royal lineage of the Mali Empire, descendants of Sundiata Keita"
+    },
+    {
+      "id": "clan-toure",
+      "name_nko": "ߕߎ߬ߙߋ",
+      "name_latin": "Toure",
+      "jamu": "ߊ߬ߛߞߌ߬ߦߊ",
+      "jamu_meaning": "Askiya",
+      "totem": "Crocodile",
+      "region": "Mali/Guinea",
+      "griot_line": false,
+      "noble_line": true,
+      "appropriate_greetings": ["ߊ߬ߛߞߌ߬ߦߊ", "ߊ߬ߟߌ߬ߡߊ߬ߡߌ ߘߋ߲"],
+      "notes": "Songhay imperial lineage"
+    },
+    {
+      "id": "clan-diabate",
+      "name_nko": "ߖߊ߬ߓߊ߬ߕߍ",
+      "name_latin": "Diabate",
+      "jamu": "ߖߋ߬ߟߌ ߞߎ߬ߙߎ",
+      "jamu_meaning": "Master Griot",
+      "totem": null,
+      "region": "Mali/Guinea",
+      "griot_line": true,
+      "noble_line": false,
+      "appropriate_greetings": ["ߖߋ߬ߟߌ ߞߎ߬ߙߎ", "ߘߐ߬ߣߌ߬ ߓߊ߯ߘߊ"],
+      "notes": "Hereditary griot lineage — master storytellers, historians, musicians"
+    },
+    {
+      "id": "clan-kouyate",
+      "name_nko": "ߞߎ߬ߦߊ߬ߕߍ",
+      "name_latin": "Kouyate",
+      "jamu": "ߓߊ߬ߟߊ ߝߊ߬ߛߜߍ",
+      "jamu_meaning": "Bala Faseke",
+      "totem": null,
+      "region": "Mali/Guinea",
+      "griot_line": true,
+      "noble_line": false,
+      "appropriate_greetings": ["ߓߊ߬ߟߊ ߝߊ߬ߛߜߍ", "ߖߋ߬ߟߌ ߓߊ"],
+      "notes": "Hereditary griot lineage — keepers of the Sundiata epic"
+    },
+    {
+      "id": "clan-diomande",
+      "name_nko": "ߖߡߊ߲ߘߍ",
+      "name_latin": "Diomande",
+      "jamu": "ߝߏ߬ߘߋ",
+      "jamu_meaning": "Fode",
+      "totem": "Hippopotamus",
+      "region": "Cote d'Ivoire/Guinea",
+      "griot_line": false,
+      "noble_line": true,
+      "appropriate_greetings": ["ߝߏ߬ߘߋ", "ߥߊ߯ߟߊ ߘߋ߲"],
+      "notes": "Noble lineage from the Odienné/Worodougou region"
+    },
+    {
+      "id": "clan-conde",
+      "name_nko": "ߞߐ߲߬ߘߍ",
+      "name_latin": "Conde",
+      "jamu": "ߛߏ߬ߙߌ",
+      "jamu_meaning": "Sori",
+      "totem": "Panther",
+      "region": "Guinea",
+      "griot_line": false,
+      "noble_line": true,
+      "appropriate_greetings": ["ߛߏ߬ߙߌ", "ߝߎ߬ߕߊ ߘߋ߲"],
+      "notes": "Rulers of the Fouta Djallon"
+    },
+    {
+      "id": "clan-camara",
+      "name_nko": "ߞߡߙߊ",
+      "name_latin": "Camara",
+      "jamu": "ߓߊ߬ߓߊ",
+      "jamu_meaning": "Baba",
+      "totem": "Elephant",
+      "region": "Guinea/Mali",
+      "griot_line": false,
+      "noble_line": true,
+      "appropriate_greetings": ["ߓߊ߬ߓߊ", "ߕߊ߬ߓߏ߲ ߘߋ߲"],
+      "notes": "Connected to the Mandinka warrior tradition"
+    },
+    {
+      "id": "clan-traore",
+      "name_nko": "ߕߙߊ߬ߥߙߍ",
+      "name_latin": "Traore",
+      "jamu": "ߖߊ߬ߙߊ",
+      "jamu_meaning": "Jara (Lion)",
+      "totem": "Lion",
+      "region": "Mali/Burkina",
+      "griot_line": false,
+      "noble_line": true,
+      "appropriate_greetings": ["ߖߊ߬ߙߊ", "ߛߋ߲ߜߋ ߘߋ߲"],
+      "notes": "One of the most widespread Manding family names"
+    },
+    {
+      "id": "clan-coulibaly",
+      "name_nko": "ߞߎ߬ߟߌ߬ߓߊ߬ߟߌ",
+      "name_latin": "Coulibaly",
+      "jamu": "ߡߊ߬ߛߊ",
+      "jamu_meaning": "Masa (King)",
+      "totem": "Fish",
+      "region": "Mali",
+      "griot_line": false,
+      "noble_line": true,
+      "appropriate_greetings": ["ߡߊ߬ߛߊ", "ߓߊ߬ߡߊ߬ߣߊ߲ ߘߋ߲"],
+      "notes": "Connected to the Bambara Segou empire"
+    }
+  ]
+}

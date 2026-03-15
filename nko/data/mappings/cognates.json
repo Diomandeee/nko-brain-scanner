@@ -1,0 +1,100 @@
+{
+  "meta": {
+    "description": "Cross-language cognates and loan words",
+    "version": "0.1.0"
+  },
+  "cognates": {
+    "peace": {
+      "nko": "ߤߍ߬ߙߊ",
+      "arabic": "سلام",
+      "latin": "salam / hera",
+      "note": "Arabic 'salam' borrowed into many Manding languages"
+    },
+    "book": {
+      "nko": "ߞߌ߬ߕߊ߬ߓߎ",
+      "arabic": "كتاب",
+      "latin": "kitabu",
+      "note": "From Arabic 'kitab'"
+    },
+    "wisdom": {
+      "nko": "ߤߌ߬ߞߌ߬ߡߊ",
+      "arabic": "حكمة",
+      "latin": "hikima",
+      "note": "From Arabic 'hikma'"
+    },
+    "world": {
+      "nko": "ߘߎ߰ߣߌ߲ߦߊ",
+      "arabic": "دنيا",
+      "latin": "dunya",
+      "note": "From Arabic 'dunya'"
+    },
+    "time": {
+      "nko": "ߥߊ߯ߕߌ",
+      "arabic": "وقت",
+      "latin": "wakti",
+      "note": "From Arabic 'waqt'"
+    },
+    "number": {
+      "nko": "ߖߊ߬ߕߋ",
+      "arabic": "عدد",
+      "latin": "jate",
+      "note": "Native Manding"
+    },
+    "god": {
+      "nko": "ߊߟߊ",
+      "arabic": "الله",
+      "latin": "Allah / Ala",
+      "note": "From Arabic"
+    },
+    "prophet": {
+      "nko": "ߞߌ߬ߦߊ",
+      "arabic": "نبي",
+      "latin": "kiya / nabi",
+      "note": "Arabic influence"
+    },
+    "thank_you": {
+      "nko": "ߌ ߣߌ߫ ߛߐ߲߬",
+      "arabic": "شكرا",
+      "latin": "i ni so / shukran",
+      "note": "Native Manding / Arabic"
+    },
+    "greetings": {
+      "nko": "ߤߍ߬ߙߋ",
+      "arabic": "مرحبا",
+      "latin": "here / marhaba",
+      "note": "Traditional greeting forms"
+    }
+  },
+  "phrases": {
+    "hello": {
+      "nko": "ߌ ߣߌ߫ ߛߐ߲߬",
+      "arabic": "مرحبا",
+      "latin": "i ni so / marhaba",
+      "meaning": "Greetings to you"
+    },
+    "how_are_you": {
+      "nko": "ߌ ߞߊ߬ ߞߍ߬ ߖߌ߰?",
+      "arabic": "كيف حالك؟",
+      "latin": "i ka ke ji? / kayfa haluk?",
+      "meaning": "How are you?"
+    },
+    "good_morning": {
+      "nko": "ߌ ߣߌ߫ ߛߐ߲߬ ߤ ߛߏ߭ߜߏ",
+      "arabic": "صباح الخير",
+      "latin": "i ni so ha sogo / sabah al-khayr",
+      "meaning": "Good morning"
+    },
+    "goodbye": {
+      "nko": "ߊ߬ ߦߴߌ ߟߊ߫",
+      "arabic": "مع السلامة",
+      "latin": "a y'i la / ma'a salama",
+      "meaning": "May it be with you"
+    },
+    "peace_be_upon_you": {
+      "nko": "ߤߍ߬ߙߊ ߌ ߡߊ߬",
+      "arabic": "السلام عليكم",
+      "latin": "hera i ma / assalamu alaykum",
+      "meaning": "Peace be upon you"
+    }
+  }
+}
