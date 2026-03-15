@@ -46,10 +46,19 @@ DEFAULT_OUTPUT = Path(__file__).parent.parent / "djoko_audio"
 SEGMENT_DURATION = 30  # seconds
 CHECKPOINT_FILE = "download_checkpoint.json"
 
+# CRITICAL: Use brew yt-dlp, NOT pip version.
+# pip version (2025.10.14) fails with YouTube SABR streaming (HTTP 403).
+# brew version (2026.03.13+) handles JS challenges + SABR.
+YT_DLP = "/opt/homebrew/bin/yt-dlp"
+YT_DLP_BASE_ARGS = [
+    "--cookies-from-browser", "safari",
+    "--remote-components", "ejs:github",
+]
+
 
 def list_channel_videos(channel_url: str, limit: int = 0) -> List[dict]:
     """List all video IDs and titles from a YouTube channel."""
-    cmd = ["yt-dlp", "--flat-playlist", "--print", "%(id)s\t%(title)s", channel_url]
+    cmd = [YT_DLP, "--flat-playlist", "--print", "%(id)s\t%(title)s", channel_url]
     try:
         result = subprocess.run(cmd, capture_output=True, text=True, timeout=300)
         videos = []
@@ -69,7 +78,8 @@ def download_audio(video_id: str, output_dir: Path, cookies: Optional[str] = Non
     """Download audio from a YouTube video as WAV."""
     output_template = str(output_dir / f"{video_id}.%(ext)s")
     cmd = [
-        "yt-dlp",
+        YT_DLP,
+        *YT_DLP_BASE_ARGS,
         "-x", "--audio-format", "wav",
         "--audio-quality", "0",
         "-o", output_template,
