@@ -38,10 +38,13 @@ except ImportError:
     BRIDGE_AVAILABLE = False
 
 # ASR model config
-DEFAULT_MODEL = "MALIBA-AI/whisper-small-bambara-cv17"
+# MALIBA-AI models are gated (need HF access request).
+# FarmRadioInternational model is public and produces real Bambara.
+DEFAULT_MODEL = "FarmRadioInternational/bambara-whisper-asr"
 FALLBACK_MODELS = [
-    "MALIBA-AI/whisper-small-bambara-cv17",
-    "openai/whisper-large-v3",
+    "FarmRadioInternational/bambara-whisper-asr",
+    "MALIBA-AI/bambara-asr-v3",  # gated, needs access request
+    "openai/whisper-large-v3",   # doesn't know Bambara, last resort
 ]
 
 CHECKPOINT_FILE = "transcription_checkpoint.json"
