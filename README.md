@@ -58,10 +58,10 @@ nko-brain-scanner/
 |   +-- compare_profiles.py
 |   +-- eval_translation_tax.py
 +-- training/            # Training pipeline (MLX LoRA)
-|   +-- build_v3_data.py     # V3 data builder (92K examples)
-|   +-- sft_builder.py
-|   +-- build_cpt_data.py
-|   +-- build_bpe_data.py
+|   +-- build_sft_data_v3.py  # V3 data builder (92K examples)
+|   +-- build_sft_data.py     # SFT data builder
+|   +-- build_cpt_data.py     # CPT sliding window data
+|   +-- build_sft_data_v2.py  # V2 extended vocab data
 +-- tokenizer/           # N'Ko BPE tokenizer
 |   +-- train_bpe.py         # Standard 512-merge BPE
 |   +-- train_morpheme_bpe.py # Morpheme-constrained BPE
@@ -125,7 +125,7 @@ python3 -m mlx_lm lora --model mlx-community/Qwen3-8B-8bit \
 ### V3 Training (92K examples with nicolingua)
 ```bash
 # Build V3 data (combines all sources + nicolingua parallel corpus)
-python3 training/build_v3_data.py
+python3 training/build_sft_data_v3.py
 
 # Train V3 adapter on extended-vocabulary model
 python3 -m mlx_lm lora -c v3_training_config.yaml

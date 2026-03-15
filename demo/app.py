@@ -21,8 +21,11 @@ import mlx.nn as nn
 from mlx_lm import load, generate
 
 MODEL_ID = "mlx-community/Qwen3-8B-8bit"
+# V3 paths (preferred), with V1 fallback
+FUSED_V3 = os.path.expanduser("~/nko-brain-scanner/fused-v3-nko-qwen3")
+FUSED_V1 = os.path.expanduser("~/nko-brain-scanner/fused-nko-qwen3")
 ADAPTER_BPE = os.path.expanduser("~/nko-brain-scanner/adapters-bpe")
-FUSED_MODEL = os.path.expanduser("~/nko-brain-scanner/fused-nko-qwen3")
+FUSED_MODEL = FUSED_V3 if os.path.exists(FUSED_V3) else FUSED_V1
 RESULTS_FILE = os.path.expanduser("~/nko-brain-scanner/results/profiler_corrected.json")
 SCAN_FILE = os.path.expanduser("~/nko-brain-scanner/results/brain_scan_8b.json")
 
@@ -190,19 +193,26 @@ It is used by over 40 million speakers across Guinea, Mali, Cote d'Ivoire, and n
 2. **Supervised Fine-Tuning**: 21,240 combined examples
 3. **BPE-Aware Training**: 25,100 examples with 3,860 subword-focused additions
 
-### Key Results
+### Key Results (V1 Base Vocab)
 
-- **Translation Tax**: 2.90x → 0.70x (-76% reduction)
-- **N'Ko Token Accuracy**: 23.0% → 32.8% (+43% relative)
+- **Translation Tax**: 2.90x -> 0.70x (-76% reduction)
+- **N'Ko Token Accuracy**: 23.0% -> 32.8% (+43% relative)
 - **English Accuracy Cost**: Only -1.2 percentage points
-- **Total Training Time**: ~3 hours on Apple M4 (16GB)
-- **Total Cost**: $0 (consumer hardware)
+
+### V3 Results (Extended Vocab + nicolingua)
+
+- **Training Data**: 92,184 examples (including 32,792 nicolingua parallel segments)
+- **Mode Collapse**: Fixed (3/20 degenerate vs V2's 20/20)
+- **Unconstrained Syllable Validity**: 99.8%
+- **FSM-Constrained Validity**: 100%
+- **Total Training Time**: ~6 hours on Apple M4 (16GB)
+- **Cloud Cost**: $1.72 (initial brain scan only)
 
 ### Links
 
 - [Blog Post](https://diomandeee.github.io/nko-brain-scanner/)
 - [GitHub](https://github.com/Diomandeee/nko-brain-scanner)
-- [Paper (coming soon)](#)
+- [Paper](https://github.com/Diomandeee/nko-brain-scanner/tree/main/paper)
 """
 
 
