@@ -127,10 +127,11 @@ def main():
                 total_elapsed = time.time() - t_start
                 rate = (i + 1) / total_elapsed
                 eta_min = (len(remaining) - i - 1) / rate / 60
+                preview = entry.get("text", "")[:60]
                 print(
                     f"  [{i+1}/{len(remaining)}] {elapsed:.1f}s | "
                     f"{rate:.1f} seg/s | ETA {eta_min:.0f}m | "
-                    f"{text[:60]}"
+                    f"{preview}"
                 )
                 save_checkpoint(cp_path, cp)
 
