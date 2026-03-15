@@ -827,10 +827,45 @@ But at the output layer, N'Ko activations **exceed** English. The model is more 
 - **Total time:** ~5 minutes per configuration on Apple M4
 - **Total cost:** $0 (local hardware)
 
+### Experiment 9: Vocabulary Extension + V3 (nicolingua)
+
+After the three-stage V1 pipeline, we extended the model's vocabulary and trained on a much larger dataset:
+
+- **Vocabulary extension:** Dequantize-extend-requantize embedding surgery, 151,936 to 152,192 tokens (+256 N'Ko BPE tokens)
+- **V2 adapter:** 33,912 examples on extended model, 2,000 iterations. Val loss 3.506 (18.3% lower than V1). But V2 mode-collapsed: all 20 test prompts produced degenerate repetitive output.
+- **V3 adapter:** 92,184 examples (all V2 data + 32,792 nicolingua WMT 2023 parallel segments), 3,000 iterations, best checkpoint at iter 1500 (val loss 3.275, 6.6% below V2).
+- **Mode collapse fixed:** Only 3/20 test prompts degenerate (vs V2's 20/20). Distinct-1: 0.455, Distinct-2: 0.621.
+- **Unconstrained validity:** 99.8% valid syllables without FSM (vs V1's 89.8%). FSM guarantees 100%.
+- **Vocabulary extension tradeoff:** Extended vocabulary changes N'Ko tokenization, making PPL non-comparable with V1. V3 N'Ko PPL = 62.89 vs V1's 6.00, but this reflects tokenization differences, not generation quality. The V3 model's lower validation loss and fixed mode collapse confirm improvement.
+- **Total training time:** ~6 hours across all stages (V1-V3) on Apple M4 (16GB).
+
+### Experiment 10: Morpheme-Constrained BPE
+
+A variant of the BPE tokenizer that prevents merges from crossing morpheme boundaries:
+
+- **Effective merges:** 89 (from 256 requested, due to morpheme constraints)
+- **Vocabulary:** 153 tokens (64 base + 89 merges)
+- **Morpheme boundary preservation:** 0.941 vs standard BPE's 0.891 (+5.0pp)
+- **Compression ratio:** 1.78x (vs standard BPE's 2.75x, tradeoff for linguistic accuracy)
+
+### Experiment 11: Retrieval-Centric ASR
+
+A multimodal ASR architecture for N'Ko speech recognition, designed for settings where transcribed speech data is scarce:
+
+1. Frozen Whisper audio features (d=1280)
+2. SigLIP visual context features (d=1152)
+3. Joint embedding space (d=512) with contrastive + retrieval loss
+4. 3,024-entry syllable codebook retrieval
+5. FSM-constrained beam search for phonotactically valid output
+
+Round-trip accuracy: 100% on synthetic embeddings. Real audio evaluation pending.
+
 ### Reproducibility
 All code is open-sourced. The brain scan can be reproduced for under $2 of cloud compute. The fine-tuning runs for free on any Apple Silicon Mac.
 
 **Code:** [github.com/Diomandeee/nko-brain-scanner](https://github.com/Diomandeee/nko-brain-scanner)
+
+**Model:** [huggingface.co/Diomande/nko-qwen3-8b-v3](https://huggingface.co/Diomande/nko-qwen3-8b-v3)
 
 ---
 
