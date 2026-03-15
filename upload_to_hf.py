@@ -18,7 +18,7 @@ import os
 from pathlib import Path
 from huggingface_hub import HfApi, create_repo
 
-REPO_ID = "Diomandeee/nko-qwen3-8b-v3"
+REPO_ID = "Diomande/nko-qwen3-8b-v3"
 MODEL_DIR = os.path.expanduser("~/nko-brain-scanner/fused-v3-nko-qwen3")
 SCANNER_DIR = os.path.expanduser("~/nko-brain-scanner")
 
@@ -53,20 +53,22 @@ def upload_model_card(api):
 def upload_tokenizer(api):
     """Upload N'Ko BPE tokenizer files."""
     tokenizer_files = [
-        "data/nko_bpe_vocab.json",
-        "data/morpheme_bpe_vocab.json",
-        "data/syllable_codebook.json",
+        ("tokenizer/bpe_vocab.json", "tokenizer/nko_bpe_vocab.json"),
+        ("tokenizer/morpheme_bpe_vocab.json", "tokenizer/morpheme_bpe_vocab.json"),
+        ("data/syllable_codebook.json", "tokenizer/syllable_codebook.json"),
     ]
-    for f in tokenizer_files:
-        full_path = os.path.join(SCANNER_DIR, f)
+    for local_path, repo_path in tokenizer_files:
+        full_path = os.path.join(SCANNER_DIR, local_path)
         if os.path.exists(full_path):
             api.upload_file(
                 path_or_fileobj=full_path,
-                path_in_repo=f"tokenizer/{os.path.basename(f)}",
+                path_in_repo=repo_path,
                 repo_id=REPO_ID,
                 repo_type="model",
             )
-            print(f"Uploaded {f}")
+            print(f"Uploaded {local_path} -> {repo_path}")
+        else:
+            print(f"Skipped {local_path} (not found)")
 
 
 def upload_results(api):

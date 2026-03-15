@@ -130,7 +130,7 @@ Per-layer activation profiling reveals:
 from mlx_lm import load, generate
 
 # Load fused model
-model, tokenizer = load("Diomandeee/nko-qwen3-8b-v3")
+model, tokenizer = load("Diomande/nko-qwen3-8b-v3")
 response = generate(model, tokenizer, prompt="ߒߞߏ ߦߋ߫ ߡߎ߲߬", max_tokens=200)
 ```
 

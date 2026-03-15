@@ -15,7 +15,7 @@ import os
 
 from huggingface_hub import HfApi, create_repo
 
-HF_USER = "Diomandeee"
+HF_USER = "Diomande"
 MODEL_REPO = f"{HF_USER}/nko-qwen3-8b-v2"
 DATASET_REPO = f"{HF_USER}/nko-parallel-corpus"
 
