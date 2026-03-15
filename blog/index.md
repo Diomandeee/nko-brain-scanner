@@ -102,11 +102,51 @@ This achieves 100% round-trip accuracy on synthetic embeddings. Real audio evalu
 
 **Brain scanning works.** Activation profiling gave actionable insight into where adaptation was happening and whether it was working. The "efficient encoding + confident output" pattern (reduced L2 in reasoning layers, increased L2 at output) is a clean signal.
 
+## The YouTube Pipeline
+
+The ASR work started with a data problem: there's almost no transcribed N'Ko audio in existence. So I built a pipeline to create it.
+
+Two sources:
+
+**babamamadidiane** is a YouTube channel with 532 N'Ko teaching videos. The format is a teacher writing on a whiteboard while speaking. 189 of those videos are already on GCS. The videos have a useful property: the teacher works through slides, so the text on screen changes at predictable moments. A scene detection pass finds those slide transitions, then OCR extracts the N'Ko text from each unique slide. The extracted text gets aligned with the audio window when the teacher is actually reading from that slide.
+
+**Djoko** is a 1,461-episode Bambara radio drama series. 480+ hours of natural dialogue. No N'Ko text on screen, but Bambara and N'Ko are the same language written two different ways. FarmRadio's Whisper model handles Bambara ASR transcription, then a cross-script bridge converts the Latin Bambara output to N'Ko. One mapping caused problems: `g` was mapping to the wrong character. Fixed. The bridge now produces clean N'Ko from Whisper's Latin output.
+
+For the OCR comparison, I tested Gemini 2.0 Flash, GPT-4.1, and GPT-4.1-nano on the same N'Ko slides. Gemini Flash hit 100% detection. GPT-4.1 hallucinated Latin characters and invented diacritics that don't exist in N'Ko. GPT-4.1-nano was effectively blind to N'Ko text. Gemini won by a lot.
+
+Processing runs on a Vast.ai RTX 3090 at $0.14/hr. 3,226 segments processed so far.
+
+## The Retrieval ASR Architecture
+
+Standard approach for a new language: fine-tune Whisper, get Latin transcription, translate. The problem is you lose tone marks in the translation and the Latin spelling is ambiguous for several N'Ko phonemes.
+
+The architecture I built goes Audio to N'Ko directly.
+
+4.5M parameters total. Whisper's encoder (frozen) extracts audio features. A small projector maps those features into a 512-dimensional space. Instead of an autoregressive decoder generating tokens one at a time, the model retrieves from a codebook of 3,024 N'Ko syllables, then an FSM assembles valid sequences from the retrieved syllables.
+
+Why this should beat MALIBA-AI (which sits at 45.73% WER on Bambara): the retrieval space is finite and known. The model can't generate a syllable that doesn't exist. Tone marks are preserved because they're baked into the codebook entries, not inferred after the fact. The FSM guarantees the output is phonotactically valid, same as the constrained decoder I built for text generation.
+
+Training data comes from two places: the OCR-aligned teaching video pairs (audio + N'Ko text from screen) and the ASR-bridged Djoko pairs (audio + N'Ko converted from Whisper's Bambara output).
+
+## The Consolidation
+
+The project had sprawled across three separate repositories: 656K total lines of code. A lot of that was duplication, a lot was `sys.path.insert` hacks to make modules find each other.
+
+Pulled it all into one unified repo. The structure now:
+
+- `nko/` — core package (phonetics, tokenizer, morphology)
+- `pipeline/` — data processing and training
+- `asr/` — the retrieval ASR architecture
+- `scanner/` — the brain scanner and activation profiler
+- `constrained/` — the FSM decoder
+
+No more path manipulation. No more "run this script from this specific directory." Import `nko` and it works.
+
 ## Reproducing This Work
 
-Everything is open source: the training pipeline, evaluation scripts, tokenizer, constrained decoder, ASR architecture, and all results.
+Everything is open source: the training pipeline, evaluation scripts, tokenizer, constrained decoder, ASR architecture, YouTube data pipeline, and all results. The unified repo has everything in one place now.
 
-- **Code**: [github.com/Diomandeee/nko-brain-scanner](https://github.com/Diomandeee/nko-brain-scanner)
+- **Code**: [github.com/Diomandeee/nko-brain-scanner](https://github.com/Diomandeee/nko-brain-scanner) (unified repo: `nko/`, `pipeline/`, `asr/`, `scanner/`, `constrained/`)
 - **Model**: [huggingface.co/Diomande/nko-qwen3-8b-v3](https://huggingface.co/Diomande/nko-qwen3-8b-v3) *(upload pending)*
 - **Paper**: [ACL/EMNLP 2026 submission](https://github.com/Diomandeee/nko-brain-scanner/tree/main/paper)
 
