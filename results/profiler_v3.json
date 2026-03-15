@@ -1,0 +1,40 @@
+{
+  "v3": {
+    "english": {
+      "avg_loss": 2.1944,
+      "perplexity": 8.97,
+      "top1_accuracy": 0.6949,
+      "nko_token_accuracy": 0.0,
+      "nko_tokens_evaluated": 0,
+      "total_tokens": 3291,
+      "valid_examples": 100
+    },
+    "nko": {
+      "avg_loss": 4.0529,
+      "perplexity": 57.56,
+      "top1_accuracy": 0.4333,
+      "nko_token_accuracy": 0.0582,
+      "nko_tokens_evaluated": 4913,
+      "total_tokens": 12216,
+      "valid_examples": 100
+    }
+  },
+  "translation_tax_v3": 6.4169,
+  "metadata": {
+    "model_path": "/Users/mohameddiomande/nko-brain-scanner/fused-v3-final-nko-qwen3",
+    "english_examples": 100,
+    "nko_examples": 100,
+    "max_seq_len": 384,
+    "timestamp": "2026-03-15T04:02:43.517038",
+    "training_config": {
+      "examples": 92184,
+      "iterations": 3000,
+      "batch_size": 1,
+      "grad_accum": 8,
+      "lr": 1e-05,
+      "lora_layers": 8,
+      "lora_rank": 8,
+      "max_seq_len": 384
+    }
+  }
+}

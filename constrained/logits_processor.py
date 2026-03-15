@@ -183,6 +183,7 @@ def constrained_generate(
     Includes repetition penalty to reduce mode collapse.
     """
     from mlx_lm.generate import generate_step
+    from mlx_lm.sample_utils import make_sampler
 
     # Detect model vocab size from model config
     model_vocab = getattr(model, 'vocab_size', 0)
@@ -195,12 +196,14 @@ def constrained_generate(
     rep_processor = RepetitionPenaltyProcessor(penalty=repetition_penalty)
     tokens = tokenizer.encode(prompt)
     prompt_array = mx.array(tokens)  # 1D — generate_step adds batch dim internally
+    sampler = make_sampler(temp=temperature, top_p=top_p)
 
     generated = []
     for result in generate_step(
         prompt_array,
         model,
         max_tokens=max_tokens,
+        sampler=sampler,
         logits_processors=[fsm_processor, rep_processor],
     ):
         token = result[0]

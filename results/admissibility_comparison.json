@@ -4,415 +4,415 @@
     "samples": [
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߛߊ߲ߕߌ߮ ߟߋ߬ ߖߊ߰ߡߊ߲ ߕߋ߬ߟߋ ߟߊ߫ ߖߊ߯ߓߊߟߌ ߟߎ߬ ߓߍ߯ ߘߌ߫߸ ߏ\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ",
-        "tokens": 80,
-        "time": 9.724,
+        "generated": "ߊ߬ ߕߐ߯ ߸ ߊ߬ ߕߐ߯ ߸ ߊ߬ ߕߐ߯ ߸ ߊ߬ ߕߐ߯ ߸ ߊ߬ ߕߐ߯ ߸ ߊ߬ ߕߐ߯ ߸ ߊ߬ ߕߐ߯ ߸ ߊ߬ ߕߐ߯ ߸ ߊ߬ ߕߐ߯ ߸ ߊ߬ ߕߐ߯ ߸ ߊ߬",
+        "tokens": 128,
+        "time": 13.788,
         "valid_syllable_ratio": 1.0,
-        "ppl": 9.54
+        "ppl": 11.38
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߡߎ߲߬ߢߊ ߦߋ߫ ߘߊ߬ߓߟߏ ߟߋ ߘߌ߫\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ",
-        "tokens": 80,
-        "time": 8.255,
+        "generated": "ߡߎ߲߬ ߖߎ߲߬ ߠߎ߫ ߊ߬ ߗߋ ߗߋ ߊ߬ ߸ ߊ߬ ߸ ߊ߬ ߸ ߊ߬ ߸ ߊ߬ ߸ ߊ߬ ߸ ߊ߬ ߸ ߊ߬ ߸ ߊ߬ ߸ ߊ߬ ߸ ߊ߬ ߸ ߊ߬ ߸ ߊ߬ ߸ ߊ߬",
+        "tokens": 128,
+        "time": 12.96,
         "valid_syllable_ratio": 1.0,
-        "ppl": 6.26
+        "ppl": 4.48
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߡߐ߰ ߞߋ߬ߟߋ߲߬ ߞߊ߲ ߦߋ߫ ߞߊ߬ ߞߎ߲߬ ߛߎ߲ ߠߎ߬ ߡߍ߲\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬",
-        "tokens": 80,
-        "time": 8.391,
+        "generated": "ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬",
+        "tokens": 128,
+        "time": 13.164,
         "valid_syllable_ratio": 1.0,
-        "ppl": 6.91
+        "ppl": 4.16
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߁߂ߓߙߍ߬ߓߞߐ߬ߟߊ߬\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ",
-        "tokens": 80,
-        "time": 8.465,
+        "generated": "߁߂ߓߎ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬",
+        "tokens": 128,
+        "time": 12.977,
         "valid_syllable_ratio": 1.0,
-        "ppl": 6.52
+        "ppl": 3.81
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߊ߬ ߣߊ߬ߣߍ߲߫ ߛߊ߲߬ ߓߌߣߊ߯ߣߌ߲ ߓߐ߫ ߟߊ߫ ߞߵߊ߬ ߕߍ߬ߘߵߊ߬ ߦߋ߫ \n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ",
-        "tokens": 80,
-        "time": 8.596,
+        "generated": "ߊ߬ ߠߎ߫ ߊ߬ ߗߋ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ",
+        "tokens": 128,
+        "time": 13.108,
         "valid_syllable_ratio": 1.0,
-        "ppl": 8.15
+        "ppl": 5.64
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߓߟߏ ߞߋߟߋ߲ ߕߍ ߓߎ߬ߙߎ ߕߊ\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬",
-        "tokens": 80,
-        "time": 8.426,
+        "generated": "ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬",
+        "tokens": 128,
+        "time": 12.997,
         "valid_syllable_ratio": 1.0,
-        "ppl": 6.06
+        "ppl": 3.7
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߦߋߟߋ߲ ߛߊ߲߭ ߦߋ߫ ߟߊߓߊ߯ߙߊ߫ ߟߊ߫ ߞߊ߬ ߛߋ߫ ߝߏ߬ߟߏ߲߬ߝߊ߬ߟߊ߲߬\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߦߐ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦ",
-        "tokens": 80,
-        "time": 8.548,
-        "valid_syllable_ratio": 0.9804,
-        "ppl": 9.18
+        "generated": "ߊ߬ ߕߐ ߂ ߊ߬ ߕߐ ߂ ߊ߬ ߕߐ ߂ ߊ߬ ߕߐ ߂ ߊ߬ ߕߐ ߂ ߊ߬ ߕߐ ߂ ߊ߬ ߕߐ ߂ ߊ߬ ߕߐ ߂ ߊ߬ ߕߐ ߂ ߊ߬ ߕߐ ߂ ߊ߬ ߕߐ ߂ ߊ߬ ߕߐ ߂ ߊ߬",
+        "tokens": 128,
+        "time": 13.158,
+        "valid_syllable_ratio": 1.0,
+        "ppl": 5.31
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߦߟߌߡߊߛߙߋ ߟߎ߬\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߦ",
-        "tokens": 80,
-        "time": 8.465,
-        "valid_syllable_ratio": 0.0,
-        "ppl": null
+        "generated": "ߊ߬ ߕߐ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ",
+        "tokens": 128,
+        "time": 12.971,
+        "valid_syllable_ratio": 1.0,
+        "ppl": 4.31
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߡߙߊ߬ߓߊ߰ߘߊ ߞߣߐ߫߸ߓߏ߬ߞߋ߫ ߕߌ߲߬ߞߎߘߎ߲ ߘߐ߫߸ߞߎߘߍ߫ ߘߊ߲ߘߐ߫ ߟ\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ ߦߍ ߊ ߦߍ ߊ ߦߍ ߊ ߦߍ ߊ ߦߍ ߊ ߦߍ ߊ ߦߍ ߊ ߦߍ ߊ ߦߍ ߊ ߦߍ ߊ ߦߍ ߊ ߦߍ ߊ ߦߍ ߊ ߦߍ ߊ ߦߍ ߊ",
-        "tokens": 80,
-        "time": 8.6,
+        "generated": "ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬",
+        "tokens": 128,
+        "time": 13.158,
         "valid_syllable_ratio": 1.0,
-        "ppl": 9.38
+        "ppl": 5.11
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߞߏ߲ߞߏ ߦߋ ߞߊ߲ ߞߎ߬ߙߊ\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ",
-        "tokens": 80,
-        "time": 8.442,
+        "generated": "ߊ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ",
+        "tokens": 128,
+        "time": 13.041,
         "valid_syllable_ratio": 1.0,
-        "ppl": 6.22
+        "ppl": 4.39
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߦߟߌߡߊߛߙߋ ߟߎ߬\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߦ",
-        "tokens": 80,
-        "time": 8.429,
-        "valid_syllable_ratio": 0.0,
-        "ppl": null
+        "generated": "ߊ߬ ߕߐ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ",
+        "tokens": 128,
+        "time": 13.033,
+        "valid_syllable_ratio": 1.0,
+        "ppl": 4.31
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߝߊ߬ߘߌ߬ߞߋߟߋ߲ ߕߐ߰ߡߊ߬ߛߙߋ߬ߟߊ߲ ߥߙߎߞߌ ߗߏ߮\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ",
-        "tokens": 80,
-        "time": 8.607,
+        "generated": "ߊ߬ ߕߐ߰ ߂ ߁߈ ߁߄ ߁߇ ߁߅ ߁߉ ߁߈ ߁߄ ߁߇ ߁߅ ߁߉ ߁߈ ߁߄ ߁߇ ߁߅ ߁߉ ߁߈ ߁߄ ߁߇ ߁߅ ߁߉ ߁߈ ߁߄ ߁",
+        "tokens": 128,
+        "time": 13.258,
         "valid_syllable_ratio": 1.0,
-        "ppl": 8.73
+        "ppl": 7.45
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߡߐ߱ ߞߊ߬ ߝߊ߲߬ߞߊ ߛߐ߬ߘߐ߲\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬",
-        "tokens": 80,
-        "time": 8.739,
-        "valid_syllable_ratio": 1.0,
-        "ppl": 5.74
+        "generated": "ߊ߬ ߕߐ߲ ߠߎ߫ ߸ ߊ߬ ߕߐ߲ ߠߎ߫ ߸ ߊ߬ ߕߐ߲ ߠߎ߫ ߸ ߊ߬ ߕߐ߲ ߠߎ߫ ߸ ߊ߬ ߕߐ߲ ߠߎ߫ ߸ ߊ߬ ߕߐ߲ ߠߎ߫ ߸ ߊ߬ ߕߐ߲ ߠߎ߫ ߸ ߊ߬ ߕ",
+        "tokens": 128,
+        "time": 13.094,
+        "valid_syllable_ratio": 0.9773,
+        "ppl": 3.83
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߞߎ߲߬ߠߊ ߡߊ߲ ߞߊ߫ ߖߎ߯\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ",
-        "tokens": 80,
-        "time": 8.592,
-        "valid_syllable_ratio": 1.0,
-        "ppl": 6.07
+        "generated": "ߊ߬ ߗߋ ߊ߬ ߗߋ ߊ߬ ߗߋ ߊ߬ ߗߋ ߊ߬ ߗߋ ߊ߬ ߗߋ ߊ߬ ߗߋ ߊ߬ ߗߋ ߊ߬ ߗߋ ߊ߬ ߗߋ ߊ߬ ߗߋ ߊ߬ ߗߋ ߊ߬ ߗߋ ߊ߬ ߗߋ ߊ߬ ߗߋ ߊ߬ ߗߋ ߊ߬ ߗߋ ߊ߬ ߗ",
+        "tokens": 128,
+        "time": 13.09,
+        "valid_syllable_ratio": 0.9811,
+        "ppl": 3.74
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߖߊ߯ߓߊ ߘߐߜߍߕߊ ߥߎߢߊ߲߲ߥߎߢߊ߲߲߫ ߘߐߜߍߕߊ ߘߐߛߎߡߊ߲ߣߍ߲ ߦߋ߫ ߦ\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߦ ߊ߬ ߦ ߊ߬ ߦ ߊ߬ ߦ ߊ߬ ߦ ߊ߬ ߦ ߊ߬ ߦ ߊ߬ ߦ ߊ߬ ߦ ߊ߬ ߦ ߊ߬ ߦ ߊ߬ ߦ ߊ߬",
-        "tokens": 80,
-        "time": 8.717,
+        "generated": "ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬",
+        "tokens": 128,
+        "time": 13.274,
         "valid_syllable_ratio": 1.0,
-        "ppl": 9.62
+        "ppl": 5.64
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߞߎߡߊ߫ ߟߊߛߘߎߧߊ ߘߐ߫߸ ߦߋߟߋ߲ ߛߊ߲߭ ߦߋ߫ ߞߎߘߍ߫ ߥߟߎ߬ߡߊ߬ ߥߊ\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ",
-        "tokens": 80,
-        "time": 8.582,
-        "valid_syllable_ratio": 1.0,
-        "ppl": 9.59
-      },
-      {
-        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߐߙߕ ߞߓߊ߬ߞߟߏ߸ ߏ߬ ߦߋ߫ ߕߋ߬ߟߋ ߖߊ߰߰ߟߋ߬߬߬ ߟߊ߫ ߕߟߋ߬ ߞߊ߲ߞߋ\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߞʔߊ ߦߍ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ",
-        "tokens": 80,
-        "time": 8.553,
-        "valid_syllable_ratio": 1.0,
-        "ppl": 10.43
-      },
-      {
-        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߞߎ߲߬ߠߊ߬ߛߌ߰ߟߌ ߘߐ߬ߢߋ߬ߙߋ߲߬ߞߎ߲߬ߠߌ߲\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬",
-        "tokens": 80,
-        "time": 8.384,
-        "valid_syllable_ratio": 1.0,
-        "ppl": 6.62
-      },
-      {
-        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߦߋߟߋ߲ ߠߊ߫ ߞߊߟߌߦߊ ߘߐ߬ߞߏߟߏ߲ ߘߐ߫ ߓߍ߲߬ ߞߍߣߍ߲߫ ߏ߬ ߡߊ߬ ߞ\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ",
-        "tokens": 80,
-        "time": 8.619,
-        "valid_syllable_ratio": 1.0,
-        "ppl": 8.27
-      },
-      {
-        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߁߆ߛߊ߬ߡߙߐ߬ߟߊ߬\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬",
-        "tokens": 80,
-        "time": 8.509,
-        "valid_syllable_ratio": 1.0,
-        "ppl": 5.59
-      },
-      {
-        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߁߀ߛߊߢߎߡߊ߲ߟߋ߲߫\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬",
-        "tokens": 80,
-        "time": 8.384,
-        "valid_syllable_ratio": 1.0,
-        "ppl": 5.75
-      },
-      {
-        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߛߙߋ ߡߎ߬ߛߊ߬ ߊ߬ ߣߌ߫ ߛߊ߬ߡߎ߲߬ ߞߊ߬ߝߏ߬ߙߋ߲ ߘߎ߰ ߁߇ ߛߙߍߘߍ ߝ\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ",
-        "tokens": 80,
-        "time": 8.562,
-        "valid_syllable_ratio": 1.0,
-        "ppl": 7.76
-      },
-      {
-        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߦߟߌߡߊߛߙߋ ߟߎ߬\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߦ",
-        "tokens": 80,
-        "time": 8.413,
-        "valid_syllable_ratio": 0.0,
-        "ppl": null
-      },
-      {
-        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߛߍ߬ߣߍ  ߛߍ߬ߣߍ ߛߎ߯ߦߊ߫ ߟߎ߬ ߓߐߣߍ߲߫ ߢߐ߲߮ ߡߊ߬ ߓߊߟߏߝߋ߲ ߠߎ\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߛߍ߬",
-        "tokens": 9,
-        "time": 1.494,
-        "valid_syllable_ratio": 1.0,
-        "ppl": null
-      },
-      {
-        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߦߟߌߣߐ ߣߌ߫ ߦߟߌߡߊߛߙߋ ߟߎ߬\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߦ",
-        "tokens": 80,
-        "time": 8.332,
-        "valid_syllable_ratio": 0.0,
-        "ppl": null
-      },
-      {
-        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߛߌ߬ߟߊ߬ߡߊ ߟߎ߬ ߞߊ߬ߛߌߦߊ ߕߐ߭ ߓߍ߯ ߘߌ߫߸ߏ߬ ߞߐ߫ ߌߛߟߊߞߊߟߎ߬\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ",
-        "tokens": 80,
-        "time": 8.429,
-        "valid_syllable_ratio": 1.0,
-        "ppl": 8.86
-      },
-      {
-        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߕߏ ߦߋ ߕߌ߲ ߞߏ\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߦߋ ߗߐ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦ",
-        "tokens": 80,
-        "time": 8.289,
-        "valid_syllable_ratio": 0.9804,
-        "ppl": 6.19
-      },
-      {
-        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߡߐ߱ ߕߐ߯ ߞߊ߫ ߓߏ߲߬ ߣߴ ߊ߬ ߖߊ߲ ߘߌ߫\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ",
-        "tokens": 80,
-        "time": 8.429,
-        "valid_syllable_ratio": 1.0,
-        "ppl": 5.67
-      },
-      {
-        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߖߐ ߓߟߏ ߦߋ ߖߊ߬ߓߌ\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߖߐ ߦߋ ߗߐ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦ",
-        "tokens": 80,
-        "time": 8.31,
-        "valid_syllable_ratio": 0.9804,
-        "ppl": 6.45
-      },
-      {
-        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߡߏ߬ߛߏ ߘߏ߫ ߞߍ ߝߊ߰ߡߊ߬ߟߊ ߘߏ߫ ߞߎ߲߬ߠߊ߫ ߞߟߊߘߊ ߘߐ߫߸ ߏ߬ ߕߘ\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ",
-        "tokens": 80,
-        "time": 8.422,
-        "valid_syllable_ratio": 1.0,
-        "ppl": 9.53
-      },
-      {
-        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߦߟߌߣߐ ߣߌ߫ ߦߟߌߡߊߛߙߋ ߟߎ߬\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߦ",
-        "tokens": 80,
-        "time": 8.299,
-        "valid_syllable_ratio": 0.0,
-        "ppl": null
-      },
-      {
-        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߛߏ߬ ߡߊ߫ ߓߏ߲ ߖߏ߬\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ",
-        "tokens": 80,
-        "time": 8.291,
-        "valid_syllable_ratio": 1.0,
-        "ppl": 5.62
-      },
-      {
-        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߞߐ ߕߍ߫ ߕߊ߯ ߟߊ߫ ߸ ߖߊ߯ ߓߊ ߓߍ߫ ߊ߬ ߝߍ߬\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬",
-        "tokens": 80,
-        "time": 8.325,
-        "valid_syllable_ratio": 1.0,
-        "ppl": 5.97
-      },
-      {
-        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߞߊ߬ߝߏ߬ ߓߏߟߏ߲ ߠߎ߬\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߲ ߦߍ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ",
-        "tokens": 80,
-        "time": 8.295,
-        "valid_syllable_ratio": 1.0,
-        "ppl": 6.28
-      },
-      {
-        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߣߊߡߎ߲߫ ߥߟߊ߫ ߘߌ߯ߣߊ߫\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ",
-        "tokens": 80,
-        "time": 8.308,
-        "valid_syllable_ratio": 1.0,
+        "generated": "ߊ߬ ߕߐ߯ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦ",
+        "tokens": 128,
+        "time": 13.275,
+        "valid_syllable_ratio": 0.9875,
         "ppl": 6.21
       },
       {
-        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߛߡߊߔߌ߬ߟߋ߫ ߃߉߉߅\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߛߍ߲߬ ߊ߬ ߦߍ߲ ߊ߬ ߦߍ߲ ߊ߬ ߦߍ߲ ߊ߬ ߦߍ߲ ߊ߬ ߦߍ߲ ߊ߬ ߦߍ߲ ߊ߬ ߦߍ߲ ߊ߬ ߦߍ",
-        "tokens": 80,
-        "time": 8.358,
+        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߐߙߕ ߞߓߊ߬ߞߟߏ߸ ߏ߬ ߦߋ߫ ߕߋ߬ߟߋ ߖߊ߰߰ߟߋ߬߬߬ ߟߊ߫ ߕߟߋ߬ ߞߊ߲ߞߋ\n<|im_end|>\n<|im_start|>assistant\n",
+        "generated": "ߊ߬ ߕߐ ߸ ߊ߬ ߕߐ ߸ ߊ߬ ߕߐ ߸ ߊ߬ ߕߐ ߸ ߊ߬ ߕߐ ߸ ߊ߬ ߕߐ ߸ ߊ߬ ߕߐ ߸ ߊ߬ ߕߐ ߸ ߊ߬ ߕߐ ߸ ߊ߬ ߕߐ ߸ ߊ߬ ߕߐ ߸ ߊ߬ ߕߐ ߸ ߊ߬",
+        "tokens": 128,
+        "time": 13.27,
         "valid_syllable_ratio": 1.0,
-        "ppl": 6.62
+        "ppl": 5.27
+      },
+      {
+        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߞߎ߲߬ߠߊ߬ߛߌ߰ߟߌ ߘߐ߬ߢߋ߬ߙߋ߲߬ߞߎ߲߬ߠߌ߲\n<|im_end|>\n<|im_start|>assistant\n",
+        "generated": "ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬",
+        "tokens": 128,
+        "time": 13.141,
+        "valid_syllable_ratio": 1.0,
+        "ppl": 4.09
+      },
+      {
+        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߦߋߟߋ߲ ߠߊ߫ ߞߊߟߌߦߊ ߘߐ߬ߞߏߟߏ߲ ߘߐ߫ ߓߍ߲߬ ߞߍߣߍ߲߫ ߏ߬ ߡߊ߬ ߞ\n<|im_end|>\n<|im_start|>assistant\n",
+        "generated": "ߊ߬ ߕߐ ߸ ߊ߬ ߦߍ ߸ ߊ߬ ߦߍ ߸ ߊ߬ ߦߍ ߸ ߊ߬ ߦߍ ߸ ߊ߬ ߦߍ ߸ ߊ߬ ߦߍ ߸ ߊ߬ ߦߍ ߸ ߊ߬ ߦߍ ߸ ߊ߬ ߦߍ ߸ ߊ߬ ߦߍ ߸ ߊ߬ ߦߍ ߸ ߊ߬",
+        "tokens": 128,
+        "time": 13.255,
+        "valid_syllable_ratio": 1.0,
+        "ppl": 5.35
+      },
+      {
+        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߁߆ߛߊ߬ߡߙߐ߬ߟߊ߬\n<|im_end|>\n<|im_start|>assistant\n",
+        "generated": "߁߆߸ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ",
+        "tokens": 128,
+        "time": 13.116,
+        "valid_syllable_ratio": 1.0,
+        "ppl": 3.48
+      },
+      {
+        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߁߀ߛߊߢߎߡߊ߲ߟߋ߲߫\n<|im_end|>\n<|im_start|>assistant\n",
+        "generated": "߁߀߂߁߀߁߆߁߀߁߆߁߀",
+        "tokens": 31,
+        "time": 3.561,
+        "valid_syllable_ratio": 1.0,
+        "ppl": 16.71
+      },
+      {
+        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߛߙߋ ߡߎ߬ߛߊ߬ ߊ߬ ߣߌ߫ ߛߊ߬ߡߎ߲߬ ߞߊ߬ߝߏ߬ߙߋ߲ ߘߎ߰ ߁߇ ߛߙߍߘߍ ߝ\n<|im_end|>\n<|im_start|>assistant\n",
+        "generated": "ߊ߬ ߕߐ߯ ߂ ߁߇ ߛߊ߲ ߠߎ߫ ߊ߬ ߸ ߊ߬ ߁߇ ߛߊ߲ ߠߎ߫ ߊ߬ ߸ ߊ߬ ߁߇ ߛߊ߲ ߠߎ߫ ߊ߬ ߸ ߊ߬ ߁߇ ߛߊ߲ ߠߎ߫ ߊ߬ ߸ ߊ߬ ߁߇ ߛߊ�",
+        "tokens": 128,
+        "time": 13.339,
+        "valid_syllable_ratio": 1.0,
+        "ppl": 8.35
+      },
+      {
+        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߦߟߌߡߊߛߙߋ ߟߎ߬\n<|im_end|>\n<|im_start|>assistant\n",
+        "generated": "ߊ߬ ߕߐ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ",
+        "tokens": 128,
+        "time": 13.173,
+        "valid_syllable_ratio": 1.0,
+        "ppl": 4.31
+      },
+      {
+        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߛߍ߬ߣߍ  ߛߍ߬ߣߍ ߛߎ߯ߦߊ߫ ߟߎ߬ ߓߐߣߍ߲߫ ߢߐ߲߮ ߡߊ߬ ߓߊߟߏߝߋ߲ ߠߎ\n<|im_end|>\n<|im_start|>assistant\n",
+        "generated": "ߊ߬ ߠߎ ߛߍ߬ ߊ߬ ߠߎ ߛߍ߬ ߊ߬ ߠߎ ߛߍ߬ ߊ߬ ߠߎ ߛߍ߬ ߊ߬ ߠߎ ߛߍ߬ ߊ߬ ߠߎ ߛߍ߬ ߊ߬ ߠߎ ߛߍ߬ ߊ߬ ߠߎ ߛߍ߬ ߊ߬ ߠߎ ߛߍ߬ ߊ߬ ߠߎ ߛߍ߬ ߊ߬",
+        "tokens": 128,
+        "time": 13.34,
+        "valid_syllable_ratio": 1.0,
+        "ppl": 5.08
+      },
+      {
+        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߦߟߌߣߐ ߣߌ߫ ߦߟߌߡߊߛߙߋ ߟߎ߬\n<|im_end|>\n<|im_start|>assistant\n",
+        "generated": "ߊ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ",
+        "tokens": 128,
+        "time": 13.173,
+        "valid_syllable_ratio": 1.0,
+        "ppl": 4.58
+      },
+      {
+        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߛߌ߬ߟߊ߬ߡߊ ߟߎ߬ ߞߊ߬ߛߌߦߊ ߕߐ߭ ߓߍ߯ ߘߌ߫߸ߏ߬ ߞߐ߫ ߌߛߟߊߞߊߟߎ߬\n<|im_end|>\n<|im_start|>assistant\n",
+        "generated": "ߊ߬ ߕߐ߭ ߊ߬ ߦߍ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ",
+        "tokens": 128,
+        "time": 13.34,
+        "valid_syllable_ratio": 1.0,
+        "ppl": 5.52
+      },
+      {
+        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߕߏ ߦߋ ߕߌ߲ ߞߏ\n<|im_end|>\n<|im_start|>assistant\n",
+        "generated": "ߊ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ",
+        "tokens": 128,
+        "time": 13.183,
+        "valid_syllable_ratio": 1.0,
+        "ppl": 3.9
+      },
+      {
+        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߡߐ߱ ߕߐ߯ ߞߊ߫ ߓߏ߲߬ ߣߴ ߊ߬ ߖߊ߲ ߘߌ߫\n<|im_end|>\n<|im_start|>assistant\n",
+        "generated": "ߊ߬ ߗ ߊ߬ ߦߍ߬ ߊ߬ ߦߍ߬ ߊ߬ ߦߍ߬ ߊ߬ ߦߍ߬ ߊ߬ ߦߍ߬ ߊ߬ ߦߍ߬ ߊ߬ ߦߍ߬ ߊ߬ ߦߍ߬ ߊ߬ ߦߍ߬ ߊ߬ ߦߍ߬ ߊ߬ ߦߍ߬ ߊ߬ ߦߍ߬ ߊ߬ ߦߍ߬ ߊ",
+        "tokens": 128,
+        "time": 13.393,
+        "valid_syllable_ratio": 1.0,
+        "ppl": 3.95
+      },
+      {
+        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߖߐ ߓߟߏ ߦߋ ߖߊ߬ߓߌ\n<|im_end|>\n<|im_start|>assistant\n",
+        "generated": "ߊ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ",
+        "tokens": 128,
+        "time": 13.545,
+        "valid_syllable_ratio": 1.0,
+        "ppl": 3.91
+      },
+      {
+        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߡߏ߬ߛߏ ߘߏ߫ ߞߍ ߝߊ߰ߡߊ߬ߟߊ ߘߏ߫ ߞߎ߲߬ߠߊ߫ ߞߟߊߘߊ ߘߐ߫߸ ߏ߬ ߕߘ\n<|im_end|>\n<|im_start|>assistant\n",
+        "generated": "ߊ߬ ߕߐ߯ ߸ ߊ߬ ߕߐ߯ ߸ ߊ߬ ߕߐ߯ ߸ ߊ߬ ߕߐ߯ ߸ ߊ߬ ߕߐ߯ ߸ ߊ߬ ߕߐ߯ ߸ ߊ߬ ߕߐ߯ ߸ ߊ߬ ߕߐ߯ ߸ ߊ߬ ߕߐ߯ ߸ ߊ߬ ߕߐ߯ ߸ ߊ߬",
+        "tokens": 128,
+        "time": 13.393,
+        "valid_syllable_ratio": 1.0,
+        "ppl": 10.63
+      },
+      {
+        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߦߟߌߣߐ ߣߌ߫ ߦߟߌߡߊߛߙߋ ߟߎ߬\n<|im_end|>\n<|im_start|>assistant\n",
+        "generated": "ߊ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ",
+        "tokens": 128,
+        "time": 13.293,
+        "valid_syllable_ratio": 1.0,
+        "ppl": 4.58
+      },
+      {
+        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߛߏ߬ ߡߊ߫ ߓߏ߲ ߖߏ߬\n<|im_end|>\n<|im_start|>assistant\n",
+        "generated": "ߊ߬ ߕߐ߯ ߸ ߊ߬ ߕߐ߯ ߸ ߊ߬ ߕߐ߯ ߸ ߊ߬ ߕߐ߯ ߸ ߊ߬ ߕߐ߯ ߸ ߊ߬ ߕߐ߯ ߸ ߊ߬ ߕߐ߯ ߸ ߊ߬ ߕߐ߯ ߸ ߊ߬ ߕߐ߯ ߸ ߊ߬ ߕߐ߯ ߸ ߊ߬",
+        "tokens": 128,
+        "time": 13.27,
+        "valid_syllable_ratio": 1.0,
+        "ppl": 7.12
+      },
+      {
+        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߞߐ ߕߍ߫ ߕߊ߯ ߟߊ߫ ߸ ߖߊ߯ ߓߊ ߓߍ߫ ߊ߬ ߝߍ߬\n<|im_end|>\n<|im_start|>assistant\n",
+        "generated": "ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬",
+        "tokens": 128,
+        "time": 13.281,
+        "valid_syllable_ratio": 1.0,
+        "ppl": 3.7
+      },
+      {
+        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߞߊ߬ߝߏ߬ ߓߏߟߏ߲ ߠߎ߬\n<|im_end|>\n<|im_start|>assistant\n",
+        "generated": "ߊ ߗߋ ߊ ߗߋ ߊ ߗߋ ߊ ߗߋ ߊ ߗߋ ߊ ߗߋ ߊ ߗߋ ߊ ߗߋ ߊ ߗߋ ߊ ߗߋ ߊ ߗߋ ߊ ߗߋ ߊ ߗߋ ߊ ߗߋ ߊ ߗߋ ߊ ߗߋ ߊ ߗߋ ߊ ߗߋ ߊ ߗߋ ߊ ߗߋ ߊ ߗߋ ߊ ߗߋ ߊ ߗߋ ߊ ߗߋ ߊ ߗߋ",
+        "tokens": 128,
+        "time": 13.221,
+        "valid_syllable_ratio": 1.0,
+        "ppl": 3.97
+      },
+      {
+        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߣߊߡߎ߲߫ ߥߟߊ߫ ߘߌ߯ߣߊ߫\n<|im_end|>\n<|im_start|>assistant\n",
+        "generated": "ߊ߬ ߗߋ ߊ߬ ߗߋ ߊ߬ ߗߋ ߊ߬ ߗߋ ߊ߬ ߗߋ ߊ߬ ߗߋ ߊ߬ ߗߋ ߊ߬ ߗߋ ߊ߬ ߗߋ ߊ߬ ߗߋ ߊ߬ ߗߋ ߊ߬ ߗߋ ߊ߬ ߗߋ ߊ߬ ߗߋ ߊ߬ ߗߋ ߊ߬ ߗߋ ߊ߬ ߗߋ ߊ߬ ߗ",
+        "tokens": 128,
+        "time": 13.226,
+        "valid_syllable_ratio": 0.9811,
+        "ppl": 3.85
+      },
+      {
+        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߛߡߊߔߌ߬ߟߋ߫ ߃߉߉߅\n<|im_end|>\n<|im_start|>assistant\n",
+        "generated": "ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬",
+        "tokens": 128,
+        "time": 13.235,
+        "valid_syllable_ratio": 1.0,
+        "ppl": 3.44
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߟߊ߬ߓߊ߰ߙߊ߬ߟߌ߬ߟߊ ߟߎ߬ ߟߊ߫ ߢߐ߲߯ߓߍ߲ ߠߎ߬\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ",
-        "tokens": 80,
-        "time": 8.33,
+        "generated": "ߊ ߦߍ ߗߍ ߦߍ ߗߍ ߦߍ ߗߍ ߦߍ ߗߍ ߦߍ ߗߍ ߦߍ ߗߍ ߦߍ ߗߍ ߦߍ ߗߍ ߦߍ ߗߍ ߦߍ ߗߍ ߦߍ ߗߍ ߦߍ ߗߍ ߦߍ ߗߍ ߦߍ ߗߍ ߦߍ ߗߍ ߦߍ ߗߍ ߦߍ ߗߍ ߦߍ ߗߍ ߦߍ ߗߍ ߦߍ ߗߍ ߦߍ",
+        "tokens": 128,
+        "time": 13.211,
         "valid_syllable_ratio": 1.0,
-        "ppl": 7.33
+        "ppl": 5.16
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߘߋ߲ ߠߎ߬ ߦߋ߫ ߛߌ߬ߟߊ߬ ߟߊ߫ ߞߊ߬ ߓߐ߫ ߘߎ߱ ߟߊ߫\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߲ ߦߍ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ",
-        "tokens": 80,
-        "time": 8.317,
+        "generated": "ߊ߬ ߕߐ ߂ ߊ߬ ߕߐ ߂ ߊ߬ ߕߐ ߂ ߊ߬ ߕߐ ߂ ߊ߬ ߕߐ ߂ ߊ߬ ߕߐ ߂ ߊ߬ ߕߐ ߂ ߊ߬ ߕߐ ߂ ߊ߬ ߕߐ ߂ ߊ߬ ߕߐ ߂ ߊ߬ ߕߐ ߂ ߊ߬ ߕߐ ߂ ߊ߬",
+        "tokens": 128,
+        "time": 13.243,
         "valid_syllable_ratio": 1.0,
-        "ppl": 8.03
+        "ppl": 4.75
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߣߊ ߥߊ߬ߓߐ ߡߐߘߋ߫\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬",
-        "tokens": 80,
-        "time": 8.342,
-        "valid_syllable_ratio": 1.0,
-        "ppl": 5.36
+        "generated": "ߊ߬ ߗߋ ߊ߬ ߗߋ ߊ߬ ߗߋ ߊ߬ ߗߋ ߊ߬ ߗߋ ߊ߬ ߗߋ ߊ߬ ߗߋ ߊ߬ ߗߋ ߊ߬ ߗߋ ߊ߬ ߗߋ ߊ߬ ߗߋ ߊ߬ ߗߋ ߊ߬ ߗߋ ߊ߬ ߗߋ ߊ߬ ߗߋ ߊ߬ ߗߋ ߊ߬ ߗߋ ߊ߬ ߗ",
+        "tokens": 128,
+        "time": 13.187,
+        "valid_syllable_ratio": 0.9811,
+        "ppl": 3.72
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߓߍ߲߬ ߞߍ߫ ߣߴߏ߬ ߡߊ߬ ߞߊ߬ ߓߐ߫ ߊ߳ߺߊ߯ߺߌߛ߭ߕߊ߫ ߟߊ߫ ߤ߭ߊߘߌߛߊ\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ",
-        "tokens": 80,
-        "time": 8.518,
+        "generated": "ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬",
+        "tokens": 128,
+        "time": 13.391,
         "valid_syllable_ratio": 1.0,
-        "ppl": 8.99
+        "ppl": 4.67
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߊ߬ߟߋ߬ ߥߊ߫ ߢߊ߫ ߞߋߟߋ߲ ߏ߬ ߡߊ߬߸ ߘߎ߱߱ ߝߣߊ߫ ߦߋ߫ ߕߋ߬ߟߋ ߖߊ\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ",
-        "tokens": 80,
-        "time": 8.521,
+        "generated": "ߊ߬ ߞʔߊ ߞʔߊ ߝߋ ߞʔߊ ߝߋ ߞʔߊ ߝߋ ߞʔߊ ߝߋ ߞʔߊ ߝߋ ߞʔߊ ߝߋ ߞʔߊ ߝߋ ߞʔߊ ߝߋ ߞʔߊ ߝߋ ߞʔߊ ߝߋ ߞʔߊ ߝߋ ߞʔߊ ߝߋ ߞʔߊ ߝߋ ߞʔߊ ߝߋ ߞʔߊ ߝߋ ߞʔߊ ߝߋ ߞʔߊ",
+        "tokens": 128,
+        "time": 13.409,
         "valid_syllable_ratio": 1.0,
-        "ppl": 8.4
+        "ppl": 5.57
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߞߐߕߐ߮\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߲ ߞʔߊ ߦߍ ߊ ߦߍ ߊ ߦߍ ߊ ߦߍ ߊ ߦߍ ߊ ߦߍ ߊ ߦߍ ߊ ߦߍ ߊ ߦߍ ߊ ߦߍ ߊ ߦߍ ߊ ߦߍ ߊ ߦߍ ߊ ߦߍ",
-        "tokens": 80,
-        "time": 8.353,
-        "valid_syllable_ratio": 1.0,
-        "ppl": 5.55
+        "generated": "ߊ߬ ߕߐ߬ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦ",
+        "tokens": 128,
+        "time": 13.267,
+        "valid_syllable_ratio": 0.9875,
+        "ppl": 3.77
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߖߐ߲߬ߛߊ߫ ߞߊ߬ ߡߛߏ߬ ߞߎ߲ߕߌ߮ ߟߎ߬ ߞߟߊߓߎߘߏ߲ ߞߘߐߞߍ߬ߙߍ߲߬ߘߍ߫\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ",
-        "tokens": 80,
-        "time": 8.492,
-        "valid_syllable_ratio": 1.0,
-        "ppl": 8.76
-      },
-      {
-        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߦߋߟߋ߲ ߠߊ߫ ߞߊߟߌߦߊ ߓߊ߯ ߞߍ߫ ߛߎߡߊ߲߫ ߠߊ߫ ߥߊ߯ߕߌ߫ ߛߎߥߊ߲ߘߌ\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ",
-        "tokens": 80,
-        "time": 8.516,
-        "valid_syllable_ratio": 1.0,
-        "ppl": 9.29
-      },
-      {
-        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߦߙߌ ߟߎ߫ ߛߌ߬ߞߛߊ߬ߓߌ߫ ߓߐߣߍ߲߫ ߧߐ߮ ߡߊ߬ ߞߏߛߓߍ߫ ߦߏ߫ ߡߐ߰ ߟ\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߦߐ߬ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ",
-        "tokens": 80,
-        "time": 8.508,
-        "valid_syllable_ratio": 1.0,
-        "ppl": 9.73
-      },
-      {
-        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߊ߬ ߛߌ߰ߓߊ߮ ߝߊ߲߬ߓߊ ߦߋ߫ ߡߊ߬ߣߋ߲߬ߞߊ ߟߎ߫ ߟߋ߬ ߘߌ߫ ߸ ߞߵߏ߬ \n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߞʔߊ ߦߍ ߦߍ ߊ ߦߍ ߊ ߦߍ ߊ ߦߍ ߊ ߦߍ ߊ ߦߍ ߊ ߦߍ ߊ ߦߍ ߊ ߦߍ ߊ ߦߍ ߊ ߦߍ ߊ ߦߍ ߊ ߦߍ ߊ",
-        "tokens": 80,
-        "time": 8.493,
-        "valid_syllable_ratio": 1.0,
-        "ppl": 8.22
-      },
-      {
-        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߊ߬ ߛߌ߰ߓߊ߮ ߖߊ߬ߕߋ߬ߛߎ߬ߓߐ߬ߣߍ߲ ߞߍ߫ ߘߊ߫ ߡߐ߰ ߃߇߄߄߃ ߟߋ߬ ߘߌ\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߞʔߊ ߦߍ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ ߊ߬ ߦߍ",
-        "tokens": 80,
-        "time": 8.555,
-        "valid_syllable_ratio": 1.0,
-        "ppl": 9.29
-      },
-      {
-        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߦߊ߭ ߊߛߊ߲ߕߌߥߊ߫ ߛߊ߬ ߘߊ߫ ߢߊߣߌ߲ߡߊߓߏߙߌ ߘߐ߫ ߛߌߛ߭ߍߟߌ߫ ߞߏ߲\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬",
-        "tokens": 80,
-        "time": 8.492,
+        "generated": "ߊ߬ ߕߐ߯ ߸ ߊ߬ ߕߐ߯ ߸ ߊ߬ ߕߐ߯ ߸ ߊ߬ ߕߐ߯ ߸ ߊ߬ ߕߐ߯ ߸ ߊ߬ ߕߐ߯ ߸ ߊ߬ ߕߐ߯ ߸ ߊ߬ ߕߐ߯ ߸ ߊ߬ ߕߐ߯ ߸ ߊ߬ ߕߐ߯ ߸ ߊ߬",
+        "tokens": 128,
+        "time": 13.38,
         "valid_syllable_ratio": 1.0,
         "ppl": 9.86
       },
       {
+        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߦߋߟߋ߲ ߠߊ߫ ߞߊߟߌߦߊ ߓߊ߯ ߞߍ߫ ߛߎߡߊ߲߫ ߠߊ߫ ߥߊ߯ߕߌ߫ ߛߎߥߊ߲ߘߌ\n<|im_end|>\n<|im_start|>assistant\n",
+        "generated": "ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬",
+        "tokens": 128,
+        "time": 13.381,
+        "valid_syllable_ratio": 1.0,
+        "ppl": 5.36
+      },
+      {
+        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߦߙߌ ߟߎ߫ ߛߌ߬ߞߛߊ߬ߓߌ߫ ߓߐߣߍ߲߫ ߧߐ߮ ߡߊ߬ ߞߏߛߓߍ߫ ߦߏ߫ ߡߐ߰ ߟ\n<|im_end|>\n<|im_start|>assistant\n",
+        "generated": "ߊ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ",
+        "tokens": 128,
+        "time": 13.38,
+        "valid_syllable_ratio": 1.0,
+        "ppl": 5.73
+      },
+      {
+        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߊ߬ ߛߌ߰ߓߊ߮ ߝߊ߲߬ߓߊ ߦߋ߫ ߡߊ߬ߣߋ߲߬ߞߊ ߟߎ߫ ߟߋ߬ ߘߌ߫ ߸ ߞߵߏ߬ \n<|im_end|>\n<|im_start|>assistant\n",
+        "generated": "ߊ߬ ߖߐ߲߫ ߊ߬ ߖߐ߲߫ ߊ߬ ߖߐ߲߫ ߊ߬ ߖߐ߲߫ ߊ߬ ߖߐ߲߫ ߊ߬ ߖߐ߲߫ ߊ߬ ߖߐ߲߫ ߊ߬ ߖߐ߲߫ ߊ߬ ߖߐ߲߫ ߊ߬ ߖߐ߲߫ ߊ߬ ߖߐ߲߫ ߊ߬",
+        "tokens": 128,
+        "time": 13.522,
+        "valid_syllable_ratio": 1.0,
+        "ppl": 4.43
+      },
+      {
+        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߊ߬ ߛߌ߰ߓߊ߮ ߖߊ߬ߕߋ߬ߛߎ߬ߓߐ߬ߣߍ߲ ߞߍ߫ ߘߊ߫ ߡߐ߰ ߃߇߄߄߃ ߟߋ߬ ߘߌ\n<|im_end|>\n<|im_start|>assistant\n",
+        "generated": "ߊ߬ ߖߐ߬ ߸ ߊ߬ ߖߐ߬ ߸ ߊ߬ ߖߐ߬ ߸ ߊ߬ ߖߐ߬ ߸ ߊ߬ ߖߐ߬ ߸ ߊ߬ ߖߐ߬ ߸ ߊ߬ ߖߐ߬ ߸ ߊ߬ ߖߐ߬ ߸ ߊ߬ ߖߐ߬ ߸ ߊ߬ ߖߐ߬ ߸ ߊ߬",
+        "tokens": 128,
+        "time": 13.471,
+        "valid_syllable_ratio": 1.0,
+        "ppl": 4.83
+      },
+      {
+        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߦߊ߭ ߊߛߊ߲ߕߌߥߊ߫ ߛߊ߬ ߘߊ߫ ߢߊߣߌ߲ߡߊߓߏߙߌ ߘߐ߫ ߛߌߛ߭ߍߟߌ߫ ߞߏ߲\n<|im_end|>\n<|im_start|>assistant\n",
+        "generated": "ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬",
+        "tokens": 128,
+        "time": 13.425,
+        "valid_syllable_ratio": 1.0,
+        "ppl": 5.54
+      },
+      {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߟߐ߲ߠߌ߲ ߦߋ ߛߋ߲ ߠߊ߫\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߦߋ ߗߐ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦ",
-        "tokens": 80,
-        "time": 8.255,
-        "valid_syllable_ratio": 0.9804,
-        "ppl": 6.36
+        "generated": "ߊ ߦߋ ߥ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ ߦߍ",
+        "tokens": 128,
+        "time": 13.235,
+        "valid_syllable_ratio": 0.9878,
+        "ppl": 4.4
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߦߊ߭ ߊߛߊ߲ߕߌߥߊ߫ ߋ߫߹\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬",
-        "tokens": 80,
-        "time": 8.226,
+        "generated": "ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬ ߊ߬",
+        "tokens": 128,
+        "time": 13.264,
         "valid_syllable_ratio": 1.0,
-        "ppl": 6.74
+        "ppl": 3.89
       }
     ],
-    "total_time": 416.5010139942169,
-    "total_tokens": 3929,
+    "total_time": 652.8602240085602,
+    "total_tokens": 6303,
     "summary": {
-      "avg_valid_syllable_ratio": 0.8984,
-      "avg_ppl": 7.54,
-      "tokens_per_second": 9.4,
+      "avg_valid_syllable_ratio": 0.9977,
+      "avg_ppl": 5.34,
+      "tokens_per_second": 9.7,
       "total_samples": 50,
-      "high_validity": 45,
+      "high_validity": 50,
       "mid_validity": 0,
-      "low_validity": 5
+      "low_validity": 0
     }
   },
   "constrained": {
@@ -420,411 +420,411 @@
     "samples": [
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߛߊ߲ߕߌ߮ ߟߋ߬ ߖߊ߰ߡߊ߲ ߕߋ߬ߟߋ ߟߊ߫ ߖߊ߯ߓߊߟߌ ߟߎ߬ ߓߍ߯ ߘߌ߫߸ ߏ\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߋ",
-        "tokens": 10,
-        "time": 2.059,
+        "generated": "ߊ߬ ร่างกาย (",
+        "tokens": 13,
+        "time": 2.291,
         "valid_syllable_ratio": 1.0,
-        "ppl": null
+        "ppl": 76.65
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߡߎ߲߬ߢߊ ߦߋ߫ ߘߊ߬ߓߟߏ ߟߋ ߘߌ߫\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߋ",
-        "tokens": 10,
-        "time": 1.876,
+        "generated": "พลัง ป้องฟิ",
+        "tokens": 12,
+        "time": 1.888,
         "valid_syllable_ratio": 1.0,
         "ppl": null
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߡߐ߰ ߞߋ߬ߟߋ߲߬ ߞߊ߲ ߦߋ߫ ߞߊ߬ ߞߎ߲߬ ߛߎ߲ ߠߎ߬ ߡߍ߲\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߋgߎ",
+        "generated": "߂ ߊตัวเอง",
         "tokens": 12,
-        "time": 2.215,
+        "time": 2.138,
         "valid_syllable_ratio": 1.0,
-        "ppl": 36.42
+        "ppl": 64.56
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߁߂ߓߙߍ߬ߓߞߐ߬ߟߊ߬\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߋgߎ",
-        "tokens": 12,
-        "time": 2.063,
+        "generated": "߁߂ߊ߬ߟߎ߫ ߊ ดื่ม",
+        "tokens": 16,
+        "time": 2.405,
         "valid_syllable_ratio": 1.0,
-        "ppl": 39.25
+        "ppl": 51.68
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߊ߬ ߣߊ߬ߣߍ߲߫ ߛߊ߲߬ ߓߌߣߊ߯ߣߌ߲ ߓߐ߫ ߟߊ߫ ߞߵߊ߬ ߕߍ߬ߘߵߊ߬ ߦߋ߫ \n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ естественн",
-        "tokens": 12,
-        "time": 2.06,
+        "generated": "ߊ߬ เกมส์ศักดิ",
+        "tokens": 17,
+        "time": 2.251,
         "valid_syllable_ratio": 1.0,
-        "ppl": 53.58
+        "ppl": 56.99
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߓߟߏ ߞߋߟߋ߲ ߕߍ ߓߎ߬ߙߎ ߕߊ\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߋgߎ",
-        "tokens": 12,
-        "time": 2.078,
-        "valid_syllable_ratio": 1.0,
-        "ppl": 37.7
-      },
-      {
-        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߦߋߟߋ߲ ߛߊ߲߭ ߦߋ߫ ߟߊߓߊ߯ߙߊ߫ ߟߊ߫ ߞߊ߬ ߛߋ߫ ߝߏ߬ߟߏ߲߬ߝߊ߬ߟߊ߲߬\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߌ ߋgߎ",
-        "tokens": 14,
-        "time": 2.423,
-        "valid_syllable_ratio": 1.0,
-        "ppl": 50.33
-      },
-      {
-        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߦߟߌߡߊߛߙߋ ߟߎ߬\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߲ ߋgߎ",
-        "tokens": 12,
-        "time": 2.06,
-        "valid_syllable_ratio": 1.0,
-        "ppl": 45.03
-      },
-      {
-        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߡߙߊ߬ߓߊ߰ߘߊ ߞߣߐ߫߸ߓߏ߬ߞߋ߫ ߕߌ߲߬ߞߎߘߎ߲ ߘߐ߫߸ߞߎߘߍ߫ ߘߊ߲ߘߐ߫ ߟ\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ ߋgߎ߲ߌ",
-        "tokens": 13,
-        "time": 2.326,
-        "valid_syllable_ratio": 1.0,
-        "ppl": 59.53
-      },
-      {
-        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߞߏ߲ߞߏ ߦߋ ߞߊ߲ ߞߎ߬ߙߊ\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߋgߎ",
-        "tokens": 12,
-        "time": 2.09,
-        "valid_syllable_ratio": 1.0,
-        "ppl": 40.26
-      },
-      {
-        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߦߟߌߡߊߛߙߋ ߟߎ߬\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߲ ߋgߎ",
-        "tokens": 12,
-        "time": 2.062,
-        "valid_syllable_ratio": 1.0,
-        "ppl": 45.03
-      },
-      {
-        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߝߊ߬ߘߌ߬ߞߋߟߋ߲ ߕߐ߰ߡߊ߬ߛߙߋ߬ߟߊ߲ ߥߙߎߞߌ ߗߏ߮\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߌ",
-        "tokens": 10,
-        "time": 2.013,
+        "generated": "ߊ ยู",
+        "tokens": 9,
+        "time": 1.783,
         "valid_syllable_ratio": 1.0,
         "ppl": null
       },
       {
-        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߡߐ߱ ߞߊ߬ ߝߊ߲߬ߞߊ ߛߐ߬ߘߐ߲\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߋgߎ",
-        "tokens": 12,
-        "time": 2.067,
+        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߦߋߟߋ߲ ߛߊ߲߭ ߦߋ߫ ߟߊߓߊ߯ߙߊ߫ ߟߊ߫ ߞߊ߬ ߛߋ߫ ߝߏ߬ߟߏ߲߬ߝߊ߬ߟߊ߲߬\n<|im_end|>\n<|im_start|>assistant\n",
+        "generated": "߂ نَ",
+        "tokens": 9,
+        "time": 2.039,
         "valid_syllable_ratio": 1.0,
-        "ppl": 34.03
+        "ppl": null
+      },
+      {
+        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߦߟߌߡߊߛߙߋ ߟߎ߬\n<|im_end|>\n<|im_start|>assistant\n",
+        "generated": "ߊ 泥",
+        "tokens": 8,
+        "time": 1.766,
+        "valid_syllable_ratio": 1.0,
+        "ppl": null
+      },
+      {
+        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߡߙߊ߬ߓߊ߰ߘߊ ߞߣߐ߫߸ߓߏ߬ߞߋ߫ ߕߌ߲߬ߞߎߘߎ߲ ߘߐ߫߸ߞߎߘߍ߫ ߘߊ߲ߘߐ߫ ߟ\n<|im_end|>\n<|im_start|>assistant\n",
+        "generated": "ߊ ถ้า",
+        "tokens": 9,
+        "time": 1.918,
+        "valid_syllable_ratio": 1.0,
+        "ppl": null
+      },
+      {
+        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߞߏ߲ߞߏ ߦߋ ߞߊ߲ ߞߎ߬ߙߊ\n<|im_end|>\n<|im_start|>assistant\n",
+        "generated": "߲ߎ เล่ม",
+        "tokens": 11,
+        "time": 1.973,
+        "valid_syllable_ratio": 1.0,
+        "ppl": 68.02
+      },
+      {
+        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߦߟߌߡߊߛߙߋ ߟߎ߬\n<|im_end|>\n<|im_start|>assistant\n",
+        "generated": "ߊ߬บริษั\n!",
+        "tokens": 15,
+        "time": 2.265,
+        "valid_syllable_ratio": 1.0,
+        "ppl": 61.27
+      },
+      {
+        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߝߊ߬ߘߌ߬ߞߋߟߋ߲ ߕߐ߰ߡߊ߬ߛߙߋ߬ߟߊ߲ ߥߙߎߞߌ ߗߏ߮\n<|im_end|>\n<|im_start|>assistant\n",
+        "generated": "ߊ߬ ที่เกี่ยวข้องคุณสามารถ\n!",
+        "tokens": 22,
+        "time": 2.443,
+        "valid_syllable_ratio": 1.0,
+        "ppl": 56.27
+      },
+      {
+        "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߡߐ߱ ߞߊ߬ ߝߊ߲߬ߞߊ ߛߐ߬ߘߐ߲\n<|im_end|>\n<|im_start|>assistant\n",
+        "generated": "ߊ ߏ߬",
+        "tokens": 10,
+        "time": 2.001,
+        "valid_syllable_ratio": 1.0,
+        "ppl": null
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߞߎ߲߬ߠߊ ߡߊ߲ ߞߊ߫ ߖߎ߯\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߋgߎ",
-        "tokens": 12,
-        "time": 2.065,
+        "generated": "ߊ߬ 金",
+        "tokens": 10,
+        "time": 1.975,
         "valid_syllable_ratio": 1.0,
-        "ppl": 31.93
+        "ppl": null
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߖߊ߯ߓߊ ߘߐߜߍߕߊ ߥߎߢߊ߲߲ߥߎߢߊ߲߲߫ ߘߐߜߍߕߊ ߘߐߛߎߡߊ߲ߣߍ߲ ߦߋ߫ ߦ\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߋgߎ",
-        "tokens": 12,
-        "time": 2.229,
+        "generated": "ߊ ߞߴߊ߲߬คริสߜߋߟߋ߲",
+        "tokens": 19,
+        "time": 2.328,
         "valid_syllable_ratio": 1.0,
-        "ppl": 54.29
+        "ppl": 77.54
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߞߎߡߊ߫ ߟߊߛߘߎߧߊ ߘߐ߫߸ ߦߋߟߋ߲ ߛߊ߲߭ ߦߋ߫ ߞߎߘߍ߫ ߥߟߎ߬ߡߊ߬ ߥߊ\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߋgߎ",
-        "tokens": 12,
-        "time": 2.247,
+        "generated": "ߊ߬ สัน, (เชียง天国继续)",
+        "tokens": 16,
+        "time": 2.731,
         "valid_syllable_ratio": 1.0,
-        "ppl": 54.24
+        "ppl": 91.57
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߐߙߕ ߞߓߊ߬ߞߟߏ߸ ߏ߬ ߦߋ߫ ߕߋ߬ߟߋ ߖߊ߰߰ߟߋ߬߬߬ ߟߊ߫ ߕߟߋ߬ ߞߊ߲ߞߋ\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߋ",
-        "tokens": 10,
-        "time": 2.046,
+        "generated": "ߊ߬ 瑩,",
+        "tokens": 12,
+        "time": 2.26,
         "valid_syllable_ratio": 1.0,
         "ppl": null
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߞߎ߲߬ߠߊ߬ߛߌ߰ߟߌ ߘߐ߬ߢߋ߬ߙߋ߲߬ߞߎ߲߬ߠߌ߲\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߋgߎ",
-        "tokens": 12,
-        "time": 2.103,
+        "generated": "</tool_call> าร์ด߲ละเอียด",
+        "tokens": 15,
+        "time": 2.084,
         "valid_syllable_ratio": 1.0,
-        "ppl": 43.73
+        "ppl": 117.3
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߦߋߟߋ߲ ߠߊ߫ ߞߊߟߌߦߊ ߘߐ߬ߞߏߟߏ߲ ߘߐ߫ ߓߍ߲߬ ߞߍߣߍ߲߫ ߏ߬ ߡߊ߬ ߞ\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߋgߎ",
-        "tokens": 12,
-        "time": 2.256,
+        "generated": "߸ ߊapgolly",
+        "tokens": 10,
+        "time": 2.127,
         "valid_syllable_ratio": 1.0,
-        "ppl": 47.86
+        "ppl": 52.09
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߁߆ߛߊ߬ߡߙߐ߬ߟߊ߬\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߋgߎ",
-        "tokens": 12,
-        "time": 2.104,
+        "generated": "߁แต่ง ߊต่อนิยม",
+        "tokens": 16,
+        "time": 2.184,
         "valid_syllable_ratio": 1.0,
-        "ppl": 38.07
+        "ppl": 93.98
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߁߀ߛߊߢߎߡߊ߲ߟߋ߲߫\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߋgߎ",
-        "tokens": 12,
-        "time": 2.129,
+        "generated": "ߊ߬ ก็ไม่เวิสิ่งแ",
+        "tokens": 19,
+        "time": 2.175,
         "valid_syllable_ratio": 1.0,
-        "ppl": 35.78
+        "ppl": 62.59
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߛߙߋ ߡߎ߬ߛߊ߬ ߊ߬ ߣߌ߫ ߛߊ߬ߡߎ߲߬ ߞߊ߬ߝߏ߬ߙߋ߲ ߘߎ߰ ߁߇ ߛߙߍߘߍ ߝ\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߋ",
-        "tokens": 10,
-        "time": 2.058,
+        "generated": "</tool_call> อีกด้วย߲",
+        "tokens": 13,
+        "time": 2.228,
         "valid_syllable_ratio": 1.0,
-        "ppl": null
+        "ppl": 41.96
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߦߟߌߡߊߛߙߋ ߟߎ߬\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߲ ߋgߎ",
-        "tokens": 12,
-        "time": 2.079,
+        "generated": "ߊ ʔߎgߌ (�߬",
+        "tokens": 15,
+        "time": 2.587,
         "valid_syllable_ratio": 1.0,
-        "ppl": 45.03
+        "ppl": 61.2
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߛߍ߬ߣߍ  ߛߍ߬ߣߍ ߛߎ߯ߦߊ߫ ߟߎ߬ ߓߐߣߍ߲߫ ߢߐ߲߮ ߡߊ߬ ߓߊߟߏߝߋ߲ ߠߎ\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߋgߎ",
+        "generated": "ߊ߬ เกอร์",
         "tokens": 12,
-        "time": 2.244,
+        "time": 2.143,
         "valid_syllable_ratio": 1.0,
-        "ppl": 38.47
+        "ppl": 53.99
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߦߟߌߣߐ ߣߌ߫ ߦߟߌߡߊߛߙߋ ߟߎ߬\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߲ ߋgߎ",
-        "tokens": 12,
-        "time": 2.118,
+        "generated": "ߊ߬ ที่ไม่ gสูงสุด",
+        "tokens": 19,
+        "time": 2.31,
         "valid_syllable_ratio": 1.0,
-        "ppl": 44.91
+        "ppl": 70.49
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߛߌ߬ߟߊ߬ߡߊ ߟߎ߬ ߞߊ߬ߛߌߦߊ ߕߐ߭ ߓߍ߯ ߘߌ߫߸ߏ߬ ߞߐ߫ ߌߛߟߊߞߊߟߎ߬\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߌ",
-        "tokens": 10,
-        "time": 2.075,
+        "generated": "ߊ߬",
+        "tokens": 11,
+        "time": 2.262,
         "valid_syllable_ratio": 1.0,
         "ppl": null
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߕߏ ߦߋ ߕߌ߲ ߞߏ\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ ߌ",
+        "generated": "ߊ สุด",
         "tokens": 8,
-        "time": 1.693,
+        "time": 1.772,
         "valid_syllable_ratio": 1.0,
         "ppl": null
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߡߐ߱ ߕߐ߯ ߞߊ߫ ߓߏ߲߬ ߣߴ ߊ߬ ߖߊ߲ ߘߌ߫\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬",
-        "tokens": 9,
-        "time": 1.941,
+        "generated": "ߊ߬ ดีๆ.",
+        "tokens": 13,
+        "time": 2.231,
         "valid_syllable_ratio": 1.0,
-        "ppl": null
+        "ppl": 36.21
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߖߐ ߓߟߏ ߦߋ ߖߊ߬ߓߌ\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ ߌ",
-        "tokens": 8,
-        "time": 1.687,
+        "generated": "ߊ߬ ߌอยู่ในกล่าวว่า",
+        "tokens": 17,
+        "time": 2.21,
         "valid_syllable_ratio": 1.0,
-        "ppl": null
+        "ppl": 63.4
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߡߏ߬ߛߏ ߘߏ߫ ߞߍ ߝߊ߰ߡߊ߬ߟߊ ߘߏ߫ ߞߎ߲߬ߠߊ߫ ߞߟߊߘߊ ߘߐ߫߸ ߏ߬ ߕߘ\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߋ",
-        "tokens": 10,
-        "time": 2.047,
+        "generated": "ߊ߬ พิมพدَgߏ",
+        "tokens": 16,
+        "time": 2.444,
         "valid_syllable_ratio": 1.0,
-        "ppl": null
+        "ppl": 80.28
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߦߟߌߣߐ ߣߌ߫ ߦߟߌߡߊߛߙߋ ߟߎ߬\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߲ ߋgߎ",
-        "tokens": 12,
-        "time": 2.108,
+        "generated": "ߊ ߞߐ߰ߏgߋ",
+        "tokens": 13,
+        "time": 2.382,
         "valid_syllable_ratio": 1.0,
-        "ppl": 44.91
+        "ppl": 51.68
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߛߏ߬ ߡߊ߫ ߓߏ߲ ߖߏ߬\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߋ",
-        "tokens": 10,
-        "time": 1.925,
+        "generated": "ߊ߬ เคลื่อนไหว",
+        "tokens": 13,
+        "time": 1.976,
         "valid_syllable_ratio": 1.0,
-        "ppl": null
+        "ppl": 45.12
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߞߐ ߕߍ߫ ߕߊ߯ ߟߊ߫ ߸ ߖߊ߯ ߓߊ ߓߍ߫ ߊ߬ ߝߍ߬\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߋgߎ",
-        "tokens": 12,
-        "time": 2.093,
+        "generated": "ߊ߬ 珊󠄁",
+        "tokens": 15,
+        "time": 1.997,
         "valid_syllable_ratio": 1.0,
-        "ppl": 30.65
+        "ppl": null
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߞߊ߬ߝߏ߬ ߓߏߟߏ߲ ߠߎ߬\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߲ ߋgߎ",
-        "tokens": 12,
-        "time": 2.113,
+        "generated": "ߊ߬ กรุง",
+        "tokens": 10,
+        "time": 1.963,
         "valid_syllable_ratio": 1.0,
-        "ppl": 40.31
+        "ppl": 60.02
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߣߊߡߎ߲߫ ߥߟߊ߫ ߘߌ߯ߣߊ߫\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߋgߎ",
-        "tokens": 12,
-        "time": 2.086,
+        "generated": "ߊ องค์ ( ina an)",
+        "tokens": 15,
+        "time": 2.295,
         "valid_syllable_ratio": 1.0,
-        "ppl": 32.02
+        "ppl": 59.39
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߛߡߊߔߌ߬ߟߋ߫ ߃߉߉߅\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߋgߎ",
-        "tokens": 12,
-        "time": 2.119,
+        "generated": "߆ߎ ߦߋ߲߬",
+        "tokens": 10,
+        "time": 2.05,
         "valid_syllable_ratio": 1.0,
-        "ppl": 32.85
+        "ppl": 36.44
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߟߊ߬ߓߊ߰ߙߊ߬ߟߌ߬ߟߊ ߟߎ߬ ߟߊ߫ ߢߐ߲߯ߓߍ߲ ߠߎ߬\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߋgߎ",
-        "tokens": 12,
-        "time": 2.121,
+        "generated": "<think>\n\n<|fim_suffix|>߲ ;;= 易\n!ߊестественн",
+        "tokens": 13,
+        "time": 2.29,
         "valid_syllable_ratio": 1.0,
-        "ppl": 40.03
+        "ppl": 61.12
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߘߋ߲ ߠߎ߬ ߦߋ߫ ߛߌ߬ߟߊ߬ ߟߊ߫ ߞߊ߬ ߓߐ߫ ߘߎ߱ ߟߊ߫\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߲ ߋgߎ",
-        "tokens": 12,
-        "time": 2.104,
+        "generated": "ߊ 栗",
+        "tokens": 8,
+        "time": 1.791,
         "valid_syllable_ratio": 1.0,
-        "ppl": 46.53
+        "ppl": null
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߣߊ ߥߊ߬ߓߐ ߡߐߘߋ߫\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߋgߎ",
-        "tokens": 12,
-        "time": 2.101,
+        "generated": "߸ ߊ.",
+        "tokens": 10,
+        "time": 1.967,
         "valid_syllable_ratio": 1.0,
-        "ppl": 31.68
+        "ppl": null
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߓߍ߲߬ ߞߍ߫ ߣߴߏ߬ ߡߊ߬ ߞߊ߬ ߓߐ߫ ߊ߳ߺߊ߯ߺߌߛ߭ߕߊ߫ ߟߊ߫ ߤ߭ߊߘߌߛߊ\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߋgߎ",
-        "tokens": 12,
-        "time": 2.277,
+        "generated": "ߊ߬ ย่",
+        "tokens": 11,
+        "time": 2.139,
         "valid_syllable_ratio": 1.0,
-        "ppl": 42.9
+        "ppl": null
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߊ߬ߟߋ߬ ߥߊ߫ ߢߊ߫ ߞߋߟߋ߲ ߏ߬ ߡߊ߬߸ ߘߎ߱߱ ߝߣߊ߫ ߦߋ߫ ߕߋ߬ߟߋ ߖߊ\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߋgߎ",
-        "tokens": 12,
-        "time": 2.288,
+        "generated": "ߊ߬ .AbsoluteConstraints",
+        "tokens": 11,
+        "time": 2.132,
         "valid_syllable_ratio": 1.0,
-        "ppl": 38.28
+        "ppl": 51.96
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߞߐߕߐ߮\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߲ ߋgߎ",
-        "tokens": 12,
-        "time": 2.098,
+        "generated": "ߊ webElementX ߝߊ",
+        "tokens": 11,
+        "time": 1.975,
         "valid_syllable_ratio": 1.0,
-        "ppl": 33.45
+        "ppl": 98.09
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߖߐ߲߬ߛߊ߫ ߞߊ߬ ߡߛߏ߬ ߞߎ߲ߕߌ߮ ߟߎ߬ ߞߟߊߓߎߘߏ߲ ߞߘߐߞߍ߬ߙߍ߲߬ߘߍ߫\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߌ",
-        "tokens": 10,
-        "time": 2.046,
+        "generated": "ߊ߬ แข็.",
+        "tokens": 12,
+        "time": 2.221,
         "valid_syllable_ratio": 1.0,
-        "ppl": null
+        "ppl": 50.07
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߦߋߟߋ߲ ߠߊ߫ ߞߊߟߌߦߊ ߓߊ߯ ߞߍ߫ ߛߎߡߊ߲߫ ߠߊ߫ ߥߊ߯ߕߌ߫ ߛߎߥߊ߲ߘߌ\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߋgߎ",
+        "generated": "辰 ߊ߬ ForCanBeConverted ()",
         "tokens": 12,
-        "time": 2.257,
+        "time": 2.544,
         "valid_syllable_ratio": 1.0,
-        "ppl": 56.97
+        "ppl": 83.05
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߦߙߌ ߟߎ߫ ߛߌ߬ߞߛߊ߬ߓߌ߫ ߓߐߣߍ߲߫ ߧߐ߮ ߡߊ߬ ߞߏߛߓߍ߫ ߦߏ߫ ߡߐ߰ ߟ\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ ߌ",
-        "tokens": 8,
-        "time": 1.86,
+        "generated": "ߊ รู้จัก߲социальнߌ",
+        "tokens": 15,
+        "time": 2.351,
         "valid_syllable_ratio": 1.0,
-        "ppl": null
+        "ppl": 86.21
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߊ߬ ߛߌ߰ߓߊ߮ ߝߊ߲߬ߓߊ ߦߋ߫ ߡߊ߬ߣߋ߲߬ߞߊ ߟߎ߫ ߟߋ߬ ߘߌ߫ ߸ ߞߵߏ߬ \n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬",
-        "tokens": 9,
-        "time": 1.959,
+        "generated": "ߊ߬ ใหญ่�",
+        "tokens": 12,
+        "time": 2.238,
         "valid_syllable_ratio": 1.0,
-        "ppl": null
+        "ppl": 48.26
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߊ߬ ߛߌ߰ߓߊ߮ ߖߊ߬ߕߋ߬ߛߎ߬ߓߐ߬ߣߍ߲ ߞߍ߫ ߘߊ߫ ߡߐ߰ ߃߇߄߄߃ ߟߋ߬ ߘߌ\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬",
-        "tokens": 9,
-        "time": 1.938,
+        "generated": "ߊ߬ ߏ กุล",
+        "tokens": 13,
+        "time": 2.355,
         "valid_syllable_ratio": 1.0,
-        "ppl": null
+        "ppl": 52.35
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߦߊ߭ ߊߛߊ߲ߕߌߥߊ߫ ߛߊ߬ ߘߊ߫ ߢߊߣߌ߲ߡߊߓߏߙߌ ߘߐ߫ ߛߌߛ߭ߍߟߌ߫ ߞߏ߲\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߋgߎ",
-        "tokens": 12,
-        "time": 2.229,
+        "generated": "ߊ߬勵ߌล้อ",
+        "tokens": 13,
+        "time": 2.242,
         "valid_syllable_ratio": 1.0,
-        "ppl": 62.81
+        "ppl": 103.5
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߟߐ߲ߠߌ߲ ߦߋ ߛߋ߲ ߠߊ߫\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ ߌ",
-        "tokens": 8,
-        "time": 1.701,
+        "generated": "ߊ 臨.",
+        "tokens": 9,
+        "time": 1.9,
         "valid_syllable_ratio": 1.0,
         "ppl": null
       },
       {
         "prompt": "<|im_start|>system\nYou are an N'Ko language expert. Continue writing in N'Ko script.\n<|im_end|>\n<|im_start|>user\nContinue this N'Ko text: ߦߊ߭ ߊߛߊ߲ߕߌߥߊ߫ ߋ߫߹\n<|im_end|>\n<|im_start|>assistant\n",
-        "generated": "ߊ߬ ߋ",
-        "tokens": 10,
-        "time": 1.882,
+        "generated": "ߊ߬  กุม",
+        "tokens": 11,
+        "time": 1.984,
         "valid_syllable_ratio": 1.0,
-        "ppl": null
+        "ppl": 54.76
       }
     ],
-    "total_time": 103.82147026062012,
-    "total_tokens": 558,
+    "total_time": 108.00292325019836,
+    "total_tokens": 641,
     "summary": {
       "avg_valid_syllable_ratio": 1.0,
-      "avg_ppl": 42.69,
-      "tokens_per_second": 5.4,
+      "avg_ppl": 65.14,
+      "tokens_per_second": 5.9,
       "total_samples": 50,
       "high_validity": 50,
       "mid_validity": 0,
