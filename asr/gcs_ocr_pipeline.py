@@ -51,6 +51,33 @@ def count_nko(text):
     return sum(1 for c in text if 0x07C0 <= ord(c) <= 0x07FF)
 
 
+def clean_ocr_text(raw_text: str) -> str:
+    """Strip OCR output artifacts: NKO: prefix, model thinking leaks, markdown."""
+    import re
+    text = raw_text.strip()
+    # Remove common prefixes
+    for prefix in ["NKO:", "**NKO:**", "**NKO**:", "NKO :", "nko:"]:
+        if text.startswith(prefix):
+            text = text[len(prefix):].strip()
+    # Remove model thinking leaks
+    if any(leak in text.lower() for leak in ["thought", "wait,", "let's", "let me", "(wait"]):
+        # Extract just the N'Ko characters
+        text = "".join(c for c in text if 0x07C0 <= ord(c) <= 0x07FF or c in " ߸߹")
+    # Remove markdown artifacts
+    text = re.sub(r'\*+', '', text)
+    text = re.sub(r'`+', '', text)
+    # Remove Latin text after N'Ko (keep only N'Ko + spaces + N'Ko punctuation)
+    # But allow N'Ko digits and tone marks
+    cleaned = []
+    for char in text:
+        if 0x07C0 <= ord(char) <= 0x07FF or char in " \n":
+            cleaned.append(char)
+    return "".join(cleaned).strip()
+
+
+MIN_NKO_CHARS = 3  # Minimum N'Ko characters for a valid extraction
+
+
 def list_gcs_videos():
     """List all MP4s in the GCS bucket."""
     result = subprocess.run(
@@ -174,13 +201,21 @@ async def process_video(gcs_url, session, temp_dir="/tmp/ocr_pipeline"):
     nko_frames = [r for r in ocr_results if r["has_nko"]]
     aligned_pairs = []
     for nko_frame in nko_frames:
+        # Clean the OCR text
+        cleaned = clean_ocr_text(nko_frame["text"])
+        nko_char_count = count_nko(cleaned)
+
+        # Skip if too few N'Ko characters after cleaning
+        if nko_char_count < MIN_NKO_CHARS:
+            continue
+
         ts = nko_frame["timestamp"]
         seg_idx = int(ts // 30)
         if seg_idx < len(audio_segments):
             aligned_pairs.append({
                 "audio_path": str(audio_segments[seg_idx]),
-                "nko_text": nko_frame["text"],
-                "nko_chars": nko_frame["nko_chars"],
+                "nko_text": cleaned,
+                "nko_chars": nko_char_count,
                 "timestamp": ts,
                 "frame_index": nko_frame["frame_index"],
             })
