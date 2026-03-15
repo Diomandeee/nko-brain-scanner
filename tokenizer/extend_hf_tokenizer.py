@@ -22,9 +22,13 @@ import mlx.nn as nn
 from mlx_lm import load
 
 
-FUSED_MODEL = os.path.expanduser("~/nko-brain-scanner/fused-nko-qwen3")
+# V2: Extend from BASE model (not fused) to avoid tokenizer/model vocab mismatch.
+# The V1 bug: extending from fused model caused tokenizer to report 151,643 while
+# model config said 152,192, leading to degenerate generation after LoRA fusion.
+# mlx_lm.load() resolves HF model IDs from cache automatically
+BASE_MODEL = "mlx-community/Qwen3-8B-8bit"
 BPE_VOCAB = os.path.expanduser("~/nko-brain-scanner/bpe_vocab.json")
-OUTPUT_DIR = os.path.expanduser("~/nko-brain-scanner/extended-nko-qwen3")
+OUTPUT_DIR = os.path.expanduser("~/nko-brain-scanner/extended-nko-qwen3-v2")
 
 
 def pad_to_multiple(n, multiple):
@@ -92,8 +96,9 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--num-merges", type=int, default=250,
                         help="Number of top BPE merges to add (default: 250)")
-    parser.add_argument("--model-path", default=FUSED_MODEL)
-    parser.add_argument("--output-path", default=OUTPUT_DIR)
+    parser.add_argument("--model-path", default=BASE_MODEL)
+    parser.add_argument("--output-path", default=OUTPUT_DIR,
+                        help="Output dir (default: extended-nko-qwen3-v2)")
     args = parser.parse_args()
 
     print("=" * 60)
@@ -240,6 +245,20 @@ def main():
     num_added = hf_tokenizer.add_tokens(new_tokens)
     print(f"  Added {num_added} tokens (tokenizer: {old_tok_size} → {len(hf_tokenizer)})")
 
+    # V2 CRITICAL CHECK: tokenizer vocab MUST match model embedding size
+    tok_vocab = len(hf_tokenizer)
+    if tok_vocab != new_vocab_padded:
+        # Pad tokenizer to match model embedding dimension
+        pad_tokens_needed = new_vocab_padded - tok_vocab
+        if pad_tokens_needed > 0:
+            pad_token_strs = [f"<|pad_{i}|>" for i in range(pad_tokens_needed)]
+            hf_tokenizer.add_tokens(pad_token_strs)
+            print(f"  ALIGNMENT: Added {pad_tokens_needed} padding tokens to tokenizer")
+        print(f"  Tokenizer vocab: {len(hf_tokenizer)}, Model vocab: {new_vocab_padded}")
+    assert len(hf_tokenizer) == new_vocab_padded, \
+        f"FATAL: Tokenizer ({len(hf_tokenizer)}) != Model ({new_vocab_padded}). Cannot proceed."
+    print(f"  VERIFIED: Tokenizer and model vocab aligned at {new_vocab_padded}")
+
     # Step 8: Save extended model
     print(f"\nSaving extended model to {args.output_path}...")
     os.makedirs(args.output_path, exist_ok=True)
@@ -248,8 +267,12 @@ def main():
     hf_tokenizer.save_pretrained(args.output_path)
     print(f"  Saved tokenizer")
 
-    # Update config
+    # Update config — resolve from HF cache if model_path is a HF model ID
     config_path = os.path.join(args.model_path, "config.json")
+    if not os.path.exists(config_path):
+        # Model loaded from HF cache — find the cached config
+        from huggingface_hub import hf_hub_download
+        config_path = hf_hub_download(args.model_path, "config.json")
     with open(config_path) as f:
         config = json.load(f)
     config["vocab_size"] = new_vocab_padded
@@ -331,6 +354,14 @@ def main():
         src = os.path.join(args.model_path, fname)
         if os.path.exists(src):
             shutil.copy2(src, os.path.join(args.output_path, fname))
+        elif not os.path.isdir(args.model_path):
+            # HF model ID — try downloading
+            try:
+                from huggingface_hub import hf_hub_download
+                cached = hf_hub_download(args.model_path, fname)
+                shutil.copy2(cached, os.path.join(args.output_path, fname))
+            except Exception:
+                pass  # File may not exist in the repo
 
     # Verify
     print("\n" + "=" * 60)

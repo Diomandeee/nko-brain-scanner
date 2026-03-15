@@ -1,0 +1,19 @@
+{
+  "natural_text": {
+    "n_samples": 100,
+    "avg_validity": 0.9464,
+    "admissible_pct": 99.0,
+    "high_validity_pct": 86.0
+  },
+  "random_sequences": {
+    "n_samples": 100,
+    "avg_validity": 0.3764,
+    "admissible_pct": 20,
+    "high_validity_pct": 0
+  },
+  "character_inventory": {
+    "consonants": 26,
+    "vowels": 7,
+    "consonant_ratio": 78.8
+  }
+}

@@ -1,0 +1,32 @@
+{
+  "natural_text": {
+    "samples": 100,
+    "avg_validity": 0.9251,
+    "min_validity": 0.6667,
+    "max_validity": 1.0,
+    "perfect_gte_0.95": 44,
+    "is_admissible_pct": 99.0
+  },
+  "random_sequences": {
+    "samples": 100,
+    "seq_length": 20,
+    "avg_validity": 0.2664,
+    "min_validity": 0.0556,
+    "max_validity": 0.5833,
+    "perfect_gte_0.95": 0,
+    "is_admissible_pct": 26.0
+  },
+  "character_distribution": {
+    "consonants": 26,
+    "vowels": 7,
+    "tone_marks": 5,
+    "p_consonant": 0.788,
+    "p_vowel": 0.212,
+    "expected_cc_pair_prob": 0.621
+  },
+  "fsm_constrained": {
+    "guaranteed_validity": 1.0,
+    "method": "logit masking to -inf for inadmissible tokens per FSM state"
+  },
+  "note": "Generation benchmarks pending - Mac5 (M4 16GB) OOM during model loading. FSM validation computed on eval set text."
+}

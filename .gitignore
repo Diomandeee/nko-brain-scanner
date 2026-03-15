@@ -3,3 +3,35 @@ __pycache__/
 .DS_Store
 *.egg-info/
 .env
+
+# Model weights (too large for git)
+*.safetensors
+*.bin
+*.pt
+*.gguf
+
+# Large data files
+*.opus
+*.wav
+*.mp3
+djoko_audio/
+
+# Build artifacts
+paper/*.aux
+paper/*.bbl
+paper/*.blg
+paper/*.log
+paper/*.out
+paper/*.synctex.gz
+paper/*.fdb_latexmk
+paper/*.fls
+
+# OS
+.Spotlight-V100
+.Trashes
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp

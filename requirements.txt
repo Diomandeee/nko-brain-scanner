@@ -1,9 +1,26 @@
+# Core (MLX-based training and inference)
+mlx>=0.29
+mlx-lm>=0.20
 transformers>=4.40
-torch>=2.2
+
+# Brain scan (activation profiling on GPU)
 nnsight>=0.6
+torch>=2.2
 accelerate>=0.28
+
+# Visualization
 matplotlib>=3.8
 seaborn>=0.13
+
+# Scientific computing
 scipy>=1.12
 numpy>=1.26
 tqdm
+
+# BPE tokenizer training
+sentencepiece>=0.2
+
+# Audio pipeline (optional, for ASR proof-of-concept)
+# yt-dlp
+# soundfile
+# librosa

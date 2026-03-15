@@ -1,0 +1,60 @@
+{
+  "compression": {
+    "standard_bpe": {
+      "total_nko_chars": 15058,
+      "total_tokens": 9018,
+      "chars_per_token": 1.6697715679751608,
+      "avg_compression": 1.961561928373294,
+      "n_texts": 170
+    },
+    "morpheme_bpe": {
+      "total_nko_chars": 15058,
+      "total_tokens": 12863,
+      "chars_per_token": 1.1706444841794295,
+      "avg_compression": 1.2493888660493178,
+      "n_texts": 170
+    }
+  },
+  "morpheme_preservation": {
+    "standard_bpe": {
+      "total_morpheme_boundaries": 119,
+      "aligned_boundaries": 106,
+      "preservation_ratio": 0.8907563025210085,
+      "words_analyzed": 112
+    },
+    "morpheme_bpe": {
+      "total_morpheme_boundaries": 119,
+      "aligned_boundaries": 112,
+      "preservation_ratio": 0.9411764705882353,
+      "words_analyzed": 112
+    }
+  },
+  "reconstruction": {
+    "standard_bpe": {
+      "total_texts": 170,
+      "exact_matches": 31,
+      "exact_match_ratio": 0.18235294117647058,
+      "char_accuracy": 0.14884949906418585
+    },
+    "morpheme_bpe": {
+      "total_texts": 170,
+      "exact_matches": 3,
+      "exact_match_ratio": 0.01764705882352941,
+      "char_accuracy": 0.07712209622371463
+    }
+  },
+  "syllable_integrity": {
+    "standard_bpe": {
+      "total_nko_tokens": 5723,
+      "complete_syllable_tokens": 4412,
+      "partial_tokens": 1311,
+      "syllable_integrity": 0.7709243403809191
+    },
+    "morpheme_bpe": {
+      "total_nko_tokens": 9449,
+      "complete_syllable_tokens": 4633,
+      "partial_tokens": 4816,
+      "syllable_integrity": 0.49031643560165095
+    }
+  }
+}

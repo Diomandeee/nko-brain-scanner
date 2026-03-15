@@ -1,0 +1,12 @@
+{
+  "total_pairs": 200,
+  "exact_match": 200,
+  "exact_match_rate": 1.0,
+  "avg_char_accuracy": 1.0,
+  "retrieval_at_1": 1.0,
+  "retrieval_at_5": 1.0,
+  "retrieval_at_10": 1.0,
+  "total_frames": 1000,
+  "beam_width": 5,
+  "transliteration_match_rate": 1.0
+}

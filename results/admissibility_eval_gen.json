@@ -1,0 +1,513 @@
+{
+  "summary": {
+    "model": "Qwen3-8B-8bit + adapters-bpe",
+    "samples": 50,
+    "avg_validity": 1.0,
+    "avg_ppl": 5.3,
+    "admissible_pct": 100.0,
+    "tokens_per_second": 11.3,
+    "avg_nko_chars": 27.8
+  },
+  "samples": [
+    {
+      "prompt": "ߒ ߓߍ ߕߊ",
+      "generated": "߬ ߞߊ߬ ߕߊ߯ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ",
+      "tokens": 48,
+      "time": 5.101,
+      "validity": 1.0,
+      "admissible": true,
+      "nko_chars": 28,
+      "ppl": 4.7
+    },
+    {
+      "prompt": "ߊ߬ ߞߊ",
+      "generated": "߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ",
+      "tokens": 48,
+      "time": 4.268,
+      "validity": 1.0,
+      "admissible": true,
+      "nko_chars": 28,
+      "ppl": 4.59
+    },
+    {
+      "prompt": "ߞߊ߲ ߕߍ߫",
+      "generated": "ߟߊ߫ ߞߊ߲ ߞߊ߬ ߞߍ߫ ߞߊ߲ ߞߊ߬ ߞߍ߫ ߞߊ߲ ߞߊ߬ ߞߍ",
+      "tokens": 48,
+      "time": 4.28,
+      "validity": 1.0,
+      "admissible": true,
+      "nko_chars": 29,
+      "ppl": 4.34
+    },
+    {
+      "prompt": "ߒߞߏ ߞߊ߲",
+      "generated": "ߠߎ߬ ߟߊ߫ ߞߊ߬ ߕߎ߲߬ ߦߋ߫ ߞߊ߬ ߕߎ߲߬ ߦߋ߫ ߞߊ�",
+      "tokens": 48,
+      "time": 4.238,
+      "validity": 1.0,
+      "admissible": true,
+      "nko_chars": 28,
+      "ppl": 7.11
+    },
+    {
+      "prompt": "ߡߊ߲߬ߘߍ߲ ߞߊ",
+      "generated": "߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ",
+      "tokens": 48,
+      "time": 4.272,
+      "validity": 1.0,
+      "admissible": true,
+      "nko_chars": 28,
+      "ppl": 4.21
+    },
+    {
+      "prompt": "ߒ ߕߍ",
+      "generated": "߬ ߞߊ߬ ߕߊ߬ߡߌ߲߬ ߞߊ߬ ߕߊ߬ ߞߊ߬ ߕߊ߬ ߞߊ߬ ߕߊ߬",
+      "tokens": 48,
+      "time": 4.185,
+      "validity": 1.0,
+      "admissible": true,
+      "nko_chars": 29,
+      "ppl": 4.41
+    },
+    {
+      "prompt": "ߊ ߓߍ",
+      "generated": "߫ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ",
+      "tokens": 48,
+      "time": 4.15,
+      "validity": 1.0,
+      "admissible": true,
+      "nko_chars": 28,
+      "ppl": 3.86
+    },
+    {
+      "prompt": "ߖߊ߬ߡߊ߬ߣߊ",
+      "generated": "߫ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ",
+      "tokens": 48,
+      "time": 4.348,
+      "validity": 1.0,
+      "admissible": true,
+      "nko_chars": 28,
+      "ppl": 3.96
+    },
+    {
+      "prompt": "ߘߎ߲ߞߎ߲ ߓߍ",
+      "generated": "߫ ߘߐ߫ ߘߐ߫ ߘߐ߫ ߘߐ߫ ߘߐ߫ ߘߐ߫ ߘߐ߫ ߘߐ߫ ߘߐ߫ ",
+      "tokens": 48,
+      "time": 4.243,
+      "validity": 1.0,
+      "admissible": true,
+      "nko_chars": 28,
+      "ppl": 5.67
+    },
+    {
+      "prompt": "ߟߊ߬ߡߌ߬ߣߌ",
+      "generated": "߲߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ�",
+      "tokens": 48,
+      "time": 4.324,
+      "validity": 1.0,
+      "admissible": true,
+      "nko_chars": 28,
+      "ppl": 5.89
+    },
+    {
+      "prompt": "ߡߊ߲߬ߘߍ߲ ߞߊ߲ ߦߋ߫ ߞߊ߲ ߘߌ߫",
+      "generated": "߸ ߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ",
+      "tokens": 48,
+      "time": 4.245,
+      "validity": 1.0,
+      "admissible": true,
+      "nko_chars": 27,
+      "ppl": 3.38
+    },
+    {
+      "prompt": "ߒߞߏ ߞߊ߲ ߟߊ߫ ߛߓߍ ߟߎ߬",
+      "generated": "ߟߊ߫ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ",
+      "tokens": 48,
+      "time": 4.226,
+      "validity": 1.0,
+      "admissible": true,
+      "nko_chars": 29,
+      "ppl": 4.7
+    },
+    {
+      "prompt": "ߛߊ߲ߕߌ߮ ߟߋ߬ ߖߊ߰ߡߊ߲",
+      "generated": "߬ߕߌ߮ ߟߊ߫ ߞߊ߬ ߝߊ߬ߙߊ߲߬ߛߌ߬ߦߊ ߟߎ߬ ߟߊ߫ ߞߊ߬",
+      "tokens": 48,
+      "time": 4.246,
+      "validity": 1.0,
+      "admissible": true,
+      "nko_chars": 31,
+      "ppl": 5.16
+    },
+    {
+      "prompt": "ߡߐ߰ ߞߋ߬ߟߋ߲߬ ߞߊ߲ ߦߋ߫",
+      "generated": "ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ",
+      "tokens": 48,
+      "time": 4.244,
+      "validity": 1.0,
+      "admissible": true,
+      "nko_chars": 29,
+      "ppl": 3.86
+    },
+    {
+      "prompt": "ߊ߬ ߣߊ߬ߣߍ߲߫ ߛߊ߲߬",
+      "generated": "߁߉߉߉߉߉߉߉߉߉߉߉߉߉߉߉߉߉߉߉߉߉߉�",
+      "tokens": 48,
+      "time": 4.23,
+      "validity": 1.0,
+      "admissible": true,
+      "nko_chars": 23,
+      "ppl": 4.92
+    },
+    {
+      "prompt": "ߦߋߟߋ߲ ߛߊ߲߭ ߦߋ߫ ߟߊ",
+      "generated": "߫ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ",
+      "tokens": 48,
+      "time": 4.246,
+      "validity": 1.0,
+      "admissible": true,
+      "nko_chars": 28,
+      "ppl": 5.62
+    },
+    {
+      "prompt": "ߓߟߏ ߞߋߟߋ߲ ߕߍ",
+      "generated": "߫ ߦߋ߫ ߞߊ߬ ߕߊ߯ ߞߊ߬ ߕߊ߯",
+      "tokens": 28,
+      "time": 2.59,
+      "validity": 1.0,
+      "admissible": true,
+      "nko_chars": 16,
+      "ppl": 16.91
+    },
+    {
+      "prompt": "ߌ ߕߌ߱ ߡߍ߲߫ ߞߊ߬",
+      "generated": "ߕߊ߬ߡߊ߲߬ ߞߊ߬ ߕߊ߬ߡߊ߲߬ ߞߊ߬ ߕߊ߬ߡߊ߲߬ ߞߊ߬",
+      "tokens": 48,
+      "time": 4.253,
+      "validity": 1.0,
+      "admissible": true,
+      "nko_chars": 30,
+      "ppl": 3.86
+    },
+    {
+      "prompt": "ߖߊ߬ߡߊ߬ߣߊ ߛߌ߲ ߓߍ",
+      "generated": "߲߬ ߞߊ߬ ߕߊ߬ߡߊ߬ߣߊ ߘߐ߬ߡߊ߬ߣߊ ߘߊ߫ ߞߊ߬ ߕߊ߬ߡߊ",
+      "tokens": 48,
+      "time": 4.234,
+      "validity": 1.0,
+      "admissible": true,
+      "nko_chars": 32,
+      "ppl": 5.71
+    },
+    {
+      "prompt": "ߞߎ߲߬ ߠߎ߬ ߟߊ ߞߊ",
+      "generated": "߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ",
+      "tokens": 48,
+      "time": 4.228,
+      "validity": 1.0,
+      "admissible": true,
+      "nko_chars": 28,
+      "ppl": 5.28
+    },
+    {
+      "prompt": "ߒ ߓߍ ߕߊ",
+      "generated": "߬ ߞߊ߬ ߕߊ߯ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ",
+      "tokens": 48,
+      "time": 4.21,
+      "validity": 1.0,
+      "admissible": true,
+      "nko_chars": 28,
+      "ppl": 4.7
+    },
+    {
+      "prompt": "ߊ߬ ߞߊ",
+      "generated": "߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ",
+      "tokens": 48,
+      "time": 4.186,
+      "validity": 1.0,
+      "admissible": true,
+      "nko_chars": 28,
+      "ppl": 4.59
+    },
+    {
+      "prompt": "ߞߊ߲ ߕߍ߫",
+      "generated": "ߟߊ߫ ߞߊ߲ ߞߊ߬ ߞߍ߫ ߞߊ߲ ߞߊ߬ ߞߍ߫ ߞߊ߲ ߞߊ߬ ߞߍ",
+      "tokens": 48,
+      "time": 4.258,
+      "validity": 1.0,
+      "admissible": true,
+      "nko_chars": 29,
+      "ppl": 4.34
+    },
+    {
+      "prompt": "ߒߞߏ ߞߊ߲",
+      "generated": "ߠߎ߬ ߟߊ߫ ߞߊ߬ ߕߎ߲߬ ߦߋ߫ ߞߊ߬ ߕߎ߲߬ ߦߋ߫ ߞߊ�",
+      "tokens": 48,
+      "time": 4.239,
+      "validity": 1.0,
+      "admissible": true,
+      "nko_chars": 28,
+      "ppl": 7.11
+    },
+    {
+      "prompt": "ߡߊ߲߬ߘߍ߲ ߞߊ",
+      "generated": "߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ",
+      "tokens": 48,
+      "time": 4.222,
+      "validity": 1.0,
+      "admissible": true,
+      "nko_chars": 28,
+      "ppl": 4.21
+    },
+    {
+      "prompt": "ߒ ߕߍ",
+      "generated": "߬ ߞߊ߬ ߕߊ߬ߡߌ߲߬ ߞߊ߬ ߕߊ߬ ߞߊ߬ ߕߊ߬ ߞߊ߬ ߕߊ߬",
+      "tokens": 48,
+      "time": 4.151,
+      "validity": 1.0,
+      "admissible": true,
+      "nko_chars": 29,
+      "ppl": 4.41
+    },
+    {
+      "prompt": "ߊ ߓߍ",
+      "generated": "߫ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ",
+      "tokens": 48,
+      "time": 4.154,
+      "validity": 1.0,
+      "admissible": true,
+      "nko_chars": 28,
+      "ppl": 3.86
+    },
+    {
+      "prompt": "ߖߊ߬ߡߊ߬ߣߊ",
+      "generated": "߫ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ",
+      "tokens": 48,
+      "time": 4.371,
+      "validity": 1.0,
+      "admissible": true,
+      "nko_chars": 28,
+      "ppl": 3.96
+    },
+    {
+      "prompt": "ߘߎ߲ߞߎ߲ ߓߍ",
+      "generated": "߫ ߘߐ߫ ߘߐ߫ ߘߐ߫ ߘߐ߫ ߘߐ߫ ߘߐ߫ ߘߐ߫ ߘߐ߫ ߘߐ߫ ",
+      "tokens": 48,
+      "time": 4.285,
+      "validity": 1.0,
+      "admissible": true,
+      "nko_chars": 28,
+      "ppl": 5.67
+    },
+    {
+      "prompt": "ߟߊ߬ߡߌ߬ߣߌ",
+      "generated": "߲߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ�",
+      "tokens": 48,
+      "time": 4.34,
+      "validity": 1.0,
+      "admissible": true,
+      "nko_chars": 28,
+      "ppl": 5.89
+    },
+    {
+      "prompt": "ߡߊ߲߬ߘߍ߲ ߞߊ߲ ߦߋ߫ ߞߊ߲ ߘߌ߫",
+      "generated": "߸ ߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ",
+      "tokens": 48,
+      "time": 4.237,
+      "validity": 1.0,
+      "admissible": true,
+      "nko_chars": 27,
+      "ppl": 3.38
+    },
+    {
+      "prompt": "ߒߞߏ ߞߊ߲ ߟߊ߫ ߛߓߍ ߟߎ߬",
+      "generated": "ߟߊ߫ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ",
+      "tokens": 48,
+      "time": 4.234,
+      "validity": 1.0,
+      "admissible": true,
+      "nko_chars": 29,
+      "ppl": 4.7
+    },
+    {
+      "prompt": "ߛߊ߲ߕߌ߮ ߟߋ߬ ߖߊ߰ߡߊ߲",
+      "generated": "߬ߕߌ߮ ߟߊ߫ ߞߊ߬ ߝߊ߬ߙߊ߲߬ߛߌ߬ߦߊ ߟߎ߬ ߟߊ߫ ߞߊ߬",
+      "tokens": 48,
+      "time": 4.227,
+      "validity": 1.0,
+      "admissible": true,
+      "nko_chars": 31,
+      "ppl": 5.16
+    },
+    {
+      "prompt": "ߡߐ߰ ߞߋ߬ߟߋ߲߬ ߞߊ߲ ߦߋ߫",
+      "generated": "ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ",
+      "tokens": 48,
+      "time": 4.245,
+      "validity": 1.0,
+      "admissible": true,
+      "nko_chars": 29,
+      "ppl": 3.86
+    },
+    {
+      "prompt": "ߊ߬ ߣߊ߬ߣߍ߲߫ ߛߊ߲߬",
+      "generated": "߁߉߉߉߉߉߉߉߉߉߉߉߉߉߉߉߉߉߉߉߉߉߉�",
+      "tokens": 48,
+      "time": 4.244,
+      "validity": 1.0,
+      "admissible": true,
+      "nko_chars": 23,
+      "ppl": 4.92
+    },
+    {
+      "prompt": "ߦߋߟߋ߲ ߛߊ߲߭ ߦߋ߫ ߟߊ",
+      "generated": "߫ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ",
+      "tokens": 48,
+      "time": 4.249,
+      "validity": 1.0,
+      "admissible": true,
+      "nko_chars": 28,
+      "ppl": 5.62
+    },
+    {
+      "prompt": "ߓߟߏ ߞߋߟߋ߲ ߕߍ",
+      "generated": "߫ ߦߋ߫ ߞߊ߬ ߕߊ߯ ߞߊ߬ ߕߊ߯",
+      "tokens": 28,
+      "time": 2.596,
+      "validity": 1.0,
+      "admissible": true,
+      "nko_chars": 16,
+      "ppl": 16.91
+    },
+    {
+      "prompt": "ߌ ߕߌ߱ ߡߍ߲߫ ߞߊ߬",
+      "generated": "ߕߊ߬ߡߊ߲߬ ߞߊ߬ ߕߊ߬ߡߊ߲߬ ߞߊ߬ ߕߊ߬ߡߊ߲߬ ߞߊ߬",
+      "tokens": 48,
+      "time": 4.225,
+      "validity": 1.0,
+      "admissible": true,
+      "nko_chars": 30,
+      "ppl": 3.86
+    },
+    {
+      "prompt": "ߖߊ߬ߡߊ߬ߣߊ ߛߌ߲ ߓߍ",
+      "generated": "߲߬ ߞߊ߬ ߕߊ߬ߡߊ߬ߣߊ ߘߐ߬ߡߊ߬ߣߊ ߘߊ߫ ߞߊ߬ ߕߊ߬ߡߊ",
+      "tokens": 48,
+      "time": 4.238,
+      "validity": 1.0,
+      "admissible": true,
+      "nko_chars": 32,
+      "ppl": 5.71
+    },
+    {
+      "prompt": "ߞߎ߲߬ ߠߎ߬ ߟߊ ߞߊ",
+      "generated": "߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ",
+      "tokens": 48,
+      "time": 4.245,
+      "validity": 1.0,
+      "admissible": true,
+      "nko_chars": 28,
+      "ppl": 5.28
+    },
+    {
+      "prompt": "ߒ ߓߍ ߕߊ",
+      "generated": "߬ ߞߊ߬ ߕߊ߯ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ",
+      "tokens": 48,
+      "time": 4.217,
+      "validity": 1.0,
+      "admissible": true,
+      "nko_chars": 28,
+      "ppl": 4.7
+    },
+    {
+      "prompt": "ߊ߬ ߞߊ",
+      "generated": "߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ",
+      "tokens": 48,
+      "time": 4.197,
+      "validity": 1.0,
+      "admissible": true,
+      "nko_chars": 28,
+      "ppl": 4.59
+    },
+    {
+      "prompt": "ߞߊ߲ ߕߍ߫",
+      "generated": "ߟߊ߫ ߞߊ߲ ߞߊ߬ ߞߍ߫ ߞߊ߲ ߞߊ߬ ߞߍ߫ ߞߊ߲ ߞߊ߬ ߞߍ",
+      "tokens": 48,
+      "time": 4.282,
+      "validity": 1.0,
+      "admissible": true,
+      "nko_chars": 29,
+      "ppl": 4.34
+    },
+    {
+      "prompt": "ߒߞߏ ߞߊ߲",
+      "generated": "ߠߎ߬ ߟߊ߫ ߞߊ߬ ߕߎ߲߬ ߦߋ߫ ߞߊ߬ ߕߎ߲߬ ߦߋ߫ ߞߊ�",
+      "tokens": 48,
+      "time": 4.245,
+      "validity": 1.0,
+      "admissible": true,
+      "nko_chars": 28,
+      "ppl": 7.11
+    },
+    {
+      "prompt": "ߡߊ߲߬ߘߍ߲ ߞߊ",
+      "generated": "߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ",
+      "tokens": 48,
+      "time": 4.241,
+      "validity": 1.0,
+      "admissible": true,
+      "nko_chars": 28,
+      "ppl": 4.21
+    },
+    {
+      "prompt": "ߒ ߕߍ",
+      "generated": "߬ ߞߊ߬ ߕߊ߬ߡߌ߲߬ ߞߊ߬ ߕߊ߬ ߞߊ߬ ߕߊ߬ ߞߊ߬ ߕߊ߬",
+      "tokens": 48,
+      "time": 4.156,
+      "validity": 1.0,
+      "admissible": true,
+      "nko_chars": 29,
+      "ppl": 4.41
+    },
+    {
+      "prompt": "ߊ ߓߍ",
+      "generated": "߫ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ",
+      "tokens": 48,
+      "time": 4.157,
+      "validity": 1.0,
+      "admissible": true,
+      "nko_chars": 28,
+      "ppl": 3.86
+    },
+    {
+      "prompt": "ߖߊ߬ߡߊ߬ߣߊ",
+      "generated": "߫ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ",
+      "tokens": 48,
+      "time": 4.324,
+      "validity": 1.0,
+      "admissible": true,
+      "nko_chars": 28,
+      "ppl": 3.96
+    },
+    {
+      "prompt": "ߘߎ߲ߞߎ߲ ߓߍ",
+      "generated": "߫ ߘߐ߫ ߘߐ߫ ߘߐ߫ ߘߐ߫ ߘߐ߫ ߘߐ߫ ߘߐ߫ ߘߐ߫ ߘߐ߫ ",
+      "tokens": 48,
+      "time": 4.244,
+      "validity": 1.0,
+      "admissible": true,
+      "nko_chars": 28,
+      "ppl": 5.67
+    },
+    {
+      "prompt": "ߟߊ߬ߡߌ߬ߣߌ",
+      "generated": "߲߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ߬ ߞߊ�",
+      "tokens": 48,
+      "time": 4.332,
+      "validity": 1.0,
+      "admissible": true,
+      "nko_chars": 28,
+      "ppl": 5.89
+    }
+  ]
+}

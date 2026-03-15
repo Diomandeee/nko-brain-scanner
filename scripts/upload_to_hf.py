@@ -16,11 +16,11 @@ import os
 from huggingface_hub import HfApi, create_repo
 
 HF_USER = "Diomandeee"
-MODEL_REPO = f"{HF_USER}/nko-qwen3-8b"
+MODEL_REPO = f"{HF_USER}/nko-qwen3-8b-v2"
 DATASET_REPO = f"{HF_USER}/nko-parallel-corpus"
 
-FUSED_MODEL_DIR = os.path.expanduser("~/nko-brain-scanner/fused-nko-qwen3")
-ADAPTER_DIR = os.path.expanduser("~/nko-brain-scanner/adapters-bpe")
+FUSED_MODEL_DIR = os.path.expanduser("~/nko-brain-scanner/fused-extended-nko-qwen3")
+ADAPTER_DIR = os.path.expanduser("~/nko-brain-scanner/adapters-extended")
 EVAL_DIR = os.path.expanduser("~/nko-brain-scanner/eval")
 RESULTS_DIR = os.path.expanduser("~/nko-brain-scanner/results")
 MODEL_CARD = os.path.expanduser("~/nko-brain-scanner/model_card.md")
@@ -81,7 +81,10 @@ def upload_dataset(api):
             print(f"  Uploaded eval/{fname}")
 
     # Upload results
-    for fname in ["profiler_corrected.json", "brain_scan_8b.json"]:
+    for fname in ["profiler_corrected.json", "brain_scan_8b.json",
+                   "benchmark_comparison.json", "tokenizer_comparison.json",
+                   "admissibility_comparison.json", "fsm_validation.json",
+                   "round_trip_eval.json", "v2_20_prompts.json"]:
         fpath = os.path.join(RESULTS_DIR, fname)
         if os.path.exists(fpath):
             api.upload_file(
