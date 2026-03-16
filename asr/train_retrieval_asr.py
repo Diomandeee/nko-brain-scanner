@@ -147,7 +147,7 @@ def extract_whisper_features(audio_paths, output_dir, device="cuda", batch_size=
             audio = whisper.pad_or_trim(audio)
 
             # Extract mel spectrogram
-            mel = whisper.log_mel_spectrogram(audio).to(device)
+            mel = whisper.log_mel_spectrogram(audio, n_mels=128).to(device)
 
             # Run encoder
             with torch.no_grad():

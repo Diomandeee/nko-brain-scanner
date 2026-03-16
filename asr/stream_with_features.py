@@ -109,7 +109,7 @@ for i, vid in enumerate(remaining):
         try:
             audio = whisper.load_audio(seg)
             audio = whisper.pad_or_trim(audio)
-            mel = whisper.log_mel_spectrogram(audio).to("cuda")
+            mel = whisper.log_mel_spectrogram(audio, n_mels=128).to("cuda")
             with torch.no_grad():
                 features = whisper_model.encoder(mel.unsqueeze(0))
             torch.save(features.squeeze(0).cpu(), feat_path)

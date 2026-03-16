@@ -52,9 +52,26 @@ SCENE_THRESHOLD = 0.25  # Lower = more sensitive to slide changes
 MIN_SCENE_DURATION = 3.0  # Minimum seconds between scenes
 MIN_NKO_CHARS = 3
 
-OCR_PROMPT = """This is a frame from an N'Ko (ߒߞߏ) language teaching video.
-Extract ALL N'Ko script text visible. Return ONLY the N'Ko characters and spaces.
-If no N'Ko text is visible, respond with: NO_TEXT"""
+OCR_PROMPT = """This is a frame from an N'Ko (ߒߞߏ) language teaching video showing a digital slide.
+Parse the slide structure and return a JSON object with this exact schema:
+{
+  "slide_title": "the lesson title in N'Ko if visible, else null",
+  "sections": [
+    {
+      "type": "vocabulary|example|definition|exercise|alphabet|numbers",
+      "nko_text": "the N'Ko text in this section",
+      "latin_text": "any Latin/French text alongside it, else null"
+    }
+  ],
+  "reading_order": [0, 1, 2],
+  "has_nko": true
+}
+
+Rules:
+- Return ONLY valid JSON. No markdown fences, no explanation.
+- If no N'Ko text is visible set has_nko to false and sections to [].
+- reading_order lists section indices in the order a student would read them.
+- Choose the best type for each section from the allowed values."""
 
 
 def has_nko(text):
@@ -72,6 +89,73 @@ def clean_nko(text):
         if text.strip().startswith(prefix):
             text = text.strip()[len(prefix):]
     return "".join(c for c in text if 0x07C0 <= ord(c) <= 0x07FF or c in " \n").strip()
+
+
+def parse_structured_ocr(raw: str) -> Dict:
+    """Parse Gemini JSON slide response. Falls back to flat text extraction on failure.
+
+    Returns a dict with keys:
+      structured   bool   – True if JSON parsed successfully
+      slide_title  str|None
+      sections     list   – [{type, nko_text, latin_text}, ...]
+      reading_order list  – section indices
+      has_nko      bool
+      cleaned      str    – flat N'Ko text (all sections joined, for backward compat)
+      nko_chars    int
+    """
+    import re
+
+    # Strip markdown code fences Gemini sometimes adds despite instructions
+    text = raw.strip()
+    text = re.sub(r'^```(?:json)?\s*', '', text)
+    text = re.sub(r'\s*```$', '', text)
+
+    try:
+        data = json.loads(text)
+        sections = data.get("sections") or []
+        # Validate and normalise sections
+        clean_sections = []
+        for sec in sections:
+            nko_text = clean_nko(sec.get("nko_text") or "")
+            if not nko_text:
+                continue
+            clean_sections.append({
+                "type": sec.get("type", "vocabulary"),
+                "nko_text": nko_text,
+                "latin_text": (sec.get("latin_text") or "").strip() or None,
+            })
+
+        # reading_order: keep valid indices only
+        raw_order = data.get("reading_order") or list(range(len(clean_sections)))
+        reading_order = [i for i in raw_order if isinstance(i, int) and i < len(clean_sections)]
+        if not reading_order:
+            reading_order = list(range(len(clean_sections)))
+
+        all_nko = " ".join(s["nko_text"] for s in clean_sections)
+        nko_chars = count_nko(all_nko)
+
+        return {
+            "structured": True,
+            "slide_title": (data.get("slide_title") or "").strip() or None,
+            "sections": clean_sections,
+            "reading_order": reading_order,
+            "has_nko": bool(data.get("has_nko")) and nko_chars >= MIN_NKO_CHARS,
+            "cleaned": all_nko,
+            "nko_chars": nko_chars,
+        }
+    except (json.JSONDecodeError, KeyError, TypeError):
+        # Fallback: treat raw response as flat N'Ko text (old behaviour)
+        cleaned = clean_nko(raw)
+        nko_chars = count_nko(cleaned)
+        return {
+            "structured": False,
+            "slide_title": None,
+            "sections": [{"type": "vocabulary", "nko_text": cleaned, "latin_text": None}] if cleaned else [],
+            "reading_order": [0] if cleaned else [],
+            "has_nko": nko_chars >= MIN_NKO_CHARS,
+            "cleaned": cleaned,
+            "nko_chars": nko_chars,
+        }
 
 
 # ── Pass 1: Scene Detection ──────────────────────────────────
@@ -128,7 +212,7 @@ def extract_frame_at(video_path: str, timestamp: float, output_path: str) -> boo
 # ── Pass 2: OCR + Text Window Mapping ────────────────────────
 
 async def ocr_frame(image_path: str, session: aiohttp.ClientSession) -> Dict:
-    """Run Gemini OCR on a frame."""
+    """Run Gemini OCR on a frame. Returns structured slide data via parse_structured_ocr."""
     with open(image_path, "rb") as f:
         img_data = base64.b64encode(f.read()).decode()
 
@@ -138,7 +222,8 @@ async def ocr_frame(image_path: str, session: aiohttp.ClientSession) -> Dict:
             {"text": OCR_PROMPT},
             {"inline_data": {"mime_type": "image/png", "data": img_data}},
         ]}],
-        "generationConfig": {"temperature": 0.1, "maxOutputTokens": 500},
+        # Higher token budget for JSON output; temp 0.1 keeps structure deterministic
+        "generationConfig": {"temperature": 0.1, "maxOutputTokens": 1024},
     }
 
     t0 = time.time()
@@ -148,14 +233,21 @@ async def ocr_frame(image_path: str, session: aiohttp.ClientSession) -> Dict:
             if resp.status == 200:
                 data = await resp.json()
                 raw = data["candidates"][0]["content"]["parts"][0]["text"].strip()
-                cleaned = clean_nko(raw)
-                return {"raw": raw, "cleaned": cleaned, "nko_chars": count_nko(cleaned),
-                        "has_nko": count_nko(cleaned) >= MIN_NKO_CHARS, "time": elapsed}
-            return {"raw": "", "cleaned": "", "nko_chars": 0, "has_nko": False, "time": elapsed,
-                    "error": f"API {resp.status}"}
+                parsed = parse_structured_ocr(raw)
+                parsed["raw"] = raw
+                parsed["time"] = elapsed
+                return parsed
+            return {
+                "raw": "", "cleaned": "", "nko_chars": 0, "has_nko": False,
+                "structured": False, "slide_title": None, "sections": [],
+                "reading_order": [], "time": elapsed, "error": f"API {resp.status}",
+            }
     except Exception as e:
-        return {"raw": "", "cleaned": "", "nko_chars": 0, "has_nko": False,
-                "time": time.time() - t0, "error": str(e)[:100]}
+        return {
+            "raw": "", "cleaned": "", "nko_chars": 0, "has_nko": False,
+            "structured": False, "slide_title": None, "sections": [], "reading_order": [],
+            "time": time.time() - t0, "error": str(e)[:100],
+        }
 
 
 # ── Pass 3: Audio-Text Alignment ─────────────────────────────
@@ -246,15 +338,50 @@ async def process_video(gcs_url: str, session: aiohttp.ClientSession,
 
         # Audio window = full scene duration (teacher explains this text)
         audio_path = str(audio_dir / f"{video_id}_scene{scene['scene_index']:04d}.wav")
-        if extract_audio_window(video_path, scene["scene_start"], scene["scene_end"], audio_path):
+        if not extract_audio_window(video_path, scene["scene_start"], scene["scene_end"], audio_path):
+            continue
+
+        sections = scene.get("sections") or []
+        # Walk sections in teaching (reading) order
+        order = scene.get("reading_order") or list(range(len(sections)))
+
+        if sections:
+            # Structured path: one training pair per section
+            for sec_idx in order:
+                if sec_idx >= len(sections):
+                    continue
+                sec = sections[sec_idx]
+                if not sec.get("nko_text"):
+                    continue
+                pairs.append({
+                    "audio_path": audio_path,
+                    "nko_text": sec["nko_text"],
+                    "nko_chars": count_nko(sec["nko_text"]),
+                    "section_type": sec.get("type", "vocabulary"),
+                    "latin_text": sec.get("latin_text"),
+                    "slide_title": scene.get("slide_title"),
+                    "section_index": sec_idx,
+                    "scene_start": scene["scene_start"],
+                    "scene_end": scene["scene_end"],
+                    "scene_duration": scene["scene_duration"],
+                    "scene_index": scene["scene_index"],
+                    "structured": True,
+                })
+        else:
+            # Flat fallback: one pair for the whole scene
             pairs.append({
                 "audio_path": audio_path,
                 "nko_text": scene["cleaned"],
                 "nko_chars": scene["nko_chars"],
+                "section_type": "vocabulary",
+                "latin_text": None,
+                "slide_title": None,
+                "section_index": 0,
                 "scene_start": scene["scene_start"],
                 "scene_end": scene["scene_end"],
                 "scene_duration": scene["scene_duration"],
                 "scene_index": scene["scene_index"],
+                "structured": False,
             })
 
     print(f"  Pass 3: {len(pairs)} aligned (audio_window, nko_text) pairs")
