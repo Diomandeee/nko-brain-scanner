@@ -16,7 +16,8 @@ import json
 import sys
 from pathlib import Path
 
-# Add NKo project to path for transliterate
+# Add repo root to path (nko/ package lives there after consolidation)
+sys.path.insert(0, str(Path(__file__).parent.parent))
 
 try:
     from nko.transliterate import transliterate

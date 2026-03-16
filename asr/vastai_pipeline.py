@@ -82,7 +82,7 @@ def main():
     # Load model
     from transformers import pipeline
     print(f"Loading ASR model: {args.model}")
-    kwargs = {"device": device, "return_timestamps": True}
+    kwargs = {"device": device, "return_timestamps": False}
     if args.hf_token:
         kwargs["token"] = args.hf_token
     asr = pipeline("automatic-speech-recognition", model=args.model, **kwargs)
