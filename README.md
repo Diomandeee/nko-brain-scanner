@@ -8,6 +8,12 @@ Paper: [ACL/EMNLP 2026 submission](paper/main.pdf)
 
 ## Key Results
 
+### ASR: Char-Level CTC (In Training)
+
+Training on Vast.ai (RTX 4090 + RTX 3090). Target: beat MALIBA-AI 45.73% WER on the FarmRadio Bambara corpus.
+
+Current setup: Whisper large-v3 (frozen) + 4x downsample + char-level BiLSTM CTC + 65 N'Ko characters + FSM syllable assembly post-decoding. 5.4M trainable params. Primary training corpus: bam-asr-early (37h, 37,306 human-verified samples).
+
 ### V1: Three-Stage Training (Base Vocabulary)
 
 | Metric | Base Qwen3-8B | Three-Stage Fine-Tuned | Change |
@@ -74,15 +80,22 @@ nko-brain-scanner/
 |   +-- logits_processor.py  # MLX logits processor
 |   +-- eval_admissibility.py
 |   +-- gk_scorer.py         # Graph Kernel semantic scorer
-+-- asr/                 # Retrieval-centric multimodal ASR
-|   +-- audio_pipeline.py    # YouTube download + VAD segmentation
-|   +-- audio_encoder.py     # Whisper encoder (frozen features)
-|   +-- speaker_diarizer.py  # pyannote speaker clustering
-|   +-- scene_encoder.py     # SigLIP visual feature extraction
-|   +-- joint_embedding.py   # Shared embedding space (d=512)
-|   +-- syllable_retriever.py # Codebook retrieval + FSM beam search
-|   +-- train_asr.py         # Multi-loss training loop
-|   +-- round_trip_eval.py   # Round-trip accuracy evaluation
++-- asr/                 # ASR pipeline (char-level CTC)
+|   +-- char_level_train.py      # Char-level CTC training (primary)
+|   +-- train_on_human_data.py   # bam-asr-early fine-tuning
+|   +-- train_retrieval_asr.py   # Retrieval-based ASR training
+|   +-- audio_pipeline.py        # YouTube download + VAD segmentation
+|   +-- audio_encoder.py         # Whisper encoder (frozen features)
+|   +-- bridge_to_nko.py         # Latin Bambara → N'Ko cross-script bridge
+|   +-- dynamic_ocr_pipeline.py  # Scene-adaptive OCR for teaching videos
+|   +-- download_djoko.py        # Djoko + babamamadidiane audio downloader
+|   +-- eval_vs_maliba.py        # WER evaluation vs MALIBA-AI baseline
+|   +-- speaker_diarizer.py      # pyannote speaker clustering
+|   +-- scene_encoder.py         # SigLIP visual feature extraction
+|   +-- joint_embedding.py       # Shared embedding space (d=512)
+|   +-- syllable_retriever.py    # Codebook retrieval + FSM beam search
+|   +-- round_trip_eval.py       # Round-trip accuracy evaluation
+|   +-- vastai_pipeline.py       # Vast.ai distributed training orchestration
 +-- nko_core/            # N'Ko language core
 |   +-- __init__.py          # Unicode, phonology, morphology
 +-- data/                # Corpora and codebooks
@@ -145,16 +158,26 @@ python3 constrained/eval_admissibility.py --model path/to/fused-model --num-samp
 
 ### ASR Pipeline
 ```bash
+# Train on human-labeled bam-asr-early (Vast.ai, RTX 4090)
+python3 asr/char_level_train.py --epochs 100 --batch-size 8
+python3 asr/train_on_human_data.py --epochs 100 --batch-size 4
+
+# Download YouTube data
+python3 asr/download_djoko.py --limit 100          # Djoko episodes
+python3 asr/download_djoko.py --channel babamamadidiane --limit 50
+
+# OCR: extract N'Ko text from teaching video frames (Gemini 3 Flash)
+python3 asr/dynamic_ocr_pipeline.py --limit 5
+
+# Cross-script bridge: Latin Bambara → N'Ko
+python3 asr/bridge_to_nko.py --input results/transcriptions.jsonl --output results/nko_pairs.jsonl
+
+# Evaluate vs MALIBA-AI baseline (45.73% WER)
+python3 asr/eval_vs_maliba.py --model-path results/best_retrieval_asr.pt
+
 # Smoke tests
 python3 asr/joint_embedding.py
-python3 asr/speaker_diarizer.py
 python3 asr/round_trip_eval.py
-
-# Training (synthetic data for pipeline validation)
-python3 asr/train_asr.py --synthetic --epochs 50
-
-# Audio processing
-python3 asr/audio_pipeline.py path/to/video.mp4 --output segments/
 ```
 
 ### Evaluation
@@ -167,7 +190,57 @@ python3 eval/run_v3_profiler.py
 python3 eval/run_v3_generation.py
 ```
 
-## Training Data Summary
+## ASR Pipeline
+
+### Architecture
+
+The ASR model uses a char-level CTC approach rather than the original syllable codebook.
+
+The original design targeted 3,024 syllable classes. In practice, 99.2% of them never appear in training data. That causes the model to memorize rare patterns rather than generalize. The fix: predict individual N'Ko characters (65 targets) and let the FSM assemble valid syllables post-decoding.
+
+**Stack:**
+1. Whisper large-v3 encoder (frozen) — 1,280-dim audio features per 10ms frame
+2. 4x temporal downsample — compresses 1500 frames to 375, keeps CTC alignment tractable
+3. BiLSTM CTC head — 2 layers, 512 hidden units, 65 output classes (N'Ko Unicode range U+07C0-U+07FF + space)
+4. FSM syllable assembler — 4-state machine validates CV/CVN structure on decoded characters
+
+Total trainable params: 5.4M. Whisper stays frozen.
+
+### Training Data
+
+**Primary (human-labeled):**
+- `bam-asr-early` (RobotsMali / FarmRadio): 37h, 37,306 samples. Bambara radio speech with manual Latin transcriptions. Cross-script bridge converts Latin to N'Ko targets.
+
+**Pseudo-labeled (YouTube):**
+- Djoko (Koman Diabate): 1,461 episodes. Whisper transcribes Latin Bambara, bridge converts to N'Ko.
+- babamamadidiane: 532 teaching videos. Teacher reads N'Ko text on screen. OCR pipeline extracts the text; audio windows are aligned per slide transition.
+
+### OCR Pipeline
+
+Teaching videos have slides with N'Ko text. Rather than sampling fixed frames, the pipeline uses FFmpeg scene detection to find slide transitions, then runs Gemini 3 Flash on one frame per scene. Each (audio window, N'Ko text) pair is a ground-truth alignment: the teacher is literally explaining the text on screen.
+
+### Cross-Script Bridge
+
+`bam-asr-early` has Latin Bambara transcriptions, not N'Ko. The bridge maps Latin graphemes to N'Ko characters, preserves tone marks (acute/grave convert to N'Ko combining marks), and validates output against the syllable FSM. Pairs that produce no N'Ko characters are dropped.
+
+### Evaluation
+
+Target: beat MALIBA-AI 45.73% WER on 500 blind samples from the FarmRadio corpus. Metrics: CER on N'Ko output, WER on round-trip Latin transliteration, SVR (syllable validity rate).
+
+## Datasets
+
+| Dataset | Hours | License | Role |
+|---------|-------|---------|------|
+| bam-asr-early (RobotsMali) | 37h | CC-BY-4.0 | Primary training |
+| afvoices | 159h | CC-BY-4.0 | Available for scaling |
+| kunkado | 39h | CC-BY-SA-4.0 | Radio Bambara |
+| Djoko (YouTube) | ~480h | Fair use / research | Pseudo-labeled training |
+| babamamadidiane (YouTube) | ~50h | Fair use / research | OCR-aligned teaching pairs |
+| MALIBA-AI benchmark | 500 samples | Evaluation only | Blind WER eval |
+
+All YouTube data is processed locally and not redistributed.
+
+## Training Data Summary (Text Model)
 
 | Source | Examples | Description |
 |--------|----------|-------------|
@@ -180,7 +253,9 @@ python3 eval/run_v3_generation.py
 
 ## Hardware & Cost
 
-All training on Apple M4 with 16GB unified memory (Mac5). Total training time: ~6 hours across all stages. Cloud cost: $1.72 (initial 72B brain scan on Vast.ai).
+Text model training on Apple M4 with 16GB unified memory (Mac5). Total training time: ~6 hours across all stages. Cloud cost: $1.72 (initial 72B brain scan on Vast.ai).
+
+ASR training on Vast.ai: RTX 4090 + RTX 3090. Char-level CTC training runs at ~4 samples/sec on 4090. Full bam-asr-early training (~100 epochs) takes approximately 8-12 hours per run.
 
 ## Citation
 
