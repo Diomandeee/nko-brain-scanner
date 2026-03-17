@@ -178,7 +178,21 @@ IPA_TO_NKO: Dict[str, str] = {
     "s": "ߛ",
     "p": "ߔ",
     "g": "ߜ",  # Bambara plain g → N'Ko gba (ߜ). Whisper ASR outputs 'g' not 'gb'.
+    # ── Bambara gap fixes ─────────────────────────────────────────────────────
+    # z: N'Ko has no distinct z letter. Standard Bambara N'Ko orthography uses ߛ
+    #    (sa) for z-sounds in loanwords (e.g. zɛrɛ 'money' → ߛߍߙߍ).
+    "z": "ߛ",
+    # ə (schwa): In Bambara N'Ko, schwa is written as ߐ (same glyph as ɛ).
+    "ə": "ߐ",
+    # ʃ: The sh sound (e.g. Bambara 'sha'). No dedicated N'Ko letter; written ߛ.
+    "ʃ": "ߛ",
 }
+
+# Remove the 'na' → ߠ (Na Woloso) entry from IPA_TO_NKO.
+# Na Woloso (ߠ) is a rare syllabic character, NOT used in standard Bambara text.
+# The greedy 2-char 'na' match causes 'nana' → 'ߠߠ' instead of correct 'ߣߊߣߊ'.
+# Sequences of n+a are handled correctly by the individual n→ߣ and a→ߊ rules.
+IPA_TO_NKO.pop("na", None)
 
 # ── IPA → Latin (readable) ───────────────────────────────────
 
@@ -223,7 +237,17 @@ LATIN_SINGLE_TO_IPA: Dict[str, str] = {
     "p": "p", "q": "k", "r": "r", "s": "s", "t": "t",
     "u": "u", "v": "v", "w": "w", "x": "ks", "y": "j",
     "z": "z",
+    # Bambara special vowels and consonants (used directly in Latin Bambara corpora)
     "ɔ": "ɔ", "ɛ": "ɛ", "ə": "ə",
+    "ɲ": "ɲ",   # Palatal nasal — written directly in Bambara Latin (e.g. ɲɛ, ɲinini)
+    "ŋ": "ŋ",   # Velar nasal — written directly in some Bambara corpora
+    # Combining diacritics (tone marks) — present after NFD normalization of à á è é etc.
+    # These pass through to IPA as-is; IPA_TO_NKO maps them to N'Ko tone marks (߬ ߫).
+    "\u0300": "\u0300",  # combining grave accent  → ߬ low tone
+    "\u0301": "\u0301",  # combining acute accent  → ߫ high tone
+    "\u0302": "\u0302",  # combining circumflex    → ߭ falling tone
+    "\u030C": "\u030C",  # combining caron         → ߮ rising tone
+    "\u0303": "\u0303",  # combining tilde (nasal) → ߳ nasalization
     "'": "ʔ",
 }
 
@@ -505,7 +529,11 @@ class NkoTransliterator:
 
     def _latin_to_ipa(self, text: str) -> str:
         parts: list[str] = []
-        lower = text.lower()
+        # NFD-normalize so that precomposed toned vowels (à á è é ì í ò ó ù ú)
+        # decompose into base-letter + combining diacritic.  The combining diacritics
+        # are mapped in LATIN_SINGLE_TO_IPA (pass-through) and then IPA_TO_NKO
+        # converts them to N'Ko tone marks (߬ ߫ etc.).
+        lower = unicodedata.normalize("NFD", text.lower())
         i = 0
         while i < len(lower):
             matched = False
