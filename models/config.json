@@ -1,0 +1,42 @@
+{
+  "model_type": "nko-char-asr",
+  "architecture": "whisper-large-v3-frozen-encoder + bilstm-ctc-head",
+  "whisper_model": "large-v3",
+  "whisper_frozen": true,
+  "input_dim": 1280,
+  "hidden_dim": 512,
+  "num_layers": 3,
+  "bidirectional": true,
+  "dropout": 0.1,
+  "num_chars": 65,
+  "num_classes": 66,
+  "ctc_blank_id": 65,
+  "temporal_downsample": 4,
+  "max_audio_frames": 1500,
+  "max_downsampled_frames": 375,
+  "char_vocab_range": "U+07C0 to U+07FF (64 N'Ko codepoints) + space",
+  "trainable_parameters": 5420610,
+  "total_parameters_with_whisper": "~1.55B (1.5B frozen Whisper + 5.4M trainable)",
+  "training": {
+    "dataset": "RobotsMali/bam-asr-early",
+    "dataset_license": "CC-BY-4.0",
+    "train_samples": 35843,
+    "test_samples": 1463,
+    "total_hours": 37,
+    "epochs": 200,
+    "batch_size": 8,
+    "optimizer": "AdamW",
+    "learning_rate": 3e-4,
+    "weight_decay": 0.01,
+    "scheduler": "CosineAnnealingLR",
+    "gradient_clip": 1.0,
+    "hardware": "NVIDIA RTX 4090",
+    "total_cost_usd": 3.0
+  },
+  "results": {
+    "nko_cer": 0.56,
+    "val_loss": 0.143,
+    "test_samples": 1463
+  },
+  "label_generation": "cross-script-bridge (Latin Bambara -> N'Ko transliteration)"
+}

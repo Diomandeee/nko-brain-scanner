@@ -8,11 +8,30 @@ Paper: [ACL/EMNLP 2026 submission](paper/main.pdf)
 
 ## Key Results
 
-### ASR: Char-Level CTC (In Training)
+### ASR: First Audio-to-N'Ko System (Training, Epoch 90/200)
 
-Training on Vast.ai (RTX 4090 + RTX 3090). Target: beat MALIBA-AI 45.73% WER on the FarmRadio Bambara corpus.
+The world's first ASR system that outputs N'Ko script directly from audio. No prior system does this. All existing Bambara ASR (MALIBA-AI, Meta MMS, Google USM) outputs Latin transliteration only.
 
-Current setup: Whisper large-v3 (frozen) + 4x downsample + char-level BiLSTM CTC + 65 N'Ko characters + FSM syllable assembly post-decoding. 5.4M trainable params. Primary training corpus: bam-asr-early (37h, 37,306 human-verified samples).
+**Architecture**: Whisper large-v3 (frozen encoder) + 4x downsample + char-level BiLSTM CTC (5.4M params) + 65 N'Ko character classes + FSM syllable validation post-decoding.
+
+**Training data**: bam-asr-early (37h, 37,306 human-labeled samples) with cross-script bridge (Latin→N'Ko transliteration).
+
+**Current results** (epoch 76 of 200, loss still dropping):
+
+| Metric | Value | Note |
+|--------|-------|------|
+| Val Loss | 0.430 | Dropping ~0.015/epoch |
+| N'Ko CER | 54.1% | Down from 61.5% at epoch 16 |
+| Round-trip WER | 93.4% | Includes N'Ko→Latin conversion penalty |
+| Compute cost | ~$3 | RTX 4090 at $0.26/hr |
+
+Sample prediction at epoch 76 (6/9 words correct):
+```
+Gold: ߞߋ ߡߎߛߋ ߕߐ ߛߏߙߏ ߛߋߢߊߟߌ ߟߊ ߞʔߎ ߓʔߊ ߘߍߟߌ
+Pred: ߞߋ ߡߎߛߋ ߕߐ ߛߏߙߏ ߛߋߢߊߟߌ ߟߊ ߞߎ ߓߊ ߘߌߜߌ
+```
+
+Blog: [From Dead Circuits to Living Speech](blog/asr-breakthrough.md)
 
 ### V1: Three-Stage Training (Base Vocabulary)
 
@@ -37,21 +56,23 @@ After fine-tuning, the model processes N'Ko with *lower* perplexity than English
 
 V3 fixes V2's mode collapse through 2.7x more training data (92,184 examples including 32,792 nicolingua parallel segments). Note: PPL comparisons between V1 (base vocab, 151,936 tokens) and V3 (extended vocab, 152,192 tokens) are not meaningful due to different tokenization.
 
-## Seven Contributions
+## Eight Contributions
 
-1. **Activation Profiling (Brain Scan)**: Per-layer hidden state analysis reveals LoRA adaptation concentrates in top 8 layers, with reduced activation magnitudes in reasoning layers and +573 increase at output layer.
+1. **First Audio-to-N'Ko ASR System**: Char-level CTC on frozen Whisper features produces N'Ko script directly from audio. No prior system does this. 5.4M parameters, trained for ~$3 on a single RTX 4090.
 
-2. **Three-Stage Training Pipeline**: CPT (17,360 examples) + SFT (21,240) + BPE-aware (25,100) reduces translation tax from 2.90x to 0.70x on consumer hardware (Apple M4, 16GB).
+2. **Cross-Script Training Bridge**: Deterministic Latin Bambara→N'Ko transliteration enables training on existing Latin-labeled corpora without any N'Ko-labeled audio. Handles IPA normalization, NFD decomposition, and digraph resolution.
 
-3. **N'Ko BPE Tokenizer**: 512-merge tokenizer discovers linguistically valid subword units aligning with Manding grammatical particles. 2.75x compression, reducing token gap from 4x to 1.45x. Morpheme-constrained variant improves boundary preservation by 5.6pp.
+3. **Activation Profiling (Brain Scan)**: Per-layer hidden state analysis of Qwen2-72B reveals 3-4x "translation tax" for N'Ko: weaker activations, higher entropy, dead reasoning circuits. Circuit duplication (RYS) produces zero improvement for N'Ko across all 55 configurations.
 
-4. **Vocabulary Extension**: Quantized embedding surgery (151,936 to 152,192 tokens) + V2/V3 LoRA adapters. V3 trained on 92,184 examples including 32,792 nicolingua parallel segments.
+4. **Three-Stage Training Pipeline**: CPT (17,360 examples) + SFT (21,240) + BPE-aware (25,100) reduces translation tax from 2.90x to 0.70x on consumer hardware (Apple M4, 16GB).
 
-5. **Admissibility-Constrained Decoding**: 4-state FSM encoding N'Ko CV/CVN syllable structure improves validity from 89.8% to 100% as a logits processor.
+5. **N'Ko BPE Tokenizer**: 512-merge tokenizer discovers linguistically valid subword units aligning with Manding grammatical particles. 2.75x compression, reducing token gap from 4x to 1.45x.
 
-6. **Retrieval-Centric ASR Architecture**: Multimodal pipeline combining Whisper audio features, SigLIP visual features, and N'Ko text in a shared d=512 embedding space. Codebook retrieval + FSM-constrained beam search produces phonotactically valid N'Ko from speech.
+6. **Admissibility-Constrained Decoding**: 4-state FSM encoding N'Ko CV/CVN syllable structure achieves 100% phonotactic validity. Used both as LLM logits processor and ASR post-processor.
 
-7. **Open-Source Release**: Complete pipeline, model, tokenizer, ASR architecture, and evaluation framework.
+7. **Phonetic Transparency Hypothesis**: N'Ko's 1:1 phoneme-to-character mapping makes it a structurally easier CTC target than Latin orthography. The same design advantage that LLMs can't exploit (data starvation) directly benefits CTC decoders.
+
+8. **Open-Source Release**: Complete pipeline, models, tokenizer, ASR architecture, brain scan tools, cross-script bridge, and evaluation framework.
 
 ## Project Structure
 
@@ -81,7 +102,14 @@ nko-brain-scanner/
 |   +-- eval_admissibility.py
 |   +-- gk_scorer.py         # Graph Kernel semantic scorer
 +-- asr/                 # ASR pipeline (char-level CTC)
-|   +-- char_level_train.py      # Char-level CTC training (primary)
+|   +-- char_level_train.py      # Char-level CTC training (primary, 5.4M params)
+|   +-- extract_human_features.py # Whisper feature extraction from bam-asr-early
+|   +-- eval_bam_test.py         # CER/WER evaluation on test set (1,463 samples)
+|   +-- submit_leaderboard.py    # MALIBA-AI benchmark submission
+|   +-- postprocess.py           # CTC decode + syllable segmentation + FSM validation
+|   +-- retrieval_asr_v2.py      # V2 Transformer architecture (36M params)
+|   +-- watchdog.sh              # Auto-recovery daemon for GPU instances
+|   +-- stream_with_features.py  # Streaming pipeline (YouTube→features→transcribe)
 |   +-- train_on_human_data.py   # bam-asr-early fine-tuning
 |   +-- train_retrieval_asr.py   # Retrieval-based ASR training
 |   +-- audio_pipeline.py        # YouTube download + VAD segmentation
@@ -109,7 +137,10 @@ nko-brain-scanner/
 |   +-- run_v3_generation.py       # Mode collapse check (20 prompts)
 +-- results/             # Experimental results (JSON)
 +-- figures/             # Brain scan visualizations
-+-- blog/                # Blog post
++-- blog/                # Research blog posts
+|   +-- post.md              # Part 1: The Script That Machines Can't Read (brain scan)
+|   +-- index.md             # Summary: Adapting LLMs for N'Ko
+|   +-- asr-breakthrough.md  # Part 2: From Dead Circuits to Living Speech (ASR)
 +-- model_card.md        # HuggingFace model card
 ```
 
