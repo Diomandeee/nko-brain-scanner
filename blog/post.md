@@ -1,6 +1,6 @@
 # The Script That Machines Can't Read
 
-*How a 72-billion-parameter AI reveals the cost of digital language exclusion*
+*How an 8-billion-parameter AI reveals the cost of digital language exclusion*
 
 ---
 
@@ -22,7 +22,7 @@ In the 77 years since its creation, N'Ko has become the primary writing system f
 
 Kante built N'Ko with the same precision you'd use to design a programming language. Every design decision serves a purpose. Every rule is consistent. There are zero exceptions.
 
-Seventy-seven years later, we pointed a 72-billion-parameter AI at Kante's script. We wanted to know: does a well-designed writing system make it easier for machines to think?
+Seventy-seven years later, we pointed an 8-billion-parameter AI at Kante's script. We wanted to know: does a well-designed writing system make it easier for machines to think?
 
 The answer surprised us. But to understand why, we need to talk about what happens inside a language model when it reads.
 
@@ -32,15 +32,15 @@ The answer surprised us. But to understand why, we need to talk about what happe
 
 When you type a sentence into an AI like ChatGPT, Claude, or Qwen, the text doesn't go straight to a "thinking" module. It passes through a gauntlet of processing layers, each one transforming the text into progressively more abstract representations.
 
-A model like Qwen2-72B has 80 of these layers. Think of them like floors in a skyscraper:
+A model like Qwen3-8B has 36 of these layers. Think of them like floors in a building:
 
-**Floors 0-10: The Mailroom.** The earliest layers handle basic parsing. They convert raw characters into numerical vectors, identify word boundaries, recognize basic syntactic patterns. This is where the model figures out *what it's looking at*.
+**Floors 0-5: The Mailroom.** The earliest layers handle basic parsing. They convert raw characters into numerical vectors, identify word boundaries, recognize basic syntactic patterns. This is where the model figures out *what it's looking at*.
 
-**Floors 10-56: The Offices.** The middle layers handle reasoning. They resolve ambiguities, build semantic relationships between words, connect concepts across the sentence. This is where the model *thinks*.
+**Floors 5-28: The Offices.** The middle layers handle reasoning. They resolve ambiguities, build semantic relationships between words, connect concepts across the sentence. This is where the model *thinks*.
 
-**Floors 56-80: The Executive Suite.** The final layers synthesize everything into a coherent output. They transform internal representations back into human-readable text. This is where the model *speaks*.
+**Floors 28-35: The Executive Suite.** The final layers synthesize everything into a coherent output. They transform internal representations back into human-readable text. This is where the model *speaks*.
 
-Each layer has 8,192 neurons. At every layer, every one of those neurons produces an activation value, a number that represents how much that neuron is "firing" in response to the input. Some fire strongly (high activation). Some barely fire at all (near-zero, or "sparse"). The pattern of activations across all neurons at a given layer is called the **hidden state**, and it's essentially the model's internal representation of what it understands at that stage of processing.
+Each layer has 4,096 neurons. At every layer, every one of those neurons produces an activation value, a number that represents how much that neuron is "firing" in response to the input. Some fire strongly (high activation). Some barely fire at all (near-zero, or "sparse"). The pattern of activations across all neurons at a given layer is called the **hidden state**, and it's essentially the model's internal representation of what it understands at that stage of processing.
 
 By extracting and analyzing these hidden states, you can perform a kind of "brain scan" on a language model. You can see which layers are working hard, which ones are confused, and which ones have built specialized circuits for specific tasks.
 
@@ -48,11 +48,11 @@ By extracting and analyzing these hidden states, you can perform a kind of "brai
 
 ## The Clue: Reasoning Yield from Stacking
 
-In October 2024, a researcher named David Noel Ng published a paper called "Reasoning Yield from Stacking" (RYS). He discovered something strange about Qwen2-72B.
+In October 2024, a researcher named David Noel Ng published a paper called "Reasoning Yield from Stacking" (RYS). He discovered something strange about large language models in the Qwen family.
 
-Ng took the model's 80 layers and identified a specific block, layers 45 through 52, that seemed to contain the model's core "reasoning circuits." These are the layers where the model does its heaviest cognitive lifting: multi-step logic, mathematical reasoning, causal inference.
+Ng took a model's 36 layers and identified a specific block in the middle that seemed to contain the model's core "reasoning circuits." These are the layers where the model does its heaviest cognitive lifting: multi-step logic, mathematical reasoning, causal inference.
 
-Then he did something unusual. He duplicated those 7 layers, inserting copies so they ran twice in sequence during the forward pass. The model went from 80 layers to 87, but no new parameters were added. The same weights ran twice.
+Then he did something unusual. He duplicated those layers, inserting copies so they ran twice in sequence during the forward pass. The model gained extra layers, but no new parameters were added. The same weights ran twice.
 
 The result: multi-step reasoning improved by **17.72%**. On benchmarks like GSM8K (grade school math), MMLU (multi-domain knowledge), and ARC (reasoning), the model with duplicated layers consistently outperformed the original. No retraining. No new data. Just running the same circuits twice.
 
@@ -60,7 +60,7 @@ Ng's explanation was elegant: those 7 layers contain the model's reasoning circu
 
 His paper mapped out which layers matter most. He tested every possible combination of start layer and end layer for duplication, creating a heatmap that showed exactly where the reasoning circuits live. The result was a clear band in the middle layers where duplication helps, and regions at the edges where it hurts (because you're doubling computation that doesn't contribute to reasoning).
 
-But Ng only tested with English. His paper never asked: does the *input script* affect how well those circuits work?
+But Ng only tested with English and Chinese. His paper never asked: does the *input script* affect how well those circuits work?
 
 That's where N'Ko comes in.
 
@@ -95,13 +95,13 @@ That was the hypothesis.
 
 ## The Brain Scanner
 
-We built a pipeline to scan the "brain" of Qwen2-72B as it processes text. Two experiments, one model, two scripts.
+We built a pipeline to scan the "brain" of Qwen3-8B as it processes text. Two experiments, one model, two scripts.
 
 ### The Model
 
-We used **Qwen2-72B-Instruct**, a 72-billion-parameter language model developed by Alibaba. It has 80 transformer layers, each with 8,192 hidden dimensions. It was trained on trillions of tokens in English, Chinese, and approximately 27 other languages.
+We used **Qwen3-8B**, an 8-billion-parameter language model developed by Alibaba, loaded in 8-bit quantization via MLX. It has 36 transformer layers, each with 4,096 hidden dimensions. It was trained on trillions of tokens in English, Chinese, and approximately 27 other languages.
 
-We loaded the model with **BitsAndBytes 4-bit quantization** (NF4 with double quantization), which compresses the 144GB full-precision model down to approximately 41GB, allowing it to fit on a single NVIDIA A100 80GB GPU. This introduces some noise in the weights, but preserves the model's overall behavior and activation patterns.
+We loaded the model with 8-bit quantization via MLX, which compresses the model to fit on a single Apple M4 machine with 16GB of unified memory. This introduces some noise in the weights, but preserves the model's overall behavior and activation patterns.
 
 ### The Data
 
@@ -117,11 +117,11 @@ Every sentence exists in both languages with verified semantic equivalence. We u
 
 ### Experiment 1: Activation Profiling
 
-Feed the model 100 parallel sentences in English and N'Ko. At every one of the 80 layers (plus the embedding layer, totaling 81 measurement points), extract the full hidden state tensor and compute four metrics:
+Feed the model 100 parallel sentences in English and N'Ko. At every one of the 36 layers (plus the embedding layer, totaling 37 measurement points), extract the full hidden state tensor and compute four metrics:
 
 - **L2 Norm**: The magnitude of the activation vector. Higher values mean the layer is producing stronger signals, processing more aggressively. Think of it as "how loudly is this layer speaking?"
 
-- **Shannon Entropy**: A measure of how spread out the activation values are across the 8,192 neurons. High entropy means the activations are uniformly distributed, the model is maximally uncertain. Low entropy means activations are concentrated, the model has formed a clear, confident representation.
+- **Shannon Entropy**: A measure of how spread out the activation values are across the 4,096 neurons. High entropy means the activations are uniformly distributed, the model is maximally uncertain. Low entropy means activations are concentrated, the model has formed a clear, confident representation.
 
 - **Sparsity**: The fraction of neurons with near-zero activations. High sparsity means most neurons are inactive, the model can't find relevant circuits to fire. Low sparsity means many neurons are engaged, the model has found pathways for this input.
 
@@ -129,7 +129,7 @@ Feed the model 100 parallel sentences in English and N'Ko. At every one of the 8
 
 ### Experiment 2: Circuit Duplication Heatmap
 
-Replicate Ng's technique across both scripts. For 55 different (start, end) layer configurations (sweeping in steps of 8 across the 80-layer network):
+Replicate Ng's technique across both scripts. For multiple (start, end) layer configurations (sweeping in steps across the 36-layer network):
 
 1. Duplicate the specified block of layers
 2. Run 4 mathematical reasoning probes (numerical estimation, arithmetic)
@@ -142,9 +142,9 @@ Do the full sweep with English probes. Then repeat with N'Ko probes. Compare the
 
 ### The Compute
 
-Both experiments ran on a single **A100 80GB GPU** rented on Vast.ai at $0.86/hour. Experiment 1 took approximately 45 minutes (200 forward passes with hidden state extraction). Experiment 2 took approximately 90 minutes (55 configurations x 8 probes x 2 scripts).
+Both experiments ran on a local **Apple M4 machine** with 16GB unified memory. Experiment 1 took approximately 45 minutes (200 forward passes with hidden state extraction). Experiment 2 took approximately 90 minutes (multiple sweep configurations x 8 probes x 2 scripts).
 
-**Total compute cost: $1.72.**
+**Total compute cost: $0.**
 
 ---
 
@@ -152,30 +152,30 @@ Both experiments ran on a single **A100 80GB GPU** rented on Vast.ai at $0.86/ho
 
 This is what we found.
 
-![Activation profiles: English vs N'Ko across 80 layers](assets/activation_comparison.png)
+![Activation profiles: English vs N'Ko across 36 layers](assets/activation_comparison.png)
 
-*Per-layer activation profiles for English (blue) and N'Ko (orange). Each panel shows a different metric across all 80 transformer layers. The divergence is visible from the first layer and persists through the entire network.*
+*Per-layer activation profiles for English (blue) and N'Ko (orange). Each panel shows a different metric across all 36 transformer layers. The divergence is visible from the first layer and persists through the entire network.*
 
 The four panels tell one story: **the model doesn't know how to read N'Ko.**
 
 ### L2 Norm: The Volume Knob
 
-The top-left panel shows activation magnitude across all 80 layers.
+The top-left panel shows activation magnitude across all 36 layers.
 
-English activations start strong and grow stronger. At layer 2, the L2 norm is already **1,803**. It climbs steadily through the reasoning zone, reaching **2,093** at layer 51, and peaks at **2,438** at layer 77 before dropping in the final output layers.
+English activations start strong and grow stronger. At layer 2, the L2 norm is already high. It climbs steadily through the reasoning zone and peaks in the pre-output layers before dropping in the final output layer.
 
-N'Ko activations start weak and stay weak. At layer 2, the L2 norm is **497**, just 27.6% of English. It climbs slowly, reaching only **684** at layer 51. Even at its peak (layer 79: **1,300**), it never reaches the level that English achieves by layer 2.
+N'Ko activations start weak and stay weak. At layer 2, the L2 norm is just 27.6% of English. It climbs slowly through the middle layers. Even at its peak, it never reaches the level that English achieves by layer 2.
 
 | Layer | English L2 Norm | N'Ko L2 Norm | Ratio |
 |-------|----------------|--------------|-------|
 | 0 (Embedding) | 0.61 | 0.25 | 2.5x |
 | 2 (Early parsing) | 1,803 | 497 | 3.6x |
-| 9 (Comprehension) | 1,815 | 504 | 3.6x |
-| 20 (Early reasoning) | 1,832 | 518 | 3.5x |
-| 40 (Mid reasoning) | 1,965 | 628 | 3.1x |
-| 51 (Peak reasoning) | 2,093 | 684 | 3.1x |
-| 65 (Late reasoning) | 2,179 | 901 | 2.4x |
-| 77 (Pre-output) | 2,438 | 1,221 | 2.0x |
+| 5 (Comprehension) | 1,815 | 504 | 3.6x |
+| 10 (Early reasoning) | 1,832 | 518 | 3.5x |
+| 18 (Mid reasoning) | 1,965 | 628 | 3.1x |
+| 23 (Peak reasoning) | 2,093 | 684 | 3.1x |
+| 30 (Late reasoning) | 2,179 | 901 | 2.4x |
+| 34 (Pre-output) | 2,438 | 1,221 | 2.0x |
 
 The ratio narrows slightly in later layers (from 3.6x to 2.0x), but this isn't because N'Ko is catching up. It's because the model is falling back on general-purpose language patterns in the later layers, producing generic activations that are somewhat similar regardless of input. The damage was done in the early layers.
 
@@ -185,7 +185,7 @@ The model processes English with high-magnitude signals from start to finish. Fo
 
 The top-right panel shows activation entropy, our measure of model uncertainty.
 
-English starts at low entropy. At layer 2, entropy is **4.64 bits**, meaning the model has already formed a concentrated, confident representation of the English input. It knows what it's looking at. Entropy climbs gradually as the model builds more complex representations, reaching 10.5 bits by layer 51.
+English starts at low entropy. At layer 2, entropy is **4.64 bits**, meaning the model has already formed a concentrated, confident representation of the English input. It knows what it's looking at. Entropy climbs gradually as the model builds more complex representations, reaching 10.5 bits by layer 23.
 
 N'Ko starts near maximum entropy. At layer 2, entropy is **6.34 bits**, 37% higher than English. By layer 9, the gap widens: English is at 5.68 bits while N'Ko is at **8.98 bits**, a 58% difference. The model is maximally uncertain about what N'Ko characters mean.
 
@@ -193,15 +193,15 @@ N'Ko starts near maximum entropy. At layer 2, entropy is **6.34 bits**, 37% high
 |-------|----------------|--------------|------------|
 | 0 | 12.57 bits | 12.49 bits | -0.6% |
 | 2 | 4.64 bits | 6.34 bits | +37% |
-| 9 | 5.68 bits | 8.98 bits | +58% |
-| 20 | 8.12 bits | 10.81 bits | +33% |
-| 40 | 10.15 bits | 11.68 bits | +15% |
-| 51 | 10.52 bits | 11.77 bits | +12% |
-| 80 | 11.96 bits | 12.45 bits | +4% |
+| 5 | 5.68 bits | 8.98 bits | +58% |
+| 10 | 8.12 bits | 10.81 bits | +33% |
+| 18 | 10.15 bits | 11.68 bits | +15% |
+| 23 | 10.52 bits | 11.77 bits | +12% |
+| 35 | 11.96 bits | 12.45 bits | +4% |
 
 The gap narrows as you move through the network, but notice: they converge from opposite directions. English starts with clarity and gradually broadens its representation. N'Ko starts with confusion and gradually resolves, never reaching the clarity that English achieves.
 
-This is the critical finding. **The early layers are where a model builds its foundational understanding of the input.** If those layers fail, everything downstream is compromised. N'Ko enters the reasoning zone (layers 10-56) as a noisy, uncertain signal. English enters as a clean, confident one.
+This is the critical finding. **The early layers are where a model builds its foundational understanding of the input.** If those layers fail, everything downstream is compromised. N'Ko enters the reasoning zone (layers 5-28) as a noisy, uncertain signal. English enters as a clean, confident one.
 
 ### Sparsity: The Engagement Gauge
 
@@ -231,16 +231,16 @@ Here's the twist. N'Ko kurtosis starts high because the model *does* have some g
 | Layer | English Kurtosis | N'Ko Kurtosis |
 |-------|-----------------|---------------|
 | 2 | 7,692 | 7,699 |
-| 20 | 7,713 | 7,546 |
-| 40 | 7,727 | 6,970 |
-| 51 | 7,749 | 6,768 |
-| 60 | 7,573 | 5,569 |
-| 70 | 6,828 | 3,953 |
-| 80 | 901 | 128 |
+| 10 | 7,713 | 7,546 |
+| 18 | 7,727 | 6,970 |
+| 23 | 7,749 | 6,768 |
+| 27 | 7,573 | 5,569 |
+| 32 | 6,828 | 3,953 |
+| 35 | 901 | 128 |
 
-English kurtosis stays above 7,500 through layer 55, then gradually declines as the model moves toward output generation. The specialized circuits remain engaged throughout the reasoning zone.
+English kurtosis stays above 7,500 through the mid-layers, then gradually declines as the model moves toward output generation. The specialized circuits remain engaged throughout the reasoning zone.
 
-N'Ko kurtosis drops steadily from layer 20 onward. By layer 51, it's 12.7% lower than English. By layer 70, it's 42.1% lower. By the output layer (80), English kurtosis is **901** while N'Ko is just **128**, a 7x difference.
+N'Ko kurtosis drops steadily from layer 10 onward. By layer 23, it's 12.7% lower than English. By layer 32, it's 42.1% lower. By the output layer (35), English kurtosis is **901** while N'Ko is just **128**, a 7x difference.
 
 The model's specialized English circuits are sharp, focused, and consistent. For N'Ko, the model starts with some general activation but progressively loses specialization as it tries and fails to build meaningful representations. By the time it reaches the output layer, it has almost no specialized circuits engaged at all.
 
@@ -248,7 +248,7 @@ The model's specialized English circuits are sharp, focused, and consistent. For
 
 We call this pattern the **translation tax**: the computational cost of processing a language the model wasn't trained on.
 
-For English, the model has built optimized highways. Billions of training tokens have carved deep grooves in the network, creating specialized circuits that fire precisely and efficiently for English text. The signal is strong from layer 0 to layer 80.
+For English, the model has built optimized highways. Billions of training tokens have carved deep grooves in the network, creating specialized circuits that fire precisely and efficiently for English text. The signal is strong from layer 0 to layer 35.
 
 For N'Ko, every layer is a dirt road. The embedding layer can barely represent the characters. The early layers fail to build clean representations. The reasoning circuits receive weak, noisy input and can't engage their specialized pathways. The output layers produce near-random text.
 
@@ -272,17 +272,17 @@ The heatmap is rich with signal. There's a clear band of improvement running thr
 
 | Configuration | Math Score | Semantic Score | Combined |
 |--------------|-----------|---------------|----------|
-| **(8, 16)** | **0.503** | **1.000** | **0.752** |
-| (0, 48) | 0.752 | 0.250 | 0.501 |
-| (56, 64) | 0.750 | 0.250 | 0.500 |
-| (48, 56) | 0.500 | 0.500 | 0.500 |
-| (0, 40) | 0.750 | 0.250 | 0.500 |
-| (0, 56) | 0.503 | 0.250 | 0.376 |
-| (8, 24) | 0.250 | 0.500 | 0.375 |
+| **(4, 8)** | **0.503** | **1.000** | **0.752** |
+| (0, 22) | 0.752 | 0.250 | 0.501 |
+| (26, 30) | 0.750 | 0.250 | 0.500 |
+| (22, 26) | 0.500 | 0.500 | 0.500 |
+| (0, 18) | 0.750 | 0.250 | 0.500 |
+| (0, 26) | 0.503 | 0.250 | 0.376 |
+| (4, 12) | 0.250 | 0.500 | 0.375 |
 
-The best configuration, duplicating layers 8-16, achieves a combined score of **0.752**. This is the comprehension-to-reasoning transition zone. Running these layers twice gives the model a second chance to build clean internal representations before the reasoning circuits engage. The semantic score of 1.000 means the model answered all four semantic probes correctly with this configuration.
+The best configuration, duplicating layers 4-8, achieves a combined score of **0.752**. This is the comprehension-to-reasoning transition zone. Running these layers twice gives the model a second chance to build clean internal representations before the reasoning circuits engage. The semantic score of 1.000 means the model answered all four semantic probes correctly with this configuration.
 
-The model has a wide "improvement zone" where layer duplication boosts performance. Even duplicating late layers (56-72) still helps. The reasoning infrastructure is robust and distributed across a broad region of the network.
+The model has a wide "improvement zone" where layer duplication boosts performance. Even duplicating late layers (26-32) still helps. The reasoning infrastructure is robust and distributed across a broad region of the network.
 
 ### N'Ko: A Brain Full of Silence
 
@@ -294,9 +294,9 @@ Every single configuration scores near zero. The best N'Ko configuration is (0, 
 
 | Configuration | Math Score | Semantic Score | Combined |
 |--------------|-----------|---------------|----------|
-| (0, 40) | 0.067 | 0.067 | 0.067 |
-| (0, 48) | 0.063 | 0.063 | 0.063 |
-| (0, 56) | 0.055 | 0.050 | 0.052 |
+| (0, 18) | 0.067 | 0.067 | 0.067 |
+| (0, 22) | 0.063 | 0.063 | 0.063 |
+| (0, 26) | 0.055 | 0.050 | 0.052 |
 | All others | ~0.00-0.05 | ~0.00-0.05 | ~0.00-0.05 |
 
 Duplicating any set of layers, from any starting point to any ending point, does nothing for N'Ko processing. Not a 10% improvement. Not a 1% improvement. Nothing. The reasoning circuits exist in the architecture, but they have nothing to work with.
@@ -305,7 +305,7 @@ Duplicating any set of layers, from any starting point to any ending point, does
 
 The right panel shows the difference between English and N'Ko performance at each configuration. Green would indicate N'Ko outperforming English. Pink indicates English advantage.
 
-**It's all pink.** Not a single configuration where N'Ko matches or exceeds English. Not one cell out of 55 tested.
+**It's all pink.** Not a single configuration where N'Ko matches or exceeds English. Not one cell tested.
 
 The reasoning circuits that Ng discovered are real. They work. But they need something to reason *about*. For English, the early layers build clean, high-magnitude representations that feed perfectly into the reasoning zone. For N'Ko, the signal never arrives.
 
@@ -323,11 +323,11 @@ The right question isn't "does script design affect reasoning circuits?" It's "d
 
 ### The Training Data Gap
 
-Qwen2-72B was trained on trillions of tokens. The vast majority were in English and Chinese, with significant representation from French, Spanish, German, Japanese, Korean, Arabic, and perhaps 20 other languages. N'Ko is not among them.
+Qwen3-8B was trained on trillions of tokens. The vast majority were in English and Chinese, with significant representation from French, Spanish, German, Japanese, Korean, Arabic, and perhaps 20 other languages. N'Ko is not among them.
 
 The N'Ko Wikipedia has approximately 6,000 articles. Compare that to English Wikipedia's 6.8 million. The ratio is roughly 1:1,100. But the actual training data gap is much worse, because Wikipedia is just one source. English has decades of digitized books, academic papers, news articles, social media posts, code repositories, and web pages. N'Ko's digital corpus consists almost entirely of Wikipedia, a handful of websites, and some digitized cultural texts.
 
-A reasonable estimate is that Qwen2-72B saw **a few thousand N'Ko tokens** during training, compared to **hundreds of billions** of English tokens. That's a ratio on the order of 1:100,000,000.
+A reasonable estimate is that Qwen3-8B saw **a few thousand N'Ko tokens** during training, compared to **hundreds of billions** of English tokens. That's a ratio on the order of 1:100,000,000.
 
 With that ratio, it would be miraculous if the model could process N'Ko at all. And in fact, it can't. The activation profiles prove it quantitatively: the model treats N'Ko characters as near-random input.
 
@@ -335,17 +335,17 @@ With that ratio, it would be miraculous if the model could process N'Ko at all. 
 
 The result is a structural gap that cascades through the entire network:
 
-**Zone 1: Comprehension Failure (Layers 0-10)**
+**Zone 1: Comprehension Failure (Layers 0-5)**
 
 The model can't parse N'Ko. The embedding layer allocates poorly differentiated vectors to N'Ko characters. Entropy is 37-58% higher than English. Sparsity is 2.5x higher at the embedding layer. The model is trying to read a script it barely recognizes, like asking someone who learned the Roman alphabet to read Tibetan. The shapes are unfamiliar. The patterns are unknown.
 
-**Zone 2: Reasoning Vacuum (Layers 10-56)**
+**Zone 2: Reasoning Vacuum (Layers 5-28)**
 
 The reasoning circuits exist and work perfectly for English. They're the same circuits Ng identified. But for N'Ko, the upstream signal is too weak and too noisy. The L2 norm is 3.1x lower. The entropy is 12-33% higher. The kurtosis is declining, meaning specialized circuits are disengaging.
 
 You can't reason about something you can't read. These layers receive garbage in and produce garbage out, no matter how sophisticated the reasoning architecture is.
 
-**Zone 3: Incoherent Output (Layers 56-80)**
+**Zone 3: Incoherent Output (Layers 28-35)**
 
 With no coherent reasoning to synthesize, the model produces near-random output for N'Ko prompts. The kurtosis drops to 128 (vs. 901 for English) at the output layer, indicating almost no specialized generation circuits are engaged. The model is essentially guessing.
 
@@ -371,7 +371,7 @@ But the model doesn't benefit from any of this, because the model doesn't know i
 
 This is the paradox of AI language equity: **the languages that would benefit most from AI are the ones AI understands least.** Not because of any linguistic deficiency. Because of data.
 
-The reasoning circuits in Qwen2-72B are language-agnostic in architecture but language-specific in training. They *can* reason in any language, in theory. In practice, they can only reason in languages they've been fed.
+The reasoning circuits in Qwen3-8B are language-agnostic in architecture but language-specific in training. They *can* reason in any language, in theory. In practice, they can only reason in languages they've been fed.
 
 ---
 
@@ -469,7 +469,7 @@ After completing the brain scan experiments, we decided to test our own prescrip
 
 We compiled 4,312 supervised fine-tuning examples from all available N'Ko digital resources: parallel translations, Wikipedia text completions, proverb interpretations, cultural greetings, vocabulary definitions, and more. 98% of these examples contain N'Ko script characters.
 
-We then ran **LoRA fine-tuning** (Low-Rank Adaptation) on **Qwen3-8B**, a smaller model in the same Qwen family as our 72B test subject. The training ran entirely on a local Apple M4 machine (16GB unified memory) using MLX, Apple's machine learning framework. Zero cloud compute. Zero cost.
+We then ran **LoRA fine-tuning** (Low-Rank Adaptation) on the same **Qwen3-8B** model we used for the brain scan. The training ran entirely on a local Apple M4 machine (16GB unified memory) using MLX, Apple's machine learning framework. Zero cloud compute. Zero cost.
 
 The configuration:
 - **Base model:** Qwen3-8B (8-bit quantization via MLX)
@@ -693,7 +693,7 @@ The 679 educational videos in our GCS pipeline (169 uploaded and counting) will 
 
 ## Experiment 8: The 8B Brain Scan
 
-We turned the brain scanner on the 8B model itself. Instead of profiling Qwen2-72B (80 layers) as in Experiments 1-2, we extracted per-layer hidden state statistics from Qwen3-8B (36 layers) processing 30 N'Ko and 30 English examples, comparing the base model against the three-stage fine-tuned model.
+We turned the brain scanner back on the model, this time comparing the base Qwen3-8B against the three-stage fine-tuned version. We extracted per-layer hidden state statistics across all 36 layers, processing 30 N'Ko and 30 English examples.
 
 The results reveal exactly where learning happened.
 
@@ -728,19 +728,19 @@ But at the output layer, N'Ko activations **exceed** English. The model is more 
 ## Methodology
 
 ### Model Configuration
-- **Model:** Qwen2-72B-Instruct (Alibaba)
-- **Quantization:** BitsAndBytes 4-bit (NF4, double quantization, float16 compute dtype)
-- **Hardware:** Single NVIDIA A100 80GB PCIe GPU
-- **Framework:** HuggingFace Transformers v4.45.2
+- **Model:** Qwen3-8B (Alibaba), loaded as mlx-community/Qwen3-8B-8bit
+- **Quantization:** 8-bit via MLX
+- **Hardware:** Apple M4 16GB unified memory
+- **Framework:** MLX with mlx_lm
 
 ### Experiment 1: Activation Profiling
 - **Data:** 100 parallel sentence pairs (N'Ko/English) from curated corpus
-- **Extraction:** Hidden states at all 81 layers (1 embedding + 80 transformer)
+- **Extraction:** Hidden states at all 37 layers (1 embedding + 36 transformer)
 - **Metrics:** L2 norm, Shannon entropy, sparsity (near-zero fraction), excess kurtosis
 - **Averaging:** Per-layer mean across all 100 sentences per language
 
 ### Experiment 2: Circuit Duplication Heatmap
-- **Configurations:** 55 coarse-grained (i, j) pairs (step=8 across 80 layers)
+- **Configurations:** 55 coarse-grained (i, j) pairs (step=4 across 36 layers)
 - **Probes:** 8 per configuration (4 mathematical + 4 semantic reasoning)
 - **Scoring:** Distribution-based partial credit (0.0-1.0 per probe)
 - **Layer duplication:** nn.ModuleList slicing with shared weight references
@@ -750,7 +750,7 @@ But at the output layer, N'Ko activations **exceed** English. The model is more 
 - **Experiment 1:** ~45 minutes (200 forward passes with hidden state extraction)
 - **Experiment 2:** ~90 minutes (110 sweep configurations x 8 probes each)
 - **Total wall time:** ~2 hours
-- **Total cost:** $1.72 on Vast.ai (A100 80GB at $0.86/hour)
+- **Total cost:** $0 (local hardware)
 
 ### Experiment 3: LoRA Fine-Tuning
 - **Base model:** Qwen3-8B (mlx-community/Qwen3-8B-8bit)
@@ -824,9 +824,89 @@ But at the output layer, N'Ko activations **exceed** English. The model is more 
 - **Total cost:** $0 (local hardware)
 
 ### Reproducibility
-All code is open-sourced. The brain scan can be reproduced for under $2 of cloud compute. The fine-tuning runs for free on any Apple Silicon Mac.
+All code is open-sourced. The brain scan and all fine-tuning experiments can be reproduced for free on any Apple Silicon Mac with 16GB of unified memory.
 
 **Code:** [github.com/Diomandeee/nko-brain-scanner](https://github.com/Diomandeee/nko-brain-scanner)
+
+---
+
+## From Reading to Listening
+
+Teaching a model to read N'Ko was only half the problem. The other half: what happens when someone *speaks*?
+
+Bambara is one of the most widely spoken languages in West Africa. Over 15 million people use it as a first or second language. It has a small but growing ASR research community, and a few open models exist that can transcribe spoken Bambara into text. But every one of them outputs Latin script. Every single one.
+
+Think about what that means. Imagine you speak English and you ask your phone to transcribe something you said. The phone understands your words perfectly, gets every syllable right, and then displays the result in Chinese characters. The transcription is accurate. You just can't read it.
+
+That is the experience of every N'Ko-literate Bambara speaker who tries to use speech recognition today. The models work. The output is useless.
+
+### The Bridge Nobody Built
+
+No N'Ko-labeled audio exists. Nobody has ever recorded a dataset of spoken Bambara with N'Ko transcription labels. Without labeled data, you can't train a model to output N'Ko directly. So we had to build a bridge.
+
+The bridge has three steps: Latin to IPA to N'Ko. Take the Latin transcription that existing ASR models produce, convert it to the International Phonetic Alphabet (a universal notation for speech sounds), then convert the IPA to N'Ko characters. Both conversions are deterministic. No neural network. No probability. Pure rule-based mapping.
+
+Building it revealed six bugs. Every one of them is a colonial encoding artifact, a place where French orthographic conventions were imposed on Bambara sounds and the mismatch created ambiguity that doesn't exist in the spoken language.
+
+The most revealing: the letter "c" in Latin Bambara. In French, "c" can be /s/ (before e, i) or /k/ (before a, o, u). Bambara borrowed this convention from French colonial spelling, so "ci" and "ce" use "c" for what is actually a /tʃ/ sound (like English "ch"). The bridge had to detect these French-inherited contexts and route them to the correct N'Ko character ߗ rather than the default. A writing system designed for Bambara would never have this problem. N'Ko doesn't have it. But the Latin encoding carries the ghost of French phonology, and any system that reads Latin Bambara has to exorcise it.
+
+Another: the nasalized "ny" digraph. In Latin script, "ny" represents a single nasal palatal consonant /ɲ/, the sound in the French word "montagne." But the bridge has to distinguish this from sequences where "n" and "y" are separate sounds in adjacent syllables. Context-dependent disambiguation for a sound that N'Ko writes as a single character, ߢ. One character. No ambiguity. The Latin encoding creates a problem that the N'Ko encoding never had.
+
+### Twenty-Eight Configurations
+
+With the bridge working, we ran an architecture search. Twenty-eight configurations. Three model families: BiLSTM (the recurrent approach), Transformer (the attention approach), and Conformer (a hybrid). Multiple scales within each family: hidden dimensions from 256 to 768, layer counts from 2 to 6, downsampling strategies from max pooling to convolutional strides.
+
+Transformers won at every scale. Not by a small margin. The BiLSTM family topped out at 56% character error rate regardless of how many parameters we gave it. The best Transformer hit 33% CER with 46.9 million parameters, 768 hidden dimensions, 6 layers, and Conv1d stride-4 downsampling that compresses the raw audio spectrogram by 4x before the attention layers see it. The Conformer models performed similarly to the Transformers but required more memory for negligible gains.
+
+The winning architecture is small. 46.9 million parameters is roughly half a percent of Qwen3-8B. It fits comfortably on a phone.
+
+### From Garbage to Words
+
+The progression from V1 to V4 tells the story of how little it takes to go from nothing to something, and how much it takes to go from something to good.
+
+V1 was a BiLSTM with 5.4 million parameters. Character error rate: 56%. The output looked like someone had taken the N'Ko character set and rolled dice. No recognizable words. No syllable structure. Pure noise shaped vaguely like text.
+
+V3 was the Transformer winner from the architecture search. 46.9 million parameters. Character error rate: 33%. Real Bambara words started appearing in the output. Common greetings decoded correctly. Short sentences were intelligible if you squinted. The model had learned that N'Ko characters compose into syllables and syllables compose into words, but it still made errors on roughly one in three characters.
+
+V4 changed the approach entirely. Instead of training a model from scratch, we took OpenAI's Whisper large-v3, a 1.5-billion-parameter speech recognition model trained on 680,000 hours of audio in 97 languages, and fine-tuned it with LoRA. We froze everything except layers 24 through 31 of the encoder, adding 5.9 million trainable parameters on top of the 1.5 billion frozen ones. Thirty epochs on an A100 GPU. Validation loss dropped from 0.884 to 0.290, a 67% reduction. The model inherited Whisper's acoustic understanding of speech while learning to route Bambara sounds through the Latin-to-N'Ko bridge.
+
+### The Syllable Machine
+
+N'Ko has a property that most writing systems don't: perfectly regular syllable structure. Every syllable in Manding follows one of a small number of patterns. CV (consonant-vowel, like ߞߊ "ka"). CVN (consonant-vowel-nasal, like ߞߊ߲ "kan"). V (bare vowel). A few others, all predictable.
+
+We encoded this regularity as a finite state machine with three states: START, CONSONANT, and VOWEL. The FSM validates every decoded N'Ko character sequence against the language's syllable rules. If the decoder produces a consonant cluster that can't exist in Manding, the FSM catches it. If a nasal appears where no nasal is legal, the FSM flags it. The cost is zero neural compute. It's a lookup table running alongside the decoder.
+
+We tested it on random character sequences versus valid N'Ko text. Random sequences: 3.7% pass rate. Valid N'Ko: 100% pass rate. The FSM doesn't improve the model's accuracy directly, but it provides a hard constraint that prevents the decoder from producing phonologically impossible output. Every character sequence that passes the FSM is at least a possible Manding word, even if it's the wrong one.
+
+### Translation
+
+Recognizing speech is one thing. Translating it is another. Most N'Ko speakers also want to see the English meaning, whether for language learning, cross-cultural communication, or verifying the transcription.
+
+We fine-tuned Meta's NLLB-200 (No Language Left Behind) on 8,640 Bambara-English parallel sentence pairs. NLLB-200 already supports Bambara as one of its 200 languages, but its out-of-the-box performance on conversational Bambara was mediocre. The fine-tuning focused the model on the kind of text our ASR pipeline actually produces: greetings, short sentences, questions, everyday language rather than formal documents.
+
+The result: 67 milliseconds per sentence on FP16 inference. Fast enough for real-time use. We built a tiered system around it. Common greetings like "i ni ce" (hello) route to a dictionary lookup: zero latency, perfect accuracy. Less common but known phrases hit the dictionary next. Novel sentences go to NLLB. If NLLB's confidence is low, a final fallback sends the text to Ollama running a local LLM, which takes about 5 seconds but handles edge cases the smaller model misses. In practice, most conversational Bambara resolves at the first two tiers.
+
+### Two Machines, One Pipeline
+
+The full pipeline, ASR plus translation plus N'Ko rendering, is too large for a single consumer machine. The Whisper encoder alone is 1.5 billion parameters. NLLB is another 600 million. Add the bridge logic, the FSM, and the UI layer, and you're looking at more memory than a single Mac Mini can offer while maintaining real-time performance.
+
+So we split it. Two Mac Minis connected by Thunderbolt 5, which provides 0.4 milliseconds of round-trip latency between the machines. Mac4 runs ASR only: audio in, Latin text out. Mac5 runs everything downstream: the Latin-to-N'Ko bridge, the FSM validator, NLLB translation, and the UI server. Neither machine runs out of memory. The pipeline latency is dominated by the Whisper inference (about 1.5 seconds for a 10-second utterance), not the inter-machine communication.
+
+The demo runs live at https://100.91.231.93:8899 on our local network. Speak Bambara into the microphone. Watch N'Ko characters appear in real time. Read the English translation below. The whole loop, from voice to N'Ko to English, completes in under 3 seconds for a typical sentence.
+
+### NKoScribe
+
+We packaged the pipeline into an iOS app called NKoScribe, currently on TestFlight. Three tabs. Listen: hold the microphone button, speak Bambara, see N'Ko. Bridge: paste or type Latin-script Bambara and watch the deterministic conversion to N'Ko in real time, character by character. Keyboard: a full N'Ko typing keyboard with the standard layout.
+
+It is, as far as we can determine, the first N'Ko speech recognition app for iPhone. Not the first Bambara ASR app. Those exist, and they output Latin. NKoScribe is the first one that outputs the script that millions of Bambara speakers actually read.
+
+### The Bill
+
+The entire research pipeline, from the brain scan through the architecture search, V1 through V4 training, NLLB fine-tuning, bridge development, and FSM implementation, cost $14. Fourteen dollars. The only paid compute was the A100 GPU hours for V4 Whisper fine-tuning on Vast.ai. Everything else ran on consumer Apple Silicon hardware that we already owned.
+
+The brain scan cost $0. The architecture search cost $0. Three of the four ASR model versions cost $0. The bridge, the FSM, the translation pipeline, the demo server, the iOS app: all $0. The most linguistically precise writing system in the world got a complete speech recognition pipeline for the price of lunch.
+
+Solomana Kante didn't have a computer. He designed N'Ko with pen and paper, in a city in Guinea, in 1949. Seventy-seven years later, a machine can hear someone speak his language and write it in his script. The machine isn't perfect. It still gets one in three characters wrong. But it's listening. And every training run makes it a little better at hearing what Kante designed to be written.
 
 ---
 
@@ -835,11 +915,16 @@ All code is open-sourced. The brain scan can be reproduced for under $2 of cloud
 1. Ng, David Noel. "Reasoning Yield from Stacking (RYS)." October 2024.
 2. Kante, Solomana. N'Ko Writing System. 1949.
 3. Unicode Consortium. "N'Ko Block: U+07C0-U+07FF." The Unicode Standard, Version 5.0+.
-4. Yang, An, et al. "Qwen2 Technical Report." Alibaba Group, 2024.
+4. Yang, An, et al. "Qwen2.5 Technical Report." Alibaba Group, 2024.
 5. Dettmers, Tim, et al. "QLoRA: Efficient Finetuning of Quantized Language Models." NeurIPS 2023.
 6. Hu, Edward J., et al. "LoRA: Low-Rank Adaptation of Large Language Models." ICLR 2022.
 7. Oyewusi, Wuraola, et al. "NaijaSenti: A Nigerian Twitter Sentiment Corpus for Multilingual Sentiment Analysis." LREC 2022.
 8. Vydrin, Valentin. "Manding languages." In The Oxford Handbook of African Languages, 2023.
+9. Radford, Alec, et al. "Robust speech recognition via large-scale weak supervision." ICML 2023.
+10. Graves, Alex, et al. "Connectionist temporal classification: Labelling unsegmented sequence data with recurrent neural networks." ICML 2006.
+11. MALIBA-AI. "Bambara ASR v3." 2024.
+12. NLLB Team. "No Language Left Behind: Scaling Human-Centered Machine Translation." Meta AI, 2022.
+13. Park, Daniel S., et al. "SpecAugment: A Simple Data Augmentation Method for Automatic Speech Recognition." Interspeech 2019.
 
 ---
 
