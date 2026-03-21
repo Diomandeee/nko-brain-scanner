@@ -1,0 +1,100 @@
+{"english": "Don't expect the impossible", "nko": "ߛߏ߬ ߕߍ߫ ߦߋ߲߬", "ipa": "sɔ te yan", "category": "proverb_nko_script", "source": "nko-unified.json"}
+{"english": "Strength comes through community", "nko": "ߡߐ߱ ߞߊ߬ ߝߊ߲߬ߞߊ ߛߐ߬ߘߐ߲", "ipa": "mɔgɔ ka fanga sɔrɔ", "category": "proverb_nko_script", "source": "nko-unified.json"}
+{"english": "Cooperation is necessary", "nko": "ߓߏ߬ߟߏ ߘߏ߫ ߕߍ߫ ߞߊ߬ ߡߏ߬ߙߌ ߕߏ߫", "ipa": "bolo dɔ te ka mori to", "category": "proverb_nko_script", "source": "nko-unified.json"}
+{"english": "Education is invaluable", "nko": "ߞߎ߲߬ߠߊ ߡߊ߲ ߞߊ߫ ߖߎ߯", "ipa": "kunna man ka ju", "category": "proverb_nko_script", "source": "nko-unified.json"}
+{"english": "Be grateful, don't take things for granted", "nko": "ߛߏ߬ ߡߊ߫ ߓߏ߲ ߖߏ߬", "ipa": "sɔ ma bɔn jɔ", "category": "proverb_nko_script", "source": "nko-unified.json"}
+{"english": "We cannot see our own faults", "nko": "ߞߐ ߡߊ߫ ߥߴߊ߬ ߖߌ ߡߊ߬", "ipa": "kɔ ma wa a ji ma", "category": "proverb_nko_script", "source": "nko-unified.json"}
+{"english": "The river doesn't go backwards", "nko": "ߓߊ ߕߍ ߥߊ߫ ߞߐ ߝߍ߬", "ipa": "ba te wa ko fe", "category": "wisdom_error-handling", "source": "nko-unified.json"}
+{"english": "One hand cannot grab flour", "nko": "ߓߟߏ ߞߋߟߋ߲ ߕߍ ߓߎ߬ߙߎ ߕߊ", "ipa": "bolo kelen te buru ta", "category": "wisdom_collaboration", "source": "nko-unified.json"}
+{"english": "One head doesn't carry the roof", "nko": "ߞߎ߲ ߞߋߟߋ߲ ߕߍ ߜߊ߬ߙߊ ߕߊ", "ipa": "kun kelen te gara ta", "category": "wisdom_collaboration", "source": "nko-unified.json"}
+{"english": "No person comes from one direction only", "nko": "ߡߐ߱ ߛߌ߬ ߕߍ ߓߐ߫ ߝߊ߲߬ ߞߋߟߋ߲ ߠߊ߫", "ipa": "moo si te bo fan kelen la", "category": "wisdom_modularity", "source": "nko-unified.json"}
+{"english": "Patience is wisdom", "nko": "ߢߍߥߟߊ ߦߋ ߣߡߊ", "ipa": "nyewula ye nama", "category": "wisdom_async", "source": "nko-unified.json"}
+{"english": "What is sought is found in writing", "nko": "ߊ ߢߣߊ ߟߊ ߦߋ ߊ ߛߓߍ ߘߐ", "ipa": "a nyinala ye a sebe do", "category": "wisdom_documentation", "source": "nko-unified.json"}
+{"english": "The sun is there whether day or night", "nko": "ߕߌ߲ ߦߋ ߟߊ ߥߟߊ ߛߎ", "ipa": "tile ye la wala su", "category": "wisdom_documentation", "source": "nko-unified.json"}
+{"english": "The hand of learning is response", "nko": "ߖߐ ߓߟߏ ߦߋ ߖߊ߬ߓߌ", "ipa": "jo bolo ye jabi", "category": "wisdom_iteration", "source": "nko-unified.json"}
+{"english": "Existence is everything", "nko": "ߕߏ ߦߋ ߕߌ߲ ߞߏ", "ipa": "to ye tin ko", "category": "wisdom_state", "source": "nko-unified.json"}
+{"english": "Knowledge is power", "nko": "ߟߐ߲ߠߌ߲ ߦߋ ߛߋ߲ ߠߊ߫", "ipa": "lonni ye sen la", "category": "wisdom_learning", "source": "nko-unified.json"}
+{"english": "AI learns endlessly like the night sky", "nko": "ߛߌ߲ߘߌ ߓߍ ߖߐ ߟߊ ߞߏ߯ ߛߎ ߓߘߊ", "ipa": "sindi be jo la ko su banda", "category": "wisdom_learning", "source": "nko-unified.json"}
+{"english": "The essence of language is sweet", "nko": "ߞߊ߲ ߞߎ߲ ߦߋ ߘߌ", "ipa": "kan kun ye di", "category": "wisdom_communication", "source": "nko-unified.json"}
+{"english": "Code is a new language", "nko": "ߞߏ߲ߞߏ ߦߋ ߞߊ߲ ߞߎ߬ߙߊ", "ipa": "konko ye kan kura", "category": "wisdom_communication", "source": "nko-unified.json"}
+{"english": "N'Ko is our writing", "nko": "ߒߞߏ ߦߋ ߊ߲ ߛߓߍ", "ipa": "nko ye an sebe", "category": "wisdom_identity", "source": "nko-unified.json"}
+{"english": "No two minds are the same", "nko": "ߤߊߞߟߌ ߡߊ ߛߌ߬ ߦߋ ߞߋߟߋ߲", "ipa": "hakili ma si ye kelen", "category": "wisdom_diversity", "source": "nko-unified.json"}
+{"english": "mother", "nko": "ߣߊ", "ipa": "na", "latin": "", "category": "cognate_manding_internal", "source": "nko-cognates.json"}
+{"english": "father", "nko": "ߝߊ", "ipa": "fa", "latin": "", "category": "cognate_manding_internal", "source": "nko-cognates.json"}
+{"english": "water", "nko": "ߖߌ", "ipa": "dʒi", "latin": "", "category": "cognate_manding_internal", "source": "nko-cognates.json"}
+{"english": "house", "nko": "ߓߏ߲", "ipa": "bɔ", "latin": "", "category": "cognate_manding_internal", "source": "nko-cognates.json"}
+{"english": "child", "nko": "ߘߋ߲", "ipa": "do", "latin": "", "category": "cognate_manding_internal", "source": "nko-cognates.json"}
+{"english": "peace", "nko": "ߤߍ߬ߙߊ", "ipa": "hera", "latin": "salam / hera", "category": "cognate_arabic_loans", "source": "nko-cognates.json"}
+{"english": "book", "nko": "ߞߌ߬ߕߊ߬ߓߎ", "ipa": "kitabu", "latin": "kitabu", "category": "cognate_arabic_loans", "source": "nko-cognates.json"}
+{"english": "wisdom", "nko": "ߤߌ߬ߞߌ߬ߡߊ", "ipa": "hikima", "latin": "hikima", "category": "cognate_arabic_loans", "source": "nko-cognates.json"}
+{"english": "world", "nko": "ߘߎ߰ߣߌ߲ߦߊ", "ipa": "du߰nija", "latin": "dunya", "category": "cognate_arabic_loans", "source": "nko-cognates.json"}
+{"english": "time", "nko": "ߥߊ߯ߕߌ", "ipa": "wati", "latin": "wakti", "category": "cognate_arabic_loans", "source": "nko-cognates.json"}
+{"english": "god", "nko": "ߊߟߊ", "ipa": "ala", "latin": "Allah / Ala", "category": "cognate_arabic_loans", "source": "nko-cognates.json"}
+{"english": "prophet", "nko": "ߞߌ߬ߦߊ", "ipa": "kija", "latin": "kiya / nabi", "category": "cognate_arabic_loans", "source": "nko-cognates.json"}
+{"english": "peace (greeting)", "nko": "ߛߟߊ߬ߡ", "ipa": "slam", "latin": "salam", "category": "cognate_arabic_loans", "source": "nko-cognates.json"}
+{"english": "car", "nko": "ߡߏ߬ߕߏ", "ipa": "mɔtɔ", "latin": "", "category": "cognate_french_loans", "source": "nko-cognates.json"}
+{"english": "school", "nko": "ߛߊ߲ߝߍ", "ipa": "safe", "latin": "", "category": "cognate_french_loans", "source": "nko-cognates.json"}
+{"english": "number", "nko": "ߖߊ߬ߕߋ", "ipa": "dʒato", "latin": "jate", "category": "cognate_native_manding", "source": "nko-cognates.json"}
+{"english": "thank_you", "nko": "ߌ ߣߌ߫ ߛߐ߲߬", "ipa": "i ni sə", "latin": "i ni so", "category": "cognate_native_manding", "source": "nko-cognates.json"}
+{"english": "greetings", "nko": "ߤߍ߬ߙߋ", "ipa": "hero", "latin": "here", "category": "cognate_native_manding", "source": "nko-cognates.json"}
+{"english": "Learning cannot be done in one day", "nko": "ߞߊ߬ߙߊ߲߬ߘߋ߲ ߡߊ߲߬ ߛߋ߫ ߞߍ߫ ߟߊ߫ ߘߐ߬ߕߋ ߘߌ߫ ߣߊ ߘߌ߫", "ipa": "Karandeli man se ke la dote di na di", "meaning": "Mastery takes time and patience", "category": "proverb_manding", "source": "proverbs-unified.json"}
+{"english": "One head has more than one idea", "nko": "ߡߐ߰ ߞߋ߬ߟߋ߲߬ ߞߊ߲ ߦߋ߫ ߞߊ߬ ߞߎ߲߬ ߛߎ߲ ߠߎ߬ ߡߍ߲", "ipa": "Mo kelen kan ye ka kun sun lu men", "meaning": "Diverse perspectives lead to better solutions", "category": "proverb_manding", "source": "proverbs-unified.json"}
+{"english": "The arm has not forgotten its owner", "nko": "ߓߟߏߡߊ ߡߊ߫ ߕߌ߬ߣߍ߲ ߛߐ߬ߘߐ߲߬", "ipa": "Boloma ma tinin sodong", "meaning": "Help will come from those closest to you", "category": "proverb_manding", "source": "proverbs-unified.json"}
+{"english": "Work is in the measurement", "nko": "ߓߊ߬ߙߊ ߦߋ߫ ߖߊ߬ߕߋ ߟߊ ߟߋ ߘߌ߫", "ipa": "Bara ye jate la le di", "meaning": "Success comes from consistent effort", "category": "proverb_manding", "source": "proverbs-unified.json"}
+{"english": "If you can't run, you can walk", "nko": "ߣߌ߫ ߌ ߡߊ߫ ߛߋ߫ ߟߊߣߐ߰ ߟߊ߫، ߌ ߘߌ߫ ߛߋ߫ ߟߊߡߌ߬ߣߊ߬ ߟߊ߫", "ipa": "Ni i ma se lanon la, i di se laminana la", "meaning": "Progress at your own pace is still progress", "category": "proverb_manding", "source": "proverbs-unified.json"}
+{"english": "One hand cannot catch a donkey", "nko": "ߓߏ߬ߟߏ ߞߋ߬ߟߋ߲߬ ߕߍ߫ ߛߋ߫ ߞߊ߬ ߝߊ߬ߟߌ ߡߌ߬ߣߊ߬ ߟߊ߫", "ipa": "Bolo kelen te se ka fali minana la", "meaning": "Complex tasks require cooperation", "category": "proverb_manding", "source": "proverbs-unified.json"}
+{"english": "Children are roads leading from the village", "nko": "ߘߋ߲ ߠߎ߬ ߦߋ߫ ߛߌ߬ߟߊ߬ ߟߊ߫ ߞߊ߬ ߓߐ߫ ߘߎ߱ ߟߊ߫", "ipa": "Den lu ye sila la ka bo dugu la", "meaning": "Children carry forward the community's legacy", "category": "proverb_manding", "source": "proverbs-unified.json"}
+{"english": "Truth is at the bottom; even if the head dies, it emerges in time", "nko": "ߕߎ߬ߢߊ ߦߋ߫ ߞߐ߲߫ ߘߐ߫، ߣߴ ߊ߬ ߞߎ߲߬ ߛߊ߬ߣߴ ߊ߬ ߓߐ߫ ߕߎ߬ߡߊ ߘߐ߫", "ipa": "Tunya ye kon do, n' a kun san' a bo tuma do", "meaning": "The truth always comes out eventually", "category": "proverb_manding", "source": "proverbs-unified.json"}
+{"english": "A person's name is greater than their height", "nko": "ߡߐ߱ ߕߐ߯ ߞߊ߫ ߓߏ߲߬ ߣߴ ߊ߬ ߖߊ߲ ߘߌ߫", "ipa": "Mo to ka bon n' a jan di", "meaning": "Reputation matters more than appearance", "category": "proverb_manding", "source": "proverbs-unified.json"}
+{"english": "Patience is a door handle", "nko": "ߡߎ߲߬ߢߊ ߦߋ߫ ߘߊ߬ߓߟߏ ߟߋ ߘߌ߫", "ipa": "Munya ye dabolo le di", "meaning": "Patience opens all doors", "category": "proverb_manding", "source": "proverbs-unified.json"}
+{"english": "Where there's a will, there's a way", "nko": "ߞߐ ߕߍ߫ ߕߊ߯ ߟߊ߫ ߸ ߖߊ߯ ߓߊ ߓߍ߫ ߊ߬ ߝߍ߬", "ipa": "ko te ta la, ja ba be a fe", "meaning": "Encouragement when facing obstacles", "category": "proverb_manding", "source": "proverbs-unified.json"}
+{"english": "One person cannot build a village alone", "nko": "ߡߐ߰ ߞߋߟߋ߲ ߕߍ߫ ߛߋ߫ ߞߊ߬ ߘߎ߱ ߟߊߓߐ߫", "ipa": "mɔgɔ kelen te se ka dugu labɔ", "meaning": "Emphasizing community cooperation", "category": "proverb_manding", "source": "proverbs-unified.json"}
+{"english": "Every family has its own way", "nko": "ߛߌ߬ ߞߊ߲߬ ߕߍ߫ ߞߍ߫ ߝߊߣߊ߲ ߕߋ߲߬ ߠߊ߫", "ipa": "si kan te ke fanan ten la", "meaning": "Acknowledging diversity of customs", "category": "proverb_manding", "source": "proverbs-unified.json"}
+{"english": "A child who doesn't cry won't be nursed", "nko": "ߘߋ߲ ߡߍ߲ ߕߍ߫ ߞߊ߬ߛߌ߫ ߟߊ߫ ߸ ߊ߬ ߕߍ߫ ߘߍ߲߬ ߟߊ߫", "ipa": "den min te kasi la, a te den la", "meaning": "Speak up for what you need", "category": "proverb_manding", "source": "proverbs-unified.json"}
+{"english": "Good morning", "nko": "ߌ ߣߌ ߛߐ߲߬ߜߐߡߊ", "ipa": "I ni sogoma", "category": "greeting_opening", "source": "greetings-unified.json"}
+{"english": "Response: Good morning", "nko": "ߒ ߓߊ ߌ ߣߌ ߛߐ߲߬ߜߐߡߊ", "ipa": "", "category": "greeting_response", "source": "greetings-unified.json"}
+{"english": "Good morning (plural/formal)", "nko": "ߊ߬ߥ ߣߌ ߛߐ߲߬ߜߐߡߊ", "ipa": "Aw ni sogoma", "category": "greeting_opening", "source": "greetings-unified.json"}
+{"english": "Response: Good morning (plural/formal)", "nko": "ߒ ߓߊ ߊ߬ߥ ߣߌ ߛߐ߲߬ߜߐߡߊ", "ipa": "", "category": "greeting_response", "source": "greetings-unified.json"}
+{"english": "Good afternoon", "nko": "ߌ ߣߌ ߕߟߋ", "ipa": "i ni tile", "category": "greeting_opening", "source": "greetings-unified.json"}
+{"english": "Response: Good afternoon", "nko": "ߒ ߓߊ ߌ ߣߌ ߕߟߋ", "ipa": "", "category": "greeting_response", "source": "greetings-unified.json"}
+{"english": "Good evening/night", "nko": "ߌ ߣߌ ߛߎ", "ipa": "i ni su", "category": "greeting_opening", "source": "greetings-unified.json"}
+{"english": "Response: Good evening/night", "nko": "ߒ ߓߊ ߌ ߣߌ ߛߎ", "ipa": "", "category": "greeting_response", "source": "greetings-unified.json"}
+{"english": "How are you (health inquiry)", "nko": "ߌ ߞ ߊ ߞ ߍ ߣ ߍ", "ipa": "I ka kene", "category": "greeting_opening", "source": "greetings-unified.json"}
+{"english": "How are you (health)", "nko": "ߌ ߞߊ ߞߍ߬ߣߍ߲", "ipa": "i ka kene", "category": "greeting_opening", "source": "greetings-unified.json"}
+{"english": "Response: How are you (health)", "nko": "ߒ ߞߊ ߞߍ߬ߣߍ߲", "ipa": "", "category": "greeting_response", "source": "greetings-unified.json"}
+{"english": "Yes, good morning to you too", "nko": "ߒߓߊ، ߌ ߣߌ ߛߐ߲߬ߜߐߡߊ", "ipa": "Nba, i ni sogoma", "category": "greeting_response", "source": "greetings-unified.json"}
+{"english": "Yes indeed, morning", "nko": "ߒߛߋ߫، ߛߐ߲߬ߜߐߡߊ", "ipa": "Nse, sogoma", "category": "greeting_response", "source": "greetings-unified.json"}
+{"english": "Peace, well-being (response to greeting)", "nko": "ߤߍ߲߬ߊ", "ipa": "hɛrɛ", "category": "greeting_response", "source": "greetings-unified.json"}
+{"english": "Nothing bad (response to how are you)", "nko": "ߤߊ߬ߙߌ߬ ߦߊ", "ipa": "hari ya", "category": "greeting_response", "source": "greetings-unified.json"}
+{"english": "Is there any trouble?", "nko": "ߤߊ߬ߙߊ ߛߌ߫ ߕߍ߫؟", "ipa": "Hara si te?", "category": "greeting_welfare", "source": "greetings-unified.json"}
+{"english": "Response: Is there any trouble?", "nko": "ߤߊ߬ߙߊ ߛߌ߫ ߕߍ߫، ߊ߬ߟߊ ߞߊ߬ ߖߐ ߞߍ߫", "ipa": "", "category": "greeting_response", "source": "greetings-unified.json"}
+{"english": "Is all well?", "nko": "ߊ߬ ߓߍ߲߬ ߓߊ؟", "ipa": "A be ba?", "category": "greeting_welfare", "source": "greetings-unified.json"}
+{"english": "Is your family without trouble?", "nko": "ߛߏ߬ߡߐ߯ߞߐ ߓߍ߯ ߤߊ߬ߙߊ ߛߌ߫ ߕߍ߫؟", "ipa": "Somogoko be hara si te?", "category": "greeting_family", "source": "greetings-unified.json"}
+{"english": "Response: Is your family without trouble?", "nko": "ߊ߬ߟߎ߫ ߦߋ߫ ߤߍ߬ߙߊ ߟߊ߫، ߊ߬ߟߊ ߞ' ߊ߬ ߝߐ߫", "ipa": "", "category": "greeting_response", "source": "greetings-unified.json"}
+{"english": "How are your wife and children?", "nko": "ߡߏ߬ߛߐ ߣߌ ߘߋ߲ߣߍ߲ ߞߊ ߕߋ؟", "ipa": "Muso ni denmisen ka te?", "category": "greeting_family", "source": "greetings-unified.json"}
+{"english": "Is your family well?", "nko": "ߌ ߛߏ߬ߡߊ ߟߎ߬ ߓߍ߯ ߖߐ߫ ߓߊ߬", "ipa": "i soma lu bɛɛ jɔ ba", "category": "greeting_family", "source": "greetings-unified.json"}
+{"english": "Are your children well?", "nko": "ߌ ߘߋ߲ ߠߎ߬ ߖߐ߫ ߓߊ߬", "ipa": "i den lu jɔ ba", "category": "greeting_family", "source": "greetings-unified.json"}
+{"english": "Is your mother well?", "nko": "ߌ ߓߊ ߖߐ߫ ߓߊ߬", "ipa": "i ba jɔ ba", "category": "greeting_family", "source": "greetings-unified.json"}
+{"english": "Is your father well?", "nko": "ߌ ߝߊ߬ ߖߐ߫ ߓߊ߬", "ipa": "i fa jɔ ba", "category": "greeting_family", "source": "greetings-unified.json"}
+{"english": "Is work going well?", "nko": "ߓߊ߯ߙߊ ߓߍ ߖߐ ߘߌ߫ ߓߊ߬", "ipa": "baara be jɔ di ba", "category": "greeting_welfare", "source": "greetings-unified.json"}
+{"english": "Thank you / Hello", "nko": "ߌ ߣ ߗ", "ipa": "i ni ce", "category": "greeting_opening", "source": "greetings-unified.json"}
+{"english": "Thank you all / Hello everyone", "nko": "ߊ ߣ ߗ", "ipa": "aw ni ce", "category": "greeting_opening", "source": "greetings-unified.json"}
+{"english": "May God grant it to you", "nko": "ߊߟߊ߫ ߦߋ߫ ߊ߬ ߛߐ߫ ߊ߬ ߟߊ߫", "ipa": "ala ye a so a la", "category": "blessing_general", "source": "blessings-unified.json"}
+{"english": "May God create peace/well-being", "nko": "ߊߟߊ߫ ߞߊ߬ ߤߙߍ ߞߍ߫", "ipa": "ala ka hɛrɛ ke", "category": "blessing_general", "source": "blessings-unified.json"}
+{"english": "May God reward you", "nko": "ߊ߬ߟߊ ߞ ߌ ߛߙ", "ipa": "ala k'i sara", "category": "blessing_general", "source": "blessings-unified.json"}
+{"english": "May God bring peace", "nko": "ߊ߬ߟߊ ߞ ߤ ߟ ߘ", "ipa": "ala ka hɛra da", "category": "blessing_journey", "source": "blessings-unified.json"}
+{"english": "May God bless the child", "nko": "ߊ߬ߟߊ ߞ ߘ ߓ ߙ ߞ", "ipa": "ala ka den baraka", "category": "blessing_naming_ceremony", "source": "blessings-unified.json"}
+{"english": "May it be completed well", "nko": "ߊ߬ ߓ ߛ ߟ ߡ", "ipa": "a ba se la mɔ", "category": "blessing_wedding", "source": "blessings-unified.json"}
+{"english": "Blessed Ramadan/prayer", "nko": "ߛ ߟ ߞ ߓ ߙ", "ipa": "seli ka baraka", "category": "blessing_ramadan", "source": "blessings-unified.json"}
+{"english": "Happy Eid / Holiday blessings", "nko": "ߊ ߣ ߗ ߛ ߟ", "ipa": "aw ni ce seli", "category": "blessing_eid", "source": "blessings-unified.json"}
+{"english": "May God give health", "nko": "ߊ߬ߟߊ ߞ ߞ ߣ ߘ", "ipa": "ala ka kɛnɛ di", "category": "blessing_illness", "source": "blessings-unified.json"}
+{"english": "May God give safe passage", "nko": "ߊ߬ߟߊ ߞ ߛ ߙ ߘ", "ipa": "ala ka sira di", "category": "blessing_journey", "source": "blessings-unified.json"}
+{"english": "Amen", "nko": "ߊ߬ߡߌߣߊ", "ipa": "Amina", "category": "blessing_general", "source": "blessings-unified.json"}
+{"english": "May God hear it", "nko": "ߊ߬ߟߊ ߞ' ߊ߬ ߡߍ߲", "ipa": "Ala k' a men", "category": "blessing_general", "source": "blessings-unified.json"}
+{"english": "May God let us meet this evening", "nko": "ߊ߬ߟߊ ߞ' ߊ߲ ߦߋ߫ ߛߎ ߟߊ߫", "ipa": "Ala k' an ye su la", "category": "blessing_general", "source": "blessings-unified.json"}
+{"english": "May God preserve us in peace", "nko": "ߊ߬ߟߊ ߞ' ߊ߲ ߡߊߞߍ߫ ߤߍ߬ߙߊ ߟߊ߫", "ipa": "Ala k' an make hera la", "category": "blessing_general", "source": "blessings-unified.json"}
+{"english": "May God help you", "nko": "ߊߟߊ߫ ߦߊ߫ ߌ ߘߍ߬ߡߍ߲ ߓߏ߬", "ipa": "ala ya i demɛn bo", "category": "blessing_general", "source": "blessings-unified.json"}
+{"english": "May God make your affairs easy", "nko": "ߊߟߊ߫ ߦߊ߫ ߌ ߞߏ ߟߊߓߊ߲", "ipa": "ala ya i ko labara", "category": "blessing_general", "source": "blessings-unified.json"}
+{"english": "May God guide you", "nko": "ߊߟߊ߫ ߦߊ߫ ߌ ߡߊߞߊ߬ߝߏ", "ipa": "ala ya i makafo", "category": "blessing_general", "source": "blessings-unified.json"}
+{"english": "May God protect you", "nko": "ߊߟߊ߫ ߦߊ߫ ߌ ߤߙߐ ߕߊ߬", "ipa": "ala ya i hɛrɛ ta", "category": "blessing_general", "source": "blessings-unified.json"}
+{"english": "May God remove worry from you", "nko": "ߊߟߊ߫ ߦߊ߫ ߛߌ߬ ߟߊ ߓߐ ߌ ߡߊ߬", "ipa": "ala ya si la bo i ma", "category": "blessing_general", "source": "blessings-unified.json"}

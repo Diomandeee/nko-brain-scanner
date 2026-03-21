@@ -1,0 +1,40 @@
+# N'Ko Brain Scanner Experiments - Python Dependencies
+# Install: pip install -r requirements.txt
+
+# Core ML
+torch>=2.1.0
+transformers>=4.38.0
+datasets>=2.18.0
+accelerate>=0.27.0
+bitsandbytes>=0.42.0
+
+# MLX (Apple Silicon, optional for local runs)
+# mlx>=0.10.0
+# mlx-lm>=0.10.0
+
+# Data & Numerics
+numpy>=1.24.0
+scipy>=1.11.0
+pandas>=2.1.0
+
+# Visualization
+matplotlib>=3.8.0
+seaborn>=0.13.0
+
+# Tokenization measurement (Experiment D)
+tiktoken>=0.5.0
+
+# Audio processing (Experiment B)
+librosa>=0.10.0
+soundfile>=0.12.0
+
+# PEFT for LoRA (Experiment C)
+peft>=0.9.0
+
+# Blockchain (Experiment E)
+hashlib  # stdlib, no install needed
+# stacks-transactions  # install separately if running E
+
+# Utilities
+tqdm>=4.66.0
+jsonlines>=4.0.0
