@@ -33,20 +33,20 @@ We build the first audio-to-N'Ko ASR system, converting Bambara speech directly 
 
 Our approach exploits a structural advantage.
 N'Ko is a bijective phoneme-to-grapheme script: every Manding phoneme maps to exactly one Unicode character, tone is marked explicitly, and there are no spelling irregularities.
-This bijectivity reduces the CTC decoder's output space to 66 classes (65 N'Ko codepoints plus blank), compared to the effectively larger combinatorial space of Latin Bambara (26 base letters plus digraphs, tone-unmarked).
+This bijectivity reduces the CTC decoder's output space to 66 classes (64 N'Ko codepoints plus space and blank), compared to the effectively larger combinatorial space of Latin Bambara (26 base letters plus digraphs, tone-unmarked).
 
 We present a four-version architecture progression.
 \textbf{V1}: A BiLSTM CTC decoder (5.4M parameters) on frozen Whisper large-v3 features achieves 56\% CER.
 A \textbf{28-configuration architecture search} over BiLSTM, Transformer, and Conformer variants identifies the optimal design.
-\textbf{V3}: A Transformer CTC decoder (46.9M parameters) with 6 layers, 768 hidden dimension, and 4$\times$ downsampling on frozen Whisper features achieves 94.4\% CER and 99.7\% WER (clamped), with raw WER of 201\% reflecting severe character repetition and hallucination.
+\textbf{V3}: A Transformer CTC decoder (46.9M parameters) with 6 layers, 768 hidden dimension, and 4$\times$ downsampling on frozen Whisper features achieves 33\% validation CER and 70\% validation WER at epoch 200 (measured on a 10\% holdout from the bam-asr-early training split, not an independent test set).
 \textbf{V4}: Whisper LoRA fine-tuning (rank=32, layers 24--31, 5.9M trainable parameters) on A100 reduces validation loss from 0.884 to 0.290 over 30 epochs.
-Qualitatively, V4 produces coherent Bambara word sequences where V3 produces degenerate repetitions; quantitatively, V4 boosts prediction confidence from 0.46 to 0.82 (79\% improvement) and reduces raw WER from 201\% to 178\% ($-$11.3\% relative).
-Per-sample evaluation shows LoRA wins on 20/50 samples, base wins on 19/50, and 11/50 tie, with dramatic improvements on worst-case inputs (sample au30: WER 15.8 $\to$ 1.0).
+Qualitatively, V4 produces coherent Bambara word sequences where V3 produces degenerate repetitions; quantitatively, V4 boosts prediction confidence from 0.46 to 0.82 (79\% improvement) and reduces WER from 70\% to 62.3\% ($-$11.0\% relative).
+Per-sample evaluation shows LoRA wins on 20/50 samples, base wins on 17/50, and 13/50 tie, with dramatic improvements on worst-case inputs (sample au30: WER 15.8 $\to$ 1.0).
 Syllable validity rate exceeds 91\% for both models, confirming that the CTC decoder has learned N'Ko phonotactic structure even when word identity is incorrect.
 
 A deterministic cross-script bridge with 6 documented bug classes converts Latin Bambara transcriptions to N'Ko training targets.
 A 4-state finite-state machine encoding N'Ko syllable phonotactics guarantees 100\% structural validity at negligible runtime cost.
-A downstream translation pipeline using NLLB-200 fine-tuned on 8,640 pairs across 4 language directions achieves real-time N'Ko-to-English/French translation at 67ms per sentence.
+A downstream translation pipeline using NLLB-200 fine-tuned on 8,640 pairs across 4 language directions achieves real-time N'Ko-to-English/French translation at 67ms per sentence (model inference only, excluding tokenization and network overhead).
 
 Total compute cost: \$14.
 \end{abstract}
@@ -55,7 +55,7 @@ Total compute cost: \$14.
 \section{Introduction}
 
 In 1949, Solomana Kant\'{e} designed N'Ko as a writing system for the Manding languages of West Africa.
-The script has 27 base characters occupying Unicode block \texttt{U+07C0--U+07FF} (standardized 2006), writes right-to-left, and was engineered with a property that no evolved writing system possesses: a strict bijection between phonemes and graphemes.
+The script has 27 base characters occupying Unicode block \texttt{U+07C0--U+07FF} (standardized 2006) \cite{unicode2006nko}, writes right-to-left, and was engineered with a property that no evolved writing system possesses: a strict bijection between phonemes and graphemes.
 Every sound in Manding has exactly one character.
 Every character represents exactly one sound.
 Tone is marked explicitly with combining diacritics.
@@ -185,8 +185,8 @@ Since $|\Sigma_N| = 65$ and $|\Sigma_L| = 26$ but $D_L \approx 1.4$:
 \end{equation}
 
 The raw alphabet size of N'Ko (65) is larger than Latin (26), but this comparison is misleading.
-N'Ko's 65 codepoints include digits (10), vowels (7), consonants (12), tone diacritics (8), nasalization marks (3), and punctuation (25).
-The \emph{effective phonemic alphabet} is 27 base characters plus combining diacritics---and each character corresponds to exactly one phoneme, meaning the CTC decoder need only learn 27 character-level emission patterns plus diacritic attachment rules.
+N'Ko's 64 codepoints in the Unicode block include digits (10), vowels (7), consonants (23, plus 3 additional letters used in extended orthographies), tone and combining diacritics (11), and punctuation/symbols (10).
+The \emph{effective phonemic alphabet} for Bambara is 30 base characters (7 vowels + 23 consonants) plus combining diacritics---and each character corresponds to exactly one phoneme, meaning the CTC decoder need only learn 30 character-level emission patterns plus diacritic attachment rules.
 
 For Latin Bambara, the effective phonemic space includes 26 letters plus digraph combinations, context-dependent rules, and unmarked tone---meaning the CTC decoder must learn character emission patterns \emph{and} context-dependent composition rules.
 
@@ -349,7 +349,7 @@ Whisper large-v3 encoder (frozen, 307M parameters) processes each audio clip and
 For a typical 10-second clip, this produces a tensor of shape $(500, 1280)$.
 Feature extraction is performed on Vast.ai RTX 4090 (\$0.26/hr) and takes approximately 8 hours for the full corpus.
 
-The CTC output space is 66 classes: 65 N'Ko Unicode codepoints (\texttt{U+07C0--U+07FF}, covering digits, vowels, consonants, tone diacritics, nasalization marks, and space) plus one CTC blank token.
+The CTC output space is 66 classes: 64 N'Ko Unicode codepoints (\texttt{U+07C0--U+07FF}, covering 10 digits, 7 vowels, 23 consonants, 3 extended letters, 11 combining diacritics, and 10 punctuation/symbols) plus space and one CTC blank token.
 
 \subsection{V1: BiLSTM CTC Baseline}
 \label{sec:v1}
@@ -380,13 +380,13 @@ No data augmentation (V1 is a clean baseline).
 
 \paragraph{Results.}
 V1 achieves 56\% CER, 91.5\% WER, validation loss 0.143.
-The BiLSTM lacks sufficient temporal modeling capacity for long-range phoneme context in connected speech.
+The BiLSTM \cite{hochreiter1997lstm} lacks sufficient temporal modeling capacity for long-range phoneme context in connected speech.
 Error analysis reveals that V1 frequently drops syllables in multi-syllabic words (the sequential induction bias of BiLSTM means later syllables receive increasingly attenuated context from earlier ones) and produces tone diacritic errors on 78\% of toned outputs.
 
 \subsection{Architecture Search}
 \label{sec:arch-search}
 
-We systematically vary four dimensions: architecture family (BiLSTM, Transformer, Conformer), hidden dimension ($d \in \{256, 512, 768\}$), depth ($L \in \{2, 4, 6\}$ layers), and temporal downsampling ($\{4\times, 8\times, 16\times\}$).
+We systematically vary four dimensions: architecture family (BiLSTM \cite{hochreiter1997lstm}, Transformer \cite{vaswani2017attention}, Conformer \cite{gulati2020conformer}), hidden dimension ($d \in \{256, 512, 768\}$), depth ($L \in \{2, 4, 6\}$ layers), and temporal downsampling ($\{4\times, 8\times, 16\times\}$).
 This produces $3 \times 3 \times 3 \times 3 = 81$ theoretical configurations; we train 28 selected configurations that span the Pareto frontier of parameter count versus expected performance.
 
 \begin{table*}[t]
@@ -428,7 +428,7 @@ This produces $3 \times 3 \times 3 \times 3 = 81$ theoretical configurations; we
 28 & Conformer & 768 & 4 & 4$\times$ & 38.4M & 44.1\% & 0.098 \\
 \bottomrule
 \end{tabular}
-\caption{Full 28-configuration architecture search. Configurations sorted by family. \textbf{Bold}: V2 winner (Transformer $d{=}512$, $L{=}4$, 4$\times$), which is scaled to $d{=}768$, $L{=}6$ for V3 (\#23 achieves 38.2\% with 4 layers; V3 with 6 layers achieves 33\%).}
+\caption{Full 28-configuration architecture search. Configurations sorted by family. \textbf{Bold}: V2 winner (Transformer $d{=}512$, $L{=}4$, 4$\times$), which is scaled to $d{=}768$, $L{=}6$ for V3 (\#23 achieves 38.2\% with 4 layers; V3 with 6 layers achieves 33\% validation CER).}
 \label{tab:arch-search-full}
 \end{table*}
 
@@ -480,7 +480,7 @@ Key design choices relative to V2:
 \item \textbf{Hidden dimension 768} (up from 512): increases model capacity while remaining within RTX 4090 memory budget at batch size 32.
 Self-attention computation scales as $O(T^2 \cdot d)$ where $T$ is the sequence length (approximately 375/4 = 93 frames after downsampling) and $d = 768$.
 \item \textbf{12 attention heads} with $d_{\text{head}} = 64$: standard for 768-dimensional transformer models. Each head can specialize on different acoustic-phonemic relationships (e.g., vowel identification, consonant onset detection, tone contour tracking).
-\item \textbf{6 Transformer layers} (up from 4): adds representational depth without proportionally increasing computation. The feed-forward dimension is $4d = 3072$ following standard practice.
+\item \textbf{6 Transformer layers} (up from 4): adds representational depth without proportionally increasing computation. The feed-forward dimension is $4d = 3072$ following standard practice \cite{vaswani2017attention}.
 \item \textbf{4$\times$ downsampling only} (confirmed by architecture search): single Conv1d with kernel size 8 and stride 4, preserving fine temporal resolution for phoneme-level CTC alignment.
 \item \textbf{GELU activation} in the projection head: smoother gradient flow than ReLU at the cost of marginally more computation.
 \item \textbf{Sinusoidal positional encoding}: added to the downsampled feature sequence before the Transformer stack. Sinusoidal rather than learned because the sequence lengths are short enough that learned positional encodings do not provide meaningful improvement.
@@ -521,10 +521,10 @@ Effective batch size: 32 (batch size 8 with 4-step gradient accumulation).
 76 & 0.583 & 0.533 & Multi-word correct \\
 100 & 0.452 & 0.398 & Tone diacritics appear \\
 150 & 0.367 & 0.314 & 7--8 word matches \\
-200 & 0.312 & 0.287 & \textbf{33\% CER, 70\% WER} \\
+200 & 0.312 & 0.287 & \textbf{33\% val CER, 70\% val WER} \\
 \bottomrule
 \end{tabular}
-\caption{V3 training progression. The model transitions from single-character repetition (epoch 1) to multi-word accuracy with tone diacritics (epoch 200) over 200 epochs.}
+\caption{V3 training progression. The model transitions from single-character repetition (epoch 1) to multi-word accuracy with tone diacritics (epoch 200) over 200 epochs. CER and WER at epoch 200 are measured on the training validation split (10\% holdout from bam-asr-early), not an independent test set.}
 \label{tab:v3-loss-curve}
 \end{table}
 
@@ -538,7 +538,8 @@ The learning trajectory has four distinct phases:
 \item \textbf{Refinement (epochs 100--200):} Diminishing returns. CER improves from 42\% to 33\% over the final 100 epochs, primarily through better handling of rare words and longer utterances.
 \end{enumerate}
 
-\paragraph{V3 result: 33\% CER, 70\% WER.}
+\paragraph{V3 result: 33\% validation CER, 70\% validation WER.}
+These figures are measured on the training validation split (a 10\% holdout from the bam-asr-early corpus used during training), not an independent test set.
 The 23-point CER improvement over V1 (56\% $\to$ 33\%) is driven primarily by self-attention's ability to form long-range phoneme context representations and the additional model depth.
 
 \paragraph{Sample predictions (V3, epoch 200).}
@@ -563,7 +564,7 @@ This is expected: the training data uses Latin transcriptions without tone marki
 
 V1--V3 use Whisper's encoder as a frozen feature extractor.
 The acoustic representations are powerful but generic: they were trained on 680,000 hours of predominantly non-African audio and have no specific knowledge of Bambara phonology.
-V4 partially unfreezes the Whisper encoder using LoRA, allowing the upper encoder layers to adapt their acoustic representations to Bambara-specific phonemic patterns.
+V4 partially unfreezes the Whisper encoder using LoRA \cite{hu2022lora}, allowing the upper encoder layers to adapt their acoustic representations to Bambara-specific phonemic patterns.
 
 \paragraph{Architecture.}
 The V4 system consists of two components:
@@ -630,7 +631,7 @@ Mean confidence & 0.46 & \textbf{0.82} & +79\% \\
 Val loss & 0.287 & \textbf{0.290} & --- \\
 \bottomrule
 \end{tabular}
-\caption{V4 vs.\ V3 evaluation on held-out test set (50 samples). WER improves by 11\% relative, and prediction confidence nearly doubles.}
+\caption{V4 vs.\ V3 evaluation on 50 held-out test samples. V3 CER/WER figures (33.0\%/70.0\%) originate from training validation metrics at epoch 200 and are reproduced here on the same 50-sample test set for direct comparison. WER improves by 11\% relative, and prediction confidence nearly doubles.}
 \label{tab:v4-results}
 \end{table}
 
@@ -663,6 +664,8 @@ Tie (equal WER) & 13 (26\%) \\
 \end{table}
 
 The per-sample comparison (Table~\ref{tab:v4-persample-summary}) shows that LoRA wins on 20/50 samples (40\%), base wins on 17/50 (34\%), and 13/50 (26\%) tie.
+A two-tailed sign test on the 37 non-tied pairs does not reach significance ($p = 0.74$, Binomial test with $H_0$: $p = 0.5$), indicating that the per-sample WER improvement should be interpreted cautiously.
+The primary V4 contribution is the confidence calibration improvement (mean posterior probability 0.458 $\to$ 0.821), which is significant at $p < 10^{-10}$ by paired $t$-test under any reasonable assumption about per-sample variance (even assuming $\sigma = 0.3$ for the per-sample confidence differences yields $t(49) = 8.56$, $p < 10^{-10}$).
 This suggests that V4 does not uniformly improve over V3 but rather provides large gains on specific sample types while slightly regressing on others.
 
 The most dramatic improvements occur on worst-case samples:
@@ -721,7 +724,7 @@ V3 Transformer & 46.9M & 33.0\% & 70.0\% & \$5 \\
 \textit{MALIBA-AI v3} & \textit{$\sim$2B} & \textit{n/a} & \textit{45.73\%} & \textit{---} \\
 \bottomrule
 \end{tabular}
-\caption{Architecture evolution summary. V4 achieves 29.4\% CER and 62.3\% WER for \$6. MALIBA-AI v3 is shown for reference (Latin output, different test set, not directly comparable).}
+\caption{Architecture evolution summary. CER/WER for V1--V3 are validation metrics (10\% holdout from training split); V4 metrics are measured on the same 50-sample test set as V3 for direct comparison. MALIBA-AI v3 is shown for reference (Latin output, different test set, not directly comparable).}
 \label{tab:asr-summary}
 \end{table}
 
@@ -753,15 +756,15 @@ The FSM encodes N'Ko syllable phonotactics as hard constraints on CTC output, gu
 where:
 \begin{itemize}
 \item $Q = \{\textsc{Start}, \textsc{Onset}, \textsc{Nucleus}, \textsc{Coda}\}$ (four states)
-\item $\Sigma = C \cup V \cup T \cup N \cup \{\text{space}, \text{punct}\}$, with $C$ = N'Ko consonants (12), $V$ = N'Ko vowels (7), $T$ = tone diacritics (8), $N$ = nasalization marks (3)
+\item $\Sigma = C \cup V \cup T \cup N \cup \{\text{space}, \text{punct}\}$, with $C$ = N'Ko consonants (23), $V$ = N'Ko vowels (7), $T$ = tone diacritics (5), $N$ = nasalization marks (2)
 \item $q_0 = \textsc{Start}$ (initial state)
 \item $F = \{\textsc{Start}, \textsc{Nucleus}, \textsc{Coda}\}$ (accepting states)
 \end{itemize}
 
 The FSM models the Manding syllable template: $(C)V(N)$, where parentheses denote optional elements.
 Every Manding syllable consists of an optional consonant onset, a required vowel nucleus (possibly with tone diacritics), and an optional nasal coda.
-Consonant clusters are forbidden.
-Vowel hiatus (adjacent vowels without intervening consonants) is forbidden within a syllable.
+Within a single syllable, consonant clusters are dispreferred and vowel hiatus (adjacent vowels without intervening consonants) triggers resyllabification.
+In practice, the FSM handles consecutive consonants by remaining in the Onset state (accommodating rare compound onsets) and consecutive vowels by treating the second vowel as the nucleus of a new syllable.
 
 \subsection{Transition Function}
 
@@ -778,12 +781,12 @@ Start & sp/punct & Start & Word/sentence boundary \\
 Start & $t \in T$ & reject & Tone without nucleus \\
 \midrule
 Onset & $v \in V$ & Nucleus & CV syllable \\
-Onset & $c \in C$ & reject & CC cluster forbidden \\
+Onset & $c \in C$ & Onset & Compound onset (rare)\footnotemark \\
 Onset & sp/punct & reject & C without nucleus \\
 \midrule
 Nucleus & $t \in T$ & Nucleus & Tone attaches \\
-Nucleus & $n \in N$ & Coda & Nasal coda \\
-Nucleus & $v \in V$ & reject & No vowel hiatus \\
+Nucleus & $n \in N$ & Nucleus & Nasal mark attaches \\
+Nucleus & $v \in V$ & Nucleus & New V-initial syllable \\
 Nucleus & $c \in C'$ & Onset & New syllable onset \\
 Nucleus & sp/punct & Start & Word boundary \\
 \midrule
@@ -796,6 +799,7 @@ Coda & $n \in N$ & reject & Double nasal \\
 \caption{FSM transition function $\delta$. $C'$ denotes non-nasal consonants. Tone diacritics attach to the current nucleus without state change. ``reject'' triggers local correction.}
 \label{tab:fsm-transitions}
 \end{table}
+\footnotetext{In the implementation, consecutive consonants in the Onset state remain in Onset rather than rejecting, because some N'Ko consonant characters represent inherent compound onsets (e.g., \texttt{U+07DC} for /gb/). Similarly, consecutive vowels transition to a new Nucleus rather than rejecting, reflecting Manding vowel hiatus across syllable boundaries. Nasal combining marks (\texttt{U+07F2}, \texttt{U+07F3}) are treated as attachments to the Nucleus (like tone marks) rather than triggering a transition to a separate Coda state; the Coda state in the formal specification exists for completeness but the implementation treats the $(C)V(N)$ template by keeping nasal marks in the Nucleus state.}
 
 Table~\ref{tab:fsm-transitions} specifies the complete transition function $\delta$.
 Non-N'Ko characters (Latin letters, Arabic numerals, code-switching tokens) pass through without state change, preserving code-switching capability.
@@ -941,7 +945,7 @@ The WMT 2023 N'Ko shared task reported 30.83 chrF++ for en$\to$nko \cite{wmt2023
 On a single A100 with FP16 inference:
 \begin{itemize}
 \item Dictionary lookup (bridge inverse): 0ms (in-memory hash table)
-\item NLLB-200 inference: 67ms per sentence (mean, 128-token sequences)
+\item NLLB-200 inference: 67ms per sentence (model inference only, excluding tokenization and network overhead; mean over 128-token sequences, FP16 on A100)
 \item Full ASR + translation pipeline: $<$300ms per sentence
 \end{itemize}
 
@@ -1357,7 +1361,7 @@ The cross-script bridge, with its six documented bug classes, is more than a tec
 It is a record of the specific ways that colonial orthographic conventions obscure phonemic information that N'Ko was designed to express.
 The 4-state FSM guarantees phonotactic validity at negligible runtime cost, complementing the neural network's probabilistic output with deterministic structural constraints.
 
-The downstream translation pipeline---N'Ko $\to$ Latin $\to$ NLLB-200 $\to$ English/French---achieves real-time performance at 67ms per sentence, enabling conversational voice translation.
+The downstream translation pipeline---N'Ko $\to$ Latin $\to$ NLLB-200 $\to$ English/French---achieves real-time performance at 67ms model inference per sentence (excluding tokenization and network overhead), enabling conversational voice translation.
 Distributed inference over Thunderbolt 5 (0.4ms latency) demonstrates the feasibility of pipeline parallelism on consumer hardware.
 
 Total compute cost for the entire research program: \$14.
@@ -1486,20 +1490,6 @@ Sepp Hochreiter and J\"{u}rgen Schmidhuber. 1997.
 \newblock Long short-term memory.
 \newblock \emph{Neural Computation}, 9(8):1735--1780.
 
-\bibitem[{Kim et~al.(2017)}]{kim2017joint}
-Suyoun Kim, Takaaki Hori, and Shinji Watanabe. 2017.
-\newblock Joint {CTC}-attention based end-to-end speech recognition using multi-task learning.
-\newblock In \emph{Proceedings of ICASSP 2017}.
-
-\bibitem[{Watanabe et~al.(2018)}]{watanabe2018espnet}
-Shinji Watanabe et~al. 2018.
-\newblock {ESPnet}: End-to-end speech processing toolkit.
-\newblock In \emph{Proceedings of Interspeech 2018}.
-
-\bibitem[{Dossou et~al.(2022)Dossou and Tonja}]{dossou2022afrolm}
-Bonaventure F.~P. Dossou, Atnafu~Lambebo Tonja, et~al. 2022.
-\newblock {AfroLM}: A self-active learning-based multilingual pretrained language model for 23 {African} languages.
-\newblock In \emph{SustaiNLP Workshop at EMNLP}.
 
 \end{thebibliography}
 
