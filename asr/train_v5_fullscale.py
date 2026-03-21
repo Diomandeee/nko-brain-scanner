@@ -206,27 +206,54 @@ def apply_lora_to_whisper(
 
 # ── Dataset ──────────────────────────────────────────────────────
 
-class V5Dataset(Dataset):
-    """Dataset for V5 training from pre-extracted Whisper features.
+class V5MelDataset(Dataset):
+    """Dataset for V5 training from cached mel spectrograms.
 
-    Loads features from .pt files and pairs with N'Ko text labels.
-    Supports SpecAugment for data augmentation.
+    IMPORTANT: V5 uses LoRA on the Whisper encoder, so we CANNOT use
+    pre-extracted encoder features (those were from the frozen encoder).
+    Instead, we cache mel spectrograms and run them through the LoRA-adapted
+    encoder at each forward pass.
+
+    If mel spectrograms are not cached, falls back to loading raw audio
+    from HF datasets and computing mel on-the-fly.
+
+    Flow:
+      Dataset returns: mel spectrogram [128, 3000] (30s padded Whisper input)
+      Training loop: mel -> whisper_model.encoder(mel) -> ctc_head -> CTC loss
+
+    SpecAugment is applied to mel spectrograms (not encoder features),
+    which is the standard practice for ASR data augmentation.
     """
 
     def __init__(
         self,
         manifest_path: str,
-        features_dir: str,
-        char_vocab: dict,
-        max_audio_len: int = 375,
+        mel_dir: str = None,
+        features_dir: str = None,
+        hf_datasets: dict = None,
+        char_vocab: dict = None,
         max_text_len: int = 200,
         augment: bool = False,
     ):
-        self.features_dir = Path(features_dir)
+        """
+        Args:
+            manifest_path: JSONL manifest with entries
+            mel_dir: directory with cached mel spectrograms (*.mel.pt)
+            features_dir: directory with pre-extracted features (fallback, for
+                          use with separate CTC-head-only training)
+            hf_datasets: dict mapping source name -> HF dataset split object
+                         (for on-the-fly mel computation)
+            char_vocab: N'Ko character vocabulary
+            max_text_len: max text label length
+            augment: whether to apply SpecAugment
+        """
+        self.mel_dir = Path(mel_dir) if mel_dir else None
+        self.features_dir = Path(features_dir) if features_dir else None
+        self.hf_datasets = hf_datasets or {}
         self.char_vocab = char_vocab
-        self.max_audio_len = max_audio_len
         self.max_text_len = max_text_len
         self.augment = augment
+        self.use_mel = True  # True: load mel for LoRA training; False: pre-extracted features
 
         # Load manifest
         self.entries = []
@@ -234,31 +261,77 @@ class V5Dataset(Dataset):
             for line in f:
                 if line.strip():
                     entry = json.loads(line)
-                    feat_path = self.features_dir / f"{entry['feat_id']}.pt"
-                    if feat_path.exists():
+                    # Check if mel exists
+                    if self.mel_dir:
+                        mel_path = self.mel_dir / f"{entry['feat_id']}.mel.pt"
+                        if mel_path.exists():
+                            entry["_mel_path"] = str(mel_path)
+                            self.entries.append(entry)
+                            continue
+                    # Check if pre-extracted features exist (fallback)
+                    if self.features_dir:
+                        feat_path = self.features_dir / f"{entry['feat_id']}.pt"
+                        if feat_path.exists():
+                            entry["_feat_path"] = str(feat_path)
+                            self.entries.append(entry)
+                            continue
+                    # Check if we can load from HF dataset
+                    source = entry.get("source", "")
+                    if source in self.hf_datasets:
                         self.entries.append(entry)
+                        continue
 
-        print(f"  Dataset: {len(self.entries):,} samples from {manifest_path}")
+        # Determine mode
+        mel_count = sum(1 for e in self.entries if "_mel_path" in e)
+        feat_count = sum(1 for e in self.entries if "_feat_path" in e)
+        hf_count = len(self.entries) - mel_count - feat_count
+
+        if mel_count > 0:
+            self.use_mel = True
+            print(f"  Dataset: {len(self.entries):,} samples (mel={mel_count:,}, feat={feat_count:,}, hf={hf_count:,})")
+        elif feat_count > 0:
+            self.use_mel = False
+            print(f"  Dataset: {len(self.entries):,} samples (pre-extracted features, no LoRA encoder pass)")
+            print(f"  WARNING: Using pre-extracted features bypasses LoRA encoder. For full V5,")
+            print(f"           run mel extraction first: python3 prepare_v5_data.py --extract-mel")
+        else:
+            print(f"  Dataset: {len(self.entries):,} samples (on-the-fly mel from HF)")
 
     def __len__(self):
         return len(self.entries)
 
-    def spec_augment(self, features: torch.Tensor) -> torch.Tensor:
-        """SpecAugment: mask random time and frequency bands.
+    def spec_augment_mel(self, mel: torch.Tensor) -> torch.Tensor:
+        """SpecAugment on mel spectrogram [128, T] (standard ASR augmentation).
 
         V5 config:
-          - Time masking: 1-3 bands of 5-20 frames
-          - Frequency masking: 1-2 bands of 20-80 dims
+          - Time masking: 1-3 bands of 10-40 frames
+          - Frequency masking: 1-2 bands of 5-20 bins
         """
-        T, F_dim = features.shape
+        F_dim, T = mel.shape
 
         # Time masking
+        for _ in range(random.randint(1, 3)):
+            t_width = random.randint(10, min(40, max(T // 8, 10)))
+            t_start = random.randint(0, max(0, T - t_width))
+            mel[:, t_start:t_start + t_width] = 0
+
+        # Frequency masking
+        for _ in range(random.randint(1, 2)):
+            f_width = random.randint(5, min(20, max(F_dim // 4, 5)))
+            f_start = random.randint(0, max(0, F_dim - f_width))
+            mel[f_start:f_start + f_width, :] = 0
+
+        return mel
+
+    def spec_augment_features(self, features: torch.Tensor) -> torch.Tensor:
+        """SpecAugment on encoder features [T, 1280] (fallback for pre-extracted)."""
+        T, F_dim = features.shape
+
         for _ in range(random.randint(1, 3)):
             t_width = random.randint(5, min(20, max(T // 4, 5)))
             t_start = random.randint(0, max(0, T - t_width))
             features[t_start:t_start + t_width] = 0
 
-        # Frequency masking
         for _ in range(random.randint(1, 2)):
             f_width = random.randint(20, min(80, max(F_dim // 4, 20)))
             f_start = random.randint(0, max(0, F_dim - f_width))
@@ -266,29 +339,56 @@ class V5Dataset(Dataset):
 
         return features
 
+    def _load_mel(self, entry):
+        """Load or compute mel spectrogram for an entry.
+
+        Returns: mel tensor [128, 3000] (Whisper input format)
+        """
+        import whisper
+
+        # Option 1: Cached mel
+        if "_mel_path" in entry:
+            try:
+                mel = torch.load(entry["_mel_path"], weights_only=True).float()
+                return mel
+            except Exception:
+                pass
+
+        # Option 2: Compute from HF audio
+        source = entry.get("source", "")
+        source_idx = entry.get("source_idx", 0)
+        ds_split = self.hf_datasets.get(source)
+        if ds_split is not None:
+            try:
+                sample = ds_split[source_idx]
+                audio_data = sample.get("audio")
+                if isinstance(audio_data, dict):
+                    audio_array = audio_data["array"]
+                    sr = audio_data.get("sampling_rate", 16000)
+                else:
+                    audio_array = audio_data
+                    sr = 16000
+                audio_t = torch.tensor(audio_array, dtype=torch.float32)
+                if sr != 16000:
+                    ratio = 16000 / sr
+                    audio_t = F.interpolate(
+                        audio_t.unsqueeze(0).unsqueeze(0),
+                        size=int(len(audio_t) * ratio),
+                        mode="linear", align_corners=False,
+                    ).squeeze()
+                audio_padded = whisper.pad_or_trim(audio_t)
+                mel = whisper.log_mel_spectrogram(audio_padded, n_mels=128)
+                return mel
+            except Exception:
+                pass
+
+        # Fallback: zero mel
+        return torch.zeros(128, 3000)
+
     def __getitem__(self, idx):
         entry = self.entries[idx]
-        feat_path = self.features_dir / f"{entry['feat_id']}.pt"
 
-        try:
-            features = torch.load(feat_path, weights_only=True).float()
-        except Exception:
-            features = torch.zeros(self.max_audio_len, 1280)
-
-        # Truncate if longer than max
-        if features.shape[0] > self.max_audio_len:
-            features = features[:self.max_audio_len]
-        audio_len = features.shape[0]
-
-        # SpecAugment during training
-        if self.augment and random.random() < 0.5:
-            features = self.spec_augment(features.clone())
-
-        # Pad to max length
-        padded = torch.zeros(self.max_audio_len, 1280)
-        padded[:audio_len] = features
-
-        # Encode N'Ko text
+        # Encode N'Ko text label
         nko = entry.get("nko", "")
         indices = [self.char_vocab[c] for c in nko if c in self.char_vocab]
         if not indices:
@@ -297,7 +397,34 @@ class V5Dataset(Dataset):
         text = torch.zeros(self.max_text_len, dtype=torch.long)
         text[:text_len] = torch.tensor(indices[:text_len])
 
-        return padded, audio_len, text, text_len
+        if self.use_mel or "_mel_path" in entry or "_feat_path" not in entry:
+            # LoRA mode: return mel spectrogram for encoder pass
+            mel = self._load_mel(entry)
+
+            if self.augment and random.random() < 0.5:
+                mel = self.spec_augment_mel(mel.clone())
+
+            # mel shape: [128, 3000] — Whisper expects this
+            return mel, text, text_len
+        else:
+            # Fallback: pre-extracted features (skip encoder, CTC head only)
+            try:
+                features = torch.load(entry["_feat_path"], weights_only=True).float()
+            except Exception:
+                features = torch.zeros(375, 1280)
+
+            max_audio_len = 375
+            if features.shape[0] > max_audio_len:
+                features = features[:max_audio_len]
+            audio_len = features.shape[0]
+
+            if self.augment and random.random() < 0.5:
+                features = self.spec_augment_features(features.clone())
+
+            padded = torch.zeros(max_audio_len, 1280)
+            padded[:audio_len] = features
+
+            return padded, audio_len, text, text_len
 
 
 # ── CTC Head ─────────────────────────────────────────────────────
@@ -305,12 +432,14 @@ class V5Dataset(Dataset):
 class TransformerCTCHead(nn.Module):
     """Transformer CTC Head (CharASR V3 architecture).
 
-    Input: Whisper encoder features [B, T, 1280] where T=375 (4x downsampled)
-    Output: CTC logits [B, T', num_chars+1] where T'=T/4 (~94 frames)
+    Input: Whisper encoder features [B, T, 1280]
+      - Mel mode (LoRA training): T=1500, output T'=375
+      - Feature mode (pre-extracted): T=375, output T'=~94
+    Output: CTC logits [B, T', num_chars+1]
 
     Architecture:
       Linear(1280, 768) + GELU + Dropout
-      Conv1d(768, 768, k=5, s=4) + GELU    # Temporal downsample
+      Conv1d(768, 768, k=5, s=4) + GELU    # Temporal downsample 4x
       Positional encoding
       6-layer Transformer encoder (h=768, nhead=12, ff=3072)
       LayerNorm
@@ -553,9 +682,16 @@ class DualCosineScheduler:
 
 def train_epoch(
     whisper_model, ctc_head, loader, optimizer, device, num_chars, scaler,
-    checkpoint_interval=1000, skip_batches=0, wandb_log=False,
+    checkpoint_interval=1000, skip_batches=0, wandb_log=False, use_mel=True,
 ):
-    """Train one epoch with mid-epoch checkpointing and graceful shutdown."""
+    """Train one epoch with mid-epoch checkpointing and graceful shutdown.
+
+    Supports two data modes:
+      - mel mode (use_mel=True): batch = (mel, targets, target_lens)
+        mel goes through LoRA-adapted encoder then CTC head
+      - feature mode (use_mel=False): batch = (features, audio_lens, targets, target_lens)
+        features go directly to CTC head (encoder already applied)
+    """
     global _SHUTDOWN_REQUESTED
     whisper_model.train()
     ctc_head.train()
@@ -563,7 +699,7 @@ def train_epoch(
     total_batches = len(loader)
     t0 = time.time()
 
-    for batch_idx, (features, audio_lens, targets, target_lens) in enumerate(loader):
+    for batch_idx, batch in enumerate(loader):
         if _SHUTDOWN_REQUESTED:
             print("  [shutdown] stopping training loop", flush=True)
             break
@@ -571,31 +707,44 @@ def train_epoch(
         if batch_idx < skip_batches:
             continue
 
-        features = features.to(device)
-        targets = targets.to(device)
+        if use_mel:
+            # Mel mode: (mel [B, 128, 3000], targets, target_lens)
+            mel, targets, target_lens = batch
+            mel = mel.to(device)
+            targets = targets.to(device)
 
-        # Adjust audio lengths for temporal downsampling (stride=4)
-        ds_audio_lens = (audio_lens + 3) // 4
+            with torch.amp.autocast('cuda'):
+                # Run mel through LoRA-adapted Whisper encoder
+                encoder_out = whisper_model.encoder(mel)  # [B, 1500, 1280]
+                logits = ctc_head(encoder_out)  # CTC head does 4x temporal DS internally
+                log_probs = F.log_softmax(logits, dim=-1).permute(1, 0, 2)  # [T, B, C]
+                T_out = log_probs.shape[0]
 
-        with torch.amp.autocast('cuda'):
-            # Pass features through LoRA-adapted Whisper encoder
-            encoder_out = whisper_model.encoder(
-                # Features are already extracted, but we pass them through
-                # the LoRA-adapted encoder layers. The CTC head handles
-                # temporal downsampling.
-                features
-            )
-            logits = ctc_head(encoder_out)
-            log_probs = F.log_softmax(logits, dim=-1).permute(1, 0, 2)  # [T, B, C]
-            T_out = log_probs.shape[0]
+                # All audio is 30s padded, so all have same output length
+                audio_lens = torch.full((mel.shape[0],), T_out, dtype=torch.long)
 
-            # Clamp input lengths
-            ds_audio_lens = ds_audio_lens.clamp(max=T_out)
+                loss = F.ctc_loss(
+                    log_probs, targets, audio_lens, target_lens,
+                    blank=num_chars, zero_infinity=True,
+                )
+        else:
+            # Feature mode: (features [B, 375, 1280], audio_lens, targets, target_lens)
+            features, audio_lens, targets, target_lens = batch
+            features = features.to(device)
+            targets = targets.to(device)
+            ds_audio_lens = (audio_lens + 3) // 4
 
-            loss = F.ctc_loss(
-                log_probs, targets, ds_audio_lens, target_lens,
-                blank=num_chars, zero_infinity=True,
-            )
+            with torch.amp.autocast('cuda'):
+                # Skip encoder, go straight to CTC head
+                logits = ctc_head(features)
+                log_probs = F.log_softmax(logits, dim=-1).permute(1, 0, 2)
+                T_out = log_probs.shape[0]
+                ds_audio_lens = ds_audio_lens.clamp(max=T_out)
+
+                loss = F.ctc_loss(
+                    log_probs, targets, ds_audio_lens, target_lens,
+                    blank=num_chars, zero_infinity=True,
+                )
 
         if torch.isnan(loss) or torch.isinf(loss):
             continue
@@ -655,28 +804,44 @@ def train_epoch(
     return total_loss / max(steps, 1)
 
 
-def eval_epoch(whisper_model, ctc_head, loader, device, num_chars):
+def eval_epoch(whisper_model, ctc_head, loader, device, num_chars, use_mel=True):
     """Evaluate one epoch."""
     whisper_model.eval()
     ctc_head.eval()
     total_loss, steps = 0.0, 0
 
     with torch.no_grad():
-        for features, audio_lens, targets, target_lens in loader:
-            features = features.to(device)
-            targets = targets.to(device)
-            ds_audio_lens = (audio_lens + 3) // 4
+        for batch in loader:
+            if use_mel:
+                mel, targets, target_lens = batch
+                mel = mel.to(device)
+                targets = targets.to(device)
 
-            encoder_out = whisper_model.encoder(features)
-            logits = ctc_head(encoder_out)
-            log_probs = F.log_softmax(logits, dim=-1).permute(1, 0, 2)
-            T_out = log_probs.shape[0]
-            ds_audio_lens = ds_audio_lens.clamp(max=T_out)
+                encoder_out = whisper_model.encoder(mel)
+                logits = ctc_head(encoder_out)
+                log_probs = F.log_softmax(logits, dim=-1).permute(1, 0, 2)
+                T_out = log_probs.shape[0]
+                audio_lens = torch.full((mel.shape[0],), T_out, dtype=torch.long)
 
-            loss = F.ctc_loss(
-                log_probs, targets, ds_audio_lens, target_lens,
-                blank=num_chars, zero_infinity=True,
-            )
+                loss = F.ctc_loss(
+                    log_probs, targets, audio_lens, target_lens,
+                    blank=num_chars, zero_infinity=True,
+                )
+            else:
+                features, audio_lens, targets, target_lens = batch
+                features = features.to(device)
+                targets = targets.to(device)
+                ds_audio_lens = (audio_lens + 3) // 4
+
+                logits = ctc_head(features)
+                log_probs = F.log_softmax(logits, dim=-1).permute(1, 0, 2)
+                T_out = log_probs.shape[0]
+                ds_audio_lens = ds_audio_lens.clamp(max=T_out)
+
+                loss = F.ctc_loss(
+                    log_probs, targets, ds_audio_lens, target_lens,
+                    blank=num_chars, zero_infinity=True,
+                )
 
             if not (torch.isnan(loss) or torch.isinf(loss)):
                 total_loss += loss.item()
@@ -806,6 +971,7 @@ def main():
     # ── 4. Load datasets ──────────────────────────────────────
     data_dir = Path(args.data_dir)
     features_dir = data_dir / "features"
+    mel_dir = data_dir / "mels"
     train_manifest = data_dir / "manifests" / "train.jsonl"
     val_manifest = data_dir / "manifests" / "val.jsonl"
 
@@ -815,23 +981,37 @@ def main():
         sys.exit(1)
 
     print(f"\nLoading datasets...")
-    train_dataset = V5Dataset(
-        str(train_manifest), str(features_dir), char_vocab,
+
+    # Determine data mode: mel spectrograms (preferred) or pre-extracted features
+    mel_dir_resolved = mel_dir if mel_dir.exists() else None
+    feat_dir_resolved = features_dir if features_dir.exists() else None
+
+    train_dataset = V5MelDataset(
+        str(train_manifest),
+        mel_dir=str(mel_dir_resolved) if mel_dir_resolved else None,
+        features_dir=str(feat_dir_resolved) if feat_dir_resolved else None,
+        char_vocab=char_vocab,
         augment=not args.no_augment,
     )
 
+    use_mel = train_dataset.use_mel
+
     eval_dataset = None
     if val_manifest.exists():
-        eval_dataset = V5Dataset(
-            str(val_manifest), str(features_dir), char_vocab,
+        eval_dataset = V5MelDataset(
+            str(val_manifest),
+            mel_dir=str(mel_dir_resolved) if mel_dir_resolved else None,
+            features_dir=str(feat_dir_resolved) if feat_dir_resolved else None,
+            char_vocab=char_vocab,
             augment=False,
         )
 
     if len(train_dataset) == 0:
-        print("ERROR: No training samples loaded. Check feature extraction.")
+        print("ERROR: No training samples loaded. Check feature/mel extraction.")
         sys.exit(1)
 
     print(f"SpecAugment: {'ON' if not args.no_augment else 'OFF'}")
+    print(f"Data mode: {'mel (LoRA encoder active)' if use_mel else 'pre-extracted features (encoder frozen)'}")
 
     # ── 5. Optimizer + Scheduler ──────────────────────────────
     optimizer = torch.optim.AdamW([
@@ -957,7 +1137,7 @@ def main():
             train_loss = train_epoch(
                 whisper_model, ctc_head, train_loader, optimizer, device,
                 num_chars, scaler, args.checkpoint_interval, current_skip,
-                wandb_log,
+                wandb_log, use_mel=use_mel,
             )
 
             if _SHUTDOWN_REQUESTED:
@@ -973,7 +1153,7 @@ def main():
                     num_workers=args.num_workers,
                     pin_memory=True,
                 )
-                val_loss = eval_epoch(whisper_model, ctc_head, val_loader, device, num_chars)
+                val_loss = eval_epoch(whisper_model, ctc_head, val_loader, device, num_chars, use_mel=use_mel)
 
             # Best model
             improved = ""

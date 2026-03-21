@@ -536,6 +536,98 @@ def _log_feat_progress(current, total, extracted, skipped, errors, t0):
     )
 
 
+# ── Mel Spectrogram Extraction (for LoRA training) ────────────
+
+def extract_mels_for_entries(
+    entries: list,
+    datasets_cache: dict,
+    output_dir: Path,
+    log_interval: int = 1000,
+):
+    """Extract and cache mel spectrograms for all entries.
+
+    Unlike extract_features_for_entries (which runs the Whisper encoder and
+    saves encoder output), this saves the RAW mel spectrograms. This is needed
+    for V5 LoRA training because the encoder is being fine-tuned and must
+    process the mel at each forward pass.
+
+    Mel specs are much smaller than encoder features (128x3000 float16 = 768KB
+    vs 1500x1280 float32 = 7.7MB per sample), and the extraction is GPU-free.
+
+    Saves: {feat_id}.mel.pt  containing float16 tensor [128, 3000]
+    """
+    import torch
+    import whisper
+
+    print(f"\nExtracting mel spectrograms (no GPU needed)...")
+    output_dir.mkdir(parents=True, exist_ok=True)
+    total = len(entries)
+    extracted = 0
+    skipped = 0
+    errors = 0
+    t0 = time.time()
+
+    for i, entry in enumerate(entries):
+        mel_path = output_dir / f"{entry['feat_id']}.mel.pt"
+
+        # Resume: skip existing
+        if mel_path.exists():
+            skipped += 1
+            extracted += 1
+            if (i + 1) % log_interval == 0:
+                _log_feat_progress(i + 1, total, extracted, skipped, errors, t0)
+            continue
+
+        source = entry["source"]
+        source_idx = entry["source_idx"]
+
+        try:
+            ds_split = datasets_cache.get(source)
+            if ds_split is None:
+                errors += 1
+                continue
+
+            sample = ds_split[source_idx]
+            audio_data = sample.get("audio")
+            if audio_data is None:
+                errors += 1
+                continue
+
+            if isinstance(audio_data, dict):
+                audio_array = audio_data["array"]
+                sr = audio_data.get("sampling_rate", 16000)
+            else:
+                audio_array = audio_data
+                sr = 16000
+
+            audio_t = torch.tensor(audio_array, dtype=torch.float32)
+            if sr != 16000:
+                audio_t = resample_audio(audio_t, sr, 16000)
+
+            audio_padded = whisper.pad_or_trim(audio_t)
+            mel = whisper.log_mel_spectrogram(audio_padded, n_mels=128)
+
+            # Save as float16 (128x3000 = 768KB vs 7.7MB for encoder features)
+            torch.save(mel.half(), mel_path)
+            extracted += 1
+
+        except Exception as e:
+            errors += 1
+            if errors <= 20:
+                print(f"  ERROR [{entry['feat_id']}]: {e}")
+
+        if (i + 1) % log_interval == 0:
+            _log_feat_progress(i + 1, total, extracted, skipped, errors, t0)
+
+    elapsed = time.time() - t0
+    print(f"\nMel extraction complete:")
+    print(f"  Extracted: {extracted:,} (resumed: {skipped:,})")
+    print(f"  Errors: {errors:,}")
+    print(f"  Time: {elapsed:.0f}s ({elapsed/60:.1f}m)")
+
+    return extracted, errors
+
+
 # ── Splitting + Manifest ──────────────────────────────────────
 
 def create_splits(entries: list, seed: int = 42):
@@ -644,6 +736,10 @@ def main():
     parser.add_argument(
         "--skip-features", action="store_true",
         help="Skip feature extraction (manifests only)",
+    )
+    parser.add_argument(
+        "--extract-mel", action="store_true",
+        help="Extract mel spectrograms instead of encoder features (for LoRA training)",
     )
     parser.add_argument(
         "--seed", type=int, default=42,
@@ -756,35 +852,66 @@ def main():
             except Exception:
                 pass
 
-        features_dir = output_dir / "features"
-        extracted, errors = extract_features_for_entries(
-            all_entries, datasets_cache, features_dir,
-        )
-        print(f"\nFeatures: {extracted:,} extracted, {errors:,} errors")
+        if args.extract_mel:
+            # V5 LoRA mode: save mel spectrograms (no GPU needed for extraction)
+            mel_dir = output_dir / "mels"
+            extracted, errors = extract_mels_for_entries(
+                all_entries, datasets_cache, mel_dir,
+            )
+            print(f"\nMels: {extracted:,} extracted, {errors:,} errors")
 
-        # Verify features exist for manifest entries
-        print("\nVerifying feature coverage...")
-        missing = 0
-        for entry in all_entries:
-            feat_path = features_dir / f"{entry['feat_id']}.pt"
-            if not feat_path.exists():
-                missing += 1
-        print(f"  Missing features: {missing:,}/{len(all_entries):,}")
+            # Verify mel coverage
+            print("\nVerifying mel coverage...")
+            missing = 0
+            for entry in all_entries:
+                mel_path = mel_dir / f"{entry['feat_id']}.mel.pt"
+                if not mel_path.exists():
+                    missing += 1
+            print(f"  Missing mels: {missing:,}/{len(all_entries):,}")
 
-        if missing > 0:
-            # Rewrite manifests excluding entries with missing features
-            print("  Filtering manifests to exclude missing features...")
-            feat_set = set(p.stem for p in features_dir.glob("*.pt"))
-            train = [e for e in train if e["feat_id"] in feat_set]
-            val = [e for e in val if e["feat_id"] in feat_set]
-            test = [e for e in test if e["feat_id"] in feat_set]
-            write_manifests(train, val, test, output_dir)
+            if missing > 0:
+                print("  Filtering manifests to exclude missing mels...")
+                mel_set = set(p.stem.replace(".mel", "") for p in mel_dir.glob("*.mel.pt"))
+                train = [e for e in train if e["feat_id"] in mel_set]
+                val = [e for e in val if e["feat_id"] in mel_set]
+                test = [e for e in test if e["feat_id"] in mel_set]
+                write_manifests(train, val, test, output_dir)
 
-            # Update stats
-            all_with_feats = train + val + test
-            stats = compute_stats(train, val, test, all_with_feats)
-            with open(stats_path, "w") as f:
-                json.dump(stats, f, indent=2, ensure_ascii=False, default=str)
+                all_with_mels = train + val + test
+                stats = compute_stats(train, val, test, all_with_mels)
+                with open(stats_path, "w") as f:
+                    json.dump(stats, f, indent=2, ensure_ascii=False, default=str)
+        else:
+            # Legacy mode: save encoder features (for CTC-head-only training)
+            features_dir = output_dir / "features"
+            extracted, errors = extract_features_for_entries(
+                all_entries, datasets_cache, features_dir,
+            )
+            print(f"\nFeatures: {extracted:,} extracted, {errors:,} errors")
+
+            # Verify features exist for manifest entries
+            print("\nVerifying feature coverage...")
+            missing = 0
+            for entry in all_entries:
+                feat_path = features_dir / f"{entry['feat_id']}.pt"
+                if not feat_path.exists():
+                    missing += 1
+            print(f"  Missing features: {missing:,}/{len(all_entries):,}")
+
+            if missing > 0:
+                # Rewrite manifests excluding entries with missing features
+                print("  Filtering manifests to exclude missing features...")
+                feat_set = set(p.stem for p in features_dir.glob("*.pt"))
+                train = [e for e in train if e["feat_id"] in feat_set]
+                val = [e for e in val if e["feat_id"] in feat_set]
+                test = [e for e in test if e["feat_id"] in feat_set]
+                write_manifests(train, val, test, output_dir)
+
+                # Update stats
+                all_with_feats = train + val + test
+                stats = compute_stats(train, val, test, all_with_feats)
+                with open(stats_path, "w") as f:
+                    json.dump(stats, f, indent=2, ensure_ascii=False, default=str)
 
     # ── 6. Final Summary ───────────────────────────────────────
     elapsed = time.time() - t_start
@@ -797,7 +924,10 @@ def main():
     print(f"  Val manifest:   {output_dir}/manifests/val.jsonl")
     print(f"  Test manifest:  {output_dir}/manifests/test.jsonl")
     if not args.skip_features:
-        print(f"  Features dir:   {output_dir}/features/")
+        if args.extract_mel:
+            print(f"  Mels dir:       {output_dir}/mels/")
+        else:
+            print(f"  Features dir:   {output_dir}/features/")
 
 
 if __name__ == "__main__":
