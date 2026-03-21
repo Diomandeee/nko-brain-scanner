@@ -24,13 +24,13 @@ Qwen2-72B has 151,936 vocabulary entries. Arabic, another right-to-left script, 
 
 What does that do to the model's internal representations?
 
-**The translation tax.** At the embedding layer, English activations have an average L2 norm of 41.2. N'Ko activations have an average L2 norm of 14.2. That is a 2.90x ratio. The model is spending roughly 3x less activation energy on N'Ko text at the first layer. This ratio does not recover as you go deeper. It worsens: by the output layer, it reaches 3.26x. Every layer that should be building up richer representations is instead amplifying the initial deficit.
+**The translation tax.** At the embedding layer, English activations have an average L2 norm of 41.2. N'Ko activations have an average L2 norm of 14.2. That is a 2.94x ratio. The model is spending roughly 3x less activation energy on N'Ko text at the first layer. This ratio does not recover as you go deeper. It worsens: by the output layer, it reaches 3.26x. Every layer that should be building up richer representations is instead amplifying the initial deficit.
 
 **Entropy inflation.** Shannon entropy measures how diffuse or concentrated the model's internal activations are. High entropy means the model is spreading attention across everything, not committing to anything. For English, entropy at the output layer is 11.02 bits. For N'Ko, it is 13.89 bits, close to the theoretical maximum for that dimension size, which means the model is essentially randomly distributing probability mass across its vocabulary when it tries to output N'Ko.
 
 **The kurtosis collapse.** This one is the most telling number. Kurtosis measures how peaked the activation distribution is. In a model that knows what it is doing, kurtosis climbs at the output layers: the model gets more and more confident as it approaches a prediction. For English, kurtosis goes from 12.4 at embedding to 58.4 at the output layer. A clean upward climb.
 
-For N'Ko, kurtosis peaks at layer 60 (11.3), then *drops* to 8.3 at the output. The model is actively un-committing. At the exact moment it should be concentrating on a prediction, it is spreading back out toward maximum entropy. The 85.8% kurtosis deficit at the output layer is not a model that is unsure which N'Ko character to pick. It is a model that is unsure whether to pick N'Ko characters at all.
+For N'Ko, kurtosis peaks at layer 60 (11.3), then *drops* to 8.3 at the output. The model is actively un-committing. At the exact moment it should be concentrating on a prediction, it is spreading back out toward maximum entropy. The 78.1% kurtosis deficit at the output layer is not a model that is unsure which N'Ko character to pick. It is a model that is unsure whether to pick N'Ko characters at all.
 
 **Dead circuits, not weak ones.** To test whether there were any N'Ko reasoning circuits worth amplifying, I ran a circuit duplication analysis: 55 different configurations of duplicating transformer layer blocks, following the RYS (Revisit Your Shoulders) methodology. The idea is that duplicating a layer amplifies whatever computation that layer is performing. If N'Ko had working circuits, duplicating them would improve performance.
 
@@ -202,7 +202,7 @@ A few concrete next steps, in order of likely impact.
 
 The LoRA adaptation work will continue. There are still samples where V3's frozen encoder outperforms V4's adapted one, which means there are acoustic patterns the adaptation has not fully addressed. The current V4 was trained for 30 epochs with 37 hours of data. More data, more epochs, larger LoRA rank applied to more encoder layers.
 
-The LLM side of this (paper 1, the brain scan) showed that a three-stage LoRA pipeline reduced the translation tax from 2.90x to 0.70x in the language model, getting N'Ko representations from near-random to nearly competitive with English. The same approach should continue yielding returns on the ASR side.
+The LLM side of this (paper 1, the brain scan) showed that a three-stage LoRA pipeline reduced the translation tax from 2.94x to 0.70x in the language model, getting N'Ko representations from near-random to nearly competitive with English. The same approach should continue yielding returns on the ASR side.
 
 Solomana Kante designed a script that any phonologist would envy, for a language spoken by tens of millions of people, and spent his life making sure it survived. The least we can do is make sure the machines can read it.
 

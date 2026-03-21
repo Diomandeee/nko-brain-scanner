@@ -567,11 +567,11 @@ The results validate the two-stage approach:
 | N'Ko Perplexity | 11.02 | 6.11 | **-44.6%** |
 | English Top-1 Accuracy | 70.9% | 69.5% | -1.4pp |
 | English Perplexity | 3.80 | 8.70 | +129% |
-| **Translation Tax** (N'Ko PPL / Eng PPL) | **2.90x** | **0.70x** | **-76%** |
+| **Translation Tax** (N'Ko PPL / Eng PPL) | **2.94x** | **0.70x** | **-76%** |
 
 The headline number: **N'Ko token accuracy jumped from 23.0% to 31.8%**, an 8.8 percentage point gain. The CPT stage, which exposed the model to 3.7 million N'Ko characters of Wikipedia text in a pure language modeling task, taught the model something SFT data alone couldn't: how N'Ko characters actually compose into words, phrases, and sentences.
 
-The translation tax tells the most dramatic story. The base model processes N'Ko text with 2.90x higher perplexity than English. After two-stage training, the tax *inverts* to 0.70x: the model is now more confident on N'Ko than on English. English perplexity increased from 3.80 to 8.70, but critically, English *accuracy* barely moved (70.9% → 69.5%, just -1.4pp). The model became less confident on English but remained nearly as accurate. The trade-off: a 1.4 percentage point English accuracy cost bought a 13.2 point N'Ko accuracy gain.
+The translation tax tells the most dramatic story. The base model processes N'Ko text with 2.94x higher perplexity than English. After two-stage training, the tax *inverts* to 0.70x: the model is now more confident on N'Ko than on English. English perplexity increased from 3.80 to 8.70, but critically, English *accuracy* barely moved (70.9% → 69.5%, just -1.4pp). The model became less confident on English but remained nearly as accurate. The trade-off: a 1.4 percentage point English accuracy cost bought a 13.2 point N'Ko accuracy gain.
 
 The two-stage approach works because each stage teaches something different:
 - **CPT teaches character patterns**: syllable structures, morpheme boundaries, common word forms, right-to-left composition rules
@@ -663,7 +663,7 @@ We ran the full brain scan profiler comparing all three model configurations on 
 | N'Ko Token Accuracy | 23.0% | 31.8% | **32.8%** | **+9.8pp** |
 | English Top-1 Accuracy | 70.9% | 69.5% | 69.7% | -1.2pp |
 | English Perplexity | 3.80 | 8.70 | 8.61 | — |
-| **Translation Tax** | **2.90x** | **0.70x** | **0.70x** | **-76%** |
+| **Translation Tax** | **2.94x** | **0.70x** | **0.70x** | **-76%** |
 
 The three-stage model achieved the best results across every N'Ko metric. The BPE stage added incremental but consistent gains: N'Ko token accuracy climbed from 31.8% to 32.8% (+1.0pp), and perplexity dropped from 6.11 to 6.00.
 
@@ -683,7 +683,7 @@ The biggest jump came from CPT (Stage 2), which taught the model character-level
 
 ### What Comes Next
 
-The 32.8% N'Ko token accuracy represents a 43% relative improvement over the base model's 23.0%. But the most striking result is the translation tax. The base model processes N'Ko text with 2.90x the perplexity of English, a direct measure of how much harder the model works to process N'Ko. After three-stage fine-tuning, the tax drops to 0.70x, a 76% reduction. The model is now *more confident* on N'Ko than on English, while English accuracy barely changed (-1.2pp). The on-ramp didn't just improve N'Ko. It made N'Ko the model's stronger language.
+The 32.8% N'Ko token accuracy represents a 43% relative improvement over the base model's 23.0%. But the most striking result is the translation tax. The base model processes N'Ko text with 2.94x the perplexity of English, a direct measure of how much harder the model works to process N'Ko. After three-stage fine-tuning, the tax drops to 0.70x, a 76% reduction. The model is now *more confident* on N'Ko than on English, while English accuracy barely changed (-1.2pp). The on-ramp didn't just improve N'Ko. It made N'Ko the model's stronger language.
 
 The next frontier is direct vocabulary extension: adding the 512 BPE tokens to Qwen's embedding layer (currently at 151,936 entries), initializing them as averages of their constituent character embeddings, and retraining. This would let the model process N'Ko subwords as single tokens rather than character sequences, potentially closing the remaining gap with English-level tokenization efficiency.
 

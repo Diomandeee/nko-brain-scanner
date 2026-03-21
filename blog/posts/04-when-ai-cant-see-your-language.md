@@ -70,9 +70,9 @@ After documenting all of that failure, I trained the model to do better. On a la
 
 The training used text from N'Ko Wikipedia, about 3.7 million characters, alongside some structured instruction data. The whole thing cost zero dollars in cloud computing because it ran on the laptop's processor.
 
-After training, the translation tax dropped from 2.90x to 0.70x. That last number means the model is now working harder on N'Ko than on English. It has slightly over-calibrated, which is a known side effect of this kind of training, but the point is: the model went from barely functional to performing better than it does on English on the same tasks.
+After training, the translation tax dropped from 2.94x to 0.70x. That last number means the model is now working harder on N'Ko than on English. It has slightly over-calibrated, which is a known side effect of this kind of training, but the point is: the model went from barely functional to performing better than it does on English on the same tasks.
 
-The embedding sparsity dropped by 47%. The model's output layer went from producing a nearly flat probability distribution to producing concentrated, peaked predictions. The 85.8% kurtosis deficit, which measures how much the model was un-committing at the final layer, shrank by 67%.
+The embedding sparsity dropped by 47%. The model's output layer went from producing a nearly flat probability distribution to producing concentrated, peaked predictions. The 78.1% kurtosis deficit, which measures how much the model was un-committing at the final layer, shrank by 67%.
 
 Three hours. On a laptop. Nearly 76% of the problem, closed.
 

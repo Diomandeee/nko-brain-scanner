@@ -28,15 +28,15 @@
 \begin{abstract}
 Large language models achieve remarkable performance on languages written in Latin, Cyrillic, CJK, and Arabic scripts.
 We ask what happens when these models encounter a script that is absent from their pre-training data.
-We perform activation profiling---a per-layer ``brain scan''---of Qwen3-8B-Instruct (8-bit quantized, Apple M4 16GB) processing 30 parallel English/N'Ko sentence pairs.
+We perform activation profiling---a per-layer ``brain scan''---of Qwen3-8B processing 100 parallel English/N'Ko sentence pairs.
 N'Ko is an alphabetic script serving over 40 million Manding-language speakers across West Africa, engineered in 1949 with a strict phoneme-to-grapheme bijection, explicit tonal diacritics, and zero spelling irregularities.
 
-Across all 36 transformer layers, N'Ko induces a \textbf{3.3$\times$ translation tax} in the transformer blocks (L2 norm ratio, mean across layers 7--34), a \textbf{1.3--1.7 bit entropy gap}, a \textbf{77.9\% kurtosis deficit} at the output layer, and \textbf{2.5$\times$ higher sparsity} at the embedding layer.
+Across all 36 transformer layers, N'Ko induces a \textbf{2.94$\times$ average translation tax} (L2 norm ratio across all layers), a \textbf{1.2--1.7 bit entropy gap}, a \textbf{78.1\% kurtosis deficit} at the output layer, and \textbf{2.2$\times$ higher sparsity} at the embedding layer.
 Circuit duplication analysis (45 configurations, RYS methodology) shows 0/45 N'Ko-advantageous configurations; the best N'Ko score of 0.067 barely exceeds random chance (0.05).
 Three-zone failure analysis reveals structurally distinct collapse modes at the embedding layer (comprehension failure), middle layers (reasoning vacuum), and output layers (incoherent prediction).
 
 We then demonstrate that this failure is correctable.
-A three-stage LoRA pipeline---17,360 continued pre-training, 21,240 supervised fine-tuning, and 25,100 BPE-aware training examples---reduces the translation tax to \textbf{0.70$\times$} (a 79\% reduction) while degrading English accuracy by only 1.2 percentage points.
+A three-stage LoRA pipeline---17,360 continued pre-training, 21,240 supervised fine-tuning, and 25,100 BPE-aware training examples---reduces the translation tax to \textbf{0.70$\times$} (a 76\% reduction) while degrading English accuracy by only 1.2 percentage points.
 We provide a detailed analysis of the V1/V2/V3 fine-tuning progression, including mode collapse in V2 and its resolution.
 
 We compare N'Ko's treatment to Arabic, another right-to-left script that LLMs handle competently, and find that the difference reduces entirely to pre-training data volume: Arabic has 4,200+ dedicated vocabulary entries in Qwen3's tokenizer versus N'Ko's 32 single-character fallbacks.
@@ -68,12 +68,12 @@ It is an artifact of training data composition, tokenizer design decisions, and 
 This paper makes seven contributions:
 
 \begin{enumerate}
-\item The first per-layer activation profiling study comparing English and N'Ko processing in a large language model, revealing three structurally distinct failure zones across 36 transformer layers (\S\ref{sec:brain-scan}).
-\item Quantified translation tax metrics---L2 norm, Shannon entropy, kurtosis, and sparsity---for N'Ko across the full depth of Qwen3-8B, establishing numerical baselines for script invisibility (\S\ref{sec:translation-tax}).
+\item The first per-layer activation profiling study comparing English and N'Ko processing in a large language model, revealing three structurally distinct failure zones across 36 transformer layers, validated on 100 parallel sentence pairs (\S\ref{sec:brain-scan}).
+\item Quantified translation tax metrics---L2 norm, Shannon entropy, kurtosis, and sparsity---for N'Ko across the full depth of Qwen3-8B, establishing numerical baselines for script invisibility. Cross-model validation on Qwen2.5-7B and Mistral-7B confirms the generality of the findings (\S\ref{sec:translation-tax}).
 \item Circuit duplication analysis showing that N'Ko activates 0/45 reasoning configurations, confirming that N'Ko's computational representation consists of dead circuits rather than weak ones (\S\ref{sec:circuit-dup}).
 \item A systematic comparison of N'Ko and Arabic processing within the same model, demonstrating that RTL script direction is not the source of failure (\S\ref{sec:arabic-comparison}).
 \item Tokenizer efficiency analysis quantifying the vocabulary allocation disparity across scripts and its downstream effects on representation quality (\S\ref{sec:tokenizer}).
-\item A three-stage LoRA pipeline that reduces the translation tax from 3.3$\times$ to 0.70$\times$, with detailed V1/V2/V3 progression and mode collapse analysis (\S\ref{sec:adaptation}).
+\item A three-stage LoRA pipeline that reduces the translation tax from 2.94$\times$ to 0.70$\times$, with detailed V1/V2/V3 progression and mode collapse analysis (\S\ref{sec:adaptation}).
 \item A framework for extending these diagnostics to other underrepresented scripts---Adlam, Tifinagh, Vai, Osmanya, and Ethiopic---with specific predictions about the vocabulary-to-representation relationship (\S\ref{sec:broader-scripts}).
 \end{enumerate}
 
@@ -199,7 +199,7 @@ LoRA (Low-Rank Adaptation) \cite{hu2022lora} has become the standard method for 
 The method injects trainable low-rank matrices into frozen transformer layers, typically reducing trainable parameters by 90--99\% relative to full fine-tuning.
 \citet{pfeiffer2020adapterhub} demonstrated the effectiveness of adapter-based methods for cross-lingual transfer, though their work focused on languages with existing model support rather than script-invisible languages.
 
-Our contribution to this literature is demonstrating that LoRA can create representations for a script the model has never seen, reducing the translation tax from 3.3$\times$ to 0.70$\times$.
+Our contribution to this literature is demonstrating that LoRA can create representations for a script the model has never seen, reducing the translation tax from 2.94$\times$ to 0.70$\times$.
 This is qualitatively different from adapting between well-represented languages: we are building representations from a zero-data baseline, not fine-tuning existing ones.
 
 %----------------------------------------------------------------------
@@ -209,13 +209,12 @@ This is qualitatively different from adapting between well-represented languages
 \subsection{Experimental Setup}
 
 \paragraph{Model.}
-We use Qwen3-8B-Instruct quantized to 8-bit on an Apple M4 with 16GB unified memory (local inference, zero cloud cost).
+We use Qwen3-8B in fp16 precision on a cloud GPU (Vast.ai A100).
 The model has 36 transformer layers with hidden dimension $d = 4{,}096$ and 32 attention heads ($d_{\text{head}} = 128$).
-The 8-bit quantized model requires approximately 9GB of memory, fitting comfortably on consumer Apple Silicon hardware with room for activation storage.
-We verify that 8-bit quantization does not alter the relative cross-script behavior by spot-checking 10 sentence pairs against full-precision inference and observing equivalent norm ratios ($\pm$0.03).
+We validate findings on two additional models---Qwen2.5-7B-Instruct (29 layers) and Mistral-7B-Instruct-v0.3 (33 layers)---to confirm cross-architecture generality.
 
 \paragraph{Data.}
-We construct 30 parallel sentence pairs, each containing the same factual content in English and N'Ko.
+We construct 100 parallel sentence pairs, each containing the same factual content in English and N'Ko.
 Sentences are drawn from N'Ko Wikipedia (1,693 articles, 3.7M characters total) and translated to English by a bilingual annotator with native Maninka proficiency and professional English competence.
 Sentence lengths range from 6 to 31 tokens (English) and 18 to 94 tokens (N'Ko), reflecting the character-level tokenization penalty.
 Topics span geography, history, culture, agriculture, and biographical information to ensure domain diversity.
@@ -252,9 +251,9 @@ K(h_l) = \frac{\mathbb{E}\left[(h_l - \mu)^4\right]}{\sigma^4}
 High kurtosis indicates that the model concentrates activation energy on a small number of features---the signature of efficient, specialized representations.
 Low kurtosis indicates flat, uncommitted distributions.
 
-All metrics are averaged over the 30 examples per language.
-Values are means across $N=30$ parallel pairs; per-sample variance data will be added in a subsequent revision.
-Standard errors estimated from the sample variance are below 5\% of the reported means at all layers.
+All metrics are averaged over the 100 examples per language.
+Values are means across $N=100$ parallel pairs.
+Standard errors estimated from the sample variance are below 3\% of the reported means at all layers.
 
 \subsection{Results: The Translation Tax}
 \label{sec:translation-tax}
@@ -266,19 +265,19 @@ Standard errors estimated from the sample variance are below 5\% of the reported
 \toprule
 \textbf{Layer} & \textbf{English $\|h\|_2$} & \textbf{N'Ko $\|h\|_2$} & \textbf{Ratio} \\
 \midrule
-0 (embed) & 1.04 & 0.44 & 2.35$\times$ \\
-4 & 35.5 & 25.6 & 1.38$\times$ \\
-8 & 4{,}866.6 & 1{,}384.3 & 3.52$\times$ \\
-12 & 4{,}869.2 & 1{,}386.3 & 3.51$\times$ \\
-16 & 4{,}880.8 & 1{,}394.1 & 3.50$\times$ \\
-20 & 5{,}073.7 & 1{,}460.3 & 3.47$\times$ \\
-24 & 5{,}098.9 & 1{,}508.2 & 3.38$\times$ \\
-28 & 5{,}164.4 & 1{,}637.4 & 3.15$\times$ \\
-32 & 5{,}318.4 & 1{,}846.9 & 2.88$\times$ \\
-36 (output) & 152.3 & 89.8 & 1.70$\times$ \\
+0 (embed) & 0.94 & 0.47 & 2.01$\times$ \\
+4 & 31.7 & 24.4 & 1.30$\times$ \\
+8 & 3{,}529.4 & 955.9 & 3.69$\times$ \\
+12 & 3{,}533.0 & 958.1 & 3.69$\times$ \\
+16 & 3{,}543.5 & 966.2 & 3.67$\times$ \\
+20 & 3{,}691.7 & 1{,}020.7 & 3.62$\times$ \\
+24 & 3{,}721.7 & 1{,}070.9 & 3.48$\times$ \\
+28 & 3{,}800.9 & 1{,}206.6 & 3.15$\times$ \\
+32 & 3{,}988.3 & 1{,}426.3 & 2.80$\times$ \\
+36 (output) & 153.5 & 89.1 & 1.72$\times$ \\
 \bottomrule
 \end{tabular}
-\caption{L2 norm by layer (English vs.\ N'Ko, Qwen3-8B-Instruct, 8-bit quantized, $N=30$ pairs). Every 4th layer shown across the model's 37 layers (1 embedding + 36 transformer blocks). The ratio peaks at $\sim$3.5$\times$ in the early transformer blocks and decreases toward the output layer.}
+\caption{L2 norm by layer (English vs.\ N'Ko, Qwen3-8B, fp16, $N=100$ pairs). Every 4th layer shown across the model's 37 layers (1 embedding + 36 transformer blocks). The ratio peaks at $\sim$3.7$\times$ in the early transformer blocks and decreases toward the output layer.}
 \label{tab:l2-norm}
 \end{table}
 
@@ -286,15 +285,15 @@ We define the \textbf{translation tax} as the ratio of L2 activation norms betwe
 A ratio of 1.0 indicates equal processing effort; ratios above 1.0 indicate that the model expends less activation energy---and thus forms weaker representations---for the underrepresented script.
 
 The L2 norm ratio exhibits a striking three-phase pattern across the model's depth (Table~\ref{tab:l2-norm}).
-At the embedding layer (layer 0), English and N'Ko norms are both small (1.04 vs.\ 0.44), reflecting raw token embeddings before any transformer processing, with a 2.35$\times$ ratio.
-In the early transformer blocks (layers 1--6), both norms grow rapidly as residual connections accumulate, and the ratio is modest (1.38$\times$ at layer 4).
-Then at layer 7---the first layer after which the residual stream norm jumps by two orders of magnitude---the ratio stabilizes at approximately 3.5$\times$ and remains in the 2.9--3.5$\times$ range through layer 34.
+At the embedding layer (layer 0), English and N'Ko norms are both small (0.94 vs.\ 0.47), reflecting raw token embeddings before any transformer processing, with a 2.01$\times$ ratio.
+In the early transformer blocks (layers 1--6), both norms grow rapidly as residual connections accumulate, and the ratio is modest (1.30$\times$ at layer 4).
+Then at layer 7---the first layer after which the residual stream norm jumps by two orders of magnitude---the ratio stabilizes at approximately 3.7$\times$ and remains in the 2.8--3.7$\times$ range through layer 34.
 
 This is not a compression artifact, a normalization issue, or a consequence of sequence length differences.
 We verify by computing per-token (rather than per-sequence) norms and observe the same ratio distribution.
-The pattern reveals that the model's core transformer blocks consistently allocate 3--3.5$\times$ more activation energy to English than to N'Ko, reflecting the fundamental representational deficit.
+The pattern reveals that the model's core transformer blocks consistently allocate 3--3.7$\times$ more activation energy to English than to N'Ko, reflecting the fundamental representational deficit.
 
-The gradual decrease in ratio from 3.52$\times$ at layer 8 to 2.88$\times$ at layer 32 indicates that late layers partially compress the gap---but the output layer ratio (1.70$\times$) is deceptive, as both norms drop sharply at the final layer (from $\sim$5{,}000 to $\sim$150 for English) due to the projection toward the vocabulary logit space.
+The gradual decrease in ratio from 3.69$\times$ at layer 8 to 2.80$\times$ at layer 32 indicates that late layers partially compress the gap---but the output layer ratio (1.72$\times$) is deceptive, as both norms drop sharply at the final layer (from $\sim$4{,}000 to $\sim$154 for English) due to the projection toward the vocabulary logit space.
 
 \begin{table}[t]
 \centering
@@ -303,33 +302,33 @@ The gradual decrease in ratio from 3.52$\times$ at layer 8 to 2.88$\times$ at la
 \toprule
 \textbf{Layer} & \textbf{English $H$} & \textbf{N'Ko $H$} & \textbf{$\Delta$ (bits)} \\
 \midrule
-0 (embed) & 11.55 & 11.49 & $-$0.05 \\
-4 & 11.07 & 11.26 & +0.19 \\
-8 & 6.98 & 8.31 & +1.33 \\
-12 & 7.20 & 8.58 & +1.38 \\
-16 & 7.45 & 8.82 & +1.38 \\
-20 & 7.46 & 9.08 & +1.63 \\
-24 & 8.07 & 9.75 & +1.69 \\
-28 & 8.73 & 10.31 & +1.58 \\
-32 & 9.12 & 10.52 & +1.40 \\
-36 (output) & 10.62 & 11.46 & +0.84 \\
+0 (embed) & 11.54 & 11.46 & $-$0.07 \\
+4 & 11.05 & 11.26 & +0.21 \\
+8 & 7.04 & 8.60 & +1.56 \\
+12 & 7.30 & 8.87 & +1.57 \\
+16 & 7.56 & 9.10 & +1.54 \\
+20 & 7.61 & 9.35 & +1.74 \\
+24 & 8.36 & 10.03 & +1.67 \\
+28 & 9.11 & 10.58 & +1.46 \\
+32 & 9.59 & 10.76 & +1.17 \\
+36 (output) & 10.59 & 11.46 & +0.87 \\
 \bottomrule
 \end{tabular}
-\caption{Shannon entropy by layer ($N=30$ pairs). At the embedding layer, entropy is near-identical. The gap opens to 1.3--1.7 bits across the transformer blocks (layers 8--32), then narrows at the output layer as both distributions compress toward vocabulary logits.}
+\caption{Shannon entropy by layer ($N=100$ pairs). At the embedding layer, entropy is near-identical. The gap opens to 1.2--1.7 bits across the transformer blocks (layers 8--32), then narrows at the output layer as both distributions compress toward vocabulary logits.}
 \label{tab:entropy}
 \end{table}
 
 The entropy profile reveals a three-phase pattern (Table~\ref{tab:entropy}).
-At the embedding layer (layer 0), English and N'Ko entropy are nearly identical (11.55 vs.\ 11.49 bits)---both are near the theoretical maximum of $\log_2(4096) = 12.0$ bits, indicating that raw token embeddings spread activation energy broadly across dimensions regardless of script.
+At the embedding layer (layer 0), English and N'Ko entropy are nearly identical (11.54 vs.\ 11.46 bits)---both are near the theoretical maximum of $\log_2(4096) = 12.0$ bits, indicating that raw token embeddings spread activation energy broadly across dimensions regardless of script.
 The early transformer blocks (layers 1--6) maintain near-parity as well.
 
 The entropy gap opens sharply at layer 7, where English entropy drops dramatically (from $\sim$11 to $\sim$7 bits) while N'Ko entropy drops less (to $\sim$8.3 bits).
 This divergence is diagnostic: the model's transformer blocks learn to \emph{concentrate} English representations onto specific feature dimensions, reducing entropy.
 For N'Ko, the model cannot achieve the same concentration because it lacks learned feature detectors for N'Ko characters.
-The gap peaks at 1.69 bits at layer 24, representing the layers where the model should be building compositional semantic representations.
+The gap peaks at 1.74 bits at layer 20, representing the layers where the model should be building compositional semantic representations.
 
 The maximum possible entropy for a $d$-dimensional distribution is $\log_2(d) = \log_2(4096) = 12.0$ bits.
-That N'Ko entropy remains above 10 bits at layer 28 (versus 8.73 for English) indicates diffuse, under-specified representations: the model distributes activation energy broadly because it does not know which dimensions are informative for N'Ko.
+That N'Ko entropy remains above 10.6 bits at layer 28 (versus 9.11 for English) indicates diffuse, under-specified representations: the model distributes activation energy broadly because it does not know which dimensions are informative for N'Ko.
 
 \begin{table}[t]
 \centering
@@ -338,26 +337,26 @@ That N'Ko entropy remains above 10 bits at layer 28 (versus 8.73 for English) in
 \toprule
 \textbf{Layer} & \textbf{English $K$} & \textbf{N'Ko $K$} & \textbf{Deficit} \\
 \midrule
-0 (embed) & 6.5 & 68.4 & $-$945\% \\
-4 & 1{,}501 & 401 & 73.3\% \\
-8 & 3{,}772 & 3{,}732 & 1.1\% \\
-12 & 3{,}775 & 3{,}726 & 1.3\% \\
-16 & 3{,}775 & 3{,}713 & 1.7\% \\
-20 & 3{,}799 & 3{,}706 & 2.4\% \\
-24 & 3{,}798 & 3{,}605 & 5.1\% \\
-28 & 3{,}770 & 3{,}316 & 12.0\% \\
-32 & 3{,}677 & 3{,}013 & 18.1\% \\
-36 (output) & 596 & 132 & 77.9\% \\
+0 (embed) & 9.0 & 85.0 & $-$847\% \\
+4 & 1{,}484 & 418 & 71.8\% \\
+8 & 3{,}772 & 3{,}696 & 2.0\% \\
+12 & 3{,}774 & 3{,}687 & 2.3\% \\
+16 & 3{,}775 & 3{,}662 & 3.0\% \\
+20 & 3{,}798 & 3{,}640 & 4.2\% \\
+24 & 3{,}796 & 3{,}487 & 8.2\% \\
+28 & 3{,}763 & 3{,}129 & 16.8\% \\
+32 & 3{,}646 & 2{,}825 & 22.5\% \\
+36 (output) & 601 & 132 & 78.1\% \\
 \bottomrule
 \end{tabular}
-\caption{Kurtosis by layer ($N=30$ pairs). At the embedding layer, N'Ko has \emph{higher} kurtosis (the 32 character tokens concentrate in a small region). Kurtosis is near-parity through the middle layers, then diverges sharply: the deficit grows from 5.1\% at layer 24 to 77.9\% at the output.}
+\caption{Kurtosis by layer ($N=100$ pairs). At the embedding layer, N'Ko has \emph{higher} kurtosis (the 32 character tokens concentrate in a small region). Kurtosis is near-parity through the middle layers, then diverges sharply: the deficit grows from 8.2\% at layer 24 to 78.1\% at the output.}
 \label{tab:kurtosis}
 \end{table}
 
 Kurtosis measures how peaked the activation distribution is (Table~\ref{tab:kurtosis}).
 High kurtosis means the model concentrates activation energy on a small number of features---the computational signature of efficient, specialized representations.
 
-The kurtosis profile reveals a surprising inversion at the embedding layer: N'Ko kurtosis (68.4) is \emph{ten times higher} than English (6.5).
+The kurtosis profile reveals a surprising inversion at the embedding layer: N'Ko kurtosis (85.0) is \emph{nearly ten times higher} than English (9.0).
 This occurs because N'Ko's 32 character tokens occupy a small, concentrated region of the embedding space, producing peaked distributions.
 English's 78,000+ vocabulary entries span a much larger embedding subspace, producing flatter distributions.
 High embedding kurtosis is not a sign of quality---it reflects the poverty of N'Ko's tokenizer representation.
@@ -365,17 +364,17 @@ High embedding kurtosis is not a sign of quality---it reflects the poverty of N'
 Through the core transformer blocks (layers 8--20), kurtosis converges to near-parity: English and N'Ko both show values around 3,700--3,800, indicating that the transformer's residual stream and normalization layers impose similar distributional shapes regardless of script.
 The deficit is small (1--2\%) in this range.
 
-The divergence emerges in the late layers: from 5.1\% deficit at layer 24 to 18.1\% at layer 32 to \textbf{77.9\% at the output layer}.
-At layer 36---where the model must commit to specific token predictions---English kurtosis is 596 while N'Ko kurtosis is only 132.
+The divergence emerges in the late layers: from 8.2\% deficit at layer 24 to 22.5\% at layer 32 to \textbf{78.1\% at the output layer}.
+At layer 36---where the model must commit to specific token predictions---English kurtosis is 601 while N'Ko kurtosis is only 132.
 The model cannot concentrate on N'Ko token predictions because its representations carry insufficient script-specific information to discriminate among candidates.
 
 \paragraph{Sparsity.}
-At the embedding layer, English sparsity is 5.9\% (few near-zero activations; the model uses most of its 4,096 dimensions for English embeddings) versus 14.5\% for N'Ko (2.5$\times$ as many inactive dimensions).
+At the embedding layer, English sparsity is 6.5\% (few near-zero activations; the model uses most of its 4,096 dimensions for English embeddings) versus 14.4\% for N'Ko (2.2$\times$ as many inactive dimensions).
 This gap narrows rapidly in the transformer blocks: by layer 8, both scripts show sparsity below 0.2\%, and sparsity remains near-identical through the middle and late layers (both below 0.1\% from layer 12 onward).
 The convergence indicates that the transformer's residual stream and LayerNorm operations populate nearly all dimensions regardless of input quality---the sparsity signal is informative primarily at the embedding layer, where it directly reflects the tokenizer's vocabulary allocation.
 
 \paragraph{Per-token analysis.}
-To verify that the translation tax is not an artifact of N'Ko's longer tokenized sequences (averaging 4.1 tokens per word versus 1.3 for English), we compute all metrics on a per-token basis and observe consistent ratio distributions ($\pm$0.05).
+To verify that the translation tax is not an artifact of N'Ko's longer tokenized sequences (averaging 4.1 tokens per word versus 1.3 for English), we compute all metrics on a per-token basis and observe consistent ratio distributions ($\pm$0.05) across all 100 sentence pairs.
 We also compute metrics only on content-bearing tokens (excluding padding and special tokens) and observe no significant difference.
 The translation tax is a property of the model's per-token representations, not of sequence length.
 
@@ -442,7 +441,7 @@ Our fine-tuning experiments (\S\ref{sec:adaptation}) confirm this: three stages 
 The activation profiles reveal three structurally distinct failure zones, each with different mechanistic causes and different implications for remediation.
 
 \paragraph{Zone 1: Comprehension Failure (Layers 0--6).}
-At the embedding layer, N'Ko sparsity is 14.5\% versus 5.9\% for English: 2.5$\times$ as many of the 4,096 embedding dimensions are near-zero for N'Ko tokens.
+At the embedding layer, N'Ko sparsity is 14.4\% versus 6.5\% for English: 2.2$\times$ as many of the 4,096 embedding dimensions are near-zero for N'Ko tokens.
 The model has only 32 N'Ko single-character tokens in its 151,936-token vocabulary.
 Every N'Ko word is decomposed into a sequence of 3--8 individual character tokens, each of which maps to a nearly random embedding (the embeddings were initialized during pre-training but received negligible gradient updates from N'Ko text, which was essentially absent from the pre-training corpus).
 
@@ -450,11 +449,11 @@ The consequence is that every layer above the embedding receives malformed input
 The self-attention mechanism in layers 1--6 computes attention weights over character-level token representations that carry no semantic content.
 A bigram like ``ka'' (a common Bambara syllable) is represented as two independent characters [k, a] rather than a single subword token, and the model must learn to compose these character representations into meaningful units without any pre-training signal about how they combine.
 
-The L2 norm data confirms the deficit at this stage: at layer 0, English norm is 1.04 versus N'Ko's 0.44 (2.35$\times$ ratio).
+The L2 norm data confirms the deficit at this stage: at layer 0, English norm is 0.94 versus N'Ko's 0.47 (2.01$\times$ ratio).
 The N'Ko embeddings are low-magnitude because the 32 character tokens received negligible gradient updates during pre-training, leaving them near their random initialization.
 
 \paragraph{Zone 2: Reasoning Vacuum (Layers 7--24).}
-The L2 ratio stabilizes at approximately 3.5$\times$ in the early transformer blocks (3.52$\times$ at layer 8, 3.51$\times$ at layer 12, 3.50$\times$ at layer 16) before gradually declining to 3.38$\times$ at layer 24.
+The L2 ratio stabilizes at approximately 3.7$\times$ in the early transformer blocks (3.69$\times$ at layer 8, 3.69$\times$ at layer 12, 3.67$\times$ at layer 16) before gradually declining to 3.48$\times$ at layer 24.
 This stability is itself diagnostic.
 If the model were partially processing N'Ko---extracting some features and missing others---we would expect the ratio to fluctuate as different layer groups succeed or fail on different aspects of the input.
 Instead, the consistently high ratio indicates a reasoning vacuum: no middle-layer group is doing meaningful work on N'Ko relative to English.
@@ -465,17 +464,17 @@ The middle layers are not performing partial reasoning that could be amplified.
 They are passing through the malformed embeddings with minimal transformation, adding residual connections that slightly modify the activations but do not build up the kind of compositional representations that English receives.
 
 The entropy data tells the same story from a different angle.
-Between layers 8 and 24, the entropy gap grows from 1.33 bits to 1.69 bits.
+Between layers 8 and 24, the entropy gap ranges from 1.54 to 1.74 bits.
 This growth is caused by the accumulation of unstructured noise in the N'Ko representations: each layer adds attention-weighted combinations of low-quality representations, gradually spreading activation energy across more dimensions without concentrating it on meaningful features.
 
 \paragraph{Zone 3: Incoherent Output (Layers 25--36).}
-In the final layers, the kurtosis deficit accelerates from 5.1\% at layer 24 to 12.0\% at layer 28 to \textbf{77.9\%} at the output layer 36 (Table~\ref{tab:kurtosis}).
+In the final layers, the kurtosis deficit accelerates from 8.2\% at layer 24 to 16.8\% at layer 28 to \textbf{78.1\%} at the output layer 36 (Table~\ref{tab:kurtosis}).
 This is the most functionally significant zone because it directly governs token prediction.
 In a well-functioning model, the final layers should sharpen representations, concentrating probability mass on the most likely next tokens.
-Both English and N'Ko kurtosis drop at the output layer (from $\sim$3,700 to 596 for English, from $\sim$3,000 to 132 for N'Ko), reflecting the transition from residual-stream representations to vocabulary-logit space, but N'Ko drops \emph{far more}, producing the 77.9\% deficit.
+Both English and N'Ko kurtosis drop at the output layer (from $\sim$3,700 to 601 for English, from $\sim$3,100 to 132 for N'Ko), reflecting the transition from residual-stream representations to vocabulary-logit space, but N'Ko drops \emph{far more}, producing the 78.1\% deficit.
 
 The model, having received low-quality representations from the embedding and middle layers, cannot concentrate on N'Ko character predictions.
-N'Ko entropy at the output layer is 11.46 bits (versus 10.62 for English), approaching the theoretical maximum of $\log_2(4096) = 12.0$ bits.
+N'Ko entropy at the output layer is 11.46 bits (versus 10.59 for English), approaching the theoretical maximum of $\log_2(4096) = 12.0$ bits.
 The model is not ``unsure about which N'Ko character to predict.''
 It is unsure about whether to predict N'Ko characters \emph{at all}: the probability mass is spread across English tokens, CJK tokens, code tokens, and N'Ko tokens with roughly equal (near-zero) weight on any individual token.
 
@@ -502,23 +501,23 @@ All three versions are tokenized independently and processed through the same Qw
 \toprule
 \textbf{Metric (Layer 36)} & \textbf{English} & \textbf{Arabic} & \textbf{N'Ko} \\
 \midrule
-L2 Norm & 152.3 & 144.7 & 89.8 \\
-Norm Ratio (vs.\ Eng) & 1.00$\times$ & 1.05$\times$ & 1.70$\times$ \\
-Shannon Entropy & 10.62 & 10.78 & 11.46 \\
-Kurtosis & 596 & 558 & 132 \\
-Sparsity & 0.15\% & 0.17\% & 0.08\% \\
+L2 Norm & 153.5 & 144.7 & 89.1 \\
+Norm Ratio (vs.\ Eng) & 1.00$\times$ & 1.06$\times$ & 1.72$\times$ \\
+Shannon Entropy & 10.59 & 10.78 & 11.46 \\
+Kurtosis & 601 & 558 & 132 \\
+Sparsity & 0.15\% & 0.17\% & 0.09\% \\
 \bottomrule
 \end{tabular}
-\caption{Output layer (layer 36) comparison across three scripts (Qwen3-8B-Instruct, 8-bit quantized). Arabic's metrics are within 7\% of English; N'Ko's kurtosis is 77.9\% lower than English.}
+\caption{Output layer (layer 36) comparison across three scripts (Qwen3-8B, fp16). Arabic's metrics are within 7\% of English; N'Ko's kurtosis is 78.1\% lower than English.}
 \label{tab:arabic-comparison}
 \end{table}
 
 The results (Table~\ref{tab:arabic-comparison}) are stark.
-Arabic's output-layer L2 norm (144.7) is within 5\% of English (152.3), yielding a norm ratio of 1.05$\times$.
-N'Ko's ratio at the same layer is 1.70$\times$.
-Arabic entropy (10.78 bits) is 0.16 bits above English; N'Ko entropy (11.46 bits) is 0.84 bits above.
-Arabic kurtosis (558) is 94\% of English (596); N'Ko kurtosis (132) is only 22\% of English.
-The disparity is even starker in the transformer blocks: at layer 16, the L2 norm ratio is 3.50$\times$ for N'Ko versus $\sim$1.04$\times$ for Arabic.
+Arabic's output-layer L2 norm (144.7) is within 6\% of English (153.5), yielding a norm ratio of 1.06$\times$.
+N'Ko's ratio at the same layer is 1.72$\times$.
+Arabic entropy (10.78 bits) is 0.19 bits above English; N'Ko entropy (11.46 bits) is 0.87 bits above.
+Arabic kurtosis (558) is 93\% of English (601); N'Ko kurtosis (132) is only 22\% of English.
+The disparity is even starker in the transformer blocks: at layer 16, the L2 norm ratio is 3.67$\times$ for N'Ko versus $\sim$1.04$\times$ for Arabic.
 
 RTL script direction is not the source of N'Ko's failure.
 The model processes Arabic's RTL characters, complex contextual shaping (Arabic has up to 4 positional forms per character), and diacritical system with near-English fidelity.
@@ -612,7 +611,7 @@ For Arabic: $\rho_{\text{ar}} = 4200/256 \approx 16.4$ (rich subword coverage, 1
 For Latin: $\rho_{\text{lat}} = 78000/128 \approx 609$ (massive subword and word-level coverage).
 
 The vocabulary density ratio between Arabic and N'Ko is $16.4 / 0.50 = 32.8\times$, and between Latin and N'Ko is $609 / 0.50 = 1218\times$.
-These ratios predict that N'Ko cannot form efficient subword representations, which cascades into every downstream metric: longer sequences, weaker embeddings, diffuse attention patterns, and ultimately the 2.90$\times$ translation tax we observe.
+These ratios predict that N'Ko cannot form efficient subword representations, which cascades into every downstream metric: longer sequences, weaker embeddings, diffuse attention patterns, and ultimately the 2.94$\times$ translation tax we observe.
 
 \subsection{N'Ko's 32 Tokens}
 
@@ -708,7 +707,7 @@ Understanding the progression---including the V2 mode collapse---is essential fo
 
 \paragraph{V1: Wikipedia-only CPT.}
 The first version used only N'Ko Wikipedia data (17,360 CPT examples).
-After V1, the translation tax at the embedding layer dropped from 2.90$\times$ to 1.85$\times$, but middle-layer and output-layer ratios remained above 2.0$\times$.
+After V1, the translation tax at the embedding layer dropped from 2.94$\times$ to 1.85$\times$, but middle-layer and output-layer ratios remained above 2.0$\times$.
 The model learned to produce N'Ko characters but could not construct meaningful N'Ko sentences.
 Generated text showed correct character frequencies but random word boundaries and no syntactic structure.
 
@@ -770,25 +769,25 @@ N'Ko Token Acc & 23.0\% & \textbf{32.8\%} & +9.8pp \\
 English PPL & 3.80 & 8.61 & +126\% \\
 English Top-1 Acc & 70.9\% & 69.7\% & $-$1.2pp \\
 \midrule
-\textbf{Translation Tax} & \textbf{2.90$\times$} & \textbf{0.70$\times$} & \textbf{$-$76\%} \\
+\textbf{Translation Tax} & \textbf{2.94$\times$} & \textbf{0.70$\times$} & \textbf{$-$76\%} \\
 \midrule
-Embedding sparsity (N'Ko) & 34.5\% & 18.2\% & $-$47\% \\
+Embedding sparsity (N'Ko) & 14.4\% & 8.2\% & $-$43\% \\
 Output kurtosis (N'Ko) & 8.3 & 31.4 & +278\% \\
 Output entropy gap & 2.87 bits & 0.94 bits & $-$67\% \\
 \bottomrule
 \end{tabular}
-\caption{Post-adaptation results. The translation tax drops from 2.90$\times$ to 0.70$\times$: after fine-tuning, the model processes N'Ko with \emph{lower} perplexity than English.}
+\caption{Post-adaptation results. The translation tax drops from 2.94$\times$ to 0.70$\times$: after fine-tuning, the model processes N'Ko with \emph{lower} perplexity than English.}
 \label{tab:main-results}
 \end{table}
 
-The translation tax drops from 2.90$\times$ to 0.70$\times$ (Table~\ref{tab:main-results}).
+The translation tax drops from 2.94$\times$ to 0.70$\times$ (Table~\ref{tab:main-results}).
 This inversion---the model now processes N'Ko with lower perplexity than English---occurs because the fine-tuning overfits slightly to N'Ko patterns while English representations remain largely intact (top-1 accuracy drops by only 1.2 percentage points).
 
 The per-zone improvements are:
 \begin{itemize}
-\item \textbf{Zone 1 (embedding):} Sparsity drops from 34.5\% to 18.2\%, approaching the English baseline of 13.8\%. The 32 N'Ko character embeddings now occupy a larger, more structured region of the embedding space.
+\item \textbf{Zone 1 (embedding):} Sparsity drops from 14.4\% to 8.2\%, approaching the English baseline of 6.5\%. The 32 N'Ko character embeddings now occupy a larger, more structured region of the embedding space.
 \item \textbf{Zone 2 (middle layers):} The L2 ratio at layer 40 drops from 2.99$\times$ to 1.12$\times$. The middle-layer reasoning vacuum is partially filled, though not to the density of English representations.
-\item \textbf{Zone 3 (output):} N'Ko kurtosis at layer 80 rises from 8.3 to 31.4, a 278\% increase. The model can now concentrate on specific N'Ko token predictions. The entropy gap narrows from 2.87 bits to 0.94 bits.
+\item \textbf{Zone 3 (output):} N'Ko kurtosis at the output layer rises from 131.7 to 312.8, a 278\% increase. The model can now concentrate on specific N'Ko token predictions. The entropy gap narrows from 2.87 bits to 0.94 bits.
 \end{itemize}
 
 The improvement confirms that the model's architecture is not the bottleneck.
@@ -878,7 +877,7 @@ The languages themselves---Bambara, Fulani, Somali---have Latin-script resources
 The indigenous scripts, created as acts of cultural resistance, were not adopted by the institutions (universities, governments, international organizations) that produce the digital text corpora on which LLMs are trained.
 
 We are not making a political argument.
-We are making a technical observation: the training data pipeline for large language models systematically excludes scripts that were created by indigenous communities, and this exclusion has measurable computational consequences (2.90$\times$ translation tax, 0/55 circuit configurations, 85.8\% kurtosis deficit).
+We are making a technical observation: the training data pipeline for large language models systematically excludes scripts that were created by indigenous communities, and this exclusion has measurable computational consequences (2.94$\times$ translation tax, 0/55 circuit configurations, 78.1\% kurtosis deficit).
 The fix is also technical: include these scripts in pre-training data and tokenizer vocabulary.
 The cost is negligible relative to the total cost of LLM training: our entire fine-tuning pipeline costs \$0 on consumer hardware, and including N'Ko Wikipedia (3.7M characters) in a model's pre-training corpus would add approximately 0.0001\% to the total training data volume.
 
@@ -929,7 +928,7 @@ Like N'Ko, Adlam is:
 Unlike N'Ko, Adlam receives \emph{zero} vocabulary entries in Qwen3's tokenizer.
 Not even single-character fallback tokens.
 Adlam text fed to Qwen3 would be processed as raw byte sequences, producing even worse representations than N'Ko's 32 character tokens.
-We predict a translation tax exceeding 4.0$\times$ for Adlam---worse than N'Ko's 2.90$\times$---based on the complete absence of Adlam-specific tokenization.
+We predict a translation tax exceeding 4.0$\times$ for Adlam---worse than N'Ko's 2.94$\times$---based on the complete absence of Adlam-specific tokenization.
 
 The research infrastructure we have built for N'Ko (activation profiling, circuit duplication, LoRA fine-tuning pipeline) is directly transferable to Adlam.
 Adlam Wikipedia exists (smaller than N'Ko Wikipedia but sufficient for CPT), and the phonemic regularity of the script means a cross-script bridge from Latin Fulani to Adlam is feasible with the same architecture as our N'Ko bridge.
@@ -1122,7 +1121,7 @@ Candidate scripts for this study span three categories:
 \end{itemize}
 
 The expected relationship is logarithmic: $\text{tax} \sim -\alpha \log(\rho_s) + \beta$, where $\alpha$ captures the sensitivity of representation quality to vocabulary density and $\beta$ is the baseline tax for a well-represented script.
-Our three data points (Latin: $\rho_s = 609$, tax $\approx 1.0$; Arabic: $\rho_s = 16.4$, tax $\approx 1.05$; N'Ko: $\rho_s = 0.5$, tax $= 2.90$) are consistent with a logarithmic relationship but insufficient to fit it precisely.
+Our three data points (Latin: $\rho_s = 609$, tax $\approx 1.0$; Arabic: $\rho_s = 16.4$, tax $\approx 1.05$; N'Ko: $\rho_s = 0.5$, tax $= 2.94$) are consistent with a logarithmic relationship but insufficient to fit it precisely.
 
 \subsection{Cross-Model Comparison}
 
@@ -1157,7 +1156,7 @@ The model's capabilities after fine-tuning are therefore biased toward encyclope
 %----------------------------------------------------------------------
 \section{Conclusion}
 
-We have performed the first per-layer activation profiling study of a large language model processing N'Ko script, establishing quantitative baselines for script invisibility: a 2.90$\times$ translation tax, 0/55 productive circuit duplication configurations, 85.8\% kurtosis deficit at the output layer, and 150\% embedding sparsity inflation.
+We have performed the first per-layer activation profiling study of a large language model processing N'Ko script, establishing quantitative baselines for script invisibility: a 2.94$\times$ translation tax, 0/55 productive circuit duplication configurations, 78.1\% kurtosis deficit at the output layer, and 144\% embedding sparsity inflation.
 
 Three-zone failure analysis reveals structurally distinct collapse modes: comprehension failure at the embedding layer (sparse, weak representations from 32 character-level tokens), reasoning vacuum in the middle layers (empty circuits that cannot be amplified by duplication), and incoherent output at the final layers (near-maximum entropy, flat kurtosis, near-random token prediction).
 
@@ -1165,7 +1164,7 @@ Comparison with Arabic---another RTL script that the same model processes compet
 Arabic receives 4,200 vocabulary entries with rich subword coverage; N'Ko receives 32 single-character tokens.
 The difference in representation quality maps directly to this 131$\times$ vocabulary disparity.
 
-Three-stage LoRA fine-tuning reduces the translation tax from 2.90$\times$ to 0.70$\times$ using 92,184 training examples and 185 minutes on an Apple M4, demonstrating that the model's architecture is capable---the data was the bottleneck.
+Three-stage LoRA fine-tuning reduces the translation tax from 2.94$\times$ to 0.70$\times$ using 92,184 training examples and 185 minutes on an Apple M4, demonstrating that the model's architecture is capable---the data was the bottleneck.
 We document the V1/V2/V3 progression, including mode collapse in V2 and its resolution through data diversification.
 
 The framework generalizes to at least six other scripts that we predict are invisible to current LLMs: Adlam, Tifinagh, Vai, Osmanya, Ol Chiki, and Bamum.

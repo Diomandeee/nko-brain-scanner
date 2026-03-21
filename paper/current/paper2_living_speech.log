@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  20 MAR 2026 22:06
+This is pdfTeX, Version 3.141592653-2.6-1.40.27 (TeX Live 2025) (preloaded format=pdflatex 2025.3.8)  20 MAR 2026 22:25
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -405,7 +405,7 @@ File: l3backend-pdftex.def 2024-05-08 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count307
 \l__pdf_internal_box=\box55
 )
-No file paper2_living_speech.aux.
+(./paper2_living_speech.aux)
 \openout1 = `paper2_living_speech.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 26.
@@ -429,6 +429,7 @@ LaTeX Font Info:    ... okay on input line 26.
 LaTeX Font Info:    Checking defaults for T3/cmr/m/n on input line 26.
 LaTeX Font Info:    Trying to load font information for T3+cmr on input line 26
 .
+
 (/usr/local/texlive/2025/texmf-dist/tex/latex/tipa/t3cmr.fd
 File: t3cmr.fd 2001/12/31 TIPA font definitions
 )
@@ -502,11 +503,13 @@ Package caption Info: Begin \AtBeginDocument code.
 Package caption Info: hyperref package is loaded.
 Package caption Info: End \AtBeginDocument code.
 Package hyperref Info: Link coloring ON on input line 26.
+(./paper2_living_speech.out) (./paper2_living_speech.out)
 \@outlinefile=\write3
 \openout3 = `paper2_living_speech.out'.
 
 LaTeX Font Info:    Trying to load font information for U+lasy on input line 27
 .
+
 (/usr/local/texlive/2025/texmf-dist/tex/latex/base/ulasy.fd
 File: ulasy.fd 1998/08/17 v2.2e LaTeX symbol font definitions
 )
@@ -549,13 +552,25 @@ LaTeX Font Info:    Trying to load font information for TS1+ptm on input line 5
 (/usr/local/texlive/2025/texmf-dist/tex/latex/psnfss/ts1ptm.fd
 File: ts1ptm.fd 2001/06/04 font definitions for TS1/ptm.
 )
+Underfull \hbox (badness 1112) in paragraph at lines 57--64
+\OT1/ptm/m/n/10.95 writ-ing sys-tem for the Mand-ing lan-guages of
+ []
 
-Package natbib Warning: Citation `unicode2006nko' on page 1 undefined on input 
-line 58.
+
+Underfull \hbox (badness 1424) in paragraph at lines 57--64
+\OT1/ptm/m/n/10.95 oc-cu-py-ing Uni-code block \OT1/pcr/m/n/10.95 U+07C0--U+07F
+F
+ []
 
 
-Package natbib Warning: Citation `maliba2024bambara' on page 1 undefined on inp
-ut line 66.
+Underfull \hbox (badness 1314) in paragraph at lines 57--64
+\OT1/ptm/m/n/10.95 prop-erty that no evolved writ-ing sys-tem pos-
+ []
+
+
+Underfull \hbox (badness 1371) in paragraph at lines 65--68
+\OT1/ptm/m/n/10.95 French colo-nial lin-guists in the 20th cen-tury.
+ []
 
 
 
@@ -565,11 +580,6 @@ ocal/texlive/2025/texmf-dist/fonts/enc/dvips/base/8r.enc}
 
 
 ]
-
-LaTeX Warning: Reference `sec:hypothesis' on page 2 undefined on input line 81.
-
-
-
 Underfull \hbox (badness 1910) in paragraph at lines 81--82
 \OT1/ptm/m/n/10.95 for-mal anal-y-sis of why N'Ko's bi-jec-tive
  []
@@ -580,37 +590,12 @@ Underfull \hbox (badness 1057) in paragraph at lines 81--82
  []
 
 
-LaTeX Warning: Reference `sec:bridge' on page 2 undefined on input line 82.
-
-
-LaTeX Warning: Reference `sec:arch-search' on page 2 undefined on input line 83
-.
-
-
 Underfull \hbox (badness 3977) in paragraph at lines 83--84
 []\OT1/ptm/m/n/10.95 A \OT1/ptm/b/n/10.95 28-configuration ar-chi-tec-ture sear
 ch
  []
 
 
-LaTeX Warning: Reference `sec:v1' on page 2 undefined on input line 84.
-
-
-LaTeX Warning: Reference `sec:v4' on page 2 undefined on input line 84.
-
-
-Underfull \hbox (badness 1418) in paragraph at lines 84--85
-\OT1/ptm/m/n/10.95 with com-plete train-ing pro-gres-sion (\TS1/ptm/m/n/10.95 §
-[]\OT1/ptm/m/n/10.95 --
- []
-
-
-LaTeX Warning: Reference `sec:v4' on page 2 undefined on input line 85.
-
-
-
-
-LaTeX Warning: Reference `sec:fsm' on page 2 undefined on input line 86.
 
 
 Underfull \hbox (badness 2181) in paragraph at lines 86--87
@@ -624,112 +609,35 @@ Underfull \hbox (badness 1789) in paragraph at lines 86--87
  []
 
 
-LaTeX Warning: Reference `sec:translation' on page 2 undefined on input line 87
-.
-
-
-LaTeX Warning: Reference `sec:distributed' on page 2 undefined on input line 88
-.
-
-
 Underfull \hbox (badness 10000) in paragraph at lines 88--89
 []\OT1/ptm/b/n/10.95 Distributed in-fer-ence ar-chi-tec-ture\OT1/ptm/m/n/10.95 
 :
  []
 
 
-LaTeX Warning: Reference `sec:findings' on page 2 undefined on input line 89.
-
-
-Package natbib Warning: Citation `maliba2024bambara' on page 2 undefined on inp
-ut line 97.
-
-
-Underfull \hbox (badness 3942) in paragraph at lines 97--101
-\OT1/ptm/m/n/10.95 tune of Whis-per large-v3 achiev-ing 45.73%
+Underfull \hbox (badness 10000) in paragraph at lines 105--108
+\OT1/ptm/m/n/10.95 and bam-asr-early (37 hours, CC-BY-4.0)
  []
 
 
-Underfull \hbox (badness 1237) in paragraph at lines 97--101
-\OT1/ptm/m/n/10.95 put. FarmRadioInternational/bambara-whisper-
+Underfull \hbox (badness 6445) in paragraph at lines 105--108
+\OT1/ptm/m/n/10.95 ([][]Robots-Mali[][], [][]2024[][]) are the pri-mary pub-lic
+
  []
 
 
-Package natbib Warning: Citation `bambara_survey_2026' on page 2 undefined on i
-nput line 103.
-
-
-Package natbib Warning: Citation `robotsmali2024bamasrearly' on page 2 undefine
-d on input line 105.
-
-
-Package natbib Warning: Citation `bayelemabaga2025' on page 2 undefined on inpu
-t line 106.
-
-
-Package natbib Warning: Citation `wmt2023nko' on page 2 undefined on input line
- 107.
-
-
-Underfull \hbox (badness 1515) in paragraph at lines 105--108
-\OT1/ptm/m/n/10.95 and bam-asr-early (37 hours, CC-BY-4.0) (\OT1/ptm/b/n/10.95 
-?\OT1/ptm/m/n/10.95 )
+Underfull \hbox (badness 5175) in paragraph at lines 105--108
+\OT1/ptm/m/n/10.95 es-tab-lished NMT base-lines for N'Ko script
  []
 
 
 
 [2]
 
-Package natbib Warning: Citation `radford2023robust' on page 3 undefined on inp
-ut line 113.
 
-
-Package natbib Warning: Citation `baevski2020wav2vec' on page 3 undefined on in
-put line 113.
-
-
-Package natbib Warning: Citation `hsu2021hubert' on page 3 undefined on input l
-ine 113.
-
-
-Underfull \hbox (badness 1092) in paragraph at lines 113--115
-\OT1/ptm/m/n/10.95 els: Whis-per (\OT1/ptm/b/n/10.95 ?\OT1/ptm/m/n/10.95 ), wav
-2vec 2.0 (\OT1/ptm/b/n/10.95 ?\OT1/ptm/m/n/10.95 ), and Hu-
+Underfull \hbox (badness 1460) in paragraph at lines 139--141
+\OT1/ptm/m/n/10.95 si-bil-ity of build-ing lan-guage tech-nol-ogy from
  []
-
-
-Package natbib Warning: Citation `graves2006connectionist' on page 3 undefined 
-on input line 116.
-
-
-Package natbib Warning: Citation `park2019specaugment' on page 3 undefined on i
-nput line 120.
-
-
-Package natbib Warning: Citation `radford2023robust' on page 3 undefined on inp
-ut line 122.
-
-
-Package natbib Warning: Citation `san2021leveraging' on page 3 undefined on inp
-ut line 123.
-
-
-Package natbib Warning: Citation `tonja2023natural' on page 3 undefined on inpu
-t line 128.
-
-
-Package natbib Warning: Citation `kakwani2020indicnlpsuite' on page 3 undefined
- on input line 129.
-
-
-Package natbib Warning: Citation `costa2022no' on page 3 undefined on input lin
-e 135.
-
-
-
-
-Package natbib Warning: Citation `doumbouya2021' on page 3 undefined on input l
-ine 139.
 
 
 Underfull \hbox (badness 1888) in paragraph at lines 152--154
@@ -808,12 +716,9 @@ Underfull \hbox (badness 4634) in paragraph at lines 307--310
 
 
 [5]
-
-Package natbib Warning: Citation `bayelemabaga2025' on page 6 undefined on inpu
-t line 325.
-
-
-LaTeX Warning: Reference `sec:fsm' on page 6 undefined on input line 326.
+Underfull \hbox (badness 1412) in paragraph at lines 325--329
+\OT1/ptm/m/n/10.95 We val-i-date the bridge on the Bayelemabaga
+ []
 
 
 Underfull \hbox (badness 1377) in paragraph at lines 331--332
@@ -821,8 +726,6 @@ Underfull \hbox (badness 1377) in paragraph at lines 331--332
  []
 
 
-Package natbib Warning: Citation `robotsmali2024bamasrearly' on page 6 undefine
-d on input line 343.
 
 
 Overfull \hbox (36.47717pt too wide) detected at line 361
@@ -833,54 +736,18 @@ t/10.95 ; \OT1/cmr/m/n/10.95 512)$
 
 
 
-
-Package natbib Warning: Citation `hochreiter1997lstm' on page 6 undefined on in
-put line 383.
-
-
-Package natbib Warning: Citation `hochreiter1997lstm' on page 6 undefined on in
-put line 389.
-
-
-Package natbib Warning: Citation `vaswani2017attention' on page 6 undefined on 
-input line 389.
-
-
-Package natbib Warning: Citation `gulati2020conformer' on page 6 undefined on i
-nput line 389.
-
-
-Underfull \hbox (badness 1721) in paragraph at lines 389--391
-\OT1/ptm/m/n/10.95 We sys-tem-at-i-cally vary four di-men-sions: ar-
- []
-
-
-Underfull \hbox (badness 3780) in paragraph at lines 389--391
-\OT1/ptm/m/n/10.95 chi-tec-ture fam-ily (BiL-STM (\OT1/ptm/b/n/10.95 ?\OT1/ptm/
-m/n/10.95 ), Trans-former
- []
-
-
-Underfull \hbox (badness 1189) in paragraph at lines 389--391
-\OT1/ptm/m/n/10.95 (\OT1/ptm/b/n/10.95 ?\OT1/ptm/m/n/10.95 ), Con-former (\OT1/
-ptm/b/n/10.95 ?\OT1/ptm/m/n/10.95 )), hid-den di-men-sion ($\OML/cmm/m/it/10.95
- d \OMS/cmsy/m/n/10.95 2
- []
-
-
-Underfull \hbox (badness 2173) in paragraph at lines 389--391
-\OT1/ptm/m/n/10.95 and tem-po-ral down-sam-pling ($\OMS/cmsy/m/n/10.95 f\OT1/cm
-r/m/n/10.95 4\OMS/cmsy/m/n/10.95 ^^B\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 8\
-OMS/cmsy/m/n/10.95 ^^B\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 16\OMS/cmsy/m/n/
-10.95 ^^Bg$\OT1/ptm/m/n/10.95 ).
- []
-
-
-
 [6]
+Underfull \hbox (badness 2111) in paragraph at lines 389--391
+\OT1/ptm/m/n/10.95 Con-former ([][]Gu-lati et al.[][], [][]2020[][])), hid-den 
+di-
+ []
 
-LaTeX Warning: Reference `tab:arch-search-full' on page 7 undefined on input li
-ne 438.
+
+Underfull \hbox (badness 2189) in paragraph at lines 389--391
+\OMS/cmsy/m/n/10.95 f\OT1/cmr/m/n/10.95 2\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.
+95 4\OML/cmm/m/it/10.95 ; \OT1/cmr/m/n/10.95 6\OMS/cmsy/m/n/10.95 g$ \OT1/ptm/m
+/n/10.95 lay-ers), and tem-po-ral down-sam-pling
+ []
 
 
 Underfull \hbox (badness 2393) in paragraph at lines 438--442
@@ -926,15 +793,8 @@ Underfull \hbox (badness 2318) in paragraph at lines 482--483
  []
 
 
-Package natbib Warning: Citation `vaswani2017attention' on page 7 undefined on 
-input line 483.
-
-
 
 [7]
-
-Package natbib Warning: Citation `park2019specaugment' on page 8 undefined on i
-nput line 494.
 
 
 Underfull \hbox (badness 2951) in paragraph at lines 494--497
@@ -944,14 +804,10 @@ ing with
 
 
 
-
+[8]
 Overfull \hbox (39.76437pt too wide) in paragraph at lines 511--527
  [][] 
  []
-
-
-LaTeX Warning: Reference `tab:v3-loss-curve' on page 8 undefined on input line 
-531.
 
 
 Underfull \hbox (badness 2980) in paragraph at lines 536--537
@@ -965,17 +821,11 @@ Underfull \hbox (badness 1472) in paragraph at lines 536--537
 
 
 
-[8]
+
 Underfull \hbox (badness 3354) in paragraph at lines 551--554
 []\OT1/ptm/m/it/10.95 Sample 5 (6-word sen-tence): \OT1/ptm/m/n/10.95 The model
 
  []
-
-
-
-
-Package natbib Warning: Citation `hu2022lora' on page 9 undefined on input line
- 567.
 
 
 Underfull \hbox (badness 1215) in paragraph at lines 572--573
@@ -983,48 +833,34 @@ Underfull \hbox (badness 1215) in paragraph at lines 572--573
  []
 
 
+
+[9]
 Underfull \hbox (badness 2884) in paragraph at lines 589--590
 \OT1/ptm/m/n/10.95 reusable), while the ASR ex-per-i-ments adapt
  []
 
 
-
-[9]
 Underfull \hbox (badness 1189) in paragraph at lines 591--592
 \OT1/ptm/m/n/10.95 8 lay-ers) pre-serves the lower lay-ers' general-
  []
 
 
-LaTeX Warning: Reference `tab:v4-training' on page 10 undefined on input line 6
-15.
-
-
-LaTeX Warning: Reference `tab:v4-results' on page 10 undefined on input line 63
-8.
 
 
 
-
-LaTeX Warning: Reference `tab:v4-persample-summary' on page 10 undefined on inp
-ut line 666.
-
-
+[10]
 Underfull \hbox (badness 1490) in paragraph at lines 671--672
 []\OT1/ptm/m/n/10.95 The most dra-matic im-prove-ments oc-cur on
  []
 
 
-LaTeX Warning: Reference `tab:v4-persample-detail' on page 10 undefined on inpu
-t line 696.
-
-
-Underfull \hbox (badness 7451) in paragraph at lines 696--699
-\OT1/ptm/m/n/10.95 der V3 (WER 15.80, es-sen-tially com-plete
+Underfull \hbox (badness 1454) in paragraph at lines 696--699
+\OT1/ptm/m/n/10.95 ple au30---the worst-performing sam-ple un-der
  []
 
 
 
-[10]
+
 Overfull \hbox (12.30893pt too wide) in paragraph at lines 715--727
  [][] 
  []
@@ -1035,10 +871,9 @@ Underfull \hbox (badness 2460) in paragraph at lines 727--727
  []
 
 
-LaTeX Warning: Reference `tab:asr-summary' on page 11 undefined on input line 7
-31.
-
-
+Underfull \hbox (badness 1430) in paragraph at lines 731--733
+\OT1/ptm/m/n/10.95 Table [][]9[][] sum-ma-rizes the four-version pro-gres-
+ []
 
 
 Underfull \hbox (badness 1596) in paragraph at lines 741--742
@@ -1053,24 +888,16 @@ Overfull \hbox (7.90425pt too wide) in paragraph at lines 774--799
  []
 
 
-LaTeX Warning: Reference `tab:fsm-transitions' on page 12 undefined on input li
-ne 804.
 
 
 
-
-LaTeX Warning: Reference `tab:fsm-validation' on page 12 undefined on input lin
-e 840.
-
-
+[12]
 Underfull \hbox (badness 1122) in paragraph at lines 845--847
  []\OT1/ptm/b/n/10.95 Throughput.[] \OT1/ptm/m/n/10.95 FSM val-i-da-tion adds n
 eg-li-gi-ble
  []
 
 
-
-[12]
 Underfull \hbox (badness 1968) in paragraph at lines 852--855
 \OT1/ptm/m/n/10.95 stream applications---chatbots, search en-gines,
  []
@@ -1082,29 +909,15 @@ Underfull \hbox (badness 2119) in paragraph at lines 866--867
  []
 
 
+
+
 Overfull \hbox (6.34221pt too wide) in paragraph at lines 880--892
  [][] 
  []
 
 
-
-
-LaTeX Warning: Reference `tab:nllb-quality' on page 13 undefined on input line 
-941.
-
-
-Package natbib Warning: Citation `wmt2023nko' on page 13 undefined on input lin
-e 942.
-
-
 Underfull \hbox (badness 1127) in paragraph at lines 941--943
 \OT1/ptm/m/n/10.95 WMT 2023 N'Ko shared task re-ported 30.83
- []
-
-
-Underfull \hbox (badness 1024) in paragraph at lines 941--943
-\OT1/ptm/m/n/10.95 chrF++ for en$\OMS/cmsy/m/n/10.95 !$\OT1/ptm/m/n/10.95 nko (
-\OT1/ptm/b/n/10.95 ?\OT1/ptm/m/n/10.95 ) on a larger dataset
  []
 
 
@@ -1113,13 +926,13 @@ Underfull \hbox (badness 1005) in paragraph at lines 948--949
  []
 
 
+
+[13]
 Overfull \hbox (35.05417pt too wide) in paragraph at lines 965--975
  [][] 
  []
 
 
-
-[13]
 Underfull \hbox (badness 1590) in paragraph at lines 982--983
 \OT1/ptm/m/n/10.95 al-ized and sent over Thun-der-bolt 5 (ap-
  []
@@ -1135,69 +948,57 @@ Underfull \hbox (badness 1270) in paragraph at lines 989--991
  []
 
 
-LaTeX Warning: Reference `sec:hypothesis' on page 14 undefined on input line 10
-00.
-
-
-LaTeX Warning: Reference `tab:arch-search-full' on page 14 undefined on input l
-ine 1000.
-
-
-
-
-LaTeX Warning: Reference `sec:bridge' on page 14 undefined on input line 1021.
 
 
 
 [14]
-Underfull \hbox (badness 10000) in paragraph at lines 1034--1038
+Underfull \hbox (badness 10000) in paragraph at lines 1036--1040
 \OT1/ptm/b/n/10.95 worst-case im-prove-ment.[] \OT1/ptm/m/n/10.95 V4's per-samp
 le
  []
 
 
-Underfull \hbox (badness 2126) in paragraph at lines 1034--1038
+Underfull \hbox (badness 2126) in paragraph at lines 1036--1040
 \OT1/ptm/m/n/10.95 anal-y-sis re-veals that en-coder adap-ta-tion does
  []
 
 
-Underfull \hbox (badness 1067) in paragraph at lines 1034--1038
+Underfull \hbox (badness 1067) in paragraph at lines 1036--1040
 \OT1/ptm/m/n/10.95 well. This sug-gests that the frozen Whis-per
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1034--1038
+Underfull \hbox (badness 10000) in paragraph at lines 1036--1040
 \OT1/ptm/m/n/10.95 Bam-bara phone-mic patterns---combinations
  []
 
 
-Underfull \hbox (badness 2600) in paragraph at lines 1034--1038
+Underfull \hbox (badness 2600) in paragraph at lines 1036--1040
 \OT1/ptm/m/n/10.95 of tone, nasal-iza-tion, and con-so-nant voic-ing
  []
 
 
 
 
-Underfull \hbox (badness 1253) in paragraph at lines 1066--1071
+
+[15]
+Underfull \hbox (badness 1253) in paragraph at lines 1068--1073
 []\OT1/ptm/b/n/10.95 Greedy CTC de-cod-ing. \OT1/ptm/m/n/10.95 All ver-sions us
 e
  []
 
 
-Package natbib Warning: Citation `data_scaling_2024' on page 15 undefined on in
-put line 1080.
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
 
-[15]
-Underfull \hbox (badness 2158) in paragraph at lines 1099--1100
+
+Underfull \hbox (badness 2158) in paragraph at lines 1101--1102
 \OT1/ptm/m/n/10.95 We man-u-ally cat-e-go-rize character-level er-rors
  []
 
 
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1130--1133
+Underfull \hbox (badness 10000) in paragraph at lines 1132--1135
  []\OT1/ptm/b/n/10.95 Syllable dele-tion (14--23%).[] \OT1/ptm/m/n/10.95 The se
 cond-
  []
@@ -1205,159 +1006,127 @@ cond-
 
 
 [16]
-
-LaTeX Warning: Reference `tab:error-correlation' on page 17 undefined on input 
-line 1180.
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
 
-Underfull \hbox (badness 3199) in paragraph at lines 1209--1211
+
+
+Underfull \hbox (badness 3199) in paragraph at lines 1211--1213
 \OT1/ptm/m/n/10.95 se-quences in-creas-ing self-attention's quadratic
  []
 
 
 
-
-LaTeX Warning: Reference `tab:lora-rank-ablation' on page 17 undefined on input
- line 1237.
-
-
-LaTeX Warning: Reference `tab:lora-layer-ablation' on page 17 undefined on inpu
-t line 1263.
-
-
-
 [17]
 
-LaTeX Warning: Reference `tab:compute-cost' on page 18 undefined on input line 
-1296.
 
-
-
-
-Underfull \hbox (badness 4913) in paragraph at lines 1308--1309
+Underfull \hbox (badness 4913) in paragraph at lines 1310--1311
 []\OT1/ptm/b/n/10.95 NLLB-200 adapter\OT1/ptm/m/n/10.95 : Fine-tuned LoRA
- []
-
-
-Package natbib Warning: Citation `data_scaling_2024' on page 18 undefined on in
-put line 1319.
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 1317--1320
-\OT1/ptm/m/n/10.95 The afvoices cor-pus (612 hours, Robots-
- []
-
-
-Underfull \hbox (badness 2600) in paragraph at lines 1332--1333
-[]\OT1/ptm/b/n/10.95 Manual an-no-ta-tion\OT1/ptm/m/n/10.95 : A trained lin-gui
-st
- []
-
-
-Underfull \hbox (badness 2050) in paragraph at lines 1332--1333
-\OT1/ptm/m/n/10.95 can tone-mark Bam-bara text at ap-prox-i-
- []
-
-
-Underfull \hbox (badness 1264) in paragraph at lines 1332--1333
-\OT1/ptm/m/n/10.95 37 hours of tran-scrip-tions (ap-prox-i-mately
  []
 
 
 
 [18]
-Underfull \hbox (badness 4084) in paragraph at lines 1354--1359
+Underfull \hbox (badness 10000) in paragraph at lines 1319--1322
+\OT1/ptm/m/n/10.95 The afvoices cor-pus (612 hours, Robots-
+ []
+
+
+Underfull \hbox (badness 1728) in paragraph at lines 1319--1322
+\OT1/ptm/m/n/10.95 ap-prox-i-mately 15--18%, cross-ing the prac-ti-cal
+ []
+
+
+Underfull \hbox (badness 2600) in paragraph at lines 1334--1335
+[]\OT1/ptm/b/n/10.95 Manual an-no-ta-tion\OT1/ptm/m/n/10.95 : A trained lin-gui
+st
+ []
+
+
+Underfull \hbox (badness 2050) in paragraph at lines 1334--1335
+\OT1/ptm/m/n/10.95 can tone-mark Bam-bara text at ap-prox-i-
+ []
+
+
+Underfull \hbox (badness 1264) in paragraph at lines 1334--1335
+\OT1/ptm/m/n/10.95 37 hours of tran-scrip-tions (ap-prox-i-mately
+ []
+
+
+
+
+Underfull \hbox (badness 4084) in paragraph at lines 1356--1361
 \OT1/ptm/m/n/10.95 the struc-tural ad-van-tage of N'Ko's bi-jec-tive
  []
 
 
 
-
-Underfull \hbox (badness 5161) in paragraph at lines 1375--1380
+[19]
+Underfull \hbox (badness 5161) in paragraph at lines 1377--1382
 []\OT1/ptm/m/n/10.95 Solomana Kant[]e de-signed N'Ko in 1949
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1382--1384
+Underfull \hbox (badness 10000) in paragraph at lines 1384--1386
 \OT1/ptm/m/it/10.95 Code, mod-els, and eval-u-a-tion frame-work:
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 1382--1384
+Underfull \hbox (badness 10000) in paragraph at lines 1384--1386
 [][]$\OT1/pcr/m/n/10.95 https : / / github . com / Diomandeee /
  []
 
 
-Underfull \vbox (badness 4739) has occurred while \output is active []
 
 
-
-[19]
-Underfull \hbox (badness 1466) in paragraph at lines 1416--1419
+Underfull \hbox (badness 1466) in paragraph at lines 1418--1421
 \OT1/ptm/m/n/10 and J[]urgen Schmid-hu-ber. 2006.  Con-nec-tion-ist
  []
 
 
-Underfull \hbox (badness 4316) in paragraph at lines 1426--1429
+Underfull \hbox (badness 4316) in paragraph at lines 1428--1431
 []\OT1/ptm/m/n/10 Wei-Ning Hsu, Ben-jamin Bolte, Yao-Hung Hu-
  []
 
 
-Underfull \hbox (badness 1472) in paragraph at lines 1426--1429
+Underfull \hbox (badness 1472) in paragraph at lines 1428--1431
 \OT1/ptm/m/n/10 bert Tsai, Kushal Lakho-tia, Rus-lan Salakhut-di-
  []
 
 
-Underfull \hbox (badness 1122) in paragraph at lines 1436--1439
+Underfull \hbox (badness 1122) in paragraph at lines 1438--1441
 []\OT1/ptm/m/n/10 Divyanshu Kak-wani et al. 2020.  In-dic-NLP-Suite:
  []
 
 
 
-
-Underfull \hbox (badness 3758) in paragraph at lines 1489--1492
+[20]
+Underfull \hbox (badness 3758) in paragraph at lines 1496--1499
 []\OT1/ptm/m/n/10 Sepp Hochre-iter and J[]urgen Schmid-hu-ber. 1997.
  []
 
 
-Package natbib Warning: There were undefined citations.
 
 
 
-[20] (./paper2_living_speech.aux
+[21
 
-Package natbib Warning: Citation(s) may have changed.
-(natbib)                Rerun to get citations correct.
-
-)
+] (./paper2_living_speech.aux)
  ***********
 LaTeX2e <2024-11-01> patch level 2
 L3 programming layer <2025-01-18>
  ***********
-
-
-LaTeX Warning: There were undefined references.
-
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
-
-Package rerunfilecheck Warning: File `paper2_living_speech.out' has changed.
-(rerunfilecheck)                Rerun to get outlines right
-(rerunfilecheck)                or use package `bookmark'.
-
-Package rerunfilecheck Info: Checksums for `paper2_living_speech.out':
-(rerunfilecheck)             Before: <no file>
-(rerunfilecheck)             After:  42378D5AD3CC7BFEF40952FA8C3D1C6E;9226.
+Package rerunfilecheck Info: File `paper2_living_speech.out' has not changed.
+(rerunfilecheck)             Checksum: 42378D5AD3CC7BFEF40952FA8C3D1C6E;9226.
  ) 
 Here is how much of TeX's memory you used:
- 14350 strings out of 473190
- 221113 string characters out of 5715801
- 645060 words of memory out of 5000000
- 37181 multiletter control sequences out of 15000+600000
+ 14417 strings out of 473190
+ 222234 string characters out of 5715801
+ 646487 words of memory out of 5000000
+ 37240 multiletter control sequences out of 15000+600000
  601177 words of font info for 132 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 90i,17n,93p,766b,581s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 90i,17n,93p,766b,608s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
 ></usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb>
 </usr/local/texlive/2025/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></
@@ -1379,10 +1148,10 @@ s/type1/urw/times/utmr8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/ur
 w/times/utmri8a.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/tipa
 /xipa10.pfb></usr/local/texlive/2025/texmf-dist/fonts/type1/public/tipa/xipasl1
 0.pfb>
-Output written on paper2_living_speech.pdf (20 pages, 301614 bytes).
+Output written on paper2_living_speech.pdf (21 pages, 310762 bytes).
 PDF statistics:
- 427 PDF objects out of 1000 (max. 8388607)
- 359 compressed objects within 4 object streams
- 203 named destinations out of 1000 (max. 500000)
- 1 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 689 PDF objects out of 1000 (max. 8388607)
+ 617 compressed objects within 7 object streams
+ 205 named destinations out of 1000 (max. 500000)
+ 417 words of extra memory for PDF output out of 10000 (max. 10000000)
 

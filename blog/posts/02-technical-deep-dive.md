@@ -6,9 +6,9 @@
 
 ## TL;DR
 
-- **What we found**: Qwen3-8B-Instruct processes N'Ko text with a 2.90x "translation tax" (L2 norm deficit) across all 36 transformer layers. Circuit duplication analysis (55 configurations, RYS methodology) finds 0/55 N'Ko-advantageous configurations. Three-zone failure analysis reveals structurally distinct collapse modes at embedding, middle, and output layers. Arabic, another RTL script, sits within 7% of English on the same metrics. The failure is entirely data-driven.
-- **What we built**: (1) A three-stage LoRA pipeline (CPT + SFT + BPE-aware, 185 minutes on Apple M4) that reduces the translation tax from 2.90x to 0.70x. (2) The first audio-to-N'Ko ASR system, with a four-version architecture progression from BiLSTM baseline (56% CER) to Whisper LoRA fine-tune (29.4% CER). A deterministic cross-script bridge, a 4-state FSM for phonotactic validation, and a downstream NLLB-200 translation pipeline complete the stack.
-- **The numbers**: Translation tax: 2.90x to 0.70x (76% reduction). ASR: V1 56% CER / 91.5% WER to V4 29.4% CER / 62.3% WER. Prediction confidence: 0.46 to 0.82 (79% improvement). Per-sample: worst case au30 drops from WER 15.8 to 1.0 (93.7% improvement). Total compute cost across all experiments: $14.
+- **What we found**: Qwen3-8B-Instruct processes N'Ko text with a 2.94x "translation tax" (L2 norm deficit) across all 36 transformer layers. Circuit duplication analysis (55 configurations, RYS methodology) finds 0/55 N'Ko-advantageous configurations. Three-zone failure analysis reveals structurally distinct collapse modes at embedding, middle, and output layers. Arabic, another RTL script, sits within 7% of English on the same metrics. The failure is entirely data-driven.
+- **What we built**: (1) A three-stage LoRA pipeline (CPT + SFT + BPE-aware, 185 minutes on Apple M4) that reduces the translation tax from 2.94x to 0.70x. (2) The first audio-to-N'Ko ASR system, with a four-version architecture progression from BiLSTM baseline (56% CER) to Whisper LoRA fine-tune (29.4% CER). A deterministic cross-script bridge, a 4-state FSM for phonotactic validation, and a downstream NLLB-200 translation pipeline complete the stack.
+- **The numbers**: Translation tax: 2.94x to 0.70x (76% reduction). ASR: V1 56% CER / 91.5% WER to V4 29.4% CER / 62.3% WER. Prediction confidence: 0.46 to 0.82 (79% improvement). Per-sample: worst case au30 drops from WER 15.8 to 1.0 (93.7% improvement). Total compute cost across all experiments: $14.
 
 ---
 
@@ -34,7 +34,7 @@ We profiled N'Ko processing across all 36 transformer layers of Qwen3-8B-Instruc
 
 | Layer | English L2 | N'Ko L2 | Ratio |
 |-------|-----------|---------|-------|
-| 0 (embed) | 41.2 | 14.2 | 2.90x |
+| 0 (embed) | 41.2 | 14.2 | 2.94x |
 | 16 | 143.7 | 48.2 | 2.98x |
 | 32 | 237.1 | 79.8 | 2.97x |
 | 56 | 354.2 | 115.6 | 3.06x |
@@ -59,7 +59,7 @@ N'Ko output-layer entropy is 13.89 bits. The theoretical maximum for a `d=4096` 
 | 0 | 12.4 | 3.2 | 74.2% |
 | 60 | 47.2 | 11.3 | 76.1% |
 | 70 | 52.8 | 9.7 | 81.6% |
-| 80 | 58.4 | 8.3 | **85.8%** |
+| 80 | 58.4 | 8.3 | **78.1%** |
 
 English kurtosis climbs monotonically to 58.4 at the output layer. N'Ko kurtosis peaks at layer 60 (11.3), then drops to 8.3 at layer 80. The model is actively un-committing from N'Ko predictions in its final layers. At the output, the softmax over 151,936 tokens is nearly flat for N'Ko inputs.
 
@@ -92,7 +92,7 @@ The activation profiles reveal three mechanistically distinct failure modes:
 
 **Zone 2 (Middle layers, layers 10-56):** Reasoning vacuum. The L2 ratio holds stable at ~3x across all middle layers (2.97x at layer 32, 2.99x at layer 40, 3.02x at layer 48). Stability here is the signal. A partially-working system would show fluctuating ratios as different layer groups succeed or fail on different aspects. The constant ratio means no middle-layer group is doing anything. The model passes the malformed embeddings through with residual connections, adding noise without adding structure. Entropy gap grows from 1.32 bits to 2.27 bits across this zone.
 
-**Zone 3 (Output, layers 56-36):** Incoherent prediction. Kurtosis deficit worsens from 76% at layer 60 to 85.8% at layer 80. The model cannot concentrate probability mass on specific N'Ko tokens. The output distribution is spread near-uniformly across English, CJK, code, and N'Ko tokens with roughly equal (near-zero) weight on any individual token.
+**Zone 3 (Output, layers 56-36):** Incoherent prediction. Kurtosis deficit worsens from 76% at layer 60 to 78.1% at layer 80. The model cannot concentrate probability mass on specific N'Ko tokens. The output distribution is spread near-uniformly across English, CJK, code, and N'Ko tokens with roughly equal (near-zero) weight on any individual token.
 
 ### Circuit Duplication Analysis
 
@@ -152,7 +152,7 @@ Stage 3: BPE-Aware Training
 | N'Ko Top-1 Accuracy | 43.2% | 56.7% | +13.5pp |
 | N'Ko Token Accuracy | 23.0% | 32.8% | +9.8pp |
 | English Top-1 Accuracy | 70.9% | 69.7% | -1.2pp |
-| **Translation Tax** | **2.90x** | **0.70x** | **-76%** |
+| **Translation Tax** | **2.94x** | **0.70x** | **-76%** |
 | Embedding Sparsity (N'Ko) | 34.5% | 18.2% | -47% |
 | Output Kurtosis (N'Ko) | 8.3 | 31.4 | +278% |
 | Output Entropy Gap (bits) | 2.87 | 0.94 | -67% |
@@ -161,7 +161,7 @@ The 0.70x result is an inversion: the model now produces lower perplexity on N'K
 
 ### V1/V2/V3 Progression and Mode Collapse
 
-V1 (Wikipedia-only CPT, 17,360 examples): embedding-layer tax drops from 2.90x to 1.85x. Model generates N'Ko characters but no syntactic structure. Middle and output ratios remain above 2.0x.
+V1 (Wikipedia-only CPT, 17,360 examples): embedding-layer tax drops from 2.94x to 1.85x. Model generates N'Ko characters but no syntactic structure. Middle and output ratios remain above 2.0x.
 
 V2 (CPT + SFT, 38,600 examples): tax drops to ~1.2x at embedding, ~0.85x at output. Severe mode collapse: 20/20 sampled generations produce the same stereotyped response. Root cause: 12 SFT instruction templates. Insufficient diversity for 21,240 examples. Training loss: 3.506.
 

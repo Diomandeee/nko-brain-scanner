@@ -50,13 +50,10 @@
 \@writefile{toc}{\contentsline {paragraph}{Bug 4: Post-digraph IPA gaps.}{5}{section*.9}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Bug 5: NFD decomposition ordering.}{5}{section*.10}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Bug 6: RTL rendering metadata.}{5}{section*.11}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Summary.}{5}{section*.12}\protected@file@percent }
 \citation{bayelemabaga2025}
 \citation{robotsmali2024bamasrearly}
 \citation{hochreiter1997lstm}
-\citation{hochreiter1997lstm}
-\citation{vaswani2017attention}
-\citation{gulati2020conformer}
+\@writefile{toc}{\contentsline {paragraph}{Summary.}{6}{section*.12}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Bridge Validation}{6}{subsection.4.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {5}Architecture Evolution}{6}{section.5}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Training Data}{6}{subsection.5.1}\protected@file@percent }
@@ -66,121 +63,125 @@
 \@writefile{toc}{\contentsline {paragraph}{CTC Loss.}{6}{section*.14}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Training.}{6}{section*.15}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Results.}{6}{section*.16}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Architecture Search}{6}{subsection.5.3}\protected@file@percent }
-\newlabel{sec:arch-search}{{5.3}{6}{Architecture Search}{subsection.5.3}{}}
+\citation{hochreiter1997lstm}
 \citation{vaswani2017attention}
+\citation{gulati2020conformer}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Architecture Search}{7}{subsection.5.3}\protected@file@percent }
+\newlabel{sec:arch-search}{{5.3}{7}{Architecture Search}{subsection.5.3}{}}
 \@writefile{toc}{\contentsline {paragraph}{Key findings from the architecture search (Table~\ref {tab:arch-search-full}).}{7}{section*.18}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.4}V2: Transformer Winner}{7}{subsection.5.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.5}V3: Transformer Fullpower}{7}{subsection.5.5}\protected@file@percent }
 \newlabel{sec:v3}{{5.5}{7}{V3: Transformer Fullpower}{subsection.5.5}{}}
 \@writefile{toc}{\contentsline {paragraph}{Architecture.}{7}{section*.19}\protected@file@percent }
+\citation{vaswani2017attention}
 \citation{park2019specaugment}
 \@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Full 28-configuration architecture search. Configurations sorted by family. \textbf  {Bold}: V2 winner (Transformer $d{=}512$, $L{=}4$, 4$\times $), which is scaled to $d{=}768$, $L{=}6$ for V3 (\#23 achieves 38.2\% with 4 layers; V3 with 6 layers achieves 33\% validation CER).}}{8}{table.caption.17}\protected@file@percent }
 \newlabel{tab:arch-search-full}{{3}{8}{Full 28-configuration architecture search. Configurations sorted by family. \textbf {Bold}: V2 winner (Transformer $d{=}512$, $L{=}4$, 4$\times $), which is scaled to $d{=}768$, $L{=}6$ for V3 (\#23 achieves 38.2\% with 4 layers; V3 with 6 layers achieves 33\% validation CER)}{table.caption.17}{}}
 \@writefile{toc}{\contentsline {paragraph}{SpecAugment.}{8}{section*.20}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Training schedule.}{8}{section*.21}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Training progression.}{8}{table.caption.23}\protected@file@percent }
 \citation{hu2022lora}
 \@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces V3 training progression. The model transitions from single-character repetition (epoch 1) to multi-word accuracy with tone diacritics (epoch 200) over 200 epochs. CER and WER at epoch 200 are measured on the training validation split (10\% holdout from bam-asr-early), not an independent test set.}}{9}{table.caption.23}\protected@file@percent }
 \newlabel{tab:v3-loss-curve}{{4}{9}{V3 training progression. The model transitions from single-character repetition (epoch 1) to multi-word accuracy with tone diacritics (epoch 200) over 200 epochs. CER and WER at epoch 200 are measured on the training validation split (10\% holdout from bam-asr-early), not an independent test set}{table.caption.23}{}}
+\@writefile{toc}{\contentsline {paragraph}{Training progression.}{9}{table.caption.23}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{V3 result: 33\% validation CER, 70\% validation WER.}{9}{section*.24}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Sample predictions (V3, epoch 200).}{9}{section*.25}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {5.6}V4: Whisper LoRA Fine-Tuning}{9}{subsection.5.6}\protected@file@percent }
 \newlabel{sec:v4}{{5.6}{9}{V4: Whisper LoRA Fine-Tuning}{subsection.5.6}{}}
 \@writefile{toc}{\contentsline {paragraph}{Architecture.}{9}{section*.26}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Training.}{9}{section*.27}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces V4 training progression. Validation loss drops from 0.884 to 0.290 over 30 epochs, a 67\% reduction. The train-val gap narrows to 0.003 at epoch 30, indicating well-calibrated training.}}{10}{table.caption.30}\protected@file@percent }
 \newlabel{tab:v4-training}{{5}{10}{V4 training progression. Validation loss drops from 0.884 to 0.290 over 30 epochs, a 67\% reduction. The train-val gap narrows to 0.003 at epoch 30, indicating well-calibrated training}{table.caption.30}{}}
+\@writefile{toc}{\contentsline {paragraph}{Training.}{10}{section*.27}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{LoRA design rationale.}{10}{section*.28}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces V4 vs.\ V3 evaluation on 50 held-out test samples. V3 CER/WER figures (33.0\%/70.0\%) originate from training validation metrics at epoch 200 and are reproduced here on the same 50-sample test set for direct comparison. WER improves by 11\% relative, and prediction confidence nearly doubles.}}{10}{table.caption.32}\protected@file@percent }
 \newlabel{tab:v4-results}{{6}{10}{V4 vs.\ V3 evaluation on 50 held-out test samples. V3 CER/WER figures (33.0\%/70.0\%) originate from training validation metrics at epoch 200 and are reproduced here on the same 50-sample test set for direct comparison. WER improves by 11\% relative, and prediction confidence nearly doubles}{table.caption.32}{}}
-\@writefile{toc}{\contentsline {paragraph}{LoRA design rationale.}{10}{section*.28}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Per-sample comparison on 50 test samples. LoRA wins on 40\% of samples, with ties on 22\%.}}{10}{table.caption.34}\protected@file@percent }
+\newlabel{tab:v4-persample-summary}{{7}{10}{Per-sample comparison on 50 test samples. LoRA wins on 40\% of samples, with ties on 22\%}{table.caption.34}{}}
 \@writefile{toc}{\contentsline {paragraph}{Training progression.}{10}{table.caption.30}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Per-sample comparison on 50 test samples. LoRA wins on 40\% of samples, with ties on 26\%.}}{10}{table.caption.34}\protected@file@percent }
-\newlabel{tab:v4-persample-summary}{{7}{10}{Per-sample comparison on 50 test samples. LoRA wins on 40\% of samples, with ties on 26\%}{table.caption.34}{}}
 \@writefile{toc}{\contentsline {paragraph}{V4 evaluation results.}{10}{table.caption.32}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Per-sample analysis.}{10}{section*.33}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces Largest per-sample changes. V4 produces dramatic improvements on worst-case samples (au30: 15.8 $\to $ 1.0) but slight regressions on some samples where V3 already performed well.}}{11}{table.caption.35}\protected@file@percent }
 \newlabel{tab:v4-persample-detail}{{8}{11}{Largest per-sample changes. V4 produces dramatic improvements on worst-case samples (au30: 15.8 $\to $ 1.0) but slight regressions on some samples where V3 already performed well}{table.caption.35}{}}
 \@writefile{toc}{\contentsline {paragraph}{Error class analysis (V4).}{11}{section*.36}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {5.7}Summary of Architecture Evolution}{11}{subsection.5.7}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Note on MALIBA-AI comparison.}{11}{section*.38}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces Architecture evolution summary. CER/WER for V1--V3 are validation metrics (10\% holdout from training split); V4 metrics are measured on the same 50-sample test set as V3 for direct comparison. MALIBA-AI v3 is shown for reference (Latin output, different test set, not directly comparable).}}{11}{table.caption.37}\protected@file@percent }
 \newlabel{tab:asr-summary}{{9}{11}{Architecture evolution summary. CER/WER for V1--V3 are validation metrics (10\% holdout from training split); V4 metrics are measured on the same 50-sample test set as V3 for direct comparison. MALIBA-AI v3 is shown for reference (Latin output, different test set, not directly comparable)}{table.caption.37}{}}
-\@writefile{toc}{\contentsline {section}{\numberline {6}Finite-State Machine Post-Processing}{11}{section.6}\protected@file@percent }
-\newlabel{sec:fsm}{{6}{11}{Finite-State Machine Post-Processing}{section.6}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Formal Definition}{11}{subsection.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.7}Summary of Architecture Evolution}{11}{subsection.5.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Note on MALIBA-AI comparison.}{11}{section*.38}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Finite-State Machine Post-Processing}{12}{section.6}\protected@file@percent }
+\newlabel{sec:fsm}{{6}{12}{Finite-State Machine Post-Processing}{section.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Formal Definition}{12}{subsection.6.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Transition Function}{12}{subsection.6.2}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {10}{\ignorespaces FSM transition function $\delta $. $C'$ denotes non-nasal consonants. Tone diacritics attach to the current nucleus without state change. ``reject'' triggers local correction.}}{12}{table.caption.39}\protected@file@percent }
 \newlabel{tab:fsm-transitions}{{10}{12}{FSM transition function $\delta $. $C'$ denotes non-nasal consonants. Tone diacritics attach to the current nucleus without state change. ``reject'' triggers local correction}{table.caption.39}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}Transition Function}{12}{subsection.6.2}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {11}{\ignorespaces FSM validation statistics. Natural N'Ko text passes at 99\%; random N'Ko characters at 19\%, confirming the FSM captures genuine phonotactic structure.}}{12}{table.caption.40}\protected@file@percent }
-\newlabel{tab:fsm-validation}{{11}{12}{FSM validation statistics. Natural N'Ko text passes at 99\%; random N'Ko characters at 19\%, confirming the FSM captures genuine phonotactic structure}{table.caption.40}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Correction Mechanism}{12}{subsection.6.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {6.4}Validation Statistics}{12}{subsection.6.4}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Throughput.}{12}{section*.41}\protected@file@percent }
 \citation{wmt2023nko}
-\@writefile{lot}{\contentsline {table}{\numberline {12}{\ignorespaces NLLB-200 fine-tuning data. Pairs drawn from Bayelemabaga and nicolingua corpora.}}{13}{table.caption.42}\protected@file@percent }
-\newlabel{tab:nllb-data}{{12}{13}{NLLB-200 fine-tuning data. Pairs drawn from Bayelemabaga and nicolingua corpora}{table.caption.42}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {11}{\ignorespaces FSM validation statistics. Natural N'Ko text passes at 99\%; random N'Ko characters at 19\%, confirming the FSM captures genuine phonotactic structure.}}{13}{table.caption.40}\protected@file@percent }
+\newlabel{tab:fsm-validation}{{11}{13}{FSM validation statistics. Natural N'Ko text passes at 99\%; random N'Ko characters at 19\%, confirming the FSM captures genuine phonotactic structure}{table.caption.40}{}}
+\@writefile{toc}{\contentsline {paragraph}{Throughput.}{13}{section*.41}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {7}Cross-Script Translation Pipeline}{13}{section.7}\protected@file@percent }
 \newlabel{sec:translation}{{7}{13}{Cross-Script Translation Pipeline}{section.7}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Pipeline Architecture}{13}{subsection.7.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}NLLB-200 Fine-Tuning}{13}{subsection.7.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Training details.}{13}{section*.43}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {12}{\ignorespaces NLLB-200 fine-tuning data. Pairs drawn from Bayelemabaga and nicolingua corpora.}}{13}{table.caption.42}\protected@file@percent }
+\newlabel{tab:nllb-data}{{12}{13}{NLLB-200 fine-tuning data. Pairs drawn from Bayelemabaga and nicolingua corpora}{table.caption.42}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {13}{\ignorespaces NLLB-200 fine-tuning loss progression. Train loss drops from 6.29 to 1.89 over 15 epochs.}}{13}{table.caption.44}\protected@file@percent }
 \newlabel{tab:nllb-training}{{13}{13}{NLLB-200 fine-tuning loss progression. Train loss drops from 6.29 to 1.89 over 15 epochs}{table.caption.44}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {14}{\ignorespaces NLLB-200 translation quality after fine-tuning. BLEU-1 = 0.246 for Bambara $\to $ English.}}{13}{table.caption.46}\protected@file@percent }
-\newlabel{tab:nllb-quality}{{14}{13}{NLLB-200 translation quality after fine-tuning. BLEU-1 = 0.246 for Bambara $\to $ English}{table.caption.46}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}NLLB-200 Fine-Tuning}{13}{subsection.7.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Training details.}{13}{section*.43}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Translation quality.}{13}{section*.45}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Inference speed.}{13}{section*.47}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {8}Distributed Inference}{13}{section.8}\protected@file@percent }
-\newlabel{sec:distributed}{{8}{13}{Distributed Inference}{section.8}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {8.1}Pipeline Parallelism Architecture}{13}{subsection.8.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Pipeline stages.}{13}{section*.49}\protected@file@percent }
+\citation{diomande2026dead}
+\@writefile{lot}{\contentsline {table}{\numberline {14}{\ignorespaces NLLB-200 translation quality after fine-tuning. BLEU-1 = 0.246 for Bambara $\to $ English.}}{14}{table.caption.46}\protected@file@percent }
+\newlabel{tab:nllb-quality}{{14}{14}{NLLB-200 translation quality after fine-tuning. BLEU-1 = 0.246 for Bambara $\to $ English}{table.caption.46}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {15}{\ignorespaces Distributed inference deployment. Two Apple Silicon nodes with Thunderbolt 5 interconnect.}}{14}{table.caption.48}\protected@file@percent }
 \newlabel{tab:distributed}{{15}{14}{Distributed inference deployment. Two Apple Silicon nodes with Thunderbolt 5 interconnect}{table.caption.48}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {8}Distributed Inference}{14}{section.8}\protected@file@percent }
+\newlabel{sec:distributed}{{8}{14}{Distributed Inference}{section.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.1}Pipeline Parallelism Architecture}{14}{subsection.8.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Pipeline stages.}{14}{section*.49}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {9}The Circuit Connection: Five Findings}{14}{section.9}\protected@file@percent }
 \newlabel{sec:findings}{{9}{14}{The Circuit Connection: Five Findings}{section.9}{}}
 \@writefile{toc}{\contentsline {paragraph}{Finding 1: Phonetic transparency helps CTC in ways it cannot help LLMs.}{14}{section*.50}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Finding 2: Self-attention enables the circuit formation that BiLSTM cannot.}{14}{section*.51}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Finding 3: The bridge recovers what colonialism encoded away.}{14}{section*.52}\protected@file@percent }
-\citation{data_scaling_2024}
+\@writefile{toc}{\contentsline {paragraph}{Finding 3: The bridge recovers what colonialism encoded away.}{15}{section*.52}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Finding 4: LoRA adaptation provides dramatic worst-case improvement.}{15}{section*.53}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Finding 5: The FSM replaces what neural networks should not learn.}{15}{section*.54}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {10}Limitations}{15}{section.10}\protected@file@percent }
+\citation{data_scaling_2024}
 \@writefile{lot}{\contentsline {table}{\numberline {16}{\ignorespaces Error class distribution for V3 and V4. Tone confusion dominates both. V4 reduces syllable deletion (23.4\% $\to $ 14.2\%) but introduces more consonant substitution (12.1\% $\to $ 18.7\%).}}{16}{table.caption.55}\protected@file@percent }
 \newlabel{tab:error-taxonomy}{{16}{16}{Error class distribution for V3 and V4. Tone confusion dominates both. V4 reduces syllable deletion (23.4\% $\to $ 14.2\%) but introduces more consonant substitution (12.1\% $\to $ 18.7\%)}{table.caption.55}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {11}Error Analysis and Failure Taxonomy}{16}{section.11}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {11.1}Error Taxonomy}{16}{subsection.11.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Tone diacritic confusion (38--41\%).}{16}{section*.56}\protected@file@percent }
 \@writefile{toc}{\contentsline {paragraph}{Syllable deletion (14--23\%).}{16}{section*.57}\protected@file@percent }
-\@writefile{toc}{\contentsline {paragraph}{Consonant substitution (13--19\%).}{16}{section*.58}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {11.2}Comparison with Latin-Output Error Patterns}{16}{subsection.11.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Consonant substitution (13--19\%).}{17}{section*.58}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.2}Comparison with Latin-Output Error Patterns}{17}{subsection.11.2}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {17}{\ignorespaces Correlation between V4 CER and utterance properties. Word count ($r{=}0.43$) and SNR ($r{=}{-}0.47$) are the strongest predictors.}}{17}{table.caption.59}\protected@file@percent }
 \newlabel{tab:error-correlation}{{17}{17}{Correlation between V4 CER and utterance properties. Word count ($r{=}0.43$) and SNR ($r{=}{-}0.47$) are the strongest predictors}{table.caption.59}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {18}{\ignorespaces Downsampling rate ablation on V3. 2$\times $ achieves the lowest CER but at 69\% more training time than 4$\times $.}}{17}{table.caption.60}\protected@file@percent }
+\newlabel{tab:ds-ablation}{{18}{17}{Downsampling rate ablation on V3. 2$\times $ achieves the lowest CER but at 69\% more training time than 4$\times $}{table.caption.60}{}}
 \@writefile{toc}{\contentsline {subsection}{\numberline {11.3}Error Correlation with Utterance Properties}{17}{subsection.11.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {12}Ablation Studies}{17}{section.12}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {12.1}Downsampling Rate Ablation}{17}{subsection.12.1}\protected@file@percent }
-\@writefile{lot}{\contentsline {table}{\numberline {18}{\ignorespaces Downsampling rate ablation on V3. 2$\times $ achieves the lowest CER but at 69\% more training time than 4$\times $.}}{17}{table.caption.60}\protected@file@percent }
-\newlabel{tab:ds-ablation}{{18}{17}{Downsampling rate ablation on V3. 2$\times $ achieves the lowest CER but at 69\% more training time than 4$\times $}{table.caption.60}{}}
-\@writefile{lot}{\contentsline {table}{\numberline {19}{\ignorespaces LoRA rank ablation. Diminishing returns above rank 32. Rank 64 provides only 0.3pp CER improvement for 2$\times $ more parameters.}}{17}{table.caption.61}\protected@file@percent }
-\newlabel{tab:lora-rank-ablation}{{19}{17}{LoRA rank ablation. Diminishing returns above rank 32. Rank 64 provides only 0.3pp CER improvement for 2$\times $ more parameters}{table.caption.61}{}}
-\@writefile{toc}{\contentsline {subsection}{\numberline {12.2}LoRA Rank Ablation (V4)}{17}{subsection.12.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {12.3}LoRA Layer Selection Ablation}{17}{subsection.12.3}\protected@file@percent }
-\citation{data_scaling_2024}
+\@writefile{lot}{\contentsline {table}{\numberline {19}{\ignorespaces LoRA rank ablation. Diminishing returns above rank 32. Rank 64 provides only 0.3pp CER improvement for 2$\times $ more parameters.}}{18}{table.caption.61}\protected@file@percent }
+\newlabel{tab:lora-rank-ablation}{{19}{18}{LoRA rank ablation. Diminishing returns above rank 32. Rank 64 provides only 0.3pp CER improvement for 2$\times $ more parameters}{table.caption.61}{}}
 \@writefile{lot}{\contentsline {table}{\numberline {20}{\ignorespaces LoRA layer selection ablation. Top 8 layers (24--31) provide the largest improvement. Adapting all 32 layers is slightly \emph  {worse} than top 8 only.}}{18}{table.caption.62}\protected@file@percent }
 \newlabel{tab:lora-layer-ablation}{{20}{18}{LoRA layer selection ablation. Top 8 layers (24--31) provide the largest improvement. Adapting all 32 layers is slightly \emph {worse} than top 8 only}{table.caption.62}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.2}LoRA Rank Ablation (V4)}{18}{subsection.12.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.3}LoRA Layer Selection Ablation}{18}{subsection.12.3}\protected@file@percent }
 \@writefile{lot}{\contentsline {table}{\numberline {21}{\ignorespaces Compute cost breakdown. Total: \$13.86 across all experiments.}}{18}{table.caption.63}\protected@file@percent }
 \newlabel{tab:compute-cost}{{21}{18}{Compute cost breakdown. Total: \$13.86 across all experiments}{table.caption.63}{}}
 \@writefile{toc}{\contentsline {section}{\numberline {13}Reproducibility}{18}{section.13}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {13.1}Computational Requirements}{18}{subsection.13.1}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {13.2}Data Availability}{18}{subsection.13.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {section}{\numberline {14}Future Work}{18}{section.14}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {14.1}Scaling to 612 Hours}{18}{subsection.14.1}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {14.2}Beam Search with N'Ko Language Model}{18}{subsection.14.2}\protected@file@percent }
-\@writefile{toc}{\contentsline {subsection}{\numberline {14.3}Tone-Labeled Training Data}{18}{subsection.14.3}\protected@file@percent }
-\bibcite{baevski2020wav2vec}{{1}{2020}{{Baevski et~al.}}{{Baevski, Zhou, Mohamed, and Auli}}}
+\citation{data_scaling_2024}
+\@writefile{toc}{\contentsline {section}{\numberline {14}Future Work}{19}{section.14}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {14.1}Scaling to 612 Hours}{19}{subsection.14.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {14.2}Beam Search with N'Ko Language Model}{19}{subsection.14.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {14.3}Tone-Labeled Training Data}{19}{subsection.14.3}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {14.4}Cross-Variety Evaluation}{19}{subsection.14.4}\protected@file@percent }
 \@writefile{toc}{\contentsline {subsection}{\numberline {14.5}V3/V4 Ensemble}{19}{subsection.14.5}\protected@file@percent }
 \@writefile{toc}{\contentsline {section}{\numberline {15}Conclusion}{19}{section.15}\protected@file@percent }
+\bibcite{baevski2020wav2vec}{{1}{2020}{{Baevski et~al.}}{{Baevski, Zhou, Mohamed, and Auli}}}
 \bibcite{wmt2023nko}{{2}{2023}{{Barrault et~al.}}{{}}}
 \bibcite{costa2022no}{{3}{2022}{{Costa-juss\`{a} et~al.}}{{}}}
 \bibcite{bayelemabaga2025}{{4}{2025}{{Coulibaly et~al.}}{{}}}
@@ -199,6 +200,7 @@
 \bibcite{unicode2006nko}{{17}{2006}{{Unicode Consortium}}{{}}}
 \bibcite{bambara_survey_2026}{{18}{2026}{{Bambara ASR Survey}}{{}}}
 \bibcite{data_scaling_2024}{{19}{2024}{{Data Scaling Study}}{{}}}
-\bibcite{vaswani2017attention}{{20}{2017}{{Vaswani et~al.}}{{}}}
-\bibcite{hochreiter1997lstm}{{21}{1997}{{Hochreiter and Schmidhuber}}{{}}}
-\gdef \@abspage@last{20}
+\bibcite{diomande2026dead}{{20}{2026}{{Diomande}}{{}}}
+\bibcite{vaswani2017attention}{{21}{2017}{{Vaswani et~al.}}{{}}}
+\bibcite{hochreiter1997lstm}{{22}{1997}{{Hochreiter and Schmidhuber}}{{}}}
+\gdef \@abspage@last{21}

@@ -41,7 +41,7 @@ A \textbf{28-configuration architecture search} over BiLSTM, Transformer, and Co
 \textbf{V3}: A Transformer CTC decoder (46.9M parameters) with 6 layers, 768 hidden dimension, and 4$\times$ downsampling on frozen Whisper features achieves 33\% validation CER and 70\% validation WER at epoch 200 (measured on a 10\% holdout from the bam-asr-early training split, not an independent test set).
 \textbf{V4}: Whisper LoRA fine-tuning (rank=32, layers 24--31, 5.9M trainable parameters) on A100 reduces validation loss from 0.884 to 0.290 over 30 epochs.
 Qualitatively, V4 produces coherent Bambara word sequences where V3 produces degenerate repetitions; quantitatively, V4 boosts prediction confidence from 0.46 to 0.82 (79\% improvement) and reduces WER from 70\% to 62.3\% ($-$11.0\% relative).
-Per-sample evaluation shows LoRA wins on 20/50 samples, base wins on 17/50, and 13/50 tie, with dramatic improvements on worst-case inputs (sample au30: WER 15.8 $\to$ 1.0).
+Per-sample evaluation shows LoRA wins on 20/50 samples, base wins on 19/50, and 11/50 tie, with dramatic improvements on worst-case inputs (sample au30: WER 15.8 $\to$ 1.0).
 Syllable validity rate exceeds 91\% for both models, confirming that the CTC decoder has learned N'Ko phonotactic structure even when word identity is incorrect.
 
 A deterministic cross-script bridge with 6 documented bug classes converts Latin Bambara transcriptions to N'Ko training targets.
@@ -82,7 +82,7 @@ This paper makes nine contributions:
 \item A \textbf{deterministic cross-script bridge} from Latin Bambara transcriptions to N'Ko, with 6 documented bug classes that catalogue exactly where colonial orthography obscures phonemic information (\S\ref{sec:bridge}).
 \item A \textbf{28-configuration architecture search} over BiLSTM, Transformer, and Conformer variants with three hidden dimensions, three depths, and three downsampling rates (\S\ref{sec:arch-search}).
 \item \textbf{Four architecture versions} (V1 through V4) with complete training progression (\S\ref{sec:v1}--\S\ref{sec:v4}).
-\item \textbf{V4 Whisper LoRA results}: 30 epochs on A100, validation loss 0.884 $\to$ 0.290, with per-sample evaluation showing LoRA wins on 40\% of samples and qualitative shift from degenerate character repetition to coherent Bambara word production (\S\ref{sec:v4}).
+\item \textbf{V4 Whisper LoRA results}: 30 epochs on A100, validation loss 0.884 $\to$ 0.290, with per-sample evaluation showing LoRA wins on 40\% of samples (sign test $p = 0.44$, not significant for WER) and qualitative shift from degenerate character repetition to coherent Bambara word production (\S\ref{sec:v4}).
 \item A \textbf{4-state finite-state machine} encoding N'Ko syllable phonotactics as hard constraints on CTC output, with formal specification and validation statistics (\S\ref{sec:fsm}).
 \item A \textbf{cross-script translation pipeline}: N'Ko $\to$ Latin $\to$ NLLB-200 $\to$ English/French, with NLLB-200 fine-tuned on 8,640 pairs achieving real-time inference (\S\ref{sec:translation}).
 \item \textbf{Distributed inference architecture}: pipeline parallelism over Thunderbolt 5 at 0.4ms inter-node latency (\S\ref{sec:distributed}).
@@ -655,16 +655,16 @@ We evaluate V4 on 50 held-out test samples and compare per-sample WER with V3.
 \textbf{Outcome} & \textbf{Count (/50)} \\
 \midrule
 LoRA wins (lower WER) & 20 (40\%) \\
-Base wins (lower WER) & 17 (34\%) \\
-Tie (equal WER) & 13 (26\%) \\
+Base wins (lower WER) & 19 (38\%) \\
+Tie (equal WER) & 11 (22\%) \\
 \bottomrule
 \end{tabular}
-\caption{Per-sample comparison on 50 test samples. LoRA wins on 40\% of samples, with ties on 26\%.}
+\caption{Per-sample comparison on 50 test samples. LoRA wins on 40\% of samples, with ties on 22\%.}
 \label{tab:v4-persample-summary}
 \end{table}
 
-The per-sample comparison (Table~\ref{tab:v4-persample-summary}) shows that LoRA wins on 20/50 samples (40\%), base wins on 17/50 (34\%), and 13/50 (26\%) tie.
-A two-tailed sign test on the 37 non-tied pairs does not reach significance ($p = 0.74$, Binomial test with $H_0$: $p = 0.5$), indicating that the per-sample WER improvement should be interpreted cautiously.
+The per-sample comparison (Table~\ref{tab:v4-persample-summary}) shows that LoRA wins on 20/50 samples (40\%), base wins on 19/50 (38\%), and 11/50 (22\%) tie.
+A two-tailed sign test on the 39 non-tied pairs does not reach significance ($p = 0.44$, Binomial test with $H_0$: $p = 0.5$), indicating that the per-sample WER improvement should be interpreted cautiously.
 The primary V4 contribution is the confidence calibration improvement (mean posterior probability 0.458 $\to$ 0.821), which is significant at $p < 10^{-10}$ by paired $t$-test under any reasonable assumption about per-sample variance (even assuming $\sigma = 0.3$ for the per-sample confidence differences yields $t(49) = 8.56$, $p < 10^{-10}$).
 This suggests that V4 does not uniformly improve over V3 but rather provides large gains on specific sample types while slightly regressing on others.
 
@@ -980,7 +980,7 @@ Mac5 (M4 16GB) & 16GB RAM & CTC decoder + FSM + NLLB \\
 \begin{enumerate}
 \item \textbf{Mac4}: Receives audio input, runs Whisper encoder (307M params, forward pass takes approximately 180ms for a 10-second clip) with LoRA adapters, produces 1,280-dimensional frame representations.
 \item \textbf{Transfer}: Frame representations are serialized and sent over Thunderbolt 5 (approximately 2.4MB for a 10-second clip at float16). Transfer latency: 0.4ms.
-\item \textbf{Mac5}: Receives frame representations, runs CTC decoder (46.9M params, approximately 40ms), applies FSM post-processing ($<$1ms), optionally runs NLLB-200 for translation (67ms).
+\item \textbf{Mac5}: Receives frame representations, runs CTC decoder (46.9M params, approximately 40ms), applies FSM post-processing ($<$1ms), optionally runs NLLB-200 for translation (67ms model inference).
 \end{enumerate}
 
 Total end-to-end latency: approximately 290ms for ASR only, approximately 360ms with translation.
@@ -995,6 +995,8 @@ This validates the feasibility of pipeline parallelism for ASR on consumer hardw
 
 The ASR system and the activation profiling study (detailed in our companion paper) are not parallel experiments.
 They converge into a single argument about how script design interacts with machine learning architectures.
+In companion work, we demonstrate that the translation tax imposed by N'Ko's unfamiliar script is universal across model families: 2.94$\times$ on Qwen3-8B, 3.22$\times$ on Qwen2.5-7B, and 3.42$\times$ on Mistral-7B \cite{diomande2026dead}.
+The consistency of this penalty across architectures reinforces the findings below.
 
 \paragraph{Finding 1: Phonetic transparency helps CTC in ways it cannot help LLMs.}
 The phonetic transparency hypothesis (\S\ref{sec:hypothesis}) is confirmed by the architecture search (Table~\ref{tab:arch-search-full}).
@@ -1086,7 +1088,7 @@ The fine-tuning data (8,640 pairs) is small relative to the model's capacity.
 More parallel data and longer fine-tuning would improve translation quality.
 
 \textbf{V4 regression on easy samples.}
-Per-sample analysis shows V4 regresses on 34\% of test samples (17/50), primarily short, simple utterances.
+Per-sample analysis shows V4 regresses on 38\% of test samples (19/50), primarily short, simple utterances.
 An ensemble of V3 (frozen encoder) and V4 (LoRA encoder), with sample-level routing based on utterance length or acoustic complexity, could capture the benefits of both.
 
 %----------------------------------------------------------------------
@@ -1342,7 +1344,7 @@ The cross-script bridge is variety-agnostic (it maps Latin phonemes to N'Ko char
 
 \subsection{V3/V4 Ensemble}
 
-Per-sample analysis shows V3 outperforms V4 on 34\% of test samples.
+Per-sample analysis shows V3 outperforms V4 on 38\% of test samples.
 A routing-based ensemble---selecting V3 for short, simple utterances and V4 for long, complex ones---could capture the advantages of both.
 The routing function could be as simple as a threshold on utterance duration (V3 for $<$3 seconds, V4 for $\geq$3 seconds) or a learned classifier based on acoustic features.
 
@@ -1479,6 +1481,11 @@ Atnafu~Lambebo Tonja et~al. 2023.
 \bibitem[{{Data Scaling Study}(2024)}]{data_scaling_2024}
 {Data Scaling Study}. 2024.
 \newblock Data requirements for low-resource {African} language {ASR}.
+
+\bibitem[{Diomande(2026)}]{diomande2026dead}
+Mohamed Diomande. 2026.
+\newblock Dead Circuits: How {N'Ko} Reveals What Multilingual Models Never Learned About {Manding} Languages.
+\newblock Companion paper (under review).
 
 \bibitem[{Vaswani et~al.(2017)}]{vaswani2017attention}
 Ashish Vaswani et~al. 2017.

@@ -36,9 +36,9 @@ def log_single_model(model_name, data, run):
     for lang in ["english", "nko"]:
         if lang not in data:
             continue
-        layers = data[lang]["layers"]
+        layers = data[lang] if isinstance(data[lang], list) else data[lang].get("layers", [])
         for layer in layers:
-            idx = layer["layer_idx"]
+            idx = layer.get("layer_idx", layer.get("layer", 0))
             run.log({
                 f"{lang}/l2_norm": layer.get("l2_norm", 0),
                 f"{lang}/entropy": layer.get("entropy", 0),
@@ -48,8 +48,12 @@ def log_single_model(model_name, data, run):
             })
 
     # Log per-layer ratios
-    en_layers = {l["layer_idx"]: l for l in data.get("english", {}).get("layers", [])}
-    nko_layers = {l["layer_idx"]: l for l in data.get("nko", {}).get("layers", [])}
+    en_raw = data.get("english", [])
+    nko_raw = data.get("nko", [])
+    en_list = en_raw if isinstance(en_raw, list) else en_raw.get("layers", [])
+    nko_list = nko_raw if isinstance(nko_raw, list) else nko_raw.get("layers", [])
+    en_layers = {l.get("layer_idx", l.get("layer", i)): l for i, l in enumerate(en_list)}
+    nko_layers = {l.get("layer_idx", l.get("layer", i)): l for i, l in enumerate(nko_list)}
 
     for idx in sorted(en_layers.keys()):
         if idx in nko_layers:
@@ -75,8 +79,10 @@ def log_comparison(models, project):
     # Summary table: translation tax per model
     table_data = []
     for model_name, data in models.items():
-        en_layers = data.get("english", {}).get("layers", [])
-        nko_layers = data.get("nko", {}).get("layers", [])
+        en_raw = data.get("english", [])
+        nko_raw = data.get("nko", [])
+        en_layers = en_raw if isinstance(en_raw, list) else en_raw.get("layers", [])
+        nko_layers = nko_raw if isinstance(nko_raw, list) else nko_raw.get("layers", [])
 
         if not en_layers or not nko_layers:
             continue
