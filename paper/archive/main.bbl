@@ -1,0 +1,61 @@
+\begin{thebibliography}{9}
+\providecommand{\natexlab}[1]{#1}
+
+\bibitem[{Ahmadnia et~al.(2023)}]{wmt2023nko}
+Benyamin Ahmadnia and 1 others. 2023.
+\newblock {WMT} 2023 shared task on machine translation for {N'Ko}.
+\newblock In \emph{WMT}.
+
+\bibitem[{Antoun et~al.(2020)Antoun, Baly, and Hajj}]{antoun2020arabert}
+Wissam Antoun, Fady Baly, and Hazem Hajj. 2020.
+\newblock {AraBERT}: Transformer-based model for arabic language understanding.
+\newblock In \emph{LREC Workshop on Open-Source Arabic Corpora and Processing
+  Tools}.
+
+\bibitem[{Conneau et~al.(2020)Conneau, Khandelwal, Goyal, Chaudhary, Wenzek,
+  Guzm\'{a}n, Grave, Ott, Zettlemoyer, and Stoyanov}]{conneau2020unsupervised}
+Alexis Conneau, Kartikay Khandelwal, Naman Goyal, Vishrav Chaudhary, Guillaume
+  Wenzek, Francisco Guzm\'{a}n, Edouard Grave, Myle Ott, Luke Zettlemoyer, and
+  Veselin Stoyanov. 2020.
+\newblock Unsupervised cross-lingual representation learning at scale.
+\newblock In \emph{ACL}.
+
+\bibitem[{Coulibaly et~al.(2025)}]{bayelemabaga2025}
+Adama Coulibaly and 1 others. 2025.
+\newblock Bayelemabaga: A bambara-french parallel dataset for machine
+  translation.
+\newblock In \emph{NAACL}.
+
+\bibitem[{Dossou et~al.(2022)Dossou, Tonja et~al.}]{dossou2022afrolm}
+Bonaventure F.~P. Dossou, Atnafu~Lambebo Tonja, and 1 others. 2022.
+\newblock {AfroLM}: A self-active learning-based multilingual pretrained
+  language model for 23 african languages.
+\newblock In \emph{SustaiNLP Workshop at EMNLP}.
+
+\bibitem[{Kakwani et~al.(2020)Kakwani, Kunchukuttan, Golla
+  et~al.}]{kakwani2020indicnlpsuite}
+Divyanshu Kakwani, Anoop Kunchukuttan, Satish Golla, and 1 others. 2020.
+\newblock {IndicNLPSuite}: Monolingual corpora, evaluation benchmarks and
+  pre-trained multilingual language models for indian languages.
+\newblock In \emph{Findings of EMNLP}.
+
+\bibitem[{{MALIBA-AI}(2024)}]{maliba2024bambara}
+{MALIBA-AI}. 2024.
+\newblock Bambara {ASR} v3: Fine-tuning whisper-large-v3 for bambara speech
+  recognition.
+\newblock Hugging Face model card: MALIBA-AI/bambara-asr-v3.
+
+\bibitem[{Pfeiffer et~al.(2020)Pfeiffer, R\"{u}ckl\'{e}, Poth, Kamath,
+  Vuli\'{c}, Ruder, Cho, and Gurevych}]{pfeiffer2020adapterhub}
+Jonas Pfeiffer, Andreas R\"{u}ckl\'{e}, Clifton Poth, Aishwarya Kamath, Ivan
+  Vuli\'{c}, Sebastian Ruder, Kyunghyun Cho, and Iryna Gurevych. 2020.
+\newblock {AdapterHub}: A framework for adapting transformers.
+\newblock In \emph{EMNLP: System Demonstrations}.
+
+\bibitem[{Tonja et~al.(2023)}]{tonja2023natural}
+Atnafu~Lambebo Tonja and 1 others. 2023.
+\newblock Natural language processing in ethiopian languages: Current state,
+  challenges, and opportunities.
+\newblock In \emph{AfricaNLP Workshop}.
+
+\end{thebibliography}

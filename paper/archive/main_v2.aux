@@ -1,0 +1,118 @@
+\relax 
+\bibstyle{acl_natbib}
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
+\citation{maliba2024bambara}
+\citation{bambara_survey_2026}
+\citation{bayelemabaga2025}
+\citation{wmt2023nko}
+\citation{radford2023robust}
+\citation{baevski2020wav2vec}
+\citation{hsu2021hubert}
+\citation{graves2006connectionist}
+\citation{park2019specaugment}
+\citation{radford2023robust}
+\citation{doumbouya2021}
+\citation{tonja2023natural}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Related Work}{2}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Bambara and Manding ASR}{2}{subsection.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Low-Resource ASR}{2}{subsection.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Script Equity and Indigenous Scripts}{2}{subsection.2.3}\protected@file@percent }
+\citation{ng2024rys}
+\citation{hu2022lora}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Activation Profiling: The N'Ko Brain Scan}{3}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Experimental Setup}{3}{subsection.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Model.}{3}{section*.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Data.}{3}{section*.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Metrics.}{3}{section*.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces L2 norm by layer (English vs.\ N'Ko, Qwen2-72B-Instruct base). The ratio is stable across all 81 layers, ranging from 2.87$\times $ to 3.26$\times $.}}{3}{table.caption.4}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{tab:l2-norm}{{1}{3}{L2 norm by layer (English vs.\ N'Ko, Qwen2-72B-Instruct base). The ratio is stable across all 81 layers, ranging from 2.87$\times $ to 3.26$\times $}{table.caption.4}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Shannon entropy by layer. The entropy gap widens from 1.35 bits at embedding to 2.87 bits at the output layer.}}{3}{table.caption.5}\protected@file@percent }
+\newlabel{tab:entropy}{{2}{3}{Shannon entropy by layer. The entropy gap widens from 1.35 bits at embedding to 2.87 bits at the output layer}{table.caption.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Results: The Translation Tax}{3}{subsection.3.2}\protected@file@percent }
+\citation{ng2024rys}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Kurtosis by layer. English kurtosis reaches 58.4 at the output; N'Ko kurtosis of 8.3 represents an 85.8\% deficit.}}{4}{table.caption.6}\protected@file@percent }
+\newlabel{tab:kurtosis}{{3}{4}{Kurtosis by layer. English kurtosis reaches 58.4 at the output; N'Ko kurtosis of 8.3 represents an 85.8\% deficit}{table.caption.6}{}}
+\@writefile{toc}{\contentsline {paragraph}{Sparsity.}{4}{section*.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Circuit Duplication Analysis}{4}{subsection.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Configuration space.}{4}{section*.8}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Circuit duplication results. The best N'Ko configuration scores 0.067, barely above random. 0/55 configurations are N'Ko-advantageous.}}{4}{table.caption.9}\protected@file@percent }
+\newlabel{tab:circuit-dup}{{4}{4}{Circuit duplication results. The best N'Ko configuration scores 0.067, barely above random. 0/55 configurations are N'Ko-advantageous}{table.caption.9}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Three-Zone Failure Analysis}{4}{subsection.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Zone 1: Comprehension Failure (Layers 0--10).}{4}{section*.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Zone 2: Reasoning Vacuum (Layers 10--56).}{4}{section*.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Zone 3: Incoherent Output (Layers 56--80).}{4}{section*.12}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Training configuration. All training on Apple M4 16GB via MLX v0.29. Zero cloud cost.}}{5}{table.caption.16}\protected@file@percent }
+\newlabel{tab:training-config}{{5}{5}{Training configuration. All training on Apple M4 16GB via MLX v0.29. Zero cloud cost}{table.caption.16}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}LLM Adaptation: Closing the Translation Tax}{5}{section.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Training Pipeline}{5}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Stage 1: Continued Pre-Training (CPT).}{5}{section*.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Stage 2: Supervised Fine-Tuning (SFT).}{5}{section*.14}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Stage 3: BPE-Aware Training.}{5}{section*.15}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Results}{5}{subsection.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Mode collapse note.}{5}{section*.18}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces LLM adaptation results (frozen 100+100 evaluation set). The translation tax drops from 2.90$\times $ to 0.70$\times $: after fine-tuning, the model processes N'Ko with lower perplexity than English.}}{5}{table.caption.17}\protected@file@percent }
+\newlabel{tab:main-results}{{6}{5}{LLM adaptation results (frozen 100+100 evaluation set). The translation tax drops from 2.90$\times $ to 0.70$\times $: after fine-tuning, the model processes N'Ko with lower perplexity than English}{table.caption.17}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Audio-to-N'Ko ASR}{5}{section.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}The Phonetic Transparency Hypothesis}{5}{subsection.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}The Cross-Script Bridge}{6}{subsection.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Latin $\to $ IPA.}{6}{section*.19}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{IPA $\to $ N'Ko.}{6}{section*.20}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Six bugs found and fixed during development:}{6}{section*.21}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Architecture Evolution}{6}{subsection.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Training Data.}{6}{section*.22}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{V1: BiLSTM CTC (5.4M parameters).}{6}{section*.23}\protected@file@percent }
+\citation{park2019specaugment}
+\@writefile{toc}{\contentsline {paragraph}{Architecture Search (28 configurations).}{7}{section*.24}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{V3: Transformer Fullpower (46.9M parameters).}{7}{section*.26}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{SpecAugment.}{7}{section*.27}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Training schedule.}{7}{section*.28}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{V4: Whisper LoRA (in progress).}{7}{section*.29}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Finite-State Machine Post-Processing}{7}{subsection.5.4}\protected@file@percent }
+\newlabel{sec:fsm}{{5.4}{7}{Finite-State Machine Post-Processing}{subsection.5.4}{}}
+\@writefile{toc}{\contentsline {paragraph}{Formal definition.}{7}{section*.30}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Architecture search results (selected from 28 configurations). Transformer $d{=}512$, $L{=}4$, 4$\times $ downsample is the winner.}}{8}{table.caption.25}\protected@file@percent }
+\newlabel{tab:arch-search}{{7}{8}{Architecture search results (selected from 28 configurations). Transformer $d{=}512$, $L{=}4$, 4$\times $ downsample is the winner}{table.caption.25}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces FSM transition function $\delta $. $C'$ denotes non-nasal consonants. Tone diacritics attach to the current nucleus without state change.}}{8}{table.caption.31}\protected@file@percent }
+\newlabel{tab:fsm-transitions}{{8}{8}{FSM transition function $\delta $. $C'$ denotes non-nasal consonants. Tone diacritics attach to the current nucleus without state change}{table.caption.31}{}}
+\@writefile{toc}{\contentsline {paragraph}{Throughput.}{8}{section*.32}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces Main ASR results. MALIBA-AI v3 is shown for reference (Latin script output, not directly comparable). V4 is in progress.}}{8}{table.caption.33}\protected@file@percent }
+\newlabel{tab:asr-results}{{9}{8}{Main ASR results. MALIBA-AI v3 is shown for reference (Latin script output, not directly comparable). V4 is in progress}{table.caption.33}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.5}Results}{8}{subsection.5.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Sample Predictions (V3 model, epoch 200).}{8}{section*.34}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {10}{\ignorespaces V3 training progression. The model transitions from single-character repetition to multi-word accuracy over 200 epochs.}}{9}{table.caption.35}\protected@file@percent }
+\newlabel{tab:loss-curve}{{10}{9}{V3 training progression. The model transitions from single-character repetition to multi-word accuracy over 200 epochs}{table.caption.35}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}The Circuit Connection: Two Threads, One Finding}{9}{section.6}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Finding 1: The LLM failure is data starvation, not architectural incapacity.}{9}{section*.36}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Finding 2: The FSM replaces what the LLM could not learn.}{9}{section*.37}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Finding 3: Phonetic transparency helps CTC in ways it cannot help LLMs.}{9}{section*.38}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Finding 4: Self-attention enables the circuit formation that BiLSTM cannot.}{9}{section*.39}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Finding 5: The bridge recovers what colonialism encoded away.}{9}{section*.40}\protected@file@percent }
+\citation{data_scaling_2024}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Limitations}{10}{section.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8}Conclusion}{10}{section.8}\protected@file@percent }
+\bibcite{antoun2020arabert}{{1}{2020}{{Antoun et~al.}}{{Antoun, Baly, and Hajj}}}
+\bibcite{baevski2020wav2vec}{{2}{2020}{{Baevski et~al.}}{{Baevski, Zhou, Mohamed, and Auli}}}
+\bibcite{wmt2023nko}{{3}{2023}{{Barrault et~al.}}{{}}}
+\bibcite{bayelemabaga2025}{{4}{2025}{{Coulibaly et~al.}}{{}}}
+\bibcite{dossou2022afrolm}{{5}{2022}{{Dossou et~al.}}{{Dossou and Tonja}}}
+\bibcite{doumbouya2021}{{6}{2021}{{Doumbouya et~al.}}{{}}}
+\bibcite{graves2006connectionist}{{7}{2006}{{Graves et~al.}}{{Graves, Fernandez, Gomez, and Schmidhuber}}}
+\bibcite{hsu2021hubert}{{8}{2021}{{Hsu et~al.}}{{Hsu, Bolte, Tsai, Lakhotia, Salakhutdinov, and Mohamed}}}
+\bibcite{hu2022lora}{{9}{2022}{{Hu et~al.}}{{Hu, Shen, Wallis, Allen-Zhu, Li, Wang, Wang, and Chen}}}
+\bibcite{kakwani2020indicnlpsuite}{{10}{2020}{{Kakwani et~al.}}{{}}}
+\bibcite{maliba2024bambara}{{11}{2024}{{MALIBA-AI}}{{}}}
+\bibcite{magueresse2020lowresource}{{12}{2020}{{Magueresse et~al.}}{{Magueresse, Carles, and Heetderks}}}
+\bibcite{ng2024rys}{{13}{2024}{{Ng}}{{}}}
+\bibcite{park2019specaugment}{{14}{2019}{{Park et~al.}}{{}}}
+\bibcite{pfeiffer2020adapterhub}{{15}{2020}{{Pfeiffer et~al.}}{{}}}
+\bibcite{radford2023robust}{{16}{2023}{{Radford et~al.}}{{Radford, Kim, Xu, Brockman, McLeavey, and Sutskever}}}
+\bibcite{robotsmali2024bamasrearly}{{17}{2024}{{RobotsMali}}{{}}}
+\bibcite{tonja2023natural}{{18}{2023}{{Tonja et~al.}}{{}}}
+\bibcite{unicode2006nko}{{19}{2006}{{Unicode Consortium}}{{}}}
+\bibcite{bambara_survey_2026}{{20}{2026}{{Bambara ASR Survey}}{{}}}
+\bibcite{data_scaling_2024}{{21}{2024}{{Data Scaling Study}}{{}}}
+\gdef \@abspage@last{11}

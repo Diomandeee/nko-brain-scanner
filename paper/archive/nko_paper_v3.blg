@@ -1,0 +1,56 @@
+This is BibTeX, Version 0.99d (TeX Live 2025)
+Capacity: max_strings=200000, hash_size=200000, hash_prime=170003
+The top-level auxiliary file: nko_paper_v3.aux
+The style file: acl_natbib.bst
+Reallocated glb_str_ptr (elt_size=4) to 20 items from 10.
+Reallocated global_strs (elt_size=200001) to 20 items from 10.
+Reallocated glb_str_end (elt_size=4) to 20 items from 10.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated singl_function (elt_size=4) to 100 items from 50.
+Reallocated wiz_functions (elt_size=4) to 6000 items from 3000.
+Database file #1: references.bib
+Warning--empty booktitle in maliba2024bambara
+Warning--missing institution in bambara_survey_2026
+Warning--empty journal in ng2024rys
+You've used 15 entries,
+            3764 wiz_defined-function locations,
+            800 strings with 8139 characters,
+and the built_in function-call counts, 9200 in all, are:
+= -- 785
+> -- 418
+< -- 10
++ -- 172
+- -- 130
+* -- 501
+:= -- 1446
+add.period$ -- 60
+call.type$ -- 15
+change.case$ -- 138
+chr.to.int$ -- 16
+cite$ -- 18
+duplicate$ -- 615
+empty$ -- 680
+format.name$ -- 166
+if$ -- 1986
+int.to.chr$ -- 1
+int.to.str$ -- 7
+missing$ -- 138
+newline$ -- 79
+num.names$ -- 60
+pop$ -- 382
+preamble$ -- 1
+purify$ -- 101
+quote$ -- 0
+skip$ -- 492
+stack$ -- 0
+substring$ -- 173
+swap$ -- 244
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 135
+warning$ -- 3
+while$ -- 45
+width$ -- 0
+write$ -- 183
+(There were 3 warnings)

@@ -1,0 +1,10 @@
+{
+  "total": 5,
+  "kept": 5,
+  "skipped": 0,
+  "avg_confidence": 0.9638,
+  "source_scripts": {
+    "latin": 15
+  },
+  "min_confidence_threshold": 0.3
+}

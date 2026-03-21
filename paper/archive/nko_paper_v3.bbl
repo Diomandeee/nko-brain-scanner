@@ -1,0 +1,98 @@
+\begin{thebibliography}{15}
+\providecommand{\natexlab}[1]{#1}
+
+\bibitem[{Ahmadnia et~al.(2023)}]{wmt2023nko}
+Benyamin Ahmadnia and 1 others. 2023.
+\newblock {WMT} 2023 shared task on machine translation for {N'Ko}.
+\newblock In \emph{WMT}.
+
+\bibitem[{Baevski et~al.(2020)Baevski, Zhou, Mohamed, and
+  Auli}]{baevski2020wav2vec}
+Alexei Baevski, Henry Zhou, Abdelrahman Mohamed, and Michael Auli. 2020.
+\newblock wav2vec 2.0: A framework for self-supervised learning of speech
+  representations.
+\newblock In \emph{NeurIPS}.
+
+\bibitem[{Coulibaly et~al.(2025)}]{bayelemabaga2025}
+Adama Coulibaly and 1 others. 2025.
+\newblock Bayelemabaga: A bambara-french parallel dataset for machine
+  translation.
+\newblock In \emph{NAACL}.
+
+\bibitem[{Doumbouya et~al.(2021)}]{doumbouya2021}
+Moussa Doumbouya and 1 others. 2021.
+\newblock Using radio archives for low-resource speech recognition: Towards an
+  automatic transcription of {Bambara} radio broadcasts.
+\newblock In \emph{Proceedings of NAACL}.
+
+\bibitem[{Graves et~al.(2006)Graves, Fernandez, Gomez, and
+  Schmidhuber}]{graves2006connectionist}
+Alex Graves, Santiago Fernandez, Faustino Gomez, and J\"{u}rgen Schmidhuber.
+  2006.
+\newblock Connectionist temporal classification: Labelling unsegmented sequence
+  data with recurrent neural networks.
+\newblock In \emph{Proceedings of ICML}.
+
+\bibitem[{Hsu et~al.(2021)}]{hsu2021hubert}
+Wei-Ning Hsu and 1 others. 2021.
+\newblock {HuBERT}: Self-supervised speech representation learning by masked
+  prediction of hidden units.
+\newblock \emph{IEEE/ACM Transactions on Audio, Speech, and Language
+  Processing}.
+
+\bibitem[{Hu et~al.(2022)Hu, Shen, Wallis, Allen-Zhu, Li, Wang, Wang, and
+  Chen}]{hu2022lora}
+Edward~J. Hu, Yelong Shen, Phillip Wallis, Zeyuan Allen-Zhu, Yuanzhi Li, Shean
+  Wang, Lu~Wang, and Weizhu Chen. 2022.
+\newblock {LoRA}: Low-rank adaptation of large language models.
+\newblock \emph{ICLR}.
+
+\bibitem[{Magueresse et~al.(2020)Magueresse, Carles, and
+  Heetderks}]{data_scaling_2024}
+Alexandre Magueresse, Vincent Carles, and Evan Heetderks. 2020.
+\newblock Low-resource languages: A review of past work and future challenges
+  for language technology.
+\newblock In \emph{Proceedings of the 1st Workshop on NLP for Positive Impact
+  (ACL)}.
+
+\bibitem[{{MALIBA-AI}(2024)}]{maliba2024bambara}
+{MALIBA-AI}. 2024.
+\newblock Bambara {ASR} v3: Fine-tuning whisper-large-v3 for bambara speech
+  recognition.
+\newblock Hugging Face model card: MALIBA-AI/bambara-asr-v3.
+
+\bibitem[{{MALIBA-AI}(2026)}]{bambara_survey_2026}
+{MALIBA-AI}. 2026.
+\newblock A survey of {Bambara} automatic speech recognition systems.
+\newblock Technical report.
+
+\bibitem[{Ng(2024)}]{ng2024rys}
+David~Noel Ng. 2024.
+\newblock Reasoning yield from stacking.
+\newblock Preprint.
+
+\bibitem[{Park et~al.(2019)}]{park2019specaugment}
+Daniel~S. Park and 1 others. 2019.
+\newblock {SpecAugment}: A simple data augmentation method for automatic speech
+  recognition.
+\newblock In \emph{Interspeech}.
+
+\bibitem[{Radford et~al.(2023)Radford, Kim, Xu, Brockman, McLeavey, and
+  Sutskever}]{radford2023robust}
+Alec Radford, Jong~Wook Kim, Tao Xu, Greg Brockman, Christine McLeavey, and
+  Ilya Sutskever. 2023.
+\newblock Robust speech recognition via large-scale weak supervision.
+\newblock In \emph{Proceedings of ICML}.
+
+\bibitem[{{RobotsMali}(2024)}]{robotsmali2024}
+{RobotsMali}. 2024.
+\newblock bam-asr-early: {Bambara} automatic speech recognition early dataset.
+\newblock Hugging Face dataset: RobotsMali/bam-asr-early. License: CC-BY-4.0.
+
+\bibitem[{Tonja et~al.(2023)}]{tonja2023natural}
+Atnafu~Lambebo Tonja and 1 others. 2023.
+\newblock Natural language processing in ethiopian languages: Current state,
+  challenges, and opportunities.
+\newblock In \emph{AfricaNLP Workshop}.
+
+\end{thebibliography}

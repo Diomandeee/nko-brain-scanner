@@ -1,0 +1,97 @@
+\relax 
+\bibstyle{acl_natbib}
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
+\citation{conneau2020unsupervised,pfeiffer2020adapterhub}
+\citation{antoun2020arabert}
+\citation{tonja2023natural}
+\citation{kakwani2020indicnlpsuite}
+\citation{maliba2024bambara}
+\citation{bayelemabaga2025}
+\citation{wmt2023nko}
+\citation{dossou2022afrolm}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Background}{2}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}N'Ko Script}{2}{subsection.2.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Structural comparison of N'Ko and English writing systems.}}{2}{table.caption.1}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{tab:nko-vs-english}{{1}{2}{Structural comparison of N'Ko and English writing systems}{table.caption.1}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Tokenization Gap}{2}{subsection.2.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Related Work}{2}{subsection.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Bambara and N'Ko NLP.}{2}{section*.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Activation Profiling: Brain Scan}{3}{section.3}\protected@file@percent }
+\newlabel{sec:brain-scan}{{3}{3}{Activation Profiling: Brain Scan}{section.3}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Methodology}{3}{subsection.3.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Results}{3}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Frozen Zone (Layers 0--27).}{3}{section*.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Adaptation Zone (Layers 28--34).}{3}{section*.4}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Per-layer L2 activation norms for N'Ko text processing. \textbf  {A}: Base vs fine-tuned model showing the LoRA adaptation zone (layers 28--35). \textbf  {B}: English vs N'Ko on the fine-tuned model, showing the cross-script activation gap. Log scale.}}{3}{figure.caption.7}\protected@file@percent }
+\newlabel{fig:brain-scan}{{1}{3}{Per-layer L2 activation norms for N'Ko text processing. \textbf {A}: Base vs fine-tuned model showing the LoRA adaptation zone (layers 28--35). \textbf {B}: English vs N'Ko on the fine-tuned model, showing the cross-script activation gap. Log scale}{figure.caption.7}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Per-layer activation change ($\Delta $L2) for N'Ko after fine-tuning. Layers 0--27 show zero change (frozen). Layers 28--34 show reduced activations (more efficient encoding). Layer 35 shows a massive increase (sharper predictions).}}{3}{figure.caption.8}\protected@file@percent }
+\newlabel{fig:delta}{{2}{3}{Per-layer activation change ($\Delta $L2) for N'Ko after fine-tuning. Layers 0--27 show zero change (frozen). Layers 28--34 show reduced activations (more efficient encoding). Layer 35 shows a massive increase (sharper predictions)}{figure.caption.8}{}}
+\@writefile{toc}{\contentsline {paragraph}{Output Layer (Layer 35).}{3}{section*.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Cross-Script Comparison.}{3}{section*.6}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Three-stage training configuration.}}{4}{table.caption.12}\protected@file@percent }
+\newlabel{tab:training-config}{{2}{4}{Three-stage training configuration}{table.caption.12}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Three-Stage Training Pipeline}{4}{section.4}\protected@file@percent }
+\newlabel{sec:training}{{4}{4}{Three-Stage Training Pipeline}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Data}{4}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Wikipedia Corpus.}{4}{section*.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{SFT Dataset.}{4}{section*.10}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{BPE Training Data.}{4}{section*.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Training Configuration}{4}{subsection.4.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Results}{4}{subsection.4.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Three-stage training results on corrected 100+100 evaluation set. Translation tax = N'Ko PPL / English PPL.}}{4}{table.caption.13}\protected@file@percent }
+\newlabel{tab:main-results}{{3}{4}{Three-stage training results on corrected 100+100 evaluation set. Translation tax = N'Ko PPL / English PPL}{table.caption.13}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Selected BPE merges showing linguistic validity. Romanized forms shown; N'Ko Unicode characters (U+07C0--U+07FF) are used in the digital version and code repository.}}{4}{table.caption.14}\protected@file@percent }
+\newlabel{tab:bpe-merges}{{4}{4}{Selected BPE merges showing linguistic validity. Romanized forms shown; N'Ko Unicode characters (U+07C0--U+07FF) are used in the digital version and code repository}{table.caption.14}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}N'Ko BPE Tokenizer}{4}{section.5}\protected@file@percent }
+\newlabel{sec:tokenizer}{{5}{4}{N'Ko BPE Tokenizer}{section.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Training}{4}{subsection.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Linguistic Analysis}{4}{subsection.5.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Compression}{4}{subsection.5.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Standard BPE vs morpheme-aware BPE on N'Ko eval set. Morpheme BPE preserves 5.6\% more linguistic boundaries but produces 42.6\% more tokens.}}{5}{table.caption.15}\protected@file@percent }
+\newlabel{tab:morpheme-bpe}{{5}{5}{Standard BPE vs morpheme-aware BPE on N'Ko eval set. Morpheme BPE preserves 5.6\% more linguistic boundaries but produces 42.6\% more tokens}{table.caption.15}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.4}Morpheme-Aware BPE}{5}{subsection.5.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Admissibility-Constrained Decoding}{5}{section.6}\protected@file@percent }
+\newlabel{sec:admissibility}{{6}{5}{Admissibility-Constrained Decoding}{section.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}Method}{5}{subsection.6.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces FSM syllable admissibility validation on 100 samples each. Natural N'Ko text scores 94.6\% validity; random character sequences (same alphabet) score 38.0\%. The skewed consonant-vowel ratio (78.8\%/21.2\%) means random text produces frequent consonant-cluster violations. FSM-constrained decoding enforces valid structure by construction.}}{5}{table.caption.16}\protected@file@percent }
+\newlabel{tab:admissibility}{{6}{5}{FSM syllable admissibility validation on 100 samples each. Natural N'Ko text scores 94.6\% validity; random character sequences (same alphabet) score 38.0\%. The skewed consonant-vowel ratio (78.8\%/21.2\%) means random text produces frequent consonant-cluster violations. FSM-constrained decoding enforces valid structure by construction}{table.caption.16}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}FSM Validation}{5}{subsection.6.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}Constrained vs Unconstrained Generation}{5}{subsection.6.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces Unconstrained vs FSM-constrained generation on 50 N'Ko prompts (V3 model). The V3 model achieves 99.8\% validity unconstrained, a substantial improvement over V1's 89.8\%. The FSM guarantees the remaining 0.2\% with 39\% throughput overhead.}}{6}{table.caption.17}\protected@file@percent }
+\newlabel{tab:constrained-comparison}{{7}{6}{Unconstrained vs FSM-constrained generation on 50 N'Ko prompts (V3 model). The V3 model achieves 99.8\% validity unconstrained, a substantial improvement over V1's 89.8\%. The FSM guarantees the remaining 0.2\% with 39\% throughput overhead}{table.caption.17}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.4}Syllable Retriever with FSM Assembly}{6}{subsection.6.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Mode Collapse.}{6}{section*.18}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Role of the FSM.}{6}{section*.19}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7}Discussion}{6}{section.7}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{The Translation Tax.}{6}{section*.20}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces V1 vs V2 adapter comparison. V2 achieves 18.3\% lower validation loss despite using fewer LoRA layers, driven by 7.9$\times $ more training data.}}{7}{table.caption.22}\protected@file@percent }
+\newlabel{tab:v2-results}{{8}{7}{V1 vs V2 adapter comparison. V2 achieves 18.3\% lower validation loss despite using fewer LoRA layers, driven by 7.9$\times $ more training data}{table.caption.22}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Vocabulary Extension}{7}{subsection.7.1}\protected@file@percent }
+\newlabel{sec:vocab-ext}{{7.1}{7}{Vocabulary Extension}{subsection.7.1}{}}
+\@writefile{toc}{\contentsline {paragraph}{V2 Adapter Training on Extended Model.}{7}{section*.21}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Consumer Hardware.}{7}{section*.23}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8}Retrieval-Centric ASR Architecture}{7}{section.8}\protected@file@percent }
+\newlabel{sec:asr}{{8}{7}{Retrieval-Centric ASR Architecture}{section.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.1}Architecture Overview}{7}{subsection.8.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2}Training}{8}{subsection.8.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.3}Speaker Diarization}{8}{subsection.8.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.4}Design Rationale}{8}{subsection.8.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {9}Open-Source Release}{8}{section.9}\protected@file@percent }
+\newlabel{sec:release}{{9}{8}{Open-Source Release}{section.9}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {10}Limitations}{8}{section.10}\protected@file@percent }
+\bibdata{references}
+\bibcite{wmt2023nko}{{1}{2023}{{Ahmadnia et~al.}}{{}}}
+\bibcite{antoun2020arabert}{{2}{2020}{{Antoun et~al.}}{{Antoun, Baly, and Hajj}}}
+\bibcite{conneau2020unsupervised}{{3}{2020}{{Conneau et~al.}}{{Conneau, Khandelwal, Goyal, Chaudhary, Wenzek, Guzm\'{a}n, Grave, Ott, Zettlemoyer, and Stoyanov}}}
+\bibcite{bayelemabaga2025}{{4}{2025}{{Coulibaly et~al.}}{{}}}
+\bibcite{dossou2022afrolm}{{5}{2022}{{Dossou et~al.}}{{Dossou, Tonja et~al.}}}
+\@writefile{toc}{\contentsline {section}{\numberline {11}Conclusion}{9}{section.11}\protected@file@percent }
+\bibcite{kakwani2020indicnlpsuite}{{6}{2020}{{Kakwani et~al.}}{{Kakwani, Kunchukuttan, Golla et~al.}}}
+\bibcite{maliba2024bambara}{{7}{2024}{{MALIBA-AI}}{{}}}
+\bibcite{pfeiffer2020adapterhub}{{8}{2020}{{Pfeiffer et~al.}}{{Pfeiffer, R\"{u}ckl\'{e}, Poth, Kamath, Vuli\'{c}, Ruder, Cho, and Gurevych}}}
+\bibcite{tonja2023natural}{{9}{2023}{{Tonja et~al.}}{{}}}
+\gdef \@abspage@last{10}

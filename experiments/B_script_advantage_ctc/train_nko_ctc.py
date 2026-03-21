@@ -1,23 +1,36 @@
 #!/usr/bin/env python3
 """
 N'Ko CTC Training: Character-level ASR with N'Ko output vocabulary.
+===================================================================
+Hardened for unattended Vast.ai deployment.
 
 This is the N'Ko arm of Experiment B. Trains a CTC decoder on top of frozen
 Whisper encoder features, outputting individual N'Ko characters (65 classes + blank).
 
-Architecture matches the V3 CharASR from asr/train_v3_fullpower.py:
+Architecture: V3 CharASR
   - Input: Whisper Large V3 encoder features (1280-dim)
   - 4x downsampling (conv stride 2, twice)
   - Transformer: d_model=768, 6 layers, 12 heads
   - CTC output: 65 N'Ko character classes + blank
 
+Resilience features:
+  - Resume from checkpoint (--resume)
+  - Mid-epoch checkpoints every N batches (--checkpoint-interval)
+  - SIGTERM/SIGINT graceful shutdown with checkpoint save
+  - Optimizer + scheduler + scaler state preserved
+  - Append-mode logging (safe for restarts)
+  - Mixed precision (AMP) for A100 efficiency
+  - Progress bars with ETA
+
 Usage:
-    python3 train_nko_ctc.py \
-        --features-dir /path/to/whisper_features/ \
-        --pairs /path/to/nko_pairs.jsonl \
-        --epochs 50 \
-        --batch-size 16 \
-        --checkpoint-dir checkpoints/nko/
+    python3 train_nko_ctc.py \\
+        --features-dir /workspace/features/ \\
+        --pairs /workspace/nko_pairs.jsonl \\
+        --epochs 50 \\
+        --batch-size 16 \\
+        --checkpoint-dir /workspace/checkpoints/nko/ \\
+        --log /workspace/experiment_b_nko.log \\
+        --resume
 """
 
 import argparse
@@ -25,7 +38,10 @@ import json
 import math
 import os
 import random
+import signal
+import sys
 import time
+from datetime import datetime
 from pathlib import Path
 
 import torch
@@ -33,8 +49,31 @@ import torch.nn as nn
 import torch.nn.functional as F
 from torch.utils.data import Dataset, DataLoader
 
+# ── Globals for signal handler ────────────────────────────────────────
+_SHUTDOWN_REQUESTED = False
+_SAVE_CONTEXT = {}
 
-# ---------- N'Ko Character Vocabulary ----------
+
+# ── Logging ───────────────────────────────────────────────────────────
+
+_LOG_FILE = None
+
+
+def log(msg, also_print=True):
+    """Log with timestamp to both stdout and logfile."""
+    ts = datetime.utcnow().strftime("%Y-%m-%d %H:%M:%S")
+    line = f"[{ts}] {msg}"
+    if also_print:
+        print(line, flush=True)
+    if _LOG_FILE:
+        try:
+            with open(_LOG_FILE, "a") as f:
+                f.write(line + "\n")
+        except Exception:
+            pass
+
+
+# ── N'Ko Character Vocabulary ─────────────────────────────────────────
 
 def build_nko_char_vocab():
     """Build vocabulary of individual N'Ko characters.
@@ -57,7 +96,7 @@ def build_nko_char_vocab():
     return chars, idx
 
 
-# ---------- Dataset ----------
+# ── Dataset ───────────────────────────────────────────────────────────
 
 class NkoCTCDataset(Dataset):
     """Dataset pairing Whisper features with N'Ko character sequences."""
@@ -71,7 +110,8 @@ class NkoCTCDataset(Dataset):
         # Match pairs with available feature files
         available = set(p.stem for p in self.features_dir.glob("*.pt"))
         self.pairs = [p for p in pairs if p.get("feat_id", "") in available]
-        print(f"NkoCTCDataset: {len(self.pairs)} usable pairs (of {len(pairs)} total)")
+        log(f"NkoCTCDataset: {len(self.pairs)} usable pairs (of {len(pairs)} total, "
+            f"{len(available)} features on disk)")
 
     def __len__(self):
         return len(self.pairs)
@@ -82,7 +122,8 @@ class NkoCTCDataset(Dataset):
 
         try:
             features = torch.load(feat_path, weights_only=True).float()
-        except Exception:
+        except Exception as e:
+            log(f"  [warn] Failed to load {feat_path}: {e}")
             features = torch.zeros(self.max_audio_len, 1280)
 
         # Truncate/pad audio
@@ -99,7 +140,6 @@ class NkoCTCDataset(Dataset):
         for ch in nko_text:
             if ch in self.char_vocab:
                 target.append(self.char_vocab[ch])
-            # Skip unknown characters
         target = target[:self.max_text_len]
         text_len = len(target)
 
@@ -115,19 +155,19 @@ class NkoCTCDataset(Dataset):
         )
 
 
-# ---------- Model ----------
+# ── Model ─────────────────────────────────────────────────────────────
 
 class CharASR_NKo(nn.Module):
     """CTC-based character ASR model with N'Ko output.
 
-    Matches V3 architecture from asr/train_v3_fullpower.py.
+    Matches V3 architecture: h768, L6, nhead=12, Conv1d stride-4.
     """
 
     def __init__(self, input_dim=1280, d_model=768, nhead=12, num_layers=6, num_classes=66):
         super().__init__()
         self.num_classes = num_classes
 
-        # Downsampling: 2x conv stride
+        # Downsampling: 4x total (stride 2 twice)
         self.downsample = nn.Sequential(
             nn.Conv1d(input_dim, d_model, kernel_size=3, stride=2, padding=1),
             nn.GELU(),
@@ -186,146 +226,444 @@ class CharASR_NKo(nn.Module):
         return log_probs, output_lengths
 
 
-# ---------- Training ----------
+# ── Checkpoint ────────────────────────────────────────────────────────
 
-def train_epoch(model, dataloader, optimizer, scheduler, device, epoch):
-    """Train for one epoch."""
+def save_checkpoint(path, model, optimizer, scheduler, scaler, epoch, batch_idx,
+                    best_val, val_loss=None, reason="periodic"):
+    """Save full training state for resume. Atomic write."""
+    ckpt = {
+        "model_state": model.state_dict(),
+        "optimizer_state": optimizer.state_dict(),
+        "scheduler_state": scheduler.state_dict() if scheduler else None,
+        "scaler_state": scaler.state_dict() if scaler else None,
+        "epoch": epoch,
+        "batch_idx": batch_idx,
+        "best_val": best_val,
+        "val_loss": val_loss,
+        "timestamp": datetime.utcnow().isoformat(),
+        "reason": reason,
+        "script": "train_nko_ctc.py",
+    }
+    tmp_path = str(path) + ".tmp"
+    torch.save(ckpt, tmp_path)
+    os.replace(tmp_path, path)  # atomic rename
+    log(f"  [checkpoint] saved: epoch={epoch} batch={batch_idx} reason={reason} -> {path}")
+
+
+def load_checkpoint(path, model, optimizer, scheduler, scaler, device):
+    """Load training state. Returns (start_epoch, batch_idx, best_val) or None."""
+    path = Path(path)
+    if not path.exists():
+        return None
+    log(f"Resuming from checkpoint: {path}")
+    ckpt = torch.load(path, map_location=device, weights_only=False)
+
+    model.load_state_dict(ckpt["model_state"])
+    log(f"  Restored model state")
+
+    if "optimizer_state" in ckpt and ckpt["optimizer_state"]:
+        try:
+            optimizer.load_state_dict(ckpt["optimizer_state"])
+            log(f"  Restored optimizer state")
+        except Exception as e:
+            log(f"  [warn] optimizer restore failed: {e}")
+
+    if scheduler and "scheduler_state" in ckpt and ckpt["scheduler_state"]:
+        try:
+            scheduler.load_state_dict(ckpt["scheduler_state"])
+            log(f"  Restored scheduler state")
+        except Exception as e:
+            log(f"  [warn] scheduler restore failed: {e}")
+
+    if scaler and "scaler_state" in ckpt and ckpt["scaler_state"]:
+        try:
+            scaler.load_state_dict(ckpt["scaler_state"])
+            log(f"  Restored scaler state")
+        except Exception as e:
+            log(f"  [warn] scaler restore failed: {e}")
+
+    epoch = ckpt.get("epoch", 0)
+    batch_idx = ckpt.get("batch_idx", 0)
+    best_val = ckpt.get("best_val", float("inf"))
+    reason = ckpt.get("reason", "unknown")
+    log(f"  Resume point: epoch={epoch}, batch={batch_idx}, best_val={best_val:.4f}, reason={reason}")
+    return epoch, batch_idx, best_val
+
+
+# ── Signal handler ────────────────────────────────────────────────────
+
+def _signal_handler(signum, frame):
+    global _SHUTDOWN_REQUESTED
+    sig_name = signal.Signals(signum).name
+    log(f"\n[SIGNAL] {sig_name} received. Saving checkpoint and shutting down...")
+    _SHUTDOWN_REQUESTED = True
+
+    ctx = _SAVE_CONTEXT
+    if ctx.get("model"):
+        save_checkpoint(
+            ctx["checkpoint_path"],
+            ctx["model"], ctx["optimizer"], ctx["scheduler"], ctx["scaler"],
+            ctx.get("epoch", 0), ctx.get("batch_idx", 0),
+            ctx.get("best_val", float("inf")),
+            reason=f"signal_{sig_name}",
+        )
+    sys.exit(0)
+
+
+# ── Training ──────────────────────────────────────────────────────────
+
+def train_epoch(model, dataloader, optimizer, scheduler, scaler, device, epoch,
+                checkpoint_interval=500, skip_batches=0):
+    """Train for one epoch with mid-epoch checkpointing and graceful shutdown."""
+    global _SHUTDOWN_REQUESTED
     model.train()
-    total_loss = 0
+    total_loss = 0.0
     num_batches = 0
+    total_batches = len(dataloader)
     ctc_loss_fn = nn.CTCLoss(blank=0, zero_infinity=True)
+    t0 = time.time()
 
     for batch_idx, (features, targets, audio_lens, text_lens) in enumerate(dataloader):
+        if _SHUTDOWN_REQUESTED:
+            log("  [shutdown] stopping training loop")
+            break
+
+        if batch_idx < skip_batches:
+            continue
+
         features = features.to(device)
         targets = targets.to(device)
         audio_lens = audio_lens.to(device)
         text_lens = text_lens.to(device)
 
         optimizer.zero_grad()
-        log_probs, output_lens = model(features, audio_lens)
 
-        # CTC loss expects (T, N, C), targets as 1D concatenation
-        # Filter out zero-length targets
-        valid = text_lens > 0
-        if not valid.any():
+        # Mixed precision forward
+        with torch.amp.autocast('cuda', enabled=scaler is not None):
+            log_probs, output_lens = model(features, audio_lens)
+
+            # Filter out zero-length targets
+            valid = text_lens > 0
+            if not valid.any():
+                continue
+
+            loss = ctc_loss_fn(
+                log_probs[:, valid],
+                targets[valid],
+                output_lens[valid],
+                text_lens[valid],
+            )
+
+        if not torch.isfinite(loss):
             continue
 
-        loss = ctc_loss_fn(
-            log_probs[:, valid],
-            targets[valid],
-            output_lens[valid],
-            text_lens[valid],
-        )
-
-        if torch.isfinite(loss):
+        if scaler is not None:
+            scaler.scale(loss).backward()
+            scaler.unscale_(optimizer)
+            torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=5.0)
+            scaler.step(optimizer)
+            scaler.update()
+        else:
             loss.backward()
             torch.nn.utils.clip_grad_norm_(model.parameters(), max_norm=5.0)
             optimizer.step()
-            if scheduler:
-                scheduler.step()
-            total_loss += loss.item()
-            num_batches += 1
 
-        if batch_idx % 50 == 0:
-            print(f"  Epoch {epoch} | Batch {batch_idx} | Loss: {loss.item():.4f}")
+        if scheduler:
+            scheduler.step()
+
+        total_loss += loss.item()
+        num_batches += 1
+
+        # Update signal handler context
+        _SAVE_CONTEXT["batch_idx"] = batch_idx + 1
+
+        # Progress log every 50 batches
+        if (batch_idx + 1) % 50 == 0 or batch_idx == 0:
+            elapsed = time.time() - t0
+            rate = max(num_batches, 1) / elapsed
+            remaining = total_batches - batch_idx - 1
+            eta_min = remaining / rate / 60 if rate > 0 else 0
+            avg_loss = total_loss / max(num_batches, 1)
+            lr = optimizer.param_groups[0]["lr"]
+            log(f"  E{epoch} [{batch_idx+1}/{total_batches}] "
+                f"loss={loss.item():.4f} avg={avg_loss:.4f} "
+                f"lr={lr:.2e} {rate:.1f}b/s ETA={eta_min:.0f}m")
+
+        # Mid-epoch checkpoint
+        if checkpoint_interval > 0 and (batch_idx + 1) % checkpoint_interval == 0:
+            ctx = _SAVE_CONTEXT
+            save_checkpoint(
+                ctx["checkpoint_path"],
+                model, optimizer, scheduler, scaler,
+                ctx.get("epoch", 0), batch_idx + 1,
+                ctx.get("best_val", float("inf")),
+                reason="mid_epoch",
+            )
 
     return total_loss / max(num_batches, 1)
 
 
+def eval_epoch(model, dataloader, device):
+    """Evaluate on validation set."""
+    model.eval()
+    total_loss = 0.0
+    num_batches = 0
+    ctc_loss_fn = nn.CTCLoss(blank=0, zero_infinity=True)
+
+    with torch.no_grad():
+        for features, targets, audio_lens, text_lens in dataloader:
+            features = features.to(device)
+            targets = targets.to(device)
+            audio_lens = audio_lens.to(device)
+            text_lens = text_lens.to(device)
+
+            log_probs, output_lens = model(features, audio_lens)
+            valid = text_lens > 0
+            if valid.any():
+                loss = ctc_loss_fn(log_probs[:, valid], targets[valid],
+                                   output_lens[valid], text_lens[valid])
+                if torch.isfinite(loss):
+                    total_loss += loss.item()
+                    num_batches += 1
+
+    return total_loss / max(num_batches, 1)
+
+
+# ── Main ──────────────────────────────────────────────────────────────
+
 def main():
-    parser = argparse.ArgumentParser(description="Train N'Ko CTC ASR")
-    parser.add_argument("--features-dir", required=True, help="Directory with Whisper .pt features")
-    parser.add_argument("--pairs", required=True, help="JSONL with feat_id + nko fields")
+    parser = argparse.ArgumentParser(description="Train N'Ko CTC ASR (Experiment B)")
+    parser.add_argument("--features-dir", required=True,
+                        help="Directory with Whisper .pt features")
+    parser.add_argument("--pairs", required=True,
+                        help="JSONL with feat_id + nko fields")
     parser.add_argument("--epochs", type=int, default=50)
     parser.add_argument("--batch-size", type=int, default=16)
     parser.add_argument("--lr", type=float, default=3e-4)
+    parser.add_argument("--warmup-steps", type=int, default=500,
+                        help="Linear warmup steps before cosine decay")
     parser.add_argument("--checkpoint-dir", default="checkpoints/nko/")
+    parser.add_argument("--checkpoint-interval", type=int, default=500,
+                        help="Save checkpoint every N batches (0=disabled)")
+    parser.add_argument("--resume", action="store_true",
+                        help="Resume from latest checkpoint")
+    parser.add_argument("--log", default=None,
+                        help="Log file path (append mode)")
+    parser.add_argument("--no-amp", action="store_true",
+                        help="Disable mixed precision (AMP)")
     parser.add_argument("--device", default="cuda" if torch.cuda.is_available() else "cpu")
+    parser.add_argument("--num-workers", type=int, default=4)
+    parser.add_argument("--seed", type=int, default=42)
     args = parser.parse_args()
+
+    # Setup logging
+    global _LOG_FILE
+    _LOG_FILE = args.log
+
+    # Register signal handlers
+    signal.signal(signal.SIGTERM, _signal_handler)
+    signal.signal(signal.SIGINT, _signal_handler)
+
+    # Seed
+    random.seed(args.seed)
+    torch.manual_seed(args.seed)
+    if torch.cuda.is_available():
+        torch.cuda.manual_seed_all(args.seed)
+
+    log("=" * 70)
+    log("Experiment B: N'Ko CTC Training")
+    log("=" * 70)
+    log(f"PID: {os.getpid()}")
+    log(f"Device: {args.device}")
+    if torch.cuda.is_available():
+        log(f"GPU: {torch.cuda.get_device_name()}")
+        log(f"GPU Memory: {torch.cuda.get_device_properties(0).total_mem / 1e9:.1f} GB")
+    log(f"Features: {args.features_dir}")
+    log(f"Pairs: {args.pairs}")
+    log(f"Epochs: {args.epochs}, Batch: {args.batch_size}, LR: {args.lr}")
+    log(f"Warmup: {args.warmup_steps} steps")
+    log(f"Checkpoint interval: {args.checkpoint_interval} batches")
+    log(f"AMP: {'disabled' if args.no_amp else 'enabled'}")
+    log(f"Resume: {args.resume}")
 
     os.makedirs(args.checkpoint_dir, exist_ok=True)
 
     # Build vocabulary
     char_vocab, num_classes = build_nko_char_vocab()
-    print(f"N'Ko vocab: {num_classes} classes (including blank)")
+    log(f"N'Ko vocab: {num_classes} classes (64 N'Ko codepoints + space + blank)")
 
     # Load pairs
     pairs = []
     with open(args.pairs) as f:
         for line in f:
-            pairs.append(json.loads(line.strip()))
-    print(f"Loaded {len(pairs)} training pairs")
+            line = line.strip()
+            if line:
+                pairs.append(json.loads(line))
+    log(f"Loaded {len(pairs)} training pairs from {args.pairs}")
 
-    # Split train/val (90/10)
-    random.seed(42)
+    # Verify some pairs have N'Ko text
+    nko_count = sum(1 for p in pairs if p.get("nko", "").strip())
+    log(f"  Pairs with N'Ko text: {nko_count}/{len(pairs)}")
+    if nko_count == 0:
+        log("[ERROR] No pairs have N'Ko text. Check the 'nko' field in pairs JSONL.")
+        sys.exit(1)
+
+    # Split train/val (90/10) with fixed seed
+    random.seed(args.seed)
     random.shuffle(pairs)
     split = int(len(pairs) * 0.9)
     train_pairs = pairs[:split]
     val_pairs = pairs[split:]
+    log(f"Split: {len(train_pairs)} train, {len(val_pairs)} val")
 
     # Datasets
     train_ds = NkoCTCDataset(args.features_dir, train_pairs, char_vocab)
     val_ds = NkoCTCDataset(args.features_dir, val_pairs, char_vocab)
 
-    train_dl = DataLoader(train_ds, batch_size=args.batch_size, shuffle=True, num_workers=4)
-    val_dl = DataLoader(val_ds, batch_size=args.batch_size, shuffle=False, num_workers=4)
+    if len(train_ds) == 0:
+        log("[ERROR] No usable training pairs. Check features-dir and pairs file.")
+        sys.exit(1)
+
+    train_dl = DataLoader(
+        train_ds, batch_size=args.batch_size, shuffle=True,
+        num_workers=args.num_workers, pin_memory=True,
+    )
+    val_dl = DataLoader(
+        val_ds, batch_size=args.batch_size, shuffle=False,
+        num_workers=args.num_workers, pin_memory=True,
+    )
 
     # Model
     device = torch.device(args.device)
     model = CharASR_NKo(num_classes=num_classes).to(device)
-    param_count = sum(p.numel() for p in model.parameters()) / 1e6
-    print(f"Model: {param_count:.1f}M params, {num_classes} output classes")
+    param_count = sum(p.numel() for p in model.parameters())
+    log(f"Model: {param_count / 1e6:.1f}M params, {num_classes} output classes")
 
+    # Optimizer
     optimizer = torch.optim.AdamW(model.parameters(), lr=args.lr, weight_decay=0.01)
 
+    # Scheduler: linear warmup + cosine decay
     total_steps = len(train_dl) * args.epochs
-    scheduler = torch.optim.lr_scheduler.CosineAnnealingLR(optimizer, T_max=total_steps)
+
+    def lr_lambda(step):
+        if step < args.warmup_steps:
+            return step / max(args.warmup_steps, 1)
+        progress = (step - args.warmup_steps) / max(total_steps - args.warmup_steps, 1)
+        return 0.5 * (1.0 + math.cos(math.pi * progress))
+
+    scheduler = torch.optim.lr_scheduler.LambdaLR(optimizer, lr_lambda)
+
+    # AMP scaler
+    use_amp = not args.no_amp and device.type == "cuda"
+    scaler = torch.amp.GradScaler('cuda') if use_amp else None
+
+    # Checkpoint paths
+    checkpoint_path = os.path.join(args.checkpoint_dir, "checkpoint.pt")
+    best_path = os.path.join(args.checkpoint_dir, "best.pt")
 
     best_val_loss = float("inf")
+    start_epoch = 0
+    skip_batches = 0
 
-    for epoch in range(1, args.epochs + 1):
-        t0 = time.time()
-        train_loss = train_epoch(model, train_dl, optimizer, scheduler, device, epoch)
+    # Populate signal handler context
+    _SAVE_CONTEXT.update({
+        "model": model,
+        "optimizer": optimizer,
+        "scheduler": scheduler,
+        "scaler": scaler,
+        "checkpoint_path": checkpoint_path,
+        "best_val": best_val_loss,
+        "epoch": 0,
+        "batch_idx": 0,
+    })
 
-        # Validation
-        model.eval()
-        val_loss = 0
-        val_batches = 0
-        ctc_loss_fn = nn.CTCLoss(blank=0, zero_infinity=True)
+    # Resume from checkpoint
+    if args.resume:
+        result = load_checkpoint(checkpoint_path, model, optimizer, scheduler, scaler, device)
+        if result is None:
+            result = load_checkpoint(best_path, model, optimizer, scheduler, scaler, device)
+        if result:
+            start_epoch, skip_batches, best_val_loss = result
+            _SAVE_CONTEXT["best_val"] = best_val_loss
+            log(f"Resuming from epoch {start_epoch}, batch {skip_batches}")
+        else:
+            log("No checkpoint found, starting fresh")
 
-        with torch.no_grad():
-            for features, targets, audio_lens, text_lens in val_dl:
-                features = features.to(device)
-                targets = targets.to(device)
-                audio_lens = audio_lens.to(device)
-                text_lens = text_lens.to(device)
+    log(f"\nStarting training: epochs {start_epoch+1}-{args.epochs}, "
+        f"{len(train_dl)} batches/epoch, {total_steps} total steps")
+    log("-" * 70)
 
-                log_probs, output_lens = model(features, audio_lens)
-                valid = text_lens > 0
-                if valid.any():
-                    loss = ctc_loss_fn(log_probs[:, valid], targets[valid],
-                                       output_lens[valid], text_lens[valid])
-                    if torch.isfinite(loss):
-                        val_loss += loss.item()
-                        val_batches += 1
+    try:
+        for epoch in range(start_epoch, args.epochs):
+            if _SHUTDOWN_REQUESTED:
+                break
 
-        val_loss = val_loss / max(val_batches, 1)
-        elapsed = time.time() - t0
+            _SAVE_CONTEXT["epoch"] = epoch
+            epoch_start = time.time()
 
-        print(f"Epoch {epoch}/{args.epochs} | Train: {train_loss:.4f} | Val: {val_loss:.4f} | {elapsed:.0f}s")
+            # Skip batches only on resumed epoch
+            current_skip = skip_batches if epoch == start_epoch else 0
 
-        if val_loss < best_val_loss:
-            best_val_loss = val_loss
-            torch.save(model.state_dict(), os.path.join(args.checkpoint_dir, "best.pt"))
-            print(f"  New best! Saved checkpoint.")
+            train_loss = train_epoch(
+                model, train_dl, optimizer, scheduler, scaler, device,
+                epoch + 1, args.checkpoint_interval, current_skip,
+            )
 
-        if epoch % 10 == 0:
-            torch.save(model.state_dict(), os.path.join(args.checkpoint_dir, f"epoch_{epoch}.pt"))
+            if _SHUTDOWN_REQUESTED:
+                break
 
-    # Save final
-    torch.save(model.state_dict(), os.path.join(args.checkpoint_dir, "final.pt"))
-    print(f"\nTraining complete. Best val loss: {best_val_loss:.4f}")
-    print(f"Checkpoints in: {args.checkpoint_dir}")
+            # Validation
+            val_loss = eval_epoch(model, val_dl, device)
+            elapsed = time.time() - epoch_start
+
+            improved = ""
+            if val_loss < best_val_loss:
+                best_val_loss = val_loss
+                _SAVE_CONTEXT["best_val"] = best_val_loss
+                save_checkpoint(
+                    best_path, model, optimizer, scheduler, scaler,
+                    epoch + 1, 0, best_val_loss, val_loss, reason="best_model",
+                )
+                improved = " ** NEW BEST **"
+
+            # Always save epoch checkpoint for resume
+            save_checkpoint(
+                checkpoint_path, model, optimizer, scheduler, scaler,
+                epoch + 1, 0, best_val_loss, val_loss, reason="epoch_end",
+            )
+
+            # Also save periodic epoch snapshots
+            if (epoch + 1) % 10 == 0:
+                epoch_path = os.path.join(args.checkpoint_dir, f"epoch_{epoch+1}.pt")
+                save_checkpoint(
+                    epoch_path, model, optimizer, scheduler, scaler,
+                    epoch + 1, 0, best_val_loss, val_loss, reason="periodic_snapshot",
+                )
+
+            log(f"E{epoch+1}/{args.epochs} | "
+                f"Train={train_loss:.4f} Val={val_loss:.4f} Best={best_val_loss:.4f} | "
+                f"{elapsed:.0f}s{improved}")
+
+        # Save final model
+        final_path = os.path.join(args.checkpoint_dir, "final.pt")
+        torch.save(model.state_dict(), final_path)
+
+        log("=" * 70)
+        log(f"Training complete. Best val loss: {best_val_loss:.4f}")
+        log(f"Checkpoints: {args.checkpoint_dir}")
+        log(f"  best.pt   -> best validation model")
+        log(f"  final.pt  -> last epoch model state_dict")
+        log(f"  checkpoint.pt -> full resumable state")
+        log("=" * 70)
+
+    except Exception as e:
+        log(f"\n[CRASH] {type(e).__name__}: {e}")
+        save_checkpoint(
+            checkpoint_path, model, optimizer, scheduler, scaler,
+            _SAVE_CONTEXT.get("epoch", 0), _SAVE_CONTEXT.get("batch_idx", 0),
+            best_val_loss, reason=f"crash_{type(e).__name__}",
+        )
+        raise
 
 
 if __name__ == "__main__":

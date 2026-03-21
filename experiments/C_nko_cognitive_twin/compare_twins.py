@@ -21,17 +21,35 @@ import os
 import sys
 from pathlib import Path
 
-try:
-    import mlx.core as mx
-    import mlx.nn as nn
-    from mlx_lm import load, generate
-except ImportError:
-    print("ERROR: mlx and mlx_lm required. pip install mlx mlx-lm")
-    sys.exit(1)
+# Lazy imports — mlx/mlx_lm only available on Apple Silicon (Mac5)
+mx = None
+nn = None
+load = None
+generate = None
+
+
+def _ensure_mlx():
+    """Import mlx dependencies at runtime, fail with clear message if missing."""
+    global mx, nn, load, generate
+    if mx is not None:
+        return
+    try:
+        import mlx.core as _mx
+        import mlx.nn as _nn
+        from mlx_lm import load as _load, generate as _generate
+        mx = _mx
+        nn = _nn
+        load = _load
+        generate = _generate
+    except ImportError:
+        print("ERROR: mlx and mlx_lm required. pip install mlx mlx-lm")
+        print("This script is designed to run on Apple Silicon (Mac5).")
+        sys.exit(1)
 
 
 def compute_perplexity(model, tokenizer, text, max_tokens=256):
     """Compute perplexity for a single text."""
+    _ensure_mlx()
     tokens = tokenizer.encode(text)
     if len(tokens) < 4:
         return float("inf"), len(tokens)
@@ -58,6 +76,7 @@ def compute_perplexity(model, tokenizer, text, max_tokens=256):
 
 def generate_response(model, tokenizer, prompt, max_tokens=200):
     """Generate a response from the model given a prompt."""
+    _ensure_mlx()
     tokens = tokenizer.encode(prompt)
     input_ids = mx.array([tokens])
 
@@ -83,6 +102,7 @@ def generate_response(model, tokenizer, prompt, max_tokens=200):
 
 def evaluate_adapter(model_name, adapter_path, prompts, label):
     """Evaluate a single adapter on all prompts."""
+    _ensure_mlx()
     print(f"\nLoading {label}: {model_name}")
     if adapter_path:
         print(f"  Adapter: {adapter_path}")

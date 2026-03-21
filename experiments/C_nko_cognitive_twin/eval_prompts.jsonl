@@ -1,50 +1,50 @@
-{"prompt": "Tell me about your earliest memory of learning to code.", "category": "personal_history"}
-{"prompt": "What was the first project you built that actually worked?", "category": "personal_history"}
-{"prompt": "How did you decide to work on AI?", "category": "personal_history"}
-{"prompt": "What's the biggest mistake you've made in a software project?", "category": "personal_history"}
-{"prompt": "Describe your typical workflow when starting a new project.", "category": "personal_history"}
-{"prompt": "Who influenced your technical thinking the most?", "category": "personal_history"}
-{"prompt": "What was growing up in a Manding-speaking family like?", "category": "personal_history"}
-{"prompt": "How did you learn English?", "category": "personal_history"}
-{"prompt": "What do you remember about your father's storytelling?", "category": "personal_history"}
-{"prompt": "When did you first encounter N'Ko script?", "category": "personal_history"}
-{"prompt": "Why did you choose to use a mesh architecture instead of a monolith?", "category": "technical"}
+{"prompt": "Tell me about your earliest memory of learning to code.", "category": "personal"}
+{"prompt": "What was the first project you built that actually worked?", "category": "personal"}
+{"prompt": "How did you decide to work on AI?", "category": "personal"}
+{"prompt": "What's the biggest mistake you've made in a software project?", "category": "personal"}
+{"prompt": "Describe your typical workflow when starting a new project.", "category": "personal"}
+{"prompt": "Who influenced your technical thinking the most?", "category": "personal"}
+{"prompt": "What was growing up in a Manding-speaking family like?", "category": "personal"}
+{"prompt": "How did you learn English?", "category": "personal"}
+{"prompt": "What drives you to keep building at 2 AM when nobody asked you to?", "category": "personal"}
+{"prompt": "When did you first encounter N'Ko script and what did it mean to you?", "category": "personal"}
+{"prompt": "Why did you choose a mesh architecture instead of a monolith?", "category": "technical"}
 {"prompt": "Explain the trade-offs between LoRA and full fine-tuning.", "category": "technical"}
 {"prompt": "How does CTC loss work for speech recognition?", "category": "technical"}
 {"prompt": "What's the difference between a transformer encoder and decoder?", "category": "technical"}
 {"prompt": "Why use MLX instead of PyTorch on Apple Silicon?", "category": "technical"}
-{"prompt": "Explain what activation sparsity means in a neural network.", "category": "technical"}
-{"prompt": "How does the N'Ko transliteration bridge handle tone marks?", "category": "technical"}
+{"prompt": "How does the N'Ko transliteration bridge handle tone marks through IPA?", "category": "technical"}
 {"prompt": "What is a syllable codebook and why use one for ASR?", "category": "technical"}
 {"prompt": "Explain the retrieval-centric approach to speech recognition.", "category": "technical"}
-{"prompt": "What are the advantages of character-level CTC over word-level?", "category": "technical"}
+{"prompt": "How would you design a trajectory-based reward system for RL from feedback?", "category": "technical"}
+{"prompt": "What are the advantages of character-level CTC over word-level for low-resource languages?", "category": "technical"}
 {"prompt": "What does the Manding proverb 'one hand cannot grab flour' mean to you?", "category": "cultural"}
 {"prompt": "How is the concept of 'nyama' relevant to how you think about code?", "category": "cultural"}
 {"prompt": "Why is it important to preserve N'Ko as a writing system?", "category": "cultural"}
-{"prompt": "Explain the significance of Solomana Kante's contribution.", "category": "cultural"}
-{"prompt": "How does the griot tradition connect to how you think about knowledge?", "category": "cultural"}
-{"prompt": "What role does community play in West African problem-solving?", "category": "cultural"}
-{"prompt": "Translate 'knowledge is power' into N'Ko and explain the word choices.", "category": "cultural"}
+{"prompt": "Explain the significance of Solomana Kante's contribution to African literacy.", "category": "cultural"}
+{"prompt": "How does the griot tradition connect to how you think about knowledge systems?", "category": "cultural"}
+{"prompt": "What role does community play in West African problem-solving traditions?", "category": "cultural"}
 {"prompt": "What does 'N'Ko' literally mean and why is that name significant?", "category": "cultural"}
 {"prompt": "How do Manding languages handle the concept of time differently from English?", "category": "cultural"}
 {"prompt": "What is the relationship between language and identity for diaspora communities?", "category": "cultural"}
-{"prompt": "What is the N'Ko Unicode range?", "category": "nko_knowledge"}
-{"prompt": "How many base characters does N'Ko have?", "category": "nko_knowledge"}
-{"prompt": "Explain N'Ko's tone marking system.", "category": "nko_knowledge"}
-{"prompt": "Why does N'Ko read right-to-left?", "category": "nko_knowledge"}
-{"prompt": "What makes N'Ko phonetically transparent?", "category": "nko_knowledge"}
-{"prompt": "How are N'Ko numerals different from Western Arabic numerals?", "category": "nko_knowledge"}
-{"prompt": "What is the N'Ko word for 'computer'?", "category": "nko_knowledge"}
-{"prompt": "How does N'Ko handle loanwords from French or English?", "category": "nko_knowledge"}
-{"prompt": "What are the combining marks in N'Ko and what do they indicate?", "category": "nko_knowledge"}
-{"prompt": "How many people use N'Ko today?", "category": "nko_knowledge"}
-{"prompt": "How would you structure a startup from scratch?", "category": "business"}
-{"prompt": "What's your approach to pricing a software product?", "category": "business"}
+{"prompt": "How does the oral tradition of Manding culture shape how you document your work?", "category": "cultural"}
+{"prompt": "How would you structure a startup from scratch with no funding?", "category": "business"}
+{"prompt": "What's your approach to pricing a software product for African markets?", "category": "business"}
 {"prompt": "How do you think about technical debt vs shipping fast?", "category": "business"}
-{"prompt": "What's the most important metric for a consumer app?", "category": "business"}
-{"prompt": "How do you decide what to build next?", "category": "business"}
-{"prompt": "How should you structure a codebase for a 5-person team?", "category": "architecture"}
-{"prompt": "What's your philosophy on testing?", "category": "architecture"}
-{"prompt": "How do you handle secrets management across multiple machines?", "category": "architecture"}
-{"prompt": "When should you use a message queue vs direct API calls?", "category": "architecture"}
-{"prompt": "What's the right way to handle database migrations in production?", "category": "architecture"}
+{"prompt": "What's the most important metric for a consumer app in its first year?", "category": "business"}
+{"prompt": "How do you decide what to build next across a portfolio of 40+ apps?", "category": "business"}
+{"prompt": "What is Koatji's core value proposition and how does it differ from competitors?", "category": "business"}
+{"prompt": "How should a solo developer think about revenue diversification?", "category": "business"}
+{"prompt": "What lessons have you learned about App Store optimization and discovery?", "category": "business"}
+{"prompt": "How do you balance building infrastructure vs user-facing features?", "category": "business"}
+{"prompt": "What's your strategy for entering a market where the big players have 100x your resources?", "category": "business"}
+{"prompt": "If you could compose a soundtrack for your life, what instruments would dominate and why?", "category": "creative"}
+{"prompt": "Describe a piece of visual art that changed how you see the world.", "category": "creative"}
+{"prompt": "How do you think about storytelling when creating content for social media?", "category": "creative"}
+{"prompt": "Write a short poem about building software at night.", "category": "creative"}
+{"prompt": "How does music influence your coding rhythm and flow state?", "category": "creative"}
+{"prompt": "If you were directing a short film about AI and African languages, what would the opening scene look like?", "category": "creative"}
+{"prompt": "How would you design the visual identity for an N'Ko language app?", "category": "creative"}
+{"prompt": "What's the most creative hack or workaround you've ever built?", "category": "creative"}
+{"prompt": "How do you think about the aesthetics of a terminal or command-line interface as a creative medium?", "category": "creative"}
+{"prompt": "If you could collaborate with any artist, alive or dead, on a project blending code and culture, who would it be and what would you build?", "category": "creative"}

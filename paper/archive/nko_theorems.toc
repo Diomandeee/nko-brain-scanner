@@ -1,0 +1,9 @@
+\contentsline {section}{\numberline {1}Preliminaries and Notation}{2}{section.1}%
+\contentsline {section}{\numberline {2}Theorem 1: Phonetic Transparency Advantage}{2}{section.2}%
+\contentsline {section}{\numberline {3}Theorem 2: Translation Tax Bounds}{3}{section.3}%
+\contentsline {section}{\numberline {4}Theorem 3: FSM Completeness and Soundness}{4}{section.4}%
+\contentsline {section}{\numberline {5}Theorem 4: Circuit Death in Under-Represented Scripts}{6}{section.5}%
+\contentsline {section}{\numberline {6}Theorem 5: LoRA Rank-Efficiency for Script Adaptation}{7}{section.6}%
+\contentsline {section}{\numberline {7}Derivation: CTC Loss Gradient for N'Ko}{7}{section.7}%
+\contentsline {section}{\numberline {8}Derivation: Kurtosis Deficit as Circuit Specialization Measure}{8}{section.8}%
+\contentsline {section}{\numberline {9}Derivation: Cross-Script Bridge Composition}{9}{section.9}%

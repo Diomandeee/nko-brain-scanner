@@ -22,6 +22,8 @@ In 1949, Solomana Kanté — a self-taught linguist in Kankan, Guinea — design
 
 The paradox we study is this: N'Ko is the best-designed script in our phoneme inventory for computational linguistics, and it is nearly invisible to modern machine learning. Qwen2-72B-Instruct, a state-of-the-art model with 151,936 vocabulary entries, processes N'Ko text with 2.90x the perplexity of English before fine-tuning. Every published Bambara ASR system — MALIBA-AI bambara-asr-v3 (45.73% WER), Meta MMS, Google USM — produces Latin output. For the millions of N'Ko-literate speakers across West Africa, the entire ASR field has been writing in a foreign script.
 
+The practical stakes are immediate. A child in Kankan who speaks Maninka and reads N'Ko cannot dictate a text message, search the web, or interact with any AI system in their own script. Every voice interface, every ASR API, every language model responds in Latin orthography designed for French linguists — not for the people who speak the language. The cognitive cost of this mismatch compounds across education, commerce, and creative expression. Building audio-to-N'Ko ASR is not an academic exercise; it is the first layer of computational infrastructure for 40 million speakers whose writing system has been invisible to machine learning.
+
 This paper makes eight contributions:
 
 1. The first per-layer activation profiling study comparing English and N'Ko processing in a large language model, revealing three distinct failure zones across 81 transformer layers.

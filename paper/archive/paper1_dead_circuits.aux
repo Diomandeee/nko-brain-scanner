@@ -1,0 +1,156 @@
+\relax 
+\bibstyle{acl_natbib}
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{1}{section.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {2}N'Ko: Script Design and Computational Properties}{2}{section.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Historical Context}{2}{subsection.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Phoneme-Grapheme Bijection}{2}{subsection.2.2}\protected@file@percent }
+\citation{doumbouya2021}
+\citation{tonja2023natural}
+\citation{wmt2023nko}
+\citation{magueresse2020lowresource}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}Tonal Marking System}{3}{subsection.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.4}Right-to-Left Writing Direction}{3}{subsection.2.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.5}Computational Advantages (Theoretical)}{3}{subsection.2.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {3}Related Work}{3}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Script Equity in NLP}{3}{subsection.3.1}\protected@file@percent }
+\citation{dossou2022afrolm}
+\citation{pfeiffer2020adapterhub}
+\citation{kakwani2020indicnlpsuite}
+\citation{tenney2019bert}
+\citation{ng2024rys}
+\citation{antoun2020arabert}
+\citation{hu2022lora}
+\citation{pfeiffer2020adapterhub}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Multilingual Model Internals}{4}{subsection.3.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.3}Layer Duplication and Circuit Analysis}{4}{subsection.3.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.4}Arabic as a Reference RTL Script}{4}{subsection.3.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.5}LoRA Adaptation for New Languages}{4}{subsection.3.5}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {4}Activation Profiling: The N'Ko Brain Scan}{4}{section.4}\protected@file@percent }
+\newlabel{sec:brain-scan}{{4}{4}{Activation Profiling: The N'Ko Brain Scan}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}Experimental Setup}{4}{subsection.4.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Model.}{4}{section*.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Data.}{5}{section*.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Metrics.}{5}{section*.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces L2 norm by layer (English vs.\ N'Ko, Qwen2-72B-Instruct base). The ratio increases monotonically from 2.87$\times $ at layer 8 to 3.26$\times $ at the output, indicating progressive degradation.}}{5}{table.caption.4}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{tab:l2-norm}{{1}{5}{L2 norm by layer (English vs.\ N'Ko, Qwen2-72B-Instruct base). The ratio increases monotonically from 2.87$\times $ at layer 8 to 3.26$\times $ at the output, indicating progressive degradation}{table.caption.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.2}Results: The Translation Tax}{5}{subsection.4.2}\protected@file@percent }
+\newlabel{sec:translation-tax}{{4.2}{5}{Results: The Translation Tax}{subsection.4.2}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {2}{\ignorespaces Shannon entropy by layer. The entropy gap widens from 1.35 bits at embedding to 2.87 bits at the output layer, indicating progressively more diffuse N'Ko representations.}}{6}{table.caption.5}\protected@file@percent }
+\newlabel{tab:entropy}{{2}{6}{Shannon entropy by layer. The entropy gap widens from 1.35 bits at embedding to 2.87 bits at the output layer, indicating progressively more diffuse N'Ko representations}{table.caption.5}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {3}{\ignorespaces Kurtosis by layer. English kurtosis climbs steadily to 58.4 at the output; N'Ko kurtosis peaks at layer 60 (11.3) then \emph  {drops} to 8.3 at the output, producing an 85.8\% deficit.}}{6}{table.caption.6}\protected@file@percent }
+\newlabel{tab:kurtosis}{{3}{6}{Kurtosis by layer. English kurtosis climbs steadily to 58.4 at the output; N'Ko kurtosis peaks at layer 60 (11.3) then \emph {drops} to 8.3 at the output, producing an 85.8\% deficit}{table.caption.6}{}}
+\@writefile{toc}{\contentsline {paragraph}{Sparsity.}{6}{section*.7}\protected@file@percent }
+\citation{ng2024rys}
+\@writefile{toc}{\contentsline {paragraph}{Per-token analysis.}{7}{section*.8}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.3}Circuit Duplication Analysis}{7}{subsection.4.3}\protected@file@percent }
+\newlabel{sec:circuit-dup}{{4.3}{7}{Circuit Duplication Analysis}{subsection.4.3}{}}
+\@writefile{toc}{\contentsline {paragraph}{Configuration space.}{7}{section*.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Results.}{7}{section*.11}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {4}{\ignorespaces Circuit duplication results (selected). The best N'Ko configuration (0, 40) scores 0.067, barely above random (0.05). No N'Ko configuration exceeds 0.067. 0/55 configurations are N'Ko-advantageous (N'Ko > English).}}{7}{table.caption.10}\protected@file@percent }
+\newlabel{tab:circuit-dup}{{4}{7}{Circuit duplication results (selected). The best N'Ko configuration (0, 40) scores 0.067, barely above random (0.05). No N'Ko configuration exceeds 0.067. 0/55 configurations are N'Ko-advantageous (N'Ko > English)}{table.caption.10}{}}
+\@writefile{toc}{\contentsline {paragraph}{Interpretation.}{7}{section*.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.4}Three-Zone Failure Analysis}{7}{subsection.4.4}\protected@file@percent }
+\newlabel{sec:three-zone}{{4.4}{7}{Three-Zone Failure Analysis}{subsection.4.4}{}}
+\@writefile{toc}{\contentsline {paragraph}{Zone 1: Comprehension Failure (Layers 0--10).}{8}{section*.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Zone 2: Reasoning Vacuum (Layers 10--56).}{8}{section*.14}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Zone 3: Incoherent Output (Layers 56--80).}{8}{section*.15}\protected@file@percent }
+\citation{sennrich2016bpe}
+\@writefile{lot}{\contentsline {table}{\numberline {5}{\ignorespaces Output layer (80) comparison across three scripts. Arabic's metrics are within 7\% of English; N'Ko's are 2--7$\times $ worse.}}{9}{table.caption.16}\protected@file@percent }
+\newlabel{tab:arabic-comparison}{{5}{9}{Output layer (80) comparison across three scripts. Arabic's metrics are within 7\% of English; N'Ko's are 2--7$\times $ worse}{table.caption.16}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Comparative Analysis: N'Ko versus Arabic}{9}{section.5}\protected@file@percent }
+\newlabel{sec:arabic-comparison}{{5}{9}{Comparative Analysis: N'Ko versus Arabic}{section.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}Arabic Activation Profile}{9}{subsection.5.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}The Role of Tokenizer Vocabulary}{9}{subsection.5.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {6}{\ignorespaces Script-specific vocabulary allocation in Qwen2-72B. N'Ko receives 0.02\% of the vocabulary---131$\times $ fewer tokens than Arabic, 2,437$\times $ fewer than Latin.}}{9}{table.caption.17}\protected@file@percent }
+\newlabel{tab:vocab-allocation}{{6}{9}{Script-specific vocabulary allocation in Qwen2-72B. N'Ko receives 0.02\% of the vocabulary---131$\times $ fewer tokens than Arabic, 2,437$\times $ fewer than Latin}{table.caption.17}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {6}Tokenizer Efficiency and the Vocabulary Bottleneck}{9}{section.6}\protected@file@percent }
+\newlabel{sec:tokenizer}{{6}{9}{Tokenizer Efficiency and the Vocabulary Bottleneck}{section.6}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.1}BPE Merge Analysis}{9}{subsection.6.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {7}{\ignorespaces BPE tokenizer statistics across scripts. Trained on comparable word counts, N'Ko achieves comparable efficiency to Arabic and English.}}{10}{table.caption.18}\protected@file@percent }
+\newlabel{tab:bpe-comparison}{{7}{10}{BPE tokenizer statistics across scripts. Trained on comparable word counts, N'Ko achieves comparable efficiency to Arabic and English}{table.caption.18}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.2}The Vocabulary Allocation Problem}{10}{subsection.6.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {8}{\ignorespaces N'Ko token decomposition in Qwen2-72B vocabulary. All 32 tokens are single characters. No subword, syllable, or word-level tokens exist.}}{10}{table.caption.19}\protected@file@percent }
+\newlabel{tab:nko-tokens}{{8}{10}{N'Ko token decomposition in Qwen2-72B vocabulary. All 32 tokens are single characters. No subword, syllable, or word-level tokens exist}{table.caption.19}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {6.3}N'Ko's 32 Tokens}{10}{subsection.6.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {7}LLM Adaptation: Closing the Translation Tax}{10}{section.7}\protected@file@percent }
+\newlabel{sec:adaptation}{{7}{10}{LLM Adaptation: Closing the Translation Tax}{section.7}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.1}Training Pipeline}{10}{subsection.7.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Stage 1: Continued Pre-Training (CPT).}{10}{section*.20}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Stage 2: Supervised Fine-Tuning (SFT).}{11}{section*.21}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{Stage 3: BPE-Aware Training.}{11}{section*.22}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.2}V1/V2/V3 Progression}{11}{subsection.7.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {9}{\ignorespaces Training configuration. All training on Apple M4 16GB via MLX v0.29. Total training time: 185 minutes. Zero cloud cost.}}{11}{table.caption.23}\protected@file@percent }
+\newlabel{tab:training-config}{{9}{11}{Training configuration. All training on Apple M4 16GB via MLX v0.29. Total training time: 185 minutes. Zero cloud cost}{table.caption.23}{}}
+\@writefile{toc}{\contentsline {paragraph}{V1: Wikipedia-only CPT.}{11}{section*.24}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{V2: CPT + SFT (mode collapse).}{11}{section*.25}\protected@file@percent }
+\@writefile{toc}{\contentsline {paragraph}{V3: CPT + SFT + BPE (mode collapse resolved).}{11}{section*.26}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {10}{\ignorespaces V1/V2/V3 progression. Mode collapse in V2 is resolved in V3 through data diversification and BPE-aware training.}}{12}{table.caption.27}\protected@file@percent }
+\newlabel{tab:v123-progression}{{10}{12}{V1/V2/V3 progression. Mode collapse in V2 is resolved in V3 through data diversification and BPE-aware training}{table.caption.27}{}}
+\@writefile{lot}{\contentsline {table}{\numberline {11}{\ignorespaces Post-adaptation results. The translation tax drops from 2.90$\times $ to 0.70$\times $: after fine-tuning, the model processes N'Ko with \emph  {lower} perplexity than English.}}{12}{table.caption.28}\protected@file@percent }
+\newlabel{tab:main-results}{{11}{12}{Post-adaptation results. The translation tax drops from 2.90$\times $ to 0.70$\times $: after fine-tuning, the model processes N'Ko with \emph {lower} perplexity than English}{table.caption.28}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.3}Post-Adaptation Activation Profile}{12}{subsection.7.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {7.4}English Degradation Analysis}{12}{subsection.7.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {8}Implications for Underrepresented Scripts}{13}{section.8}\protected@file@percent }
+\newlabel{sec:broader-scripts}{{8}{13}{Implications for Underrepresented Scripts}{section.8}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.1}The Script Invisibility Framework}{13}{subsection.8.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.2}Predictions and Proposed Diagnostics}{13}{subsection.8.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {8.3}Decolonizing NLP Infrastructure}{13}{subsection.8.3}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {12}{\ignorespaces Predicted invisible scripts in Qwen2-72B based on vocabulary density analysis. All have $\rho _s \leq 0.50$, predicting translation taxes above 2.0$\times $.}}{14}{table.caption.29}\protected@file@percent }
+\newlabel{tab:invisible-scripts}{{12}{14}{Predicted invisible scripts in Qwen2-72B based on vocabulary density analysis. All have $\rho _s \leq 0.50$, predicting translation taxes above 2.0$\times $}{table.caption.29}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {9}Discussion}{14}{section.9}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.1}Dead Circuits versus Weak Circuits}{14}{subsection.9.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.2}Adlam: The Most Urgent Case}{14}{subsection.9.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {9.3}The Tokenizer as Gatekeeper}{15}{subsection.9.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {10}Limitations}{15}{section.10}\protected@file@percent }
+\citation{clark2019attention}
+\@writefile{lot}{\contentsline {table}{\numberline {13}{\ignorespaces Mean attention entropy per head by layer group. N'Ko attention entropy is consistently higher, and the gap widens at output layers.}}{16}{table.caption.30}\protected@file@percent }
+\newlabel{tab:attention-entropy}{{13}{16}{Mean attention entropy per head by layer group. N'Ko attention entropy is consistently higher, and the gap widens at output layers}{table.caption.30}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {11}Attention Pattern Analysis}{16}{section.11}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.1}Attention Entropy by Layer}{16}{subsection.11.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.2}Head Specialization}{16}{subsection.11.2}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {14}{\ignorespaces Attention weight analysis. N'Ko character tokens attend to each other less than English subword tokens attend to adjacent subwords.}}{16}{table.caption.31}\protected@file@percent }
+\newlabel{tab:cross-attention}{{14}{16}{Attention weight analysis. N'Ko character tokens attend to each other less than English subword tokens attend to adjacent subwords}{table.caption.31}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {11.3}Cross-Attention Between N'Ko Characters}{16}{subsection.11.3}\protected@file@percent }
+\citation{antoun2020arabert}
+\citation{kakwani2020indicnlpsuite}
+\@writefile{toc}{\contentsline {section}{\numberline {12}Reproducibility and Data Release}{17}{section.12}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.1}Computational Requirements}{17}{subsection.12.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.2}Data Availability}{17}{subsection.12.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {12.3}Evaluation Protocol}{17}{subsection.12.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {13}Future Work}{17}{section.13}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {13.1}Vocabulary Injection}{17}{subsection.13.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {13.2}Multi-Script Profiling Study}{17}{subsection.13.2}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {13.3}Cross-Model Comparison}{18}{subsection.13.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {13.4}Real-Time Translation Tax Monitoring}{18}{subsection.13.4}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {14}Ethical Considerations}{18}{section.14}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {15}Conclusion}{18}{section.15}\protected@file@percent }
+\bibcite{antoun2020arabert}{{1}{2020}{{Antoun et~al.}}{{Antoun, Baly, and Hajj}}}
+\bibcite{wmt2023nko}{{2}{2023}{{Barrault et~al.}}{{}}}
+\bibcite{conneau2020unsupervised}{{3}{2020}{{Conneau et~al.}}{{}}}
+\bibcite{dossou2022afrolm}{{4}{2022}{{Dossou et~al.}}{{Dossou and Tonja}}}
+\bibcite{doumbouya2021}{{5}{2021}{{Doumbouya et~al.}}{{}}}
+\bibcite{hu2022lora}{{6}{2022}{{Hu et~al.}}{{Hu, Shen, Wallis, Allen-Zhu, Li, Wang, Wang, and Chen}}}
+\bibcite{kakwani2020indicnlpsuite}{{7}{2020}{{Kakwani et~al.}}{{}}}
+\bibcite{magueresse2020lowresource}{{8}{2020}{{Magueresse et~al.}}{{Magueresse, Carles, and Heetderks}}}
+\bibcite{ng2024rys}{{9}{2024}{{Ng}}{{}}}
+\bibcite{pfeiffer2020adapterhub}{{10}{2020}{{Pfeiffer et~al.}}{{}}}
+\bibcite{sennrich2016bpe}{{11}{2016}{{Sennrich et~al.}}{{}}}
+\bibcite{tenney2019bert}{{12}{2019}{{Tenney et~al.}}{{}}}
+\bibcite{tonja2023natural}{{13}{2023}{{Tonja et~al.}}{{}}}
+\bibcite{unicode2006nko}{{14}{2006}{{Unicode Consortium}}{{}}}
+\bibcite{clark2019attention}{{15}{2019}{{Clark et~al.}}{{}}}
+\bibcite{aji2022bloom}{{16}{2022}{{Aji et~al.}}{{}}}
+\bibcite{adelani2022masakhaner2}{{17}{2022}{{Adelani et~al.}}{{}}}
+\bibcite{joshi2020state}{{18}{2020}{{Joshi et~al.}}{{}}}
+\bibcite{rust2021good}{{19}{2021}{{Rust et~al.}}{{}}}
+\bibcite{bayelemabaga2025}{{20}{2025}{{Coulibaly et~al.}}{{}}}
+\bibcite{devlin2019bert}{{21}{2019}{{Devlin et~al.}}{{}}}
+\bibcite{muller2021first}{{22}{2021}{{Muller et~al.}}{{}}}
+\bibcite{ponti2019modeling}{{23}{2019}{{Ponti et~al.}}{{}}}
+\bibcite{lauscher2020zero}{{24}{2020}{{Lauscher et~al.}}{{}}}
+\bibcite{wang2020extending}{{25}{2020}{{Wang et~al.}}{{}}}
+\gdef \@abspage@last{20}
